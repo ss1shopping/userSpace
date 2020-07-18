@@ -1,0 +1,153 @@
+#login {
+  margin-top: -18px;
+  width: 100%;
+  height: 480px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+border-top: 1px solid #393a3b;
+  &__box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    width: 30%;
+    height: 55%;
+
+    form {
+      .input {
+        margin-bottom: 15px;
+        width: 100%;
+
+        input {
+          width: 100%;
+          height: 30px;
+
+        }
+        .error{
+          word-break:break-all;
+          color:red
+        }
+
+      }
+
+      .submit {
+        width: 100%;
+
+        input {
+          background-color: rgb(40, 167, 69);
+         
+          background-image: linear-gradient(-180deg, #34d058, #28a745 90%);
+          width: 104%;
+          height: 33px;
+          border-radius: 5px;
+          box-sizing: border-box;
+          color: white;
+          font-weight: bold;
+          box-shadow: hsla(145, 80%, 44%, 0.938);
+        }
+      }
+
+      .box {
+        border: 1px solid #d8dee2;
+        ;
+        margin-top: 25px;
+        width: 104%;
+        border-radius: 5px;
+
+        .register {
+          .question {}
+
+          .link {
+            margin-left: 10px;
+
+            a {
+              text-decoration: none;
+            }
+          }
+        }
+
+        .forgot {
+          span {
+            a {
+              text-decoration: none;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1250px) {
+  #login {
+    margin-top: -22px;
+    &__box {
+      width: 35%;
+      height: 55%;
+    }
+  }
+}
+
+@media screen and (max-width: 992px) {
+  #login {
+    margin-top: -20px;
+    &__box {
+      width: 42%;
+      height: 55%;
+    }
+  }
+}
+
+@media screen and (max-width: 800px) {
+  #login {
+    &__box {
+      width: 55%;
+      height: 60%;
+    }
+  }
+}
+
+@media screen and (max-width: 732px) {
+  #login {
+    &__box {
+      width: 70%;
+      height: 60%;
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  #login {
+    &__box {
+      width: 70%;
+      height: 60%;
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  #login {
+    &__box {
+      width: 90%;
+      height: 70%;
+    }
+  }
+}
+
+@media screen and (max-width: 400px) {
+  #login {
+    &__box {
+      width: 90%;
+      height: 70%;
+    }
+  }
+}
+@media screen and (max-width: 350px) {
+  #login {
+    &__box {
+      width: 99%;
+      height: 80%;
+    }
+  }
+}

@@ -1,0 +1,51 @@
+#navbarscroll{
+height: 50%;
+  overflow: scroll;
+  scrollbar:5px;
+  margin-right: 0;
+}
+#navbar{
+  
+  
+  &__toggle{
+    margin:1.5rem 0 0 1rem;
+    cursor: pointer;
+    span{
+      font-size: 2rem;
+      
+    }}
+    &__mode{
+       margin:1rem 1rem 0 1rem;
+       display: none;
+    }
+    &__menu{
+      .menu{
+        box-sizing: border-box;
+        padding-bottom: 5px;
+        a{
+          text-decoration: none;
+          margin: 3rem 1rem 3rem 1rem;
+         
+          font-size: 1.15rem;
+        }
+      }
+    }
+  }
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}

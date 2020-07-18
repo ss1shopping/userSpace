@@ -1,0 +1,86 @@
+ #header{
+ 
+display: flex;
+margin-top: 2%;
+
+ &__logo{
+   width: 25%;
+  &--img{
+     
+    a{
+      
+      img{
+        margin:0 0 0 10%;
+       width: 70%;
+  height: auto;
+      }
+    }
+  }
+ }
+ &__social{
+width: 15%;
+margin:3.5% 0 0 3%;
+display:flex;
+
+&--detail{
+  white-space: nowrap;
+  a{
+    white-space: nowrap;
+    padding-left: 1rem;
+    font-size: 2rem;
+    color:black;
+  }
+}
+ }
+ &__mode{
+margin:4% 0 0 3%;
+width: 5%;
+&--detail{
+display: flex;
+}
+ }
+ &__navbar{
+   width:2%;
+    display:none;
+    font-zise:2rem;
+   cursor: pointer;
+ }
+ &__menu{
+   width: 53%;
+   margin:3% 2% 0 20%;
+   font-size: 2rem;
+   div{
+
+
+
+justify-content: center;
+align-items: center;
+display: flex;
+.menu{
+  margin-left: 2rem;
+  a{
+    text-decoration: none;
+    white-space: nowrap;
+   
+  }
+  
+    
+}
+ }}
+ }
+.menu:active{
+   background:rgba(100, 124, 129, 0.8);
+   border-radius: 25px;
+   
+    color:yellow
+}
+.menu:hover{
+
+    padding: 5px 0 7px 0;
+   border-radius: 20px;
+    background:rgba(26, 235, 217, 0.8);
+    color:yellow
+    
+    
+  
+}

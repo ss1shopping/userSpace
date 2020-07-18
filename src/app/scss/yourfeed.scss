@@ -1,0 +1,576 @@
+.profile{
+  border-bottom: 2px solid #7b7b86 !important;
+  display:flex;
+  padding-top: 20px;
+  &--myfeed{
+    
+    width: 75%;
+    margin-left: 100px;
+   display: flex;
+   flex-wrap: wrap;
+    cursor: pointer;
+   &--button{
+     width: 100%;
+     display: flex;
+     margin-right: 10px;
+     border-bottom: 1px solid #b6b4b4;
+     a{
+       text-decoration: none;
+       margin-right:10px ;
+     }
+    }
+    &--post{
+      width: 100%;
+    }
+  }
+  &--tag{
+     background:rgb(66, 58, 58) ;
+     cursor: pointer;
+    width: 25%;
+    &__list{
+     display: flex;
+     flex-wrap: wrap;
+      margin-left: 4px;
+     div{
+       margin: 5px 0 0 5px;
+       padding: auto;
+       background: red;
+       border-radius: 5px;
+     }
+    }
+  }
+}
+
+.open{
+  border-bottom: 2px solid blue !important;
+color:blue;
+}
+.yourfeed{
+ border-bottom:1px solid #6e6c6c ;
+ 
+ 
+
+ 
+  div{
+    
+    .yourfeed--infor{
+display: flex;
+    &--avatar{
+      
+    
+     }
+    &--name{
+      margin-left: 10px;
+      font-weight: bold;
+      
+    }
+     &--tym{
+       margin-left: 80%;
+       margin-top: 1%;
+       &--box{
+         color:#eb0e33;
+         display: flex;
+         padding:2px 3px;
+       }
+       &--box:hover{
+          background-color: rgb(197, 31, 31);
+       } 
+       &--box:active{
+         background-color: #461010;
+       }
+     div{
+      margin: -3px 0 0 5px;
+     }
+     }
+    }
+  }
+  div{
+    .yourfeed--post{
+      div{
+        a{
+          text-decoration: none;
+          margin-left: 20px;
+          .yourfeed--title{
+            font-weight: 900;
+            font-size: 25px;
+            margin-left: 20px;
+            color:black
+          }
+          .yourfeed--content{
+            color: #333333;
+             margin-left: 20px;
+          }
+        }
+      }
+      &--comment{
+        display: flex;
+        &--show{
+            
+        }
+        &--text{
+         
+          margin-left: 5px;
+         
+          display: flex;
+          &--name{
+                 margin-right:10px;
+                 font-weight: bold;
+                 font-size: 20px;
+            
+               
+        }
+          &--content{
+                   font-size: 20px;
+                   padding:0 5px;
+                   color:white;
+                   background-color: #3b3232;
+                   border: 1px solid black;
+                      border-radius: 20px;
+                 }
+          }
+      }
+      &--writter{
+      display: flex;
+      &--show{
+            
+        }
+        &--input{
+          border: 1px solid black;
+          border-radius: 25px;
+          input{
+ border: 1px solid black;
+          border-radius: 25px;
+          width: 500px;
+          height: 30px;
+          color:white;
+          background-color: #363030;
+          }
+          input:active{
+            border: none;
+          }
+          input:focus{
+             border: none;
+          }
+          input:hover{
+             border: none;
+          }
+         
+        }
+    }
+    }
+    
+  }
+}
+ @media screen and (max-width: 1250px) {
+
+}
+
+@media screen and (max-width: 992px) {
+
+}
+
+/* On screens that are 600px wide or less, make the columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 800px) {
+.profile{
+  border-bottom: 2px solid #7b7b86 !important;
+  display:flex;
+  flex-wrap: wrap;
+  padding-top: 20px;
+  &--myfeed{
+    
+    width: 100%;
+    margin-left: 100px;
+   display: flex;
+   flex-wrap: wrap;
+    cursor: pointer;
+   &--button{
+     width: 100%;
+     display: flex;
+     margin-right: 10px;
+     border-bottom: 1px solid #b6b4b4;
+     a{
+       text-decoration: none;
+       margin-right:10px ;
+     }
+    }
+    &--post{
+      width: 100%;
+    }
+  }
+  &--tag{
+     background:rgb(66, 58, 58) ;
+     cursor: pointer;
+    width: 100%;
+    &__list{
+     display: flex;
+     flex-wrap: wrap;
+      margin-left: 4px;
+     div{
+       margin: 5px 0 0 5px;
+       padding: auto;
+       background: red;
+       border-radius: 5px;
+     }
+    }
+  }
+}
+}
+@media screen and (max-width: 732px) {
+.yourfeed{
+ border-bottom:1px solid #6e6c6c ;
+ 
+ 
+
+ 
+  div{
+    
+    .yourfeed--infor{
+display: flex;
+    &--avatar{
+      
+    
+     }
+    &--name{
+      margin-left: 10px;
+      font-weight: bold;
+      
+    }
+     &--tym{
+       margin-left: 80%;
+       margin-top: 1%;
+       &--box{
+         color:#eb0e33;
+         display: flex;
+         padding:2px 3px;
+       }
+       &--box:hover{
+          background-color: rgb(197, 31, 31);
+       } 
+       &--box:active{
+         background-color: #461010;
+       }
+     div{
+      margin: -3px 0 0 5px;
+     }
+     }
+    }
+  }
+  div{
+    .yourfeed--post{
+      div{
+        a{
+          text-decoration: none;
+          margin-left: 20px;
+          .yourfeed--title{
+            font-weight: 900;
+            font-size: 25px;
+            margin-left: 20px;
+            color:black
+          }
+          .yourfeed--content{
+            color: #333333;
+             margin-left: 20px;
+          }
+        }
+      }
+      &--comment{
+        display: flex;
+        &--show{
+            
+        }
+        &--text{
+         
+          margin-left: 5px;
+         
+          display: flex;
+          &--name{
+                 margin-right:10px;
+                 font-weight: bold;
+                 font-size: 20px;
+            
+               
+        }
+          &--content{
+                   font-size: 20px;
+                   padding:0 5px;
+                   color:white;
+                   background-color: #3b3232;
+                   border: 1px solid black;
+                      border-radius: 20px;
+                 }
+          }
+      }
+      &--writter{
+      display: flex;
+      &--show{
+            
+        }
+        &--input{
+          border: 1px solid black;
+          border-radius: 25px;
+          input{
+ border: 1px solid black;
+          border-radius: 25px;
+          width: 400px;
+          height: 30px;
+          color:white;
+          background-color: #363030;
+          }
+          input:active{
+            border: none;
+          }
+          input:focus{
+             border: none;
+          }
+          input:hover{
+             border: none;
+          }
+         
+        }
+    }
+    }
+    
+  }
+}
+}
+
+/* On screens that are 600px wide or less, make the columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+.yourfeed{
+ border-bottom:1px solid #6e6c6c ;
+ 
+ 
+
+ 
+  div{
+    
+    .yourfeed--infor{
+display: flex;
+    &--avatar{
+      
+    
+     }
+    &--name{
+      margin-left: 10px;
+      font-weight: bold;
+      
+    }
+     &--tym{
+       margin-left: 80%;
+       margin-top: 1%;
+       &--box{
+         color:#eb0e33;
+         display: flex;
+         padding:2px 3px;
+       }
+       &--box:hover{
+          background-color: rgb(197, 31, 31);
+       } 
+       &--box:active{
+         background-color: #461010;
+       }
+     div{
+      margin: -3px 0 0 5px;
+     }
+     }
+    }
+  }
+  div{
+    .yourfeed--post{
+      div{
+        a{
+          text-decoration: none;
+          margin-left: 20px;
+          .yourfeed--title{
+            font-weight: 900;
+            font-size: 25px;
+            margin-left: 20px;
+            color:black
+          }
+          .yourfeed--content{
+            color: #333333;
+             margin-left: 20px;
+          }
+        }
+      }
+      &--comment{
+        display: flex;
+        &--show{
+            
+        }
+        &--text{
+         
+          margin-left: 5px;
+         
+          display: flex;
+          &--name{
+                 margin-right:10px;
+                 font-weight: bold;
+                 font-size: 20px;
+            
+               
+        }
+          &--content{
+                   font-size: 20px;
+                   padding:0 5px;
+                   color:white;
+                   background-color: #3b3232;
+                   border: 1px solid black;
+                      border-radius: 20px;
+                 }
+          }
+      }
+      &--writter{
+      display: flex;
+      &--show{
+            
+        }
+        &--input{
+          border: 1px solid black;
+          border-radius: 25px;
+          input{
+ border: 1px solid black;
+          border-radius: 25px;
+          width: 300px;
+          height: 30px;
+          color:white;
+          background-color: #363030;
+          }
+          input:active{
+            border: none;
+          }
+          input:focus{
+             border: none;
+          }
+          input:hover{
+             border: none;
+          }
+         
+        }
+    }
+    }
+    
+  }
+}
+}
+
+/* On screens that are 600px wide or less, make the columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 400px) {
+ .yourfeed{
+ border-bottom:1px solid #6e6c6c ;
+ 
+ 
+
+ 
+  div{
+    
+    .yourfeed--infor{
+display: flex;
+    &--avatar{
+      
+    
+     }
+    &--name{
+      margin-left: 10px;
+      font-weight: bold;
+      
+    }
+     &--tym{
+       margin-left: 80%;
+       margin-top: 1%;
+       &--box{
+         color:#eb0e33;
+         display: flex;
+         padding:2px 3px;
+       }
+       &--box:hover{
+          background-color: rgb(197, 31, 31);
+       } 
+       &--box:active{
+         background-color: #461010;
+       }
+     div{
+      margin: -3px 0 0 5px;
+     }
+     }
+    }
+  }
+  div{
+    .yourfeed--post{
+      div{
+        a{
+          text-decoration: none;
+          margin-left: 20px;
+          .yourfeed--title{
+            font-weight: 900;
+            font-size: 25px;
+            margin-left: 20px;
+            color:black
+          }
+          .yourfeed--content{
+            color: #333333;
+             margin-left: 20px;
+          }
+        }
+      }
+      &--comment{
+        display: flex;
+        &--show{
+            
+        }
+        &--text{
+         
+          margin-left: 5px;
+         
+          display: flex;
+          &--name{
+                 margin-right:10px;
+                 font-weight: bold;
+                 font-size: 20px;
+            
+               
+        }
+          &--content{
+                   font-size: 20px;
+                   padding:0 5px;
+                   color:white;
+                   background-color: #3b3232;
+                   border: 1px solid black;
+                      border-radius: 20px;
+                 }
+          }
+      }
+      &--writter{
+      display: flex;
+      &--show{
+            
+        }
+        &--input{
+          border: 1px solid black;
+          border-radius: 25px;
+          input{
+ border: 1px solid black;
+          border-radius: 25px;
+          width: 250px;
+          height: 30px;
+          color:white;
+          background-color: #363030;
+          }
+          input:active{
+            border: none;
+          }
+          input:focus{
+             border: none;
+          }
+          input:hover{
+             border: none;
+          }
+         
+        }
+    }
+    }
+    
+  }
+}
+}
+
