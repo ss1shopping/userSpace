@@ -1,10 +1,36 @@
 import {auth} from "../constant/index"
 import { takeEvery, put, call,take } from 'redux-saga/effects';
- function* fetchLogin () {
-    yield console.log("hihi");
- }
+import {login} from "../crud/auth.crud";
+import {setStorage,getStorage} from "../../_metronic/utils/utils";
+import {authActions} from "../store/ducks/authReducer";
+import {authActionTypes} from "../constant/index";
+function* fetchLogin ({ payload }) {
+  const {
+    email, password,setSubmitting,history
+    
+  } = payload;
+
+  try {
+    const result = yield call(login, { email, password });
+     yield put(authActions.loginSuccess(result.data.user));
+      yield setSubmitting(false);
+       yield setStorage('token', result.data.token);
+       yield setStorage("refreshtoken",result.data.refreshToken)
+        yield history.push("/profile");
+      console.log(result);
+  } catch (err) {
+    console.log(err);
+    
+    const error = err.response ? err.response.data.message : err.stack;
+    yield put(authActions.error(error));
+    yield setSubmitting(false);
+  }
+    
+      
+ 
+}
 function* authSagas () {
-  yield takeEvery(auth.loading, fetchLogin);
+  yield takeEvery(authActionTypes.Login, fetchLogin);
  
 }
 

@@ -3,482 +3,483 @@
 @import "./login.scss";
 @import "./register.scss";
 @import "./yourfeed.scss";
-@import "~antd/dist/antd.css";
-@mixin layout{
+// @import "~antd/dist/antd.css";
+@import '~bootstrap/scss/bootstrap.scss';
+// @mixin layout{
     
   
-   display: grid;
-   width: 80%;
-   grid-template-columns: repeat(6, 1fr);
-   grid-template-rows: auto ;
-   grid-column-gap: 20px;
-     grid-row-gap: 20px;
+//    display: grid;
+//    width: 80%;
+//    grid-template-columns: repeat(6, 1fr);
+//    grid-template-rows: auto ;
+//    grid-column-gap: 20px;
+//      grid-row-gap: 20px;
      
-}
-#App{
-  height: 100%;
-  width: 100%;
-  &__main{
-  display: flex;
+// }
+// #App{
+//   height: 100%;
+//   width: 100%;
+//   &__main{
+//   display: flex;
   
-    &--layout{
-     max-height: 150px;
+//     &--layout{
+//      max-height: 150px;
      
-         @include layout;
+//          @include layout;
          
-     grid-template-areas:
-     "header header header header header header"
-     "body body body body body body "
+//      grid-template-areas:
+//      "header header header header header header"
+//      "body body body body body body "
      
-     " footer footer footer footer footer footer"
+//      " footer footer footer footer footer footer"
     
-     ;
-  #header{
-  grid-area: header;
+//      ;
+//   #header{
+//   grid-area: header;
 
-  }
-  #body{
-   background: green;
-    grid-area: body;
-    width: 100%;
-  }
+//   }
+//   #body{
+//    background: green;
+//     grid-area: body;
+//     width: 100%;
+//   }
   
-  #footer{
-    background: yellow;
-    grid-area: footer;  
-  }
-}
-&--navbar{
+//   #footer{
+//     background: yellow;
+//     grid-area: footer;  
+//   }
+// }
+// &--navbar{
  
   
-  #navbar{
-    width: 100%;
+//   #navbar{
+//     width: 100%;
    
-  }
-}
-    }
-  }
+//   }
+// }
+//     }
+//   }
   
-  @media screen and (max-width: 1250px) {
- #App{
-  &__main{
-   display:flex;
+//   @media screen and (max-width: 1250px) {
+//  #App{
+//   &__main{
+//    display:flex;
   
-    &--layout{
-           @include layout;
-     width: 75%;
+//     &--layout{
+//            @include layout;
+//      width: 75%;
    
-     grid-template-areas:
-     "header header header header header header"
-     "body body body body body body "
+//      grid-template-areas:
+//      "header header header header header header"
+//      "body body body body body body "
      
-     " footer footer footer footer footer footer"
+//      " footer footer footer footer footer footer"
     
-     ;
-  #header{
-  grid-area: header;
-  &__social{
-width: 25%;
-margin:3.5% 0 0 2%;
-&--detail{
-  white-space: nowrap;
-  a{
-    white-space: nowrap;
-  }
-}
-}
-&__mode{
-margin:4% 0 0 1%;
-width: 5%;
-&--detail{
-display: flex;
-}
- }
-  &__navbar{
-    width:2%;
-    margin:4% 0 0 50%;
-    display:none;
-    font-zise:4rem;
- }
- &__menu{
+//      ;
+//   #header{
+//   grid-area: header;
+//   &__social{
+// width: 25%;
+// margin:3.5% 0 0 2%;
+// &--detail{
+//   white-space: nowrap;
+//   a{
+//     white-space: nowrap;
+//   }
+// }
+// }
+// &__mode{
+// margin:4% 0 0 1%;
+// width: 5%;
+// &--detail{
+// display: flex;
+// }
+//  }
+//   &__navbar{
+//     width:2%;
+//     margin:4% 0 0 50%;
+//     display:none;
+//     font-zise:4rem;
+//  }
+//  &__menu{
    
-width: 50%;
-margin:3% 2% 0 10%;
-font-size: 1.5rem;
+// width: 50%;
+// margin:3% 2% 0 10%;
+// font-size: 1.5rem;
 
 
-.menu{
-  margin-left: 1rem;
-  a{
-    text-decoration: none;
+// .menu{
+//   margin-left: 1rem;
+//   a{
+//     text-decoration: none;
     
-  }
-}
- }
+//   }
+// }
+//  }
 
-  }
-  #body{
-   background: green;
-    grid-area: body;
-  }
+//   }
+//   #body{
+//    background: green;
+//     grid-area: body;
+//   }
   
-  #footer{
-    background: yellow;
-    grid-area: footer;  
-  }
-}
-&--navbar{
+//   #footer{
+//     background: yellow;
+//     grid-area: footer;  
+//   }
+// }
+// &--navbar{
  
   
-}
-    }
-  }
-}
+// }
+//     }
+//   }
+// }
 
-@media screen and (max-width: 992px) {
- #App{
-  &__main{
-   display:flex;
+// @media screen and (max-width: 992px) {
+//  #App{
+//   &__main{
+//    display:flex;
   
-    &--layout{
-           @include layout;
-     width: 75%;
+//     &--layout{
+//            @include layout;
+//      width: 75%;
  
-     grid-template-areas:
-     "header header header header header header"
-     "body body body body body body "
+//      grid-template-areas:
+//      "header header header header header header"
+//      "body body body body body body "
      
-     " footer footer footer footer footer footer"
+//      " footer footer footer footer footer footer"
     
-     ;
-  #header{
-  grid-area: header;
-  &__social{
-width: 25%;
-margin:3.5% 0 0 2%;
-&--detail{
-  white-space: nowrap;
-  a{
-    white-space: nowrap;
-  }
-}
-}
-&__mode{
-margin:4% 0 0 1%;
-width: 5%;
-&--detail{
-display: flex;
-}
- }
-  &__navbar{
-    width:2%;
-    margin:4% 0 0 50%;
-    display:none;
-    font-zise:4rem;
- }
- &__menu{
+//      ;
+//   #header{
+//   grid-area: header;
+//   &__social{
+// width: 25%;
+// margin:3.5% 0 0 2%;
+// &--detail{
+//   white-space: nowrap;
+//   a{
+//     white-space: nowrap;
+//   }
+// }
+// }
+// &__mode{
+// margin:4% 0 0 1%;
+// width: 5%;
+// &--detail{
+// display: flex;
+// }
+//  }
+//   &__navbar{
+//     width:2%;
+//     margin:4% 0 0 50%;
+//     display:none;
+//     font-zise:4rem;
+//  }
+//  &__menu{
    
-width: 50%;
-margin:3% 2% 0 10%;
-font-size: 1.5rem;
+// width: 50%;
+// margin:3% 2% 0 10%;
+// font-size: 1.5rem;
 
 
-.menu{
-  margin-left: 1rem;
-  a{
-    text-decoration: none;
+// .menu{
+//   margin-left: 1rem;
+//   a{
+//     text-decoration: none;
     
-  }
-}
- }
+//   }
+// }
+//  }
 
-  }
-  #body{
-   background: green;
-    grid-area: body;
-  }
+//   }
+//   #body{
+//    background: green;
+//     grid-area: body;
+//   }
   
-  #footer{
-    background: yellow;
-    grid-area: footer;  
-  }
-}
-&--navbar{
+//   #footer{
+//     background: yellow;
+//     grid-area: footer;  
+//   }
+// }
+// &--navbar{
  
   
-}
-    }
-  }
-  #navbar{
-  &__toggle{
-    margin:0.5rem 0 0 5rem;}
-  }
-}
+// }
+//     }
+//   }
+//   #navbar{
+//   &__toggle{
+//     margin:0.5rem 0 0 5rem;}
+//   }
+// }
 
-/* On screens that are 600px wide or less, make the columns stack on top of each other instead of next to each other */
-@media screen and (max-width: 800px) {
-  #App{
-  &__main{
-   display:flex;
+// /* On screens that are 600px wide or less, make the columns stack on top of each other instead of next to each other */
+// @media screen and (max-width: 800px) {
+//   #App{
+//   &__main{
+//    display:flex;
   
-    &--layout{
+//     &--layout{
         
     
-  @include layout;
-     grid-template-areas:
-     "header header header header header header"
-     "body body body body body body "
+//   @include layout;
+//      grid-template-areas:
+//      "header header header header header header"
+//      "body body body body body body "
      
-     " footer footer footer footer footer footer"
+//      " footer footer footer footer footer footer"
     
-     ;
-  #header{
-  grid-area: header;
-  &__social{
-width: 25%;
-margin:3.5% 0 0 2%;
-&--detail{
-  display:flex;
+//      ;
+//   #header{
+//   grid-area: header;
+//   &__social{
+// width: 25%;
+// margin:3.5% 0 0 2%;
+// &--detail{
+//   display:flex;
   
-}
-}
-&__mode{
-margin:4.5% 0 0 12%;
-width: 5%;
-&--detail{
-display: flex;
-}
- }
-  &__navbar{
-    width:2%;
-    margin:3% 0 0 20%;
-    display:block;
-    font-size:2rem;
- }
- &__menu{
-   display:none;
-width: 50%;
-margin:0 0 0 0;
+// }
+// }
+// &__mode{
+// margin:4.5% 0 0 12%;
+// width: 5%;
+// &--detail{
+// display: flex;
+// }
+//  }
+//   &__navbar{
+//     width:2%;
+//     margin:3% 0 0 20%;
+//     display:block;
+//     font-size:2rem;
+//  }
+//  &__menu{
+//    display:none;
+// width: 50%;
+// margin:0 0 0 0;
 
-div{
+// div{
 
 
 
-.menu{
-  padding-left: 2rem;
+// .menu{
+//   padding-left: 2rem;
   
-  a{
-    text-decoration: none;
-    font-size: 1rem !important;
-  }
-}
- }}
+//   a{
+//     text-decoration: none;
+//     font-size: 1rem !important;
+//   }
+// }
+//  }}
 
-  }
-  #body{
-   background: green;
-    grid-area: body;
-  }
+//   }
+//   #body{
+//    background: green;
+//     grid-area: body;
+//   }
   
-  #footer{
-    background: yellow;
-    grid-area: footer;  
-  }
-}
-&--navbar{
+//   #footer{
+//     background: yellow;
+//     grid-area: footer;  
+//   }
+// }
+// &--navbar{
  
-}
-    }
-  }
-}
-@media screen and (max-width: 732px) {
-#App{
-  &__main{
-   display:flex;
+// }
+//     }
+//   }
+// }
+// @media screen and (max-width: 732px) {
+// #App{
+//   &__main{
+//    display:flex;
   
-    &--layout{
+//     &--layout{
          
     
-  @include layout;
-     grid-template-areas:
-     "header header header header header header"
-     "body body body body body body "
+//   @include layout;
+//      grid-template-areas:
+//      "header header header header header header"
+//      "body body body body body body "
      
-     " footer footer footer footer footer footer"
+//      " footer footer footer footer footer footer"
     
-     ;
-  #header{
-  grid-area: header;
-  &__social{
-width: 15%;
-margin:3.5% 0 0 2%;}
-  &__navbar{
-    width:2%;
-    margin:3% 0 0 35%;
-    display:block;
-    font-zise:4rem;
- }
- &__menu{
-   display:none;
-width: 60%;
-margin:3% 0 0 20%;
-font-size: 2rem;
+//      ;
+//   #header{
+//   grid-area: header;
+//   &__social{
+// width: 15%;
+// margin:3.5% 0 0 2%;}
+//   &__navbar{
+//     width:2%;
+//     margin:3% 0 0 35%;
+//     display:block;
+//     font-zise:4rem;
+//  }
+//  &__menu{
+//    display:none;
+// width: 60%;
+// margin:3% 0 0 20%;
+// font-size: 2rem;
 
 
-.menu{
-  padding-left: 2rem;
-  a{
-    text-decoration: none;
+// .menu{
+//   padding-left: 2rem;
+//   a{
+//     text-decoration: none;
     
-  }
-}
- }
+//   }
+// }
+//  }
 
-  }
-  #body{
-   background: green;
-    grid-area: body;
-  }
+//   }
+//   #body{
+//    background: green;
+//     grid-area: body;
+//   }
   
-  #footer{
-    background: yellow;
-    grid-area: footer;  
-  }
-}
-&--navbar{
+//   #footer{
+//     background: yellow;
+//     grid-area: footer;  
+//   }
+// }
+// &--navbar{
  
   
-}
-    }
-  }
-}
+// }
+//     }
+//   }
+// }
 
-/* On screens that are 600px wide or less, make the columns stack on top of each other instead of next to each other */
-@media screen and (max-width: 600px) {
-  #header{
-     &__navbar{
-    width:2%;
-    margin:3% 0 0 20%;
-    display:block;
-    font-size:2rem;
- }
+// /* On screens that are 600px wide or less, make the columns stack on top of each other instead of next to each other */
+// @media screen and (max-width: 600px) {
+//   #header{
+//      &__navbar{
+//     width:2%;
+//     margin:3% 0 0 20%;
+//     display:block;
+//     font-size:2rem;
+//  }
   
-  &__mode{
+//   &__mode{
 
 
-width: 5%;
-&--detail{
-display: flex;
+// width: 5%;
+// &--detail{
+// display: flex;
 
-translate: (4rem,4rem);
-}
- }}
-}
-@media screen and (max-width: 501px) {
- #header{
-    &__logo{
-   width: 25%;
-   margin-top: 4%;
-  &--img{
+// translate: (4rem,4rem);
+// }
+//  }}
+// }
+// @media screen and (max-width: 501px) {
+//  #header{
+//     &__logo{
+//    width: 25%;
+//    margin-top: 4%;
+//   &--img{
      
-    a{
-      margin:3% 0 0 2%;
-      img{
+//     a{
+//       margin:3% 0 0 2%;
+//       img{
         
-       width: 70%;
-  height: auto;
-      }
-    }
-  }
- }
-     &__navbar{
-    width:2%;
-    margin:3% 0 0 20%;
-    display:block;
-    font-size:2rem;
- }
+//        width: 70%;
+//   height: auto;
+//       }
+//     }
+//   }
+//  }
+//      &__navbar{
+//     width:2%;
+//     margin:3% 0 0 20%;
+//     display:block;
+//     font-size:2rem;
+//  }
   
-  &__mode{
-    display:none;
-margin:3% 0 0 7%;
-width: 5%;
-&--detail{
-display: flex;
-}
- }
-}
-#navbar{
-   &__toggle{
-    margin:0.5rem 0 0 90%;}
-  &__mode{
-    display: block;
-    margin-left: 2rem !important;
-    padding: 5px;
-  }
-   &__menu{
-    a{
-       margin: 3rem 0 3rem 2rem !important;
-      font-size: 1rem !important;
-    }
-  }
-}
-}
+//   &__mode{
+//     display:none;
+// margin:3% 0 0 7%;
+// width: 5%;
+// &--detail{
+// display: flex;
+// }
+//  }
+// }
+// #navbar{
+//    &__toggle{
+//     margin:0.5rem 0 0 90%;}
+//   &__mode{
+//     display: block;
+//     margin-left: 2rem !important;
+//     padding: 5px;
+//   }
+//    &__menu{
+//     a{
+//        margin: 3rem 0 3rem 2rem !important;
+//       font-size: 1rem !important;
+//     }
+//   }
+// }
+// }
 
-/* On screens that are 600px wide or less, make the columns stack on top of each other instead of next to each other */
-@media screen and (max-width: 400px) {
-  #header{
-    &__logo{
-   width: 25%;
-   margin-top: 4%;
-  &--img{
+// /* On screens that are 600px wide or less, make the columns stack on top of each other instead of next to each other */
+// @media screen and (max-width: 400px) {
+//   #header{
+//     &__logo{
+//    width: 25%;
+//    margin-top: 4%;
+//   &--img{
      
-    a{
-      margin:3% 0 0 2%;
-      img{
+//     a{
+//       margin:3% 0 0 2%;
+//       img{
         
-       width: 70%;
-  height: auto;
-      }
-    }
-  }
- }
- &__social{
+//        width: 70%;
+//   height: auto;
+//       }
+//     }
+//   }
+//  }
+//  &__social{
    
-   &--detail{
-margin-top: 0.5rem;
-   }
- }
-     &__navbar{
-    width:2%;
-    margin:3% 0 0 20%;
-    display:block;
-    font-size:2rem;
-    span{
-      margin-top: 1.5rem;
-    }
- }
+//    &--detail{
+// margin-top: 0.5rem;
+//    }
+//  }
+//      &__navbar{
+//     width:2%;
+//     margin:3% 0 0 20%;
+//     display:block;
+//     font-size:2rem;
+//     span{
+//       margin-top: 1.5rem;
+//     }
+//  }
   
-  &__mode{
-    display:none !important;
-margin:3% 0 0 10%;
-width: 5%;
-&--detail{
+//   &__mode{
+//     display:none !important;
+// margin:3% 0 0 10%;
+// width: 5%;
+// &--detail{
 
-}
- }
-}
-#navbar{
-  &__toggle{
-    margin:0.5rem 0 0 90%;}
-  &__mode{
-    display: block;
-     margin:1rem 0 0 0.5rem;
-  }
-  &__menu{
-    a{
-       margin: 3rem 0 3rem 2rem !important;
-      font-size: 1rem !important;
-    }
-  }
-}
-}
+// }
+//  }
+// }
+// #navbar{
+//   &__toggle{
+//     margin:0.5rem 0 0 90%;}
+//   &__mode{
+//     display: block;
+//      margin:1rem 0 0 0.5rem;
+//   }
+//   &__menu{
+//     a{
+//        margin: 3rem 0 3rem 2rem !important;
+//       font-size: 1rem !important;
+//     }
+//   }
+// }
+// }

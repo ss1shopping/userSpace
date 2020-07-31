@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom';
 import { useSelector, useDispatch} from 'react-redux';
 import {Formik,useField, Form} from "formik"
 import * as Yup from "yup"
-
+import {AuthActions} from "../../app/store/ducks/authReducer"
+import { authActions } from '../../app/store/ducks/authReducer';
 const CustomTextForm=({label,...props})=>{
   const [field,meta]=useField(props)
   return(
@@ -66,8 +67,8 @@ console.log(usrPwd);
       
       <div id="login__box"style={DarkmodeStatus?{backgroundColor:"#242526"}:{backgroundColor:"white"}}>
        <Formik initialValues={{
-     password:"",
      email:"",
+     password:"",
   
   }}
   validationSchema={Yup.object({
@@ -82,17 +83,25 @@ console.log(usrPwd);
    
   })}
   onSubmit={(values,{setSubmitting,resetForm})=>{
-    setTimeout(() => {
-      alert(JSON.stringify(values,null,2))
-      resetForm()
-      setSubmitting(false)
-    }, 3000);
+
+    dispatch(authActions.login(values.email,values.password,setSubmitting,props.history))
+  
   }}
   >
- {props=>(
-   <Form>
-     {console.log(props)
-     }
+    {({
+              values,
+              errors,
+              touched,
+              handleChange,
+              handleBlur,
+              handleSubmit,
+              isSubmitting
+            })=>(
+   <Form noValidate={true}
+                  autoComplete="off"
+                  className="kt-form"
+                  onSubmit={handleSubmit}>
+     
          <div className="input">
            <CustomTextForm label="Email" name="email"type="email" placeholder="Email"
          
@@ -107,8 +116,11 @@ console.log(usrPwd);
            />
          
          </div>
+         {/* <button type="button" style={{width:"100%"}} className="btn btn-primary">
+              LOGIN
+         </button> */}
          <div className="submit">
-           <input  type="submit" value={props.isSubmitting?"Loading ..":"LOGIN"}/>
+           <input  type="submit" disabled={isSubmitting} value={isSubmitting?"Loading ..":"LOGIN"}/>
          </div>
          <div className="box">
          <div className="register">

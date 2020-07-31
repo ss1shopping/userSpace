@@ -5,7 +5,7 @@ import '../../app/scss/app.scss'
 import Navbar from '../../Components/navbar/navbar'
 
 import Header from "../../Components/header/header";
-import Body from '../../Components/body/body';
+import {Body} from '../../Components/body/body';
 import Footer from '../../Components/footer/footer';
 import { useSelector, useDispatch} from 'react-redux';
 import {useOutsideClick} from "../../_metronic/hook/outsideAlert"
@@ -69,32 +69,22 @@ useOutsideClick(app,hidenavbar,outClickNavbar)
     <Router>
     <div ref={app} id="App" style={DarkmodeStatus?{background:"#242526",color:"white"}:{background:"white",color:"black"}}
      >
-      <div id="App__main"
-      >
-        <div id="App__main--layout" style={Width>800?{width:"100%" }:style}>
+      
         
         
        
      <Header></Header>
      
-     <Router>
+    
      
       <Body></Body>
     
-    </Router>
+    
     
      <Footer></Footer>
-     </div>
+    
      
-     <div id="App__main--navbar"   style={Width>800?{display:"none"}:{display:DisplayNavbar,width:widthnavbar,zIndex:"1"}}>
-    <Navbar></Navbar>
-     </div>
-     </div>
-       {/* <button onClick={()=>handleClick("en")}>English</button>
-        <button onClick={()=>handleClick("vn")}>VietName</button>
-         <button onClick={()=>handleClick("ko")}>Korea</button> */}
-     
-      
+    
 
     </div>
     </Router>
@@ -102,4 +92,4 @@ useOutsideClick(app,hidenavbar,outClickNavbar)
   );
 }
 
-export default withSplashScreen(Layout);
+export default Layout;

@@ -64,10 +64,10 @@ export const authReducer = persistReducer(
 );
 
 export const authActions = {
-  login: (username, password, setSubmitting, history) => ({
+  login: (email, password,setSubmitting,history) => ({
     type: authActionTypes.Login,
     payload: {
-      username, password, setSubmitting, history 
+      email, password,setSubmitting,history
     }
   }),
   loginSuccess: (payload) => ({ type: authActionTypes.LoginSuccess, payload }),
