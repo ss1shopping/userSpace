@@ -1,0 +1,28 @@
+.card-text{
+  height: 20px !important;
+  white-space: nowrap;
+   text-overflow: ellipsis;
+    overflow: hidden;
+   color:black
+   
+}
+.card{
+margin-top: 15px;
+height: 300px;
+}
+
+.film:hover{
+  list-style-type: none;
+  text-decoration: none !important;
+  color:black !important;
+}
+.card-img-top{
+  height: 200px !important;
+}
+.card-title{
+  color:black;
+  white-space: nowrap;
+   text-overflow: ellipsis;
+    overflow: hidden;
+    height: 20px;
+}

@@ -19,4 +19,6 @@ export const API_URLS = {
   GET_SAVE_CHANGE_PRODUCT: (productsId) => `/api/products/${productsId}`,
   GET_ORDER_TYPES: '/api/orders/types/all',
   CHANGE_ORDER_TYPE: (orderId) => `/api/orders/${orderId}/change-type`,
+  // tu tao
+  CRAWLER_DATA:"/crawler/getdata"
 };
