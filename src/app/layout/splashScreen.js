@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
 import * as ReactBootStrap from "react-bootstrap"
+import { useSelector } from 'react-redux';
 
 
-function LoadingMessage() {
+const LoadingMessage =()=> {
+
   return (
     <div className="splash-screen">
       Wait a moment while we load your app.
@@ -23,12 +25,13 @@ function withSplashScreen(WrappedComponent) {
     async componentDidMount() {
       try {
         
+       
         setTimeout(() => {
           console.log(this.state.loading);
-          
-          this.setState({
+           this.setState({
             loading: false,
           });
+          
         }, 1500)
       } catch (err) {
         console.log(err);

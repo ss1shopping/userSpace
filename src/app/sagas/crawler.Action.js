@@ -4,7 +4,7 @@ import {crawler} from "../store/ducks/crawlerReducer"
 function* feachData () {
   try {
      const data=yield call(crawlerData)
-  yield put(crawler.success(data.data))
+  yield put(crawler.success(data.data.data))
   console.log("sucesss");
   
   } catch (err) {
