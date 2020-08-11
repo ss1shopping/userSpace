@@ -1,13 +1,14 @@
 import React from "react";
 
-import {Route, Switch} from "react-router-dom";
+import { Switch, Route} from "react-router-dom";
 
 import Layout from "../layout/layout"
 
 const Router = () => {
   return (
    <Switch>
-   <Layout></Layout>
+     <Route path="/" component={Layout}></Route>
+ 
      
    </Switch>
   );

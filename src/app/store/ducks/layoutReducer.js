@@ -54,7 +54,6 @@ export default function itemReducer(state=oldstate,action){
               
           default:
           return state
-              break;
       }
 
 

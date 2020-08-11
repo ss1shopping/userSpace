@@ -1,4 +1,4 @@
-import React,{useRef,useState,useEffect} from "react"
+import {useRef,useEffect} from "react"
 export function useOutsideClick(ref,callback,when){
   const saveCallback=useRef(callback)
   useEffect(()=>{

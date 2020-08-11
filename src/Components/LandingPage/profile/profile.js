@@ -1,33 +1,10 @@
-import React ,{useState}from 'react';
-import avatar from '../../../app/scss/avatar.jpg'
-import { useDispatch } from 'react-redux';
-import {Container, Row , Col ,Tabs,Tab,Image ,Dropdown} from 'react-bootstrap';
-import { Link } from 'react-router-dom';
-import Yourfeed from "../feed/yourfeed"
+import React from 'react';
 import logo from "../../../app/scss/logo.png"
 import anh1 from "../../../app/scss/1.jpg"
 import anh2 from "../../../app/scss/2.jpeg"
 import anh3 from "../../../app/scss/3.jpg"
 const Profile = () => {
-  const dispatch=useDispatch()
- const onChange =(e)=>{
-   console.log(e.target);
-   
- }
- const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
-  <a
-   id="customToggle"
-    href=""
-    ref={ref}
-    onClick={(e) => {
-      e.preventDefault();
-      onClick(e);
-    }}
-  >
-    {children}
-   ...
-  </a>
-));
+
   return (
     <div>
      <div id="slides" className="carousel slide" data-ride="carousel">
@@ -40,7 +17,7 @@ const Profile = () => {
        </ul>
        <div className="carousel-inner">
               <div className="carousel-item active">
-                <img src={anh1}/>
+                <img src={anh1} alt="logo"/>
                 <div className="carousel-caption">
                   <h2 className="display-4">VietNam</h2>
                   <h3> A utolayout with Bootstrap</h3>
@@ -49,7 +26,7 @@ const Profile = () => {
                 </div>
                 </div> 
                 <div className="carousel-item">
-                <img src={logo}/>
+                <img src={logo} alt="logo"/>
                  <div className="carousel-caption">
                   <h2 className="display-4">LoGo</h2>
                   <h3> Autolayout with Bootstrap</h3>
@@ -58,7 +35,7 @@ const Profile = () => {
                 </div>
                 </div>
                 <div className="carousel-item ">
-                <img src={anh1}/>
+                <img src={anh1} alt="logo"/>
                  <div className="carousel-caption">
                   <h2 className="display-4">VietNam</h2>
                   <h3> Autolayout with Bootstrap</h3>
@@ -67,7 +44,7 @@ const Profile = () => {
                 </div>
                 </div>
                 <div className="carousel-item ">
-                <img src={logo}/>
+                <img src={logo} alt="alo"/>
                  <div className="carousel-caption">
                   <h2 className="display-4">LOGo</h2>
                   <h3> Autolayout with Bootstrap</h3>
@@ -104,7 +81,7 @@ const Profile = () => {
         
         <div className="col-md-4">
           <div className="card">
-          <img className="card-img-top" src={anh3} />
+          <img className="card-img-top" src={anh3} alt="ah" />
           <div className="card-body">
             <h4 className="card-title">Nguyen Manh Tien</h4>
             <p className="card-text"> 1 year exprience in front end and 6 month in back-end</p>
@@ -113,7 +90,7 @@ const Profile = () => {
         </div>
          <div className="col-md-4">
             <div className="card">
-          <img className="card-img-top" src={anh1} />
+          <img className="card-img-top" src={anh1} alt="da" />
           <div className="card-body">
             <h4 className="card-title">Nguyen Manh Tien</h4>
             <p className="card-text"> 1 year exprience in front end and 6 month in back-end</p>
@@ -122,7 +99,7 @@ const Profile = () => {
          </div>
           <div className="col-md-4">
              <div className="card">
-          <img className="card-img-top" src={anh2} />
+          <img className="card-img-top" src={anh2} alt="sad" />
           <div className="card-body">
             <h4 className="card-title">Nguyen Manh Tien</h4>
             <p className="card-text"> 1 year exprience in front end and 6 month in back-end</p>

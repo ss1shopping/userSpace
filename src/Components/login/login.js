@@ -1,10 +1,10 @@
-import React ,{useState}from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 import { useSelector, useDispatch} from 'react-redux';
 import {Formik,useField, Form} from "formik"
 import * as Yup from "yup"
-import {AuthActions} from "../../app/store/ducks/authReducer"
+
 import { authActions } from '../../app/store/ducks/authReducer';
 const CustomTextForm=({label,...props})=>{
   const [field,meta]=useField(props)
@@ -18,49 +18,11 @@ const CustomTextForm=({label,...props})=>{
     </>
   )
 }
-const CustomCheckBox=({children,...props})=>{
-  const [field,meta]=useField(props,"checkbox")
-  return(
-    <>
-    <label className="checkbox">
-    <input type="checkbox" {...field} {...props}/>
-    {children}
-    </label>
-    {meta.touched && meta.error ?(
-      <div className="error">{meta.error}</div>
-    ):null}
-    </>
-  )
-}
-const CustomSelect=({label,...props})=>{
-  const [field,meta]=useField(props)
-  return(
-    <>
-    <label htmlFor={props.id || props.name}>{label}</label>
-    <select {...field} {...props}/>
-    {meta.touched && meta.error ?(
-      <div className="error">{meta.error}</div>
-    ):null}
-    </>
-  )
-}
+
+
 const Login = (props) => {
   const dispatch=useDispatch()
   const DarkmodeStatus=useSelector(state=>state.layoutReducer.DarkmodeStatus)
-  const  token=useSelector(state=>state.authReducer.token)
-  const checklogin=useSelector(state=>state.authReducer.checklogin)
-  const [usrEml, setusrEml] = useState()
-  const [usrPwd, setusrPwd] = useState()
-  
-
-  const changeEmail=(e)=>{
-   setusrEml(e.target.value)    
-  }
-const changePass=(e)=>{
-setusrPwd(e.target.value)
-console.log(usrPwd);
-
-}
 
   return (
     <div id="login" style={DarkmodeStatus?{backgroundColor:"#18191a"}:{backgroundColor:"#f0f2f5" ,borderTop:"1px solid #e6e8ea"}}>

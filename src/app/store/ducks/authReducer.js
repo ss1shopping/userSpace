@@ -1,4 +1,3 @@
-import {auth} from "../../constant/index"
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import {authActionTypes} from "../../constant/index"

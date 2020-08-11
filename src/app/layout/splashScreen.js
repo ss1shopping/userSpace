@@ -1,8 +1,5 @@
 import React, {Component} from 'react';
 import * as ReactBootStrap from "react-bootstrap"
-import { useSelector } from 'react-redux';
-
-
 const LoadingMessage =()=> {
 
   return (

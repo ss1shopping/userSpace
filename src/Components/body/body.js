@@ -1,17 +1,14 @@
-import React,{useEffect,Suspense} from 'react';
+import React,{Suspense} from 'react';
 import { shallowEqual, useSelector } from "react-redux";
 import { useLastLocation } from "react-router-last-location";
 import Login from "../login/login"
-import {BrowserRouter as Router,Route, Redirect,Switch, withRouter} from "react-router-dom";
-
+import {BrowserRouter as Router,Route, withRouter} from "react-router-dom";
 import Regiter from '../login/regiter';
 import LandingPage from "../LandingPage/LandingPage"
 import Profile from '../LandingPage/profile/profile';
-import PrivateRouter from "../../app/router/PrivateRouter"
 import * as routerHelpers from "../../app/router/RouterHelpers";
 import withSplashScreen from '../../app/layout/splashScreen'
  export  const Body = withRouter(({history}) => {
-   const DisplayNavbar=useSelector(state=>state.layoutReducer.DisplayNavbar)
  const lastLocation = useLastLocation();
   routerHelpers.saveLastLocation(lastLocation);
   const { menuConfig, userLastLocation } = useSelector(
@@ -23,20 +20,8 @@ import withSplashScreen from '../../app/layout/splashScreen'
     },
     shallowEqual
   );
-  // const ProtectRoute=({component:Component,...rest}) => {
-  //       return <Route {...rest} render={(props)=>{
-
-  //             if(token!==null){
-  //              return  <Component {...props}/>
-  //             }else{
-  //                return <Redirect to="/SignIn"/>
-
-  //           }
-
-  //         }}/>
-  //     }
   return (
-    <div  style={DisplayNavbar=="block"?{background:"gray"}:{}}>
+    <div>
       <Suspense fallback={<withSplashScreen />}>
      <Router>
         <Route exact path="/" component={LandingPage}></Route>
@@ -44,7 +29,6 @@ import withSplashScreen from '../../app/layout/splashScreen'
        <Route exact path="/signIn" component={Login}></Route>
         <Route exact path='/register' component={Regiter}/>
         <Route exact path="/profile" component={Profile}></Route>
-        
           {/* <PrivateRouter path={"/profile"} component={Profile} /> */}
     </Router>  
     </Suspense>

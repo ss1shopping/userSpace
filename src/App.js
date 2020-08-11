@@ -9,8 +9,6 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import "./app/scss/index.scss"
 import Router from './app/router/Router';
 export default function App({ store, persistor }) {
-  {
-
     return (
 
       <Provider store={store}>
@@ -26,13 +24,7 @@ export default function App({ store, persistor }) {
         </React.Suspense>
         </PersistGate>
       </Provider>
-
-
-
-
-
     );
-  }
 }
 
 

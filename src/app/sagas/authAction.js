@@ -1,7 +1,6 @@
-import {auth} from "../constant/index"
-import { takeEvery, put, call,take } from 'redux-saga/effects';
+import { takeEvery, put, call} from 'redux-saga/effects';
 import {login} from "../crud/auth.crud";
-import {setStorage,getStorage} from "../../_metronic/utils/utils";
+import {setStorage} from "../../_metronic/utils/utils";
 import {authActions} from "../store/ducks/authReducer";
 import {authActionTypes} from "../constant/index";
 function* fetchLogin ({ payload }) {

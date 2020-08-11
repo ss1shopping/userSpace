@@ -1,4 +1,4 @@
-import { takeEvery, put, call,take } from 'redux-saga/effects';
+import { takeEvery, put, call} from 'redux-saga/effects';
 import {crawlerData} from "../crud/crawler.crud"
 import {crawler} from "../store/ducks/crawlerReducer"
 function* feachData () {

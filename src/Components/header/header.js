@@ -4,9 +4,7 @@ import logo from '../../app/scss/logo.png'
 import { FaFacebook } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import ToggleButton from 'react-toggle-button';
-import {Nav,Container,Button,Navbar,NavDropdown} from "react-bootstrap"
-// import Toggle from 'react-toggle'
-import { Link } from "react-router-dom";
+import {Nav,Navbar} from "react-bootstrap"
 import { useSelector, useDispatch } from 'react-redux';
 function getWindowDimensions() {
   const { innerWidth: width, innerHeight: height } = window;
@@ -38,7 +36,7 @@ const Header = (props) => {
     <div>
       <Navbar collapseOnSelect expand="md" bg="light" variant="light" sticky="top"  >
   <Navbar.Brand href="/">
-    <img src={logo}  height={50}></img>
+    <img src={logo}  height={50} alt="logo"></img>
   </Navbar.Brand>
    <Nav className="mr-auto">
      <div id="header__social--detail">
