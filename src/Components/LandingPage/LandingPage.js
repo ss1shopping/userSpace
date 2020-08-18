@@ -3,12 +3,6 @@ import { Link } from "react-router-dom";
 import { Container, Row, Col,Card} from "react-bootstrap";
 import { connect } from "react-redux";
  class LandingPage extends Component {
-   constructor(props) {
-     super(props)
-     this.props={
-
-     }
-   }
    componentWillMount() {
      var dispatch=this.props.dispatch                 //cách gọi hàm thực thi trong store
      dispatch({type:"feachData"})    
@@ -23,9 +17,10 @@ import { connect } from "react-redux";
     let loadImage
     if(this.props.phimChieuRap){
    loadImage= this.props.phimChieuRap.map((index,key)=>{
+     const href=`/${index.title}/xemphim`
     return (
-      <Col md={4} lg={3} sm={6} xs={6}>
-          <Link className="film">
+      <Col  key={key} md={4} lg={3} sm={6} xs={6}>
+          <Link to={href} className="film" >
        <Card >
               <Card.Img variant="top"  src={index.urlImage} alt="avatar cua tien"></Card.Img>
             <Card.Body>
@@ -44,7 +39,7 @@ import { connect } from "react-redux";
        <>
       <div >
         {/* ref={test} */}
-     <Container class="padding">
+     <Container className="padding">
        <Row className="padding">
           <Col xs={12}>
         <h1 className='display-4'>

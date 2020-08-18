@@ -5,6 +5,7 @@ const initialAuthState = {
   isPending: false,
   user: undefined,
   error: null,
+  notice:null
 }
 export const authReducer = persistReducer(
   { storage, key: 'userAuth1', whitelist: [] },
@@ -23,7 +24,18 @@ export const authReducer = persistReducer(
           ...state,
           isPending: true,
         };
-
+      case authActionTypes.activeAccount:
+        return {
+          ...state,isPending:!state.isPending
+        }
+      case authActionTypes.activeAccountSuccess:
+        return {
+          ...state,isPending:!state.isPending,notice:action.payload
+        }
+        case authActionTypes.activeAccountFailure:
+          return{
+            ...state,isPending:!state.isPending,error:action.payload
+          }
       case authActionTypes.CheckAuthSucces:
         return {
           ...state,
@@ -44,7 +56,7 @@ export const authReducer = persistReducer(
       }
 
       case authActionTypes.RegisterSuccess: {
-        return { ...state, user: action.payload, isPending: !state.isPending };
+        return { ...state, user: action.payload.user, isPending: !state.isPending, notice:action.payload.msg};
       }
 
 
@@ -70,10 +82,15 @@ export const authActions = {
     }
   }),
   loginSuccess: (payload) => ({ type: authActionTypes.LoginSuccess, payload }),
-  registerUser: (newUser, history) => ({
-    type: authActionTypes.Register, payload: { newUser, history }
+  registerUser: (newUser,setSubmitting, history) => ({
+    type: authActionTypes.Register, payload: { newUser, setSubmitting,history }
   }),
   registerSuccess: (payload) => ({ type: authActionTypes.RegisterSuccess, payload }),
+  activeAccount:(token)=>({
+    type:authActionTypes.activeAccount,payload:{token}
+  }),
+  activeAccountSuccess:(payload)=>({type:authActionTypes.activeAccountSuccess,payload}),
+  activeAccountFailure:(payload)=>({type:authActionTypes.activeAccountFailure,payload}),
   logout: () => ({ type: authActionTypes.Logout }),
   checkAuth: (history) => ({ type: authActionTypes.CheckAuth, payload: { history } }),
   checkAuthSuccess: (payload) => ({ type: authActionTypes.CheckAuthSucces, payload }),
@@ -85,4 +102,4 @@ export const authActions = {
   resetPassword: (email, history) => ({
     type: authActionTypes.ResetPasswword, payload: { email, history }
   }),
-};
+}

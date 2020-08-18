@@ -1,4 +1,4 @@
-import React from 'react';
+import React ,{useMemo} from 'react';
 import { Link } from 'react-router-dom';
 
 import { useSelector, useDispatch} from 'react-redux';
@@ -8,10 +8,14 @@ import * as Yup from "yup"
 import { authActions } from '../../app/store/ducks/authReducer';
 const CustomTextForm=({label,...props})=>{
   const [field,meta]=useField(props)
+  const dispatch=useDispatch()
+  const handlefocus=()=>{
+  dispatch(authActions.deleteError())
+  }
   return(
     <>
    
-    <input  {...field} {...props}/>
+    <input  {...field} {...props} onFocus={handlefocus}/>
     {meta.touched && meta.error ?(
       <div className="error" >{meta.error}</div>
     ):null}
@@ -22,6 +26,7 @@ const CustomTextForm=({label,...props})=>{
 
 const Login = (props) => {
   const dispatch=useDispatch()
+  const error =useSelector(state=>state.authReducer.error)
   const DarkmodeStatus=useSelector(state=>state.layoutReducer.DarkmodeStatus)
 
   return (
@@ -45,7 +50,7 @@ const Login = (props) => {
    
   })}
   onSubmit={(values,{setSubmitting,resetForm})=>{
-
+    
     dispatch(authActions.login(values.email,values.password,setSubmitting,props.history))
   
   }}
@@ -78,6 +83,7 @@ const Login = (props) => {
            />
          
          </div>
+           <div className="error" >{error}</div>
          {/* <button type="button" style={{width:"100%"}} className="btn btn-primary">
               LOGIN
          </button> */}

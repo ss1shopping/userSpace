@@ -2,8 +2,9 @@
 export const API_URL = "";
 
 export const API_URLS = {
-  REGISTER: '/api/register',
+  REGISTER: '/users',
   LOGIN: '/users/login',
+  CHECK_ACCTIVE_ACCOUNT:(token)=>`/users/login/${token}`,
   REFRES_TOKEN: '/api/token/refresh',
   CHEK_AUTH_USER: '/api/current',
   RESET_PASSWORD: '/api/reset-password',

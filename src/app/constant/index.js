@@ -21,4 +21,7 @@ export const authActionTypes = {
   Error: '[Error] Action',
   DeleteError: '[Delte Error] Action',
   ResetPasswword: '[Reset Password] Action',
+  activeAccount:'[Active account]',
+  activeAccountSuccess:'[Active account Success]',
+  ActiveAccountFailure:'[Active account Failure]'
 };

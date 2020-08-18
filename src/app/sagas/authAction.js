@@ -1,5 +1,5 @@
 import { takeEvery, put, call} from 'redux-saga/effects';
-import {login} from "../crud/auth.crud";
+import {login,register,activeAccount} from "../crud/auth.crud";
 import {setStorage} from "../../_metronic/utils/utils";
 import {authActions} from "../store/ducks/authReducer";
 import {authActionTypes} from "../constant/index";
@@ -13,24 +13,55 @@ function* fetchLogin ({ payload }) {
     const result = yield call(login, { email, password });
      yield put(authActions.loginSuccess(result.data.user));
       yield setSubmitting(false);
-       yield setStorage('token', result.data.token);
-       yield setStorage("refreshtoken",result.data.refreshToken)
+       yield setStorage('token', result.data.token,result.data.expToken);
+       yield setStorage("refreshtoken",result.data.refreshToken,result.data.expRefreshToken)
         yield history.push("/profile");
       console.log(result);
   } catch (err) {
     console.log(err);
     
-    const error = err.response ? err.response.data.message : err.stack;
+    const error = err.response ? err.response.data.msg : err.stack;
     yield put(authActions.error(error));
     yield setSubmitting(false);
   }
-    
-      
+}
+  function* fetchRegister ({ payload }) {
+      const { newUser, setSubmitting, history } = payload;
+   
+  try {
+   
+    console.log(newUser,history);
+   const dataNewUser = yield call(register, newUser);
+     console.log(dataNewUser);
+    yield put(authActions.registerSuccess(dataNewUser.data));
+    // yield setStorage('token', dataNewUser.data.token);
+    // yield setStorage('refreshToken', dataNewUser.data.refreshtoken);
+    yield history.push("/confirm-account");
+  }
+  catch (err) {
+   const error = err.response ? err.response.data.msg : err.stack;
+    yield put(authActions.error(error));
+     yield setSubmitting(false);
+  }
+}
+function* fetchactiveAccount({payload}){
+  const {token}=payload
+  try {
+     const response=yield call(activeAccount,token)
+     yield put(authActions.activeAccountSuccess(response.data.msg))
+  } catch (error) {
+    const err =error.response?error.response.data.msg :error.stack
+    yield put(authActions.activeAccountFailure(err))
+  }
  
 }
+      
+ 
+
 function* authSagas () {
   yield takeEvery(authActionTypes.Login, fetchLogin);
- 
+  yield takeEvery(authActionTypes.Register, fetchRegister);
+  yield takeEvery(authActionTypes.activeAccount,fetchactiveAccount)
 }
 
 export default authSagas;
