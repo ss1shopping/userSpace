@@ -1,0 +1,139 @@
+.upload {
+  padding-top: 200px;
+}
+
+.sidebar {
+  background: #2f323a;
+  padding-top: 120px;
+  position: fixed;
+  left: 0;
+  width: 250px;
+  height: 100%;
+  transition: 0.5s;
+  transition-property: left;
+}
+
+.sidebar a {
+  color: #fff;
+  display: block;
+  width: 100%;
+  line-height: 60px;
+  text-decoration: none;
+  padding-left: 40px;
+  box-sizing: border-box;
+  transition: 0.5s;
+  transition-property: background;
+}
+
+.sidebar a:hover {
+  background: #19B3D3;
+}
+
+.sidebar i {
+  padding-right: 10px;
+}
+
+label {
+  width: 100%;
+}
+
+label #btn {
+  z-index: 1;
+  color: #fff;
+  width: 100%;
+  padding-left: 40px;
+  transition: 0.5s;
+  transition-property: color;
+}
+
+#btn {
+  margin-right: 0px;
+}
+
+#btn:hover {
+  color: #19B3D3;
+}
+
+#check:checked ~ .sidebar {
+  left: -190px;
+}
+
+#check:checked ~ .sidebar a span {
+  display: none;
+}
+
+#check:checked ~ .sidebar a {
+  font-size: 20px;
+  margin-left: 170px;
+  width: 80px;
+}
+
+#check:checked ~ .sidebar label #btn {
+  font-size: 20px;
+  margin-left: 170px;
+  width: 80px;
+}
+
+.content {
+  padding: 100px 0 0 250px;
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+  transition: 0.5s;
+}
+.content__search-box {
+  position: absolute;
+  background: #2f3640;
+  top: 10%;
+  right: 2%;
+  height: 40px;
+  border-radius: 40px;
+  padding: 10px;
+}
+.content__search-box:hover > .react-autosuggest__container .content__search-txt {
+  width: 240px;
+  padding: 0 6px;
+}
+.content__search-box:hover > .content__search-btn {
+  background: white;
+  margin-top: -30px;
+}
+.content__search-btn {
+  float: right;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  margin: -10px -10px 0 0;
+  justify-content: center;
+  align-items: center;
+  transition: 0.4s;
+}
+.content__search-txt {
+  border: none;
+  background: none;
+  outline: none;
+  float: left;
+  padding: 0;
+  color: white;
+  font-size: 16px;
+  transition: 0.4s;
+  line-height: 20px;
+  width: 0;
+}
+
+#check:checked ~ .content {
+  padding-left: 60px;
+}
+
+#check {
+  display: none;
+}
+
+.react-autosuggest__suggestions-list {
+  position: absolute;
+  text-decoration: none;
+  list-style: none;
+  top: 100%;
+  left: 0;
+}

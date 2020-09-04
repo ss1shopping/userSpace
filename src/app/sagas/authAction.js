@@ -1,5 +1,5 @@
 import { takeEvery, put, call} from 'redux-saga/effects';
-import {login,register,activeAccount} from "../crud/auth.crud";
+import {login,register,activeAccount,GenNewToken} from "../crud/auth.crud";
 import {setStorage} from "../../_metronic/utils/utils";
 import {authActions} from "../store/ducks/authReducer";
 import {authActionTypes} from "../constant/index";
@@ -55,13 +55,25 @@ function* fetchactiveAccount({payload}){
   }
  
 }
-      
+function* fetchRefreshToken({payload}){
+  const {refreshToken}=payload;
+ 
+  try {
+    const result=yield call(GenNewToken,{refreshToken})
+    yield put(authActions.refreshTokenSuccessful(result))
+    yield setStorage("token",result.data.access_token,result.data.expires_in)
+  } catch (error) {
+     const err =error.response?error.response.data.msg :error.stack
+   yield put(authActions.error(error));
+  }
+}
  
 
 function* authSagas () {
   yield takeEvery(authActionTypes.Login, fetchLogin);
   yield takeEvery(authActionTypes.Register, fetchRegister);
   yield takeEvery(authActionTypes.activeAccount,fetchactiveAccount)
+  yield takeEvery(authActionTypes.refreshToken,fetchRefreshToken)
 }
 
 export default authSagas;

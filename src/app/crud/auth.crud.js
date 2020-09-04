@@ -16,6 +16,9 @@ export function activeAccount(token){
 export function checkAuth() {
   return initApi().get(API_URLS.CHEK_AUTH_USER);
 }
+export function GenNewToken(refreshToken){
+  return initApi().post(API_URLS.REFRES_TOKEN,refreshToken)
+}
 
 export function requestPassword(email) {
   return initApi().post(API_URLS.RESET_PASSWORD, { email });

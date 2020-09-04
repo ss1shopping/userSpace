@@ -8,6 +8,15 @@ export const error={
  error_clear:"clear_error",
  
 }
+export const itemActionTypes={
+  loadingitem:"[ACTION LOADING ITEM]",
+  loadingItemSuccess:"[ACTION LOADING SUCCESSFUL]",
+  Error: '[Error] Action',
+  DeleteError: '[Delte Error] Action',
+  uploadItem:"[ACTION UPLOAD ITEM]",
+  uploadItemSuccess:"[ACTION UPLOAD ITEAM SUCCESSFUL]",
+  
+}
 export const authActionTypes = {
   Login: '[Login] Action',
   LoginSuccess: '[Login Success] Action',
@@ -23,5 +32,8 @@ export const authActionTypes = {
   ResetPasswword: '[Reset Password] Action',
   activeAccount:'[Active account]',
   activeAccountSuccess:'[Active account Success]',
-  ActiveAccountFailure:'[Active account Failure]'
+  ActiveAccountFailure:'[Active account Failure]',
+  refreshToken:"[Refresh Token]",
+  refreshTokenSuccessFul:"[Refresh Token Success]",
+  refreshTokenFailure:"[Refresh Token Faliure]"
 };

@@ -58,6 +58,15 @@ export const authReducer = persistReducer(
       case authActionTypes.RegisterSuccess: {
         return { ...state, user: action.payload.user, isPending: !state.isPending, notice:action.payload.msg};
       }
+      case authActionTypes.refreshToken:{
+        return {...state,isPending:!state.isPending}
+      }
+      case authActionTypes.refreshTokenSuccessFul:{
+        return{...state,isPending:!state.isPending}
+      }
+      case authActionTypes.refreshTokenFailure:{
+        return {...state,isPending:!state.isPending,msg:action.payload}
+      }
 
 
       case authActionTypes.Error: {
@@ -91,6 +100,9 @@ export const authActions = {
   }),
   activeAccountSuccess:(payload)=>({type:authActionTypes.activeAccountSuccess,payload}),
   activeAccountFailure:(payload)=>({type:authActionTypes.activeAccountFailure,payload}),
+  refreshToken:(refreshToken)=>({type:authActionTypes.refreshToken,payload:{refreshToken}}),
+  refreshTokenSuccessful:(payload)=>({type:authActionTypes.refreshTokenSuccessFul,payload}),
+  refreshTokenFailure:(payload)=>({type:authActionTypes.refreshTokenFailure,payload}),
   logout: () => ({ type: authActionTypes.Logout }),
   checkAuth: (history) => ({ type: authActionTypes.CheckAuth, payload: { history } }),
   checkAuthSuccess: (payload) => ({ type: authActionTypes.CheckAuthSucces, payload }),

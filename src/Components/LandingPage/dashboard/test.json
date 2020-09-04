@@ -1,0 +1,172 @@
+[
+  {
+    "locationCode": 1,
+    "country": "Israel",
+    "locationName": "Ben Gurion Airport"
+  },
+  {
+    "locationCode": 2,
+    "country": "Israel",
+    "locationName": "Tel Aviv - City Center"
+  },
+  {
+    "locationCode": 3,
+    "country": "Israel",
+    "locationName": "Jerusalem - King David"
+  },
+  {
+    "locationCode": 4,
+    "country": "Israel",
+    "locationName": "Eilat"
+  },
+  {
+    "locationCode": 5,
+    "country": "Israel",
+    "locationName": "Ashdod"
+  },
+  {
+    "locationCode": 6,
+    "country": "Israel",
+    "locationName": "Beer Sheva"
+  },
+  {
+    "locationCode": 7,
+    "country": "Israel",
+    "locationName": "Haifa - Check Post"
+  },
+  {
+    "locationCode": 8,
+    "country": "Israel",
+    "locationName": "Tiberias"
+  },
+  {
+    "locationCode": 9,
+    "country": "Israel",
+    "locationName": "Nahariya"
+  },
+  {
+    "locationCode": 10,
+    "country": "Israel",
+    "locationName": "Netanya - Promenade"
+  },
+  {
+    "locationCode": 11,
+    "country": "Israel",
+    "locationName": "Afula"
+  },
+  {
+    "locationCode": 12,
+    "country": "Israel",
+    "locationName": "Petah Tikva"
+  },
+  {
+    "locationCode": 13,
+    "country": "Israel",
+    "locationName": "Rishon LeZion"
+  },
+  {
+    "locationCode": 14,
+    "country": "Israel",
+    "locationName": "Ramat Gan"
+  },
+  {
+    "locationCode": 15,
+    "country": "Israel",
+    "locationName": "Glilot"
+  },
+  {
+    "locationCode": 16,
+    "country": "Israel",
+    "locationName": "Netanya - Downtown"
+  },
+  {
+    "locationCode": 17,
+    "country": "Israel",
+    "locationName": "Ben Gurion Airport City"
+  },
+  {
+    "locationCode": 18,
+    "country": "Israel",
+    "locationName": "Ramon Airport"
+  },
+  {
+    "locationCode": 19,
+    "country": "Israel",
+    "locationName": "Bnei Brak"
+  },
+  {
+    "locationCode": 20,
+    "country": "Israel",
+    "locationName": "Dead Sea - Ein Bokek"
+  },
+  {
+    "locationCode": 21,
+    "country": "Israel",
+    "locationName": "Herzliya"
+  },
+  {
+    "locationCode": 22,
+    "country": "Israel",
+    "locationName": "Holon"
+  },
+  {
+    "locationCode": 23,
+    "country": "Israel",
+    "locationName": "Jerusalem - Romema"
+  },
+  {
+    "locationCode": 24,
+    "country": "Israel",
+    "locationName": "Ness Ziona"
+  },
+  {
+    "locationCode": 25,
+    "country": "Israel",
+    "locationName": "Nof Hagalil"
+  },
+  {
+    "locationCode": 26,
+    "country": "Israel",
+    "locationName": "Rosh HaAyin"
+  },
+  {
+    "locationCode": 27,
+    "country": "Israel",
+    "locationName": "Haifa - Downtown"
+  },
+  {
+    "locationCode": 28,
+    "country": "Israel",
+    "locationName": "Beit Shemesh"
+  },
+  {
+    "locationCode": 29,
+    "country": "Israel",
+    "locationName": "Jerusalem - Talpiot"
+  },
+  {
+    "locationCode": 30,
+    "country": "Israel",
+    "locationName": "Kiryat Shmona"
+  },
+  {
+    "locationCode": 31,
+    "country": "Israel",
+    "locationName": "Rehovot"
+  },
+  {
+    "locationCode": 32,
+    "country": "Israel",
+    "locationName": "Raanana"
+  },
+  {
+    "locationCode": 33,
+    "country": "Israel",
+    "locationName": "Modiin"
+  },
+  {
+    "locationCode": 34,
+    "country": "Israel",
+    "locationName": "Tel Aviv - HaMasger"
+  }
+]

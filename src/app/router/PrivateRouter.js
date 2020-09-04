@@ -9,9 +9,15 @@ class PrivateRoute extends React.Component {
   componentDidMount () {
     const {  history } = this.props;
     const accessToken = getStorage('token');
-
-    if (!accessToken) {
+    const refreshToken=getStorage('refreshtoken')
+    
+    if (!accessToken && !refreshToken) {
       history.push("/users/login");
+    }
+    if(!accessToken && refreshToken){
+      console.log(accessToken);
+      console.log(refreshToken);
+      this.props.fetchrefreshtoken(refreshToken)
     }
   }
 
@@ -22,7 +28,7 @@ class PrivateRoute extends React.Component {
 
     
     return isPending ? (
-      <>Loading...</>
+    <div>please wait to refresh token</div>
     ) : (
       <Route {...this.props} />
     );
@@ -33,11 +39,13 @@ class PrivateRoute extends React.Component {
 
 const withRouterRoute = withRouter(PrivateRoute);
 
-const mapStateToProps = ({ authReducer: {isPending } }) => ({
-  
+const mapStateToProps = ({ authReducer: {isPending,error } }) => ({
+  error,
   isPending,
 });
 
+const mapDispatchToprops = {
+  fetchrefreshtoken: authActions.refreshToken,
+};
 
-
-export default connect(mapStateToProps)(withRouterRoute);
+export default connect(mapStateToProps,mapDispatchToprops)(withRouterRoute);
