@@ -12,17 +12,17 @@ export default function App({ store, persistor }) {
     return (
 
       <Provider store={store}>
-        <PersistGate persistor={persistor} loading={<LayoutSplashScreen />}>
-            <React.Suspense fallback={<LayoutSplashScreen />}>
+        {/* <PersistGate persistor={persistor} loading={<LayoutSplashScreen />}>
+            <React.Suspense fallback={<LayoutSplashScreen />}> */}
         <BrowserRouter>
-          <LastLocationProvider>
+          {/* <LastLocationProvider> */}
             <ThemeProvider>
               <Router></Router>
             </ThemeProvider>
-          </LastLocationProvider>
+          {/* </LastLocationProvider> */}
         </BrowserRouter>
-        </React.Suspense>
-        </PersistGate>
+        {/* </React.Suspense>
+        </PersistGate> */}
       </Provider>
     );
 }
