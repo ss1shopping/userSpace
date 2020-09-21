@@ -2,8 +2,8 @@ import objectPath from "object-path";
 import { persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
-import LayoutConfig from "../layout/LayoutConfig";
-import MenuConfig from "../layout/MenuConfig";
+
+
 
 export const actionTypes = {
   SetMenuConfig: "builder/SET_MENU_CONFIG",
@@ -75,8 +75,7 @@ export const selectors = {
 };
 
 const initialState = {
-  menuConfig: MenuConfig,
-  layoutConfig: LayoutConfig,
+  
   htmlClassServiceObjects: undefined
 };
 
@@ -88,17 +87,7 @@ export const reducer = persistReducer(
   },
   (state = initialState, { type, payload }) => {
     switch (type) {
-      case actionTypes.SetMenuConfig:
-        return { ...state, menuConfig: payload };
-
-      case actionTypes.SetLayoutConfigs:
-        return { ...state, layoutConfig: payload };
-
-      case actionTypes.SetLayoutConfigsWithPageRefresh: {
-        return {...state, layoutConfig: payload};
-      }
-      case actionTypes.SetHtmlClassService:
-        return { ...state, htmlClassServiceObjects: payload };
+    
 
       default:
         return state;

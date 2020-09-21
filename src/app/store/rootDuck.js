@@ -5,8 +5,6 @@ import {loadingReducer} from "./ducks/loadingReducer"
 import  {errorReducer} from './ducks/errorReducer'
 import layoutReducer from "./ducks/layoutReducer"
 import authAction from "../sagas/authAction"
-import crawlerAction from "../sagas/crawler.Action"
-import crawlerReducer from "./ducks/crawlerReducer"
 import { metronic } from '../../_metronic';
 import {itemReducer} from "./ducks/itemReducer";
 import  itemAction from "../sagas/item.Action";
@@ -17,16 +15,15 @@ authReducer:authReducer,
 loadingReducer:loadingReducer,
 errorReducer:errorReducer,
 itemReducer:itemReducer,
-crawlerReducer:crawlerReducer,
 i18n: metronic.i18n.reducer,
-  builder: metronic.builder.reducer,
+  
   layoutReducer:layoutReducer
   
 });
 export function* rootSaga () {
   yield all([
    authAction(),
-   crawlerAction(),
+  
    itemAction()
   ]);
 }
