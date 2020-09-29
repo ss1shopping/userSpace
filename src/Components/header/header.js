@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { FiAlignJustify } from "react-icons/fi";
 import logo from '../../app/scss/logo.png';
-import { FaFacebook } from "react-icons/fa";
+import { FaFacebook,FaHistory } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import {FiLogOut} from "react-icons/fi"
+import {IoIosLogIn} from "react-icons/io"
+import {RiShoppingCart2Line} from "react-icons/ri"
 import ToggleButton from 'react-toggle-button';
 import { Nav, Navbar } from "react-bootstrap";
 import { useSelector, useDispatch } from 'react-redux';
@@ -36,10 +38,11 @@ const Header = (props) => {
   return (
 
 
-    <div>
+    <div >
       <Navbar collapseOnSelect expand="md" bg="light" variant="light" fixed="top"  >
         <Navbar.Brand href="/">
-          <img src={logo} height={50} alt="logo"></img>
+          {/* <img src={logo} height={50} alt="logo"></img> */}
+          <div>P I C A S S O</div>
         </Navbar.Brand>
         {token?
           <>
@@ -63,10 +66,10 @@ const Header = (props) => {
                 }} />
               <span >Dark Mode</span>
             </div>
-            <Nav.Link href="/" active>Home</Nav.Link>
-            <Nav.Link href="#about">About</Nav.Link>
-            <Nav.Link href="/users/register">Register</Nav.Link>
-            <Nav.Link href="/users/login">Login</Nav.Link>
+            <Nav.Link href="/" active>Shop</Nav.Link>
+            <Nav.Link href="/users/history">History<FaHistory/></Nav.Link>
+            <Nav.Link href="/users/login">Login <IoIosLogIn/></Nav.Link>
+            <Nav.Link href="/users/cart"> Cart <RiShoppingCart2Line/><div style={{color:"red" ,margin:"-30px 0 0 20px"}}>1</div></Nav.Link>
 
           </Nav>
 

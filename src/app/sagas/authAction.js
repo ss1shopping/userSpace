@@ -15,7 +15,11 @@ function* fetchLogin ({ payload }) {
       yield setSubmitting(false);
        yield setStorage('token', result.data.token,result.data.expToken);
        yield setStorage("refreshtoken",result.data.refreshToken,result.data.expRefreshToken)
-        yield history.push("/profile");
+       if(result.data.user.role===1){
+        yield history.push("/dashboard");
+       }else{
+        yield history.push("/");
+       }
       console.log(result);
   } catch (err) {
     console.log(err);

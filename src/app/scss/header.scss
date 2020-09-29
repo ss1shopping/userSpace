@@ -1,175 +1,183 @@
-  .navbar{
-    background-color: rgba($color: rgb(255, 255, 255), $alpha: 1)!important;
+.navbar{
     
-  }
-  .facebook{
-    font-size: 30px;
-  }
-  .instagram{
-    font-size: 30px;
-  }
-  .darkmode{
-    display: flex;
-    padding: 8px 100px 0 0;
-    span{
-      padding:4px 0 0 4px;
-    }
-  }
-  .darkmode--dashboard{
-    display: flex;
-    padding: 8px 40px 0 0;
-    span{
-      padding:4px 0 0 4px;
-    }
-  }
-@media(max-width:960px){
-  .navbar-nav{
-   
-   
-    li{
-      margin-left: 20px !important;
-      a{
-        font-size: 25px;
-      }
-    }
-  }
-}
-@media(max-width:800px){
-  .navbar-nav{
-   
-   
-    li{
-      margin-left: 15px !important;
-      a{
-        font-size: 25px;
-      }
-    }
-  }
-}
-.carousel-inner {
-  img{
-    width: 70%;
-    margin-left:15%;
-    
-  }
+  font-size: 20px;
+  background-color: rgba($color: rgb(255, 255, 255), $alpha: 1)!important;
   
 }
+.navbar-collapse{
+  height: 100px;
+}
+.facebook{
+  font-size: 30px;
+}
+.instagram{
+  font-size: 30px;
+}
+.darkmode{
+  display: flex;
+  padding: 5px 50px 0 0;
+  span{
+    padding:4px 0 0 4px;
+  }
+}
+.darkmode--dashboard{
+  display: flex;
+  padding: 8px 40px 0 0;
+  span{
+    padding:4px 0 0 4px;
+  }
+}
+@media(max-width:960px){
+.navbar-nav{
+ 
+ 
+  li{
+    margin-left: 20px !important;
+    a{
+      font-size: 25px;
+    }
+  }
+}
+}
+@media(max-width:800px){
+.navbar-nav{
+ 
+ 
+  li{
+    margin-left: 15px !important;
+    a{
+      font-size: 25px;
+    }
+  }
+}
+}
+.carousel-inner {
+img{
+  width: 70%;
+  margin-left:15%;
+  
+}
+
+}
 .carousel-caption{
-  position: absolute;
-  top:25%;
+position: absolute;
+top:25%;
 }
 .carousel-caption h2{
-  text-shadow: 5px 5px 15px #000;
+text-shadow: 5px 5px 15px #000;
 }
 .carousel-caption h3{
-  font-size: 200%;
-  text-shadow: 2px 2px 10px #000;
+font-size: 200%;
+text-shadow: 2px 2px 10px #000;
 }
 .card{
-  img{
-   height: 300px;
-  }
+img{
+ height: 300px;
+}
 }
 
 
 @media(max-width:840px){
-  .carousel-caption{
-  position: absolute;
-  top:20%;
+.carousel-caption{
+position: absolute;
+top:20%;
 }
 }
-@media(max-width:780px){
-  .carousel-caption{
-  position: absolute;
-  top:15%;
+@media(max-width:768px){
+
+.navbar-collapse{
+  height: 230px;
+}
+.carousel-caption{
+position: absolute;
+top:15%;
 }
 }
 @media(max-width:710px){
-  .carousel-caption{
-  position: absolute;
-  top:10%;
+.carousel-caption{
+position: absolute;
+top:10%;
 }
 }
 @media(max-width:680px){
-  .carousel-caption{
-  position: absolute;
-  top:5%;
+.carousel-caption{
+position: absolute;
+top:5%;
 }
 .carousel-caption h3{
-  font-size: 30%;
-  text-shadow: 2px 2px 10px #000;
+font-size: 30%;
+text-shadow: 2px 2px 10px #000;
 }
 }
 @media(max-width:610px){
-  .carousel-caption{
-  position: absolute;
-  top:0%;
+.carousel-caption{
+position: absolute;
+top:0%;
 }
 .carousel-caption h3{
-  font-size: 20%;
-  text-shadow: 2px 2px 10px #000;
+font-size: 20%;
+text-shadow: 2px 2px 10px #000;
 }
 .carousel-caption h2{
-  text-shadow: 5px 5px 15px #000;
-  font-size: 300%;
+text-shadow: 5px 5px 15px #000;
+font-size: 300%;
 }
 }
 @media(max-width:500px){
-  .carousel-caption{
-  position: absolute !important;
-  top:0% !important;
+.carousel-caption{
+position: absolute !important;
+top:0% !important;
 }
 .carousel-caption h3{
-  font-size: 15px !important;
-  text-shadow: 2px 2px 10px #000;
+font-size: 15px !important;
+text-shadow: 2px 2px 10px #000;
 }
 .carousel-caption h2{
-  text-shadow: 5px 5px 15px #000;
-  font-size: 200%;
-  
+text-shadow: 5px 5px 15px #000;
+font-size: 200%;
+
 }
 .carousel-caption button{
-  font-size: 15px;
-  height: 45px;
-  width: 30%;
-  padding: 0;
-  margin: 0;
-  
+font-size: 15px;
+height: 45px;
+width: 30%;
+padding: 0;
+margin: 0;
+
 }
 
 }
 @media(max-width:350px){
-  .carousel-inner {
-  img{
-    width: 100% !important;
-   
-    
-  }
+.carousel-inner {
+img{
+  width: 100% !important;
+ 
   
+}
+
 }
 }
 @media(max-width:350px){
-  .carousel-inner {
-  img{
-    width: 100% !important;
-   
-    
-  }
+.carousel-inner {
+img{
+  width: 100% !important;
+ 
   
 }
+
+}
 .carousel-caption button{
-  font-size: 15px;
-  height: 45px;
-  width: 40%;
-  padding: 0;
-  margin: 0;
-  
+font-size: 15px;
+height: 45px;
+width: 40%;
+padding: 0;
+margin: 0;
+
 }
 
 
 }
 .anh{
-  width: 10px !important;
-  height: 10px !important;
+width: 10px !important;
+height: 10px !important;
 }
-

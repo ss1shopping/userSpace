@@ -1,4 +1,4 @@
-import React ,{useMemo} from 'react';
+import React ,{useMemo,useState} from 'react';
 import { Link } from 'react-router-dom';
 
 import { useSelector, useDispatch} from 'react-redux';
@@ -6,6 +6,64 @@ import {Formik,useField, Form} from "formik"
 import * as Yup from "yup"
 
 import { authActions } from '../../app/store/ducks/authReducer';
+
+
+import { createMuiTheme, makeStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
+
+
+
+import Avatar from '@material-ui/core/Avatar';
+import Button from '@material-ui/core/Button';
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CircularProgress from '@material-ui/core/CircularProgress';
+
+import { ThemeProvider } from '@material-ui/styles';
+import LockIcon from '@material-ui/icons/Lock';
+
+
+const useStyles = makeStyles(theme => ({
+    main: {
+      marginTop:'100px',
+        display: 'flex',
+        flexDirection: 'column',
+        minHeight: '100vh',
+        alignItems: 'center',
+        justifyContent: 'flex-start',
+        background: 'url(https://source.unsplash.com/random/1600x900)',
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover',
+    },
+    card: {
+        minWidth: 300,
+        marginTop: '6em',
+    },
+    avatar: {
+        margin: '1em',
+        display: 'flex',
+        justifyContent: 'center',
+    },
+    icon: {
+        backgroundColor: theme.palette.secondary.main,
+    },
+    hint: {
+        marginTop: '1em',
+        display: 'flex',
+        justifyContent: 'center',
+        color: theme.palette.grey[500],
+    },
+    form: {
+        padding: '0 1em 1em 1em',
+    },
+    input: {
+        marginTop: '1em',
+
+    },
+    actions: {
+        padding: '0 1em 1em 1em',
+    },
+}));
 const CustomTextForm=({label,...props})=>{
   const [field,meta]=useField(props)
   const dispatch=useDispatch()
@@ -15,7 +73,7 @@ const CustomTextForm=({label,...props})=>{
   return(
     <>
    
-    <input  {...field} {...props} onFocus={handlefocus}/>
+    <input  {...field} {...props} onFocus={handlefocus} style={{width:"100%"}}/>
     {meta.touched && meta.error ?(
       <div className="error" >{meta.error}</div>
     ):null}
@@ -26,13 +84,16 @@ const CustomTextForm=({label,...props})=>{
 
 const Login = (props) => {
   const dispatch=useDispatch()
+  const classes = useStyles();
+  const [loading, setLoading] = useState(false);
   const error =useSelector(state=>state.authReducer.error)
   const DarkmodeStatus=useSelector(state=>state.layoutReducer.DarkmodeStatus)
 
   return (
-    <div id="login" style={DarkmodeStatus?{backgroundColor:"#18191a"}:{backgroundColor:"#f0f2f5" ,borderTop:"1px solid #e6e8ea"}}>
-      
-      <div id="login__box"style={DarkmodeStatus?{backgroundColor:"#242526"}:{backgroundColor:"white"}}>
+    //id="login"
+    <div  style={DarkmodeStatus?{backgroundColor:"#18191a"}:{backgroundColor:"#f0f2f5" ,borderTop:"1px solid #e6e8ea"}}>
+      //id="login__box"
+      <div style={DarkmodeStatus?{backgroundColor:"#242526"}:{backgroundColor:"white"}}>
        <Formik initialValues={{
      email:"",
      password:"",
@@ -68,37 +129,55 @@ const Login = (props) => {
                   autoComplete="off"
                   className="kt-form"
                   onSubmit={handleSubmit}>
-     
-         <div className="input">
-           <CustomTextForm label="Email" name="email"type="email" placeholder="Email"
-         
-           style={DarkmodeStatus?{background:"#3a3b3c" ,color:"#d2e6eb"}:{}}
-          />
-           
-         </div>
-         <div className="input">
-           <CustomTextForm label="Password" name="password" type="password" placeholder="Password" 
-          
-           style={DarkmodeStatus?{background:"#3a3b3c" ,color:"#d2e6eb"}:{}}
-           />
-         
-         </div>
-           <div className="error" >{error}</div>
-         {/* <button type="button" style={{width:"100%"}} className="btn btn-primary">
-              LOGIN
-         </button> */}
-         <div className="submit">
-           <input  type="submit" disabled={isSubmitting} value={isSubmitting?"Loading ..":"LOGIN"}/>
-         </div>
-         <div className="box">
-         <div className="register">
+                     <div className={classes.main}>
+                    <Card className={classes.card}>
+                        <div className={classes.avatar}>
+                            <Avatar className={classes.icon}>
+                                <LockIcon />
+                            </Avatar>
+                        </div>
+                        <div className={classes.hint}>
+                            Hint: demo / demo
+                        </div>
+                        <div className={classes.form}>
+                            <div className={classes.input}>
+                            
+                                <CustomTextForm autoFocus name="email" label="Email" placeholder="Email"></CustomTextForm>
+                            </div>
+                            <div className={classes.input}>
+                            <CustomTextForm  type="password" name="password" label="password" placeholder="Password"></CustomTextForm>
+                            </div>
+                        </div> 
+                        <div className="error" >{error}</div>
+                        <CardActions className={classes.actions}>
+                            <Button
+                                variant="contained"
+                                type="submit"
+                                color="primary"
+                                disabled={loading}
+                                fullWidth
+                            >
+                                {loading && (
+                                    <CircularProgress
+                                        size={25}
+                                        thickness={2}
+                                    />
+                                )}
+                              Sign in
+                            </Button>
+                        </CardActions>
+                        <div className="register" style={{padding:"0 1em 1em 1em"}}>
            <span className="question">New to Xoay?</span>
-           <span className="link"><Link to="/register" style={DarkmodeStatus?{color:"#249dcb"}:{}}>Create an account</Link></span>
+           <span className="link"><Link to="/users/register" style={DarkmodeStatus?{color:"#249dcb"}:{}}>Create an account</Link></span>
          </div>
-         <div className="forgot">
+         <div className="forgot" style={{padding:"0 1em 1em 1em"}}>
            <span><Link to="/forgotpassword" style={DarkmodeStatus?{color:"#249dcb"}:{}}>Forgot password ?</Link></span>
          </div>
-         </div>
+                    </Card>
+                    
+                </div>
+     
+         
        </Form>
  )}
    </Formik>
