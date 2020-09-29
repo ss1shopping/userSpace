@@ -16,7 +16,10 @@ import ConfirmSuccessful from "../../Components/login/confirmSuccess";
 
 import Machinelearning from "../../Components/LandingPage/dashboard/machinelearning/machinelearning";
 import { Upload } from "../../Components/LandingPage/dashboard/upload/upload";
+<<<<<<< HEAD
 import { RiPriceTag2Line } from "react-icons/ri";
+=======
+>>>>>>> 97be28223e444206cf8bf31fd7a67303ee9d14b8
 const Routerr = () => {
   return (
   <Router>
