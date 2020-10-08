@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "engines": {
-    "node":"12.8.3",
+    "node":"6.11.1",
     "yarn":"1.22.5"
   },
   "dependencies": {
