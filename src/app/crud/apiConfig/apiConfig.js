@@ -8,8 +8,7 @@ const initApi = (setAccessHeader = true, setRefreshToken = false) => {
   }
 
   axios.defaults.baseURL = API_URL;
-  console.log("goij");
-  
+ 
   return axios;
 };
 

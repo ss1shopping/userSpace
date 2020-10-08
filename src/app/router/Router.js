@@ -14,12 +14,9 @@ import Profile from "../../Components/LandingPage/profile/profile";
 import ConfirmAccount from "../../Components/login/confirmAccount";
 import ConfirmSuccessful from "../../Components/login/confirmSuccess";
 
-import Machinelearning from "../../Components/LandingPage/dashboard/machinelearning/machinelearning";
+
 import { Upload } from "../../Components/LandingPage/dashboard/upload/upload";
-<<<<<<< HEAD
-import { RiPriceTag2Line } from "react-icons/ri";
-=======
->>>>>>> 97be28223e444206cf8bf31fd7a67303ee9d14b8
+import Item from "../../Components/LandingPage/dashboard/item/item";
 const Routerr = () => {
   return (
   <Router>
@@ -32,9 +29,9 @@ const Routerr = () => {
         <PrivateRouter exact path="/profile" component={Profile}></PrivateRouter>
         <PrivateRouter exact path="/confirm-account" component={ConfirmAccount}></PrivateRouter>
         <Route exact path="/users/login/:token" component={ConfirmSuccessful}></Route>
-        <PrivateRouter exact path="/dashboard" component={Dashboard}></PrivateRouter>
-        <PrivateRouter exact path="/dashboard/machinelearning" component={Machinelearning}></PrivateRouter>
-        <PrivateRouter exact path="/dashboard/upload" component={Upload}></PrivateRouter>
+        <Route exact path="/dashboard" component={Dashboard}></Route>
+        <Route exact path="/dashboard/item" component={Item}></Route>
+        <Route exact path="/dashboard/upload" component={Upload}></Route>
    </Switch>
    <Footer></Footer>
  </Router>

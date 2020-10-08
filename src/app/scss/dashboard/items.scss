@@ -1,0 +1,85 @@
+.item{
+    &__attribute{
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start ;
+        padding: 15px 0px;
+        border-bottom: 1px solid black  ;
+        &--link{
+            margin-left: 2rem;
+            width: 90%;
+            height: 1.5rem;
+            display: flex;
+            align-items:center;
+        justify-content: flex-start  ;
+        flex-wrap: nowrap   ;
+        
+        }
+        &--checkbox{
+         width: 5%;
+         
+        }
+        &--id{
+            width: 12%;
+       
+        }
+        &--name{
+            width: 12%;
+        
+        }
+        &--desc{
+            width: 12%;
+             white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        
+        }
+        &--quantity{
+            
+            width: 12%;
+        }
+        &--price{
+           
+            width: 12%;
+        }
+        &--sold{
+            width: 12%;
+        }
+        &--detele{
+            width: 5%;
+            
+        }
+    }
+}
+.pagination{
+    margin-top: 20px;
+   margin-left: 70%;
+
+}
+.previous{
+    outline: none;
+  border-radius: 5px;
+    background-color: rgb(41, 245, 0);
+   padding:0 5px;
+}
+.previous >a:focus{
+    border:none;
+}
+.next{
+    outline: none;
+    border-radius: 5px;
+    background-color: rgb(41, 245, 0);
+    padding:0 5px;
+
+}
+.pagination > .active{
+    border: 1px solid ;
+    padding : 0 5px ;
+    background-color: rgb(233, 241, 232);
+}
+.pagination >li{
+    margin-left: 10px;
+}
+.disabled{
+    background-color: rgb(107, 107, 103);
+}

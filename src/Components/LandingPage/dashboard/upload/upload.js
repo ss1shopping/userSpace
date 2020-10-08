@@ -1,4 +1,4 @@
- import React,{useCallback, useState} from 'react'
+ import React,{useCallback, useState,useEffect} from 'react'
  import {Container, InputGroup, Row,Col} from "react-bootstrap"
  import {useDropzone} from 'react-dropzone'
  
@@ -25,17 +25,20 @@
           </div>
         )
       }
-   const renderImage=(urlImage)=>{
-     urlImage.map((index,key)=>{
-       return(
-           <Col>
-           <img src={urlImage}></img>
-           </Col>
+let a;
+  useEffect(() => {
+     console.log("chay");
+     a=urlImage.map((index,key)=>{
+      return(
+          <Col>
+          <img src={index}></img>
+          </Col>
 
-       )
-     })
+      )
+    })
+  }, [urlImage])
+    
        
-   }
       
      return (
          <div className="upload">
@@ -65,7 +68,7 @@
          <MyDropzone md={12}></MyDropzone>
            </div>
            </Col>
-           {renderImage(urlImage)}
+           {a}
            </Row>    
            </Container>  
          </div>

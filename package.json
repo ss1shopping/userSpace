@@ -2,6 +2,10 @@
   "name": "markerjs",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node":"12.8.3",
+    "yarn":"1.22.5"
+  },
   "dependencies": {
     "@ant-design/css-animation": "^1.7.2",
     "@material-ui/core": "^4.10.1",
@@ -17,16 +21,17 @@
     "dxf": "^4.4.1",
     "formik": "^2.1.4",
     "makerjs": "^0.17.0",
-    "ml5": "^0.5.0",
     "node-sass": "^4.14.1",
     "react": "^16.13.1",
     "react-autosuggest": "^10.0.2",
     "react-bootstrap": "^1.0.1",
     "react-chartjs-2": "^2.10.0",
+    "react-datepicker": "^3.2.2",
     "react-dom": "^16.13.1",
     "react-dropzone": "^11.0.1",
     "react-icons": "^3.10.0",
-    "react-intl": "^4.6.9",
+    "react-intl": "^5.8.3",
+    "react-paginate": "^6.5.0",
     "react-redux": "^7.2.0",
     "react-router-dom": "^5.2.0",
     "react-router-last-location": "^2.0.1",
@@ -41,7 +46,7 @@
     "yup": "^0.29.1"
   },
   "scripts": {
-    "start": "PORT=4224  react-scripts start",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -60,6 +65,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "proxy": "http://localhost:3000/"
+  }
+ 
 }

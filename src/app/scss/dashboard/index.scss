@@ -1,7 +1,6 @@
 @import "./upload.dashboard.scss";
-
-
-
+@import "./items.scss";
+@import "./statistic.scss";
 
 
 .sidebar {
@@ -14,6 +13,7 @@
   height: 100%;
   transition: 0.5s;
   transition-property: left;
+  z-index: 1;
 }
 
 
@@ -76,7 +76,7 @@ label #btn{
   width: 80px;
 }
 .content{
-  padding: 100px 0 0 250px;
+  padding: 117px 0 0 250px;
 
   background-position: center;
   background-size: cover;
@@ -139,5 +139,70 @@ label #btn{
    top:100%;
    left: 0;
    
+}
+@media(max-width:1220px){
+  
+}
+@media(max-width:1130px){
+ 
+  
+}
+@media(max-width:1031px){
+ 
+  
+}
+@media(max-width:960px){
+  
+}
+@media(max-width:840px){
+  
+}
+@media(max-width:780px){
+  .content{
+    padding: 110px 0 0 250px; 
+  }
+
+}
+@media(max-width:750px){
+  .content{
+    padding: 63px 0 0 250px; 
+  } 
+}
+@media(max-width:670px){
+  .content{
+    padding: 63px 0 0 250px; 
+  }
+}
+@media(max-width:376px){
+  .content__search-box{
+    position: absolute;
+    top:-60%;
+    right:0%;
+  }
+  .sidebar {
+  
+    width: 380px;
+   
+  }
+  
+  #check:checked ~ .sidebar{
+    left: -320px;
+  }
+  
+  #check:checked ~ .sidebar a{
+    font-size: 20px;
+    margin-left: 300px;
+    width: 80px;
+  }
+  #check:checked ~ .sidebar label #btn{
+    font-size: 20px;
+    margin-left: 300px;
+    width: 80px;
+  }
+  #check:checked ~ .content {
+    padding-left: 60px;
+    margin-left: 0px;
+}
+  .content{margin-left: -200px}
 }
 

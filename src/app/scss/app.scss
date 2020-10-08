@@ -1,5 +1,4 @@
 @import "./header.scss";
-@import "./navbar.scss";
 @import "./login.scss";
 @import "./register.scss";
 @import "./yourfeed.scss";
@@ -7,6 +6,8 @@
 @import '~bootstrap/scss/bootstrap.scss';
 @import "./landingPage.scss";
 @import "./dashboard//index.scss";
+@import "~react-datepicker/dist/react-datepicker.css";
+ 
 // @mixin layout{
     
   

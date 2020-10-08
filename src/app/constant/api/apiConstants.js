@@ -1,5 +1,5 @@
 //export const API_URL = "https://server.bmtec.dev7.sibers.com";
-export const API_URL = "";
+export const API_URL = "https://servertien.herokuapp.com";
 
 export const API_URLS = {
   REGISTER: '/users',
@@ -8,7 +8,7 @@ export const API_URLS = {
   REFRES_TOKEN: '/users/refresh',
   CHEK_AUTH_USER: '/api/current',
   RESET_PASSWORD: '/api/reset-password',
-  GET_ITEM: '/shopping',
+  GET_ITEM: (data)=> `/item/limit=${data.limit}/page=${data.page}`, 
   ADD_ITEM:'/shopping',
   UPDATE_ITEM:"/shopping",
   DELETE_ITEM:"/shopping",
@@ -25,5 +25,6 @@ export const API_URLS = {
   GET_ORDER_TYPES: '/api/orders/types/all',
   CHANGE_ORDER_TYPE: (orderId) => `/api/orders/${orderId}/change-type`,
   // tu tao
-  CRAWLER_DATA:"/crawler/getdata"
+  CRAWLER_DATA:"/crawler/getdata",
+  GET_TOTAL_INFOR:(data)=>`/total/getallinfor/day=${data.day}/month=${data.month}/year=${data.year}`
 };

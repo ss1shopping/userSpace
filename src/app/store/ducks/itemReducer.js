@@ -5,7 +5,17 @@ const initialAuthState = {
   isPending: false,
   item: undefined,
   error: null,
-  notice:null
+  notice:null,
+  totalSold:null,
+  totalView:null,
+  totalIncome:null,
+  totalUser:null,
+  isPendingTotalInfor:false,
+  percentageSold:null,
+  percentageView:null,
+  percentageIncome:null,
+  percentageUser:null,
+  errorLoadingTotalInfor:null
 }
 export const itemReducer = persistReducer(
   { storage, key: 'item', whitelist: [] },
@@ -35,6 +45,26 @@ export const itemReducer = persistReducer(
             return{
                 ...state,error:null
             }
+        case itemActionTypes.loadTotal:
+            return{
+                ...state,isPendingTotalInfor:!state.isPendingTotalInfor
+            }
+        case itemActionTypes.loadTotalSuccessfull:
+            return{
+                ...state,totalSold:action.payload.TotalSold,
+                totalIncome:action.payload.TotalIncome,
+                totalView:action.payload.TotalView,
+                totalUser:action.payload.TotalUser,
+                percentageIncome:action.payload.percentageIncome,
+                percentageSold:action.payload.percentageSold,
+                percentageView:action.payload.percentageView,
+                percentageUser:action.payload.percentageUser,
+                isPendingTotalInfor:!state.isPendingTotalInfor
+            }
+        case itemActionTypes.loadTotalFailure:
+            return{
+                ...state,errorLoadingTotalInfor:action.payload
+            }
       default:
         return state;
     }
@@ -42,11 +72,14 @@ export const itemReducer = persistReducer(
 
 
 export const itemActions={
-    loadingitem:()=>({type:itemActionTypes.loadingitem}),
+    loadingitem:(offset,limit)=>({type:itemActionTypes.loadingitem,payload:{offset,limit}}),
     loadingsuccess:(payload)=>({type:itemActionTypes.loadingItemSuccess,payload}),
     loadingfailure:(payload)=>({type:itemActionTypes.error,payload}),
     error:(payload)=>({type:itemActionTypes.Error,payload}),
     uploaditem:(city,price,description,quantity,image)=>({type:itemActionTypes.uploadItem,
     payload:{city,price,description,quantity,image}}),
-    uploaditemsuccess:(payload)=>({type:itemActionTypes.uploadItemSuccess,payload})
+    uploaditemsuccess:(payload)=>({type:itemActionTypes.uploadItemSuccess,payload}),
+    loadingInfor:(payload)=>({type:itemActionTypes.loadTotal,payload}),
+    loadingInforSuccessfull:(payload)=>({type:itemActionTypes.loadTotalSuccessfull,payload}),
+    loadingInforFailure:(payload)=>({type:itemActionTypes.loadTotalFailure,payload})
 }

@@ -1,0 +1,148 @@
+.statistic{
+    &__table{
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ background-color: hsl(33, 35%, 94%);
+ 
+  &--user{
+    
+      border-right: 1px solid black;
+      width: 25%; 
+    padding-left: 15px;
+  }
+  &--view{
+    padding-left: 15px;
+    width: 25%;
+    
+  }
+  &--sold{
+    border-right: 1px solid black;
+    
+    width: 25%;
+    padding-left: 15px;
+  }
+  &--income{
+    border-right: 1px solid black;
+    width: 25%;
+    padding-left: 15px;
+    
+  }
+  &--title{
+
+  }
+  &--percent{
+      color:#13b321;
+  }
+  &--percentage{
+    padding-bottom: 20px;
+  }
+  
+
+    }
+}
+.down{
+  color:#c41717;
+}
+
+.chart{
+  width: 85%;
+  height: 300px;
+ margin-left: 5%;
+ }
+ .row{
+   margin: none ;
+ }
+.dataPicker{
+ margin:20px 0 20px 81%;
+}
+.react-datepicker-wrapper{
+   
+}
+.react-datepicker__input-container{
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+@media(max-width:1220px){
+  .dataPicker{
+    margin:20px 0 20px 79%;
+   }
+  
+}
+@media(max-width:1130px){
+  .dataPicker{
+    margin:20px 0 20px 77%;
+   }
+  
+}
+@media(max-width:1031px){
+  .dataPicker{
+    margin:20px 0 20px 75%;
+   }
+  
+}
+@media(max-width:960px){
+  .dataPicker{
+    margin:20px 0 20px 73%;
+   }
+}
+@media(max-width:840px){
+  .dataPicker{
+    margin:20px 0 20px 68%;
+   }
+}
+@media(max-width:780px){
+  .dataPicker{
+    margin:20px 0 20px 63%;
+   } 
+}
+@media(max-width:670px){
+  .dataPicker{
+    margin:20px 0 20px 59%;
+   }
+   .statistic{
+    &__table{
+      flex-wrap: wrap;
+  &--user{
+    
+width: 50%;
+  }
+  &--view{
+    padding-left: 15px;
+    width: 50%;
+   
+
+  }
+  &--sold{
+    
+    width: 50%;
+    padding-left: 15px;
+  }
+  &--income{
+    border: none;
+    width: 50%;
+    padding-left: 15px;
+  }
+  &--title{
+
+  }
+  &--percent{
+      color:#13b321;
+  }
+  &--percentage{
+    padding-bottom: 20px;
+  }
+}
+}
+}
+@media(max-width:376px){
+  .dataPicker{
+    margin:20px 0 20px 34%;
+   }
+  .chart{
+    width: 80%;
+    height: 300px;
+   margin-left: 5%;
+   }
+}

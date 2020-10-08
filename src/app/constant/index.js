@@ -15,6 +15,9 @@ export const itemActionTypes={
   DeleteError: '[Delte Error] Action',
   uploadItem:"[ACTION UPLOAD ITEM]",
   uploadItemSuccess:"[ACTION UPLOAD ITEAM SUCCESSFUL]",
+  loadTotal:"[Action Loading all infor]",
+  loadTotalSuccessfull:"[Action loading infor successful]",
+  loadTotalFailure:"[Action loading  infor fail]",
   
 }
 export const authActionTypes = {
