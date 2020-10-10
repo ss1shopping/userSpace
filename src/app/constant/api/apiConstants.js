@@ -1,4 +1,4 @@
-//export const API_URL = "https://server.bmtec.dev7.sibers.com";
+//   https://servertien.herokuapp.com
 export const API_URL = "https://servertien.herokuapp.com";
 
 export const API_URLS = {
@@ -26,5 +26,6 @@ export const API_URLS = {
   CHANGE_ORDER_TYPE: (orderId) => `/api/orders/${orderId}/change-type`,
   // tu tao
   CRAWLER_DATA:"/crawler/getdata",
-  GET_TOTAL_INFOR:(data)=>`/total/getallinfor/day=${data.day}/month=${data.month}/year=${data.year}`
+  GET_TOTAL_INFOR:(data)=>`/total/getallinfor/day=${data.day}/month=${data.month}/year=${data.year}`,
+  GET_INFOR_CHART:(data)=>`total/getallinfor/kind=${data}`
 };

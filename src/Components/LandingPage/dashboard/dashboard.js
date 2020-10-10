@@ -18,6 +18,7 @@ import {Row,Col} from "react-bootstrap"
 import DatePicker from "react-datepicker";
 import TotalInfor from './TotalInfor/TotalInfor';
 import NavbarCustom from './navbar/navbar';
+import { totalActions } from '../../../app/store/ducks/totalReducer';
 
 const Dashboard = () => {
       const dispatch = useDispatch()
@@ -33,7 +34,7 @@ const Dashboard = () => {
      const item =useSelector(state=>state.itemReducer.item)
      const [startDate, setStartDate] = useState(new Date());
      const [chart, setChart] = useState("lineChart")
-   
+     const [total,setTotal]=useState("totalUser")
       const [key, setKey] = useState('home');
      
       useEffect(() => {
@@ -42,7 +43,10 @@ const Dashboard = () => {
       useEffect(() => {
         dispatch(itemActions.loadingInfor(convertDate(startDate)))
        }, [startDate]) 
-   
+      useEffect(()=>{
+        dispatch(totalActions.loadingInforChart(total))
+        console.log("chay");
+      },[total])
     return (
        
         <div >
@@ -94,8 +98,8 @@ const Dashboard = () => {
               <div>
 
               <form style={{marginLeft:"100px"}}>
-                <label for="charts">Choose the total</label>
-                <select name="charts" id="charts">
+                <label for="totals">Choose the total</label>
+                <select name="totals" id="totals" onChange={(e)=>setTotal(e.target.value)}>
                   <option value="totalUser">total user</option>
                   <option value="totalSold">total sold</option>
                   <option value="totalView">total view</option>

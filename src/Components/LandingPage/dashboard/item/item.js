@@ -9,7 +9,7 @@ import NavbarCustom from '../navbar/navbar';
 
  const Item = () => {
       const dispatch = useDispatch()
-     const [pageCount, setpageCount] = useState(10)
+     const [pageCount, setpageCount] = useState(100)
      const [offset, setOffset] = useState(0)
      const [limit, setLimit] = useState(10)
      const handleChangepage=()=>{
@@ -21,21 +21,21 @@ import NavbarCustom from '../navbar/navbar';
             <NavbarCustom></NavbarCustom>
             <div className="content">
 
-            <Container>
+            <Container fluid>
                 <Row>
                     <Col>
                     <div className="item__attribute">
                     <div className="item__attribute--checkbox">
-                            checkbox    
+                             
                             </div>
                         <div className="item__attribute--link">
                         
-                            <div className='item__attribute--id'>id</div>
+                            <div className='item__attribute--id navigator--id'>id</div>
                         <div className="item__attribute--name">name</div>
-                        <div className="item__attribute--desc">desc</div>
-                        <div className="item__attribute--quantity">quantity</div>
+                        <div className="item__attribute--desc navigator--desc">desc</div>
+                        <div className="item__attribute--quantity navigator--quantity">quantity</div>
                         <div className="item__attribute--price">price</div>
-                        <div className="item__attribute--sold">sold</div>
+                        <div className="item__attribute--sold navigator--sold">sold</div>
                         </div>
                         <div className="item__attribute--delete">detele</div>
 
@@ -60,7 +60,7 @@ import NavbarCustom from '../navbar/navbar';
                         <div className="item__attribute--sold">4</div>
                       
                         </Link>
-                        <div className="item__attribute--delete">DE</div>
+                        <div className="item__attribute--delete">Delete</div>
                          
                     </div>
                    
@@ -83,7 +83,7 @@ import NavbarCustom from '../navbar/navbar';
                         <div className="item__attribute--sold">4</div>
                       
                         </Link>
-                        <div className="item__attribute--delete">DE</div>
+                        <div className="item__attribute--delete">Delete</div>
                          
                     </div>
                    
@@ -96,7 +96,7 @@ import NavbarCustom from '../navbar/navbar';
           breakClassName={'break-me'}
           pageCount={pageCount}
           marginPagesDisplayed={2}
-          pageRangeDisplayed={5}
+          pageRangeDisplayed={3}
           onPageChange={handleChangepage}
           containerClassName={'pagination'}
           subContainerClassName={'pages pagination'}

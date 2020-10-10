@@ -1,3 +1,5 @@
+
+
  export const auth={
   loading:"LOADING",
   loading_success:"LOADING_SUCCESS",
@@ -18,6 +20,7 @@ export const itemActionTypes={
   loadTotal:"[Action Loading all infor]",
   loadTotalSuccessfull:"[Action loading infor successful]",
   loadTotalFailure:"[Action loading  infor fail]",
+  
   
 }
 export const authActionTypes = {
@@ -40,3 +43,8 @@ export const authActionTypes = {
   refreshTokenSuccessFul:"[Refresh Token Success]",
   refreshTokenFailure:"[Refresh Token Faliure]"
 };
+export const totalActionTypes={
+  loadingInforChart:'[Action Loading Infor Chart]',
+  loadingInforChartSuccessful:`[Action loading Infor Chart Success]`,
+  loadingInforChartFailure:`[Action Loading Infor Chart Fail]`
+}

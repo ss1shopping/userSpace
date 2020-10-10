@@ -15,7 +15,8 @@ const initialAuthState = {
   percentageView:null,
   percentageIncome:null,
   percentageUser:null,
-  errorLoadingTotalInfor:null
+  errorLoadingTotalInfor:null,
+ 
 }
 export const itemReducer = persistReducer(
   { storage, key: 'item', whitelist: [] },
@@ -65,6 +66,7 @@ export const itemReducer = persistReducer(
             return{
                 ...state,errorLoadingTotalInfor:action.payload
             }
+        
       default:
         return state;
     }

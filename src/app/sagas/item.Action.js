@@ -12,7 +12,6 @@ try {
        limit=1;
    }
     const result=yield call(getdata,{page,limit})
-    console.log(result);
    yield put (itemActions.loadingsuccess(result.data))
 } catch (err) {
     
@@ -40,7 +39,7 @@ function* loadingTotalInfor(payload){
 
     try {
        const result=yield call(loadingTotalInformation,{day,month,year}) 
-       console.log(result);
+    
          yield put(itemActions.loadingInforSuccessfull(result.data))
 
     } catch (err) {

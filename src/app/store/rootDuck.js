@@ -8,13 +8,14 @@ import authAction from "../sagas/authAction"
 // import { metronic } from '../../_metronic';
 import {itemReducer} from "./ducks/itemReducer";
 import  itemAction from "../sagas/item.Action";
-
-
+import {totalReducer} from "./ducks/totalReducer"
+import totalAction from "../sagas/item.Action"
 export  const rootReducer = combineReducers({
 authReducer:authReducer,
 loadingReducer:loadingReducer,
 errorReducer:errorReducer,
 itemReducer:itemReducer,
+totalReducer:totalReducer,
 
 // i18n: metronic.i18n.reducer,
   // builder: metronic.builder.reducer,
@@ -24,7 +25,7 @@ itemReducer:itemReducer,
 export function* rootSaga () {
   yield all([
    authAction(),
-  //  crawlerAction(),
+   totalAction(),
    itemAction()
   ]);
 }

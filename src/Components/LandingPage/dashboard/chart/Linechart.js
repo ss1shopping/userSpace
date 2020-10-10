@@ -1,23 +1,26 @@
 import React,{useState,useRef} from 'react'
 import {Bar,Line,Pie,Doughnut,Mixed, Bubble} from "react-chartjs-2"
+import { useSelector } from 'react-redux'
 
 
 const Chart = (props) => {
     const chartReference = useRef()
-    console.log(props);
+    const totalMonth1=useSelector(state=>state.totalReducer.totalMonth1)
+    const totalMonth2=useSelector(state=>state.totalReducer.totalMonth2)
+    const totalMonth3=useSelector(state=>state.totalReducer.totalMonth3)
+    const totalMonth4=useSelector(state=>state.totalReducer.totalMonth4)
+    const nameMonth1=useSelector(state=>state.totalReducer.nameMonth1)
+    const nameMonth2=useSelector(state=>state.totalReducer.nameMonth2)
+    const nameMonth3=useSelector(state=>state.totalReducer.nameMonth3)
+    const nameMonth4=useSelector(state=>state.totalReducer.nameMonth4)
     const [name, setname] = useState("Line")
     const [ChartData, setChartData] = useState( {
-        labels: ['thang 1', 'thang 2',"thang 3","thang 4"],
+        labels: [nameMonth4,nameMonth3,nameMonth2,nameMonth1],
         datasets:[
           {
             label:'sold',
             data:[
-              30,
-              100,
-              40,
-              120
-             
-            
+            totalMonth4,totalMonth3,totalMonth2,totalMonth1
             ],
             backgroundColor:[
               'rgba(255, 99, 132, 0.6)',
