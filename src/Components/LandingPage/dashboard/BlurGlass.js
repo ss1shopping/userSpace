@@ -26,7 +26,7 @@ export function useWindowDimensions() {
     const [top, setTop] = useState("1000")
     useEffect(() => {
         if(width.width>300){
-            setTop(60)
+            setTop(45)
         }else{
             setTop(440)
         }

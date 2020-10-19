@@ -9,7 +9,7 @@
     left: 0;
     width: 100%;
     
-    background: url("../minh.jpg");
+    background: url("../minh4.jpg");
     height: 100vh;
    background-attachment: fixed;
     background-position: center;
@@ -23,7 +23,7 @@
     top:50%;
     left: 50%;
     transform:translate(-50%,-50%);
-    background: url("../minh2.png") !important;
+    background: url("../minh5.png") !important;
     // -webkit-clip-path: inset(30px 10px 30px 10px);
     // clip-path: inset(30px 10px 30px 10px);
 background-repeat: no-repeat;
@@ -63,7 +63,7 @@ background-repeat: no-repeat;
         overflow: hidden;
         &__content{
            position: absolute;
-           top:300px;
+           top:270px;
            left: 440px;
             width: 300px;
             height: 300px;
