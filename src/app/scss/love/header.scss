@@ -1,0 +1,146 @@
+
+.paralle{
+    background: #0a2a43;
+    min-height: 1500px;
+}
+section{
+    position: relative; 
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+section:before{
+    content: "";
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height:  100px;
+    background: linear-gradient(to top,#0a2a43,transparent);
+   
+    z-index: 10000;
+}
+section:after{
+content: "";
+position: absolute;
+top:0;
+left: 0;
+width: 100%;
+height: 100%;
+background:#0a2a43;
+mix-blend-mode: color;
+z-index: 10000;
+}
+section img{
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+#text{
+    position: relative;
+    color:#fff;
+    font-size: 10em;
+    z-index: 1;
+}
+#road{
+    z-index: 2;
+}
+
+
+
+.box-btn{
+    width: 100%;
+    height: 100vh;
+}
+.btn-primary-custom{
+position: relative;
+top:49%;
+left: 40%;
+display:inline-block;
+padding: 12px 36px;
+margin: 10px 0;
+color:#fff;
+text-decoration: none;
+text-transform: uppercase;
+overflow: hidden;
+font-weight: 18px;
+letter-spacing: 2px;
+border-radius: 40px;
+background: linear-gradient(to right,#0162c8,#55e7fc);
+}
+.btn-secondary-custom{
+    position: relative;
+    top:49%;
+left: 42%;
+    display:inline-block;
+    padding: 12px 36px;
+    margin: 10px 0;
+    color:#fff; 
+    text-decoration: none;
+    overflow: hidden;
+    text-transform: uppercase;
+    font-weight: 18px;
+    letter-spacing: 2px;
+    border-radius: 40px;
+    background: linear-gradient(to right,#755bea,#ff72c0);
+    }
+.effect-btn{
+    position: absolute;
+    top:0%;
+    left: 0%;
+    background: #fff;
+    transform: translate(-50%,-50%);
+    pointer-events: none;
+    border-radius: 50%;
+    animation: animate 0.5s linear infinite;
+}
+@keyframes animate{
+    0%{
+        width: 0px;
+        height: 0px;
+        opacity: 0.2;
+    }
+    100%{
+        width: 500px;
+        height: 500px;
+        opacity: 0.2;
+    }
+    
+}
+@media only screen and(max-width:500px){
+    .paralle{
+        background: #0a2a43;
+        width: 430px;
+    }
+    section{
+        position: relative; 
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    
+    }
+    #text{
+        position: relative;
+        color:#fff;
+        font-size: 4em;
+        z-index: 1;
+    }
+    .btn-primary-custom{
+       
+        top:40%;
+    left: 30%;
+    }
+    .btn-secondary-custom{
+        position: relative;
+        top:50%;
+    left: -5%;
+    }
+}

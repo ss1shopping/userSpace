@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { FiAlignJustify } from "react-icons/fi";
-import logo from '../../app/scss/logo.png';
 import { FaFacebook,FaHistory } from "react-icons/fa";
+import { FiAlignJustify } from "react-icons/fi";
 import { FaInstagram } from "react-icons/fa";
 import {FiLogOut} from "react-icons/fi"
 import {IoIosLogIn} from "react-icons/io"

@@ -20,7 +20,7 @@ const NavbarCustom = () => {
       <Link to="/"><RiDashboardLine/><span>Dashboard</span></Link>
       <Link to="/dashboard/item"><AiOutlineCloudUpload/><span>Item</span></Link>
       <Link to="/dashboard/upload"><GrStatusCriticalSmall/><span>upload</span></Link>
-      <Link to="/dashboard/machinelearning"><RiDeleteBin6Line/><span>Machine learning</span></Link>
+      <Link to="/dashboard/list-order"><RiDeleteBin6Line/><span>List Order</span></Link>
       <Link to="/"><FcAbout/><span>About</span></Link>
       <Link to="/"><AiFillSetting/><span>Settings</span></Link>
     </div>

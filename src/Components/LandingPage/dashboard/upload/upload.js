@@ -44,24 +44,24 @@ let a;
          <div className="upload">
            <Container>
            <Row className="padding">
-           <Col md={12} className="12">
+           <Col md={12}>
            <div className="upload__body">
-              <input type="text" placeholder="city "/>
+              <input type="text" name="name" placeholder="name "/>
            </div>
            </Col>
            <Col md={12} >
            <div className="upload__body">
-              <input type="text" placeholder="quantity "/>
+              <input type="text" name="quantity" placeholder="quantity "/>
            </div> 
            </Col>
            <Col md={12} >
            <div className="upload__body">
-              <input type="text" placeholder="price"/>
+              <input type="text" name="price" placeholder="price"/>
            </div>
            </Col >
            <Col md={12} >
            <div className="upload__body">
-             <textarea placeholder="description"></textarea>
+             <textarea name="description" placeholder="description"></textarea>
            </div></Col>
            <Col>
            <div className='upload__body'>

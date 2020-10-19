@@ -1,59 +1,100 @@
 .item{
+    font-size: 14px;
+  
     &__attribute{
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start ;
+      
         padding: 15px 0px;
         border-bottom: 1px solid black  ;
-        &--link{
-            margin-left: 2rem;
-            width: 90%;
-            height: 1.5rem;
-            display: flex;
-            align-items:flex-start;
-        justify-content: center  ;
-        flex-wrap: nowrap   ;
         
-        }
+        // &--link{
+        //     margin-left: 2rem;
+        //     width: 90%;
+        //     height: 1.5rem;
+        //     display: flex;
+        //     align-items:flex-start;
+        // justify-content: center  ;
+        // flex-wrap: nowrap   ;
+        
+        // }
         &--checkbox{
-         width: 5%;
-         
+        width: 10%;
+      
         }
         &--id{
+            width: 10%;
+            padding-right:10px;
             
-            width: 12%;
-       
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden; 
         }
         &--name{
-            width: 15%;
-        
+            width: 10%;
+            padding-right: 20px;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden; 
         }
-        &--desc{
-            width: 50%;
+        &--desc{ 
+            width: 10%;
+            padding-right: 20px;
+          
              white-space: nowrap;
             text-overflow: ellipsis;
             overflow: hidden;
         
         }
         &--quantity{
-            padding-left: 20px;
-            width: 15%;
+            
+            padding-right: 20px;
+          
         }
         &--price{
-            padding-left: 20px; 
-            width: 15%;
+            padding-right: 20px; 
+           
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+           
         }
         &--sold{
-            padding-left: 20px;
-            width: 15%;
+            padding-right: 20px;
+            
         }
-        &--detele{
-           padding-left: -20px;
-            width: 5%;
+        &--edit{
+           padding-right: -20px;
+         
+            white-space: none;
+            text-overflow: none;
+            overflow: none;
             
         }
     }
 }
+.checked{
+    background-color: #d6d0d0;
+}
+table{
+ thead{
+     color:black;
+     
+     tr{
+         th{
+            padding: 10px 0;
+         }
+     }
+ }   
+ tbody{
+     tr{
+         th{
+            padding: 10px 0;
+            font-weight: 400;
+         }
+     }
+ }
+ 
+}
+
 .pagination{
     margin-top: 20px;
    margin-left: 70%;
@@ -86,116 +127,131 @@
 .disabled{
     background-color: rgb(107, 107, 103);
 }
-@media(max-width:1384px){
+.navigator{
+    &--price{
+        white-space: none;
+            text-overflow: none;
+            overflow: none;
+    }
+}
+// @media(max-width:1384px){
+//     .pagination{
+//         margin-top: 20px;
+//        margin-left: 65%;
+    
+//     }
+// }
+// @media(max-width:1220px){
+//     .pagination{
+//         margin-top: 20px;
+//        margin-left: 60%;
+//     } 
+    
+// }
+// @media(max-width:1280px){
+//     .pagination{
+//         margin-top: 20px;
+//        margin-left: 55%;
+    
+//     } 
+//     .navigator{
+//         margin-left: -20px;
+//     }
+  
+// }
+// @media(max-width:1000px){
+//     .pagination{
+//         margin-top: 20px;
+//        margin-left: 50%;
+    
+//     } 
+  
+// }
+@media(max-width:1366px){
+    .pagination{
+        margin-top: 20px;
+        margin-left: 70%;
+    
+    } 
+    // .item__attribute--desc{
+    //     width: 40%;
+    //      white-space: wrap;
+    //    text-overflow: inherit;
+    //    overflow: auto;
+    
+    // }
+  
+}
+@media(max-width:1280px){
+    .pagination{
+        margin-top: 20px;
+       margin-left: 70%;
+    
+    } 
+  
+}
+@media(max-width:1024px){
     .pagination{
         margin-top: 20px;
        margin-left: 65%;
     
-    }
-}
-@media(max-width:1220px){
-    .pagination{
-        margin-top: 20px;
-       margin-left: 60%;
     } 
+    // .item__attribute--desc{
+    //     display: none;
     
+    // } 
+    // .item__attribute--quantity{
+    //     margin-right: 1rem;
+    // }
+    // .navigator--desc{
+    //     margin-left: 1rem;
+       
+    // }
 }
-@media(max-width:1104px){
-    .pagination{
-        margin-top: 20px;
-       margin-left: 55%;
-    
-    } 
-    .navigator{
-        margin-left: -20px;
-    }
-  
-}
-@media(max-width:1000px){
+@media(max-width:768px){
+    // .item__attribute--link{
+    //     margin-left: -0.5rem;
+    // }
     .pagination{
         margin-top: 20px;
        margin-left: 50%;
     
     } 
-  
 }
-@media(max-width:940px){
-    .pagination{
-        margin-top: 20px;
-       margin-left: 40%;
-    
-    } 
-    .item__attribute--desc{
-        width: 40%;
-         white-space: nowrap;
-        text-overflow: ellipsis;
-        overflow: hidden;
-    
-    }
-  
-}
-@media(max-width:830px){
-    .pagination{
-        margin-top: 20px;
-       margin-left: 30%;
-    
-    } 
-  
-}
-@media(max-width:775px){
-   
-    .item__attribute--desc{
+@media(max-width:480px){
+    th:nth-child(2){
         display: none;
-    
-    } 
-    .item__attribute--quantity{
-        margin-right: 1rem;
     }
-    .navigator--desc{
-        margin-left: 1rem;
-       
+    th:nth-child(1){
+        display: none;
     }
-}
-@media(max-width:700px){
-    .item__attribute--link{
-        margin-left: -0.5rem;
+    th:nth-child(4){
+        display: none;
+    }
+    th:nth-child(6){
+        display: none;
     }
     .pagination{
-        margin-top: 20px;
-       margin-left: 15%;
-    
-    } 
-}
-@media(max-width:641px){
-    .item__attribute--link{
-        margin-left: -0.5rem;
-    }
-    .pagination>li{
-       
-            margin: none !important;
-            padding: none;
+        margin-left: 60%;
+       li:not(:last-child):not(:first-child){
+         display: none;
+       }
+      
       
     //     margin-top: 20px;
     //    margin-left: 5%;
     // display: none;
     } 
 }
-@media(max-width:376px){
+@media(max-width:320px){
     .pagination{
-        margin-left: 50%;
+        margin-left: 30%;
        li:not(:last-child):not(:first-child){
          display: none;
        }
     }  
-    .item__attribute--link{
-        margin-left: -2.5rem;
-    }
-    .item__attribute--sold{
-        display: none;
-    }
-    .navigator--quantity{
-        font-size: 15px;
-        padding-left: 0.5rem;
-    }
+   
+    
+   
 }
 

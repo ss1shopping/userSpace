@@ -15,11 +15,15 @@ export const itemActionTypes={
   loadingItemSuccess:"[ACTION LOADING SUCCESSFUL]",
   Error: '[Error] Action',
   DeleteError: '[Delte Error] Action',
-  uploadItem:"[ACTION UPLOAD ITEM]",
-  uploadItemSuccess:"[ACTION UPLOAD ITEAM SUCCESSFUL]",
+  addItem:"[ACTION UPLOAD ITEM]",
+  addItemSuccess:"[ACTION UPLOAD ITEAM SUCCESSFUL]",
   loadTotal:"[Action Loading all infor]",
   loadTotalSuccessfull:"[Action loading infor successful]",
   loadTotalFailure:"[Action loading  infor fail]",
+  ItemChoseToEdit:"[item choose to edit]",
+  updateItem:"[update Item]",
+  updateItemSuccesful:"[update item succcesful]",
+  
   
   
 }
@@ -46,5 +50,8 @@ export const authActionTypes = {
 export const totalActionTypes={
   loadingInforChart:'[Action Loading Infor Chart]',
   loadingInforChartSuccessful:`[Action loading Infor Chart Success]`,
-  loadingInforChartFailure:`[Action Loading Infor Chart Fail]`
+  loadingInforChartFailure:`[Action Loading Infor Chart Fail]`,
+  loadingAllListOrder:`[Action Loading All list order]`,
+  loadingAllLIstOrderSuccessful:"[Action Loading All list order succesfull]",
+  loadingAllListOrderFailure:"[Action Loading All All list order failure]"
 }

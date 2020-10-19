@@ -1,5 +1,4 @@
-import { persistReducer } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
+
 import {totalActionTypes } from "../../constant/index"
 const initialAuthState = {
    pending:false,
@@ -9,14 +8,14 @@ const initialAuthState = {
   totalMonth2: 0,
   totalMonth3: 0,
   totalMonth4: 0,
-  nameMonth1: "Oct",
-  nameMonth2: "Sep",
-  nameMonth3: "Aug",
-  nameMonth4: "Jul"
+  nameMonth1: "JAJ",
+  nameMonth2: "SLD",
+  nameMonth3: "SLO",
+  nameMonth4: "Jul",
+  listOrder:null,
+  errorGetlistOrder:null,
 }
-export const totalReducer = persistReducer(
-    { storage, key: 'total', whitelist: [] },
-    (state = initialAuthState, action) => {
+ const  totalReducer=(state = initialAuthState, action) => {
       switch (action.type) {
          case totalActionTypes.loadingInforChart:
          return{
@@ -38,13 +37,28 @@ export const totalReducer = persistReducer(
             return{
                 ...state,error:action.payload,pending:!state.pending
             }
-          
+        case totalActionTypes.loadingAllListOrder:
+            return{
+                ...state,pending:!state.pending
+            }
+        case totalActionTypes.loadingAllLIstOrderSuccessful:
+            return{
+                ...state,pending:!state.pending,listOrder:action.payload
+            }
+        case totalActionTypes.loadingAllListOrderFailure:
+            return{
+                ...state,pending:!state.pending,errorGetlistOrder:action.payload
+            }
         default:
           return state;
       }
-      })
+      }
+      export default totalReducer;
 export const totalActions={
       loadingInforChart:(kind)=>({type:totalActionTypes.loadingInforChart,payload:{kind}}),
       loadingInforChartSuccess:(payload)=>({type:totalActionTypes.loadingInforChartSuccessful,payload}),
-      loadingInforChartFailure:(payload)=>({type:totalActionTypes.loadingInforChartFailure,payload})
+      loadingInforChartFailure:(payload)=>({type:totalActionTypes.loadingInforChartFailure,payload}),
+      loadingListOrder:()=>({type:totalActionTypes.loadingAllListOrder}),
+      loadingListOrderSuccessful:(payload)=>({type:totalActionTypes.loadingAllLIstOrderSuccessful,payload}),
+      loadingListOrderFailure:(payload)=>({type:totalActionTypes.loadingAllLIstOrderSuccessful,payload})
 }

@@ -1,4 +1,4 @@
-import React,{useState,useRef} from 'react'
+import React,{useState,useRef,useEffect} from 'react'
 import {Bar,Line,Pie,Doughnut,Mixed, Bubble} from "react-chartjs-2"
 import { useSelector } from 'react-redux'
 
@@ -13,33 +13,59 @@ const Chart = (props) => {
     const nameMonth2=useSelector(state=>state.totalReducer.nameMonth2)
     const nameMonth3=useSelector(state=>state.totalReducer.nameMonth3)
     const nameMonth4=useSelector(state=>state.totalReducer.nameMonth4)
+    
+    const [data,setData]=useState([ totalMonth4,totalMonth3,totalMonth2,totalMonth1])
     const [name, setname] = useState("Line")
     const [ChartData, setChartData] = useState( {
-        labels: [nameMonth4,nameMonth3,nameMonth2,nameMonth1],
-        datasets:[
-          {
-            label:'sold',
-            data:[
-            totalMonth4,totalMonth3,totalMonth2,totalMonth1
-            ],
-            backgroundColor:[
-              'rgba(255, 99, 132, 0.6)',
-              'rgba(54, 162, 235, 0.6)',
-              'rgba(255, 206, 86, 0.6)',
-              'rgba(75, 192, 192, 0.6)',
-              'rgba(153, 102, 255, 0.6)',
-              'rgba(255, 159, 64, 0.6)',
-              'rgba(255, 99, 132, 0.6)'
-            ],
-            boderWidth:4,
-            width:"100%",
-            height:"300px",
-            hoverBackgroundColor:"rgba(30, 25, 12, 0.8)",
-            hoverBorderColor:"rgba(30, 25, 12, 0.8)",
-            hoverBorderWidth:"rgba(30, 25, 12, 0.8)",
-          }
-        ]
-      })
+      labels: [nameMonth4,nameMonth3,nameMonth2,nameMonth1],
+      datasets:[
+        {
+          label:'sold',
+          data:data,
+          backgroundColor:[
+            'rgba(255, 99, 132, 0.6)',
+            'rgba(54, 162, 235, 0.6)',
+            'rgba(255, 206, 86, 0.6)',
+            'rgba(75, 192, 192, 0.6)',
+            'rgba(153, 102, 255, 0.6)',
+            'rgba(255, 159, 64, 0.6)',
+            'rgba(255, 99, 132, 0.6)'
+          ],
+          boderWidth:4,
+          width:"100%",
+          height:"300px",
+          hoverBackgroundColor:"rgba(30, 25, 12, 0.8)",
+          hoverBorderColor:"rgba(30, 25, 12, 0.8)",
+          hoverBorderWidth:"rgba(30, 25, 12, 0.8)",
+        }
+      ]
+    })
+      useEffect(() => {
+        setChartData({
+          labels: [nameMonth4,nameMonth3,nameMonth2,nameMonth1],
+          datasets:[
+            {
+              label:'sold',
+              data:[totalMonth4,totalMonth3,totalMonth2,totalMonth1],
+              backgroundColor:[
+                'rgba(255, 99, 132, 0.6)',
+                'rgba(54, 162, 235, 0.6)',
+                'rgba(255, 206, 86, 0.6)',
+                'rgba(75, 192, 192, 0.6)',
+                'rgba(153, 102, 255, 0.6)',
+                'rgba(255, 159, 64, 0.6)',
+                'rgba(255, 99, 132, 0.6)'
+              ],
+              boderWidth:4,
+              width:"100%",
+              height:"300px",
+              hoverBackgroundColor:"rgba(30, 25, 12, 0.8)",
+              hoverBorderColor:"rgba(30, 25, 12, 0.8)",
+              hoverBorderWidth:"rgba(30, 25, 12, 0.8)",
+            }
+          ]
+        })
+      }, [totalMonth1])
       if(props.chart=="lineChart"){
         return( <div className="chart" > 
         {}
@@ -60,7 +86,7 @@ const Chart = (props) => {
           }}
           />
           </div>)
-      }if(props.chart=="barChart"){
+      }if(props.chart==="barChart"){
     return (
       <div className="chart" > 
       {}
@@ -82,7 +108,7 @@ const Chart = (props) => {
         />
         </div>
     )
-      }if(props.chart=="pieChart"){
+      }if(props.chart==="pieChart"){
         return (
           <div className="chart" > 
           {}
@@ -104,7 +130,7 @@ const Chart = (props) => {
             />
             </div>
         )
-      }if(props.chart=="doughnutChart"){
+      }if(props.chart==="doughnutChart"){
         return (
           <div className="chart" > 
           {}
@@ -126,7 +152,7 @@ const Chart = (props) => {
             />
             </div>
         )
-      }if(props.chart=="bubbleChart"){
+      }if(props.chart==="bubbleChart"){
         return (
           <div className="chart" > 
           {}
@@ -148,7 +174,7 @@ const Chart = (props) => {
             />
             </div>
         )
-      }if(props.chart=="mixedChart"){
+      }if(props.chart==="mixedChart"){
         return (
           <div className="chart" > 
           {}

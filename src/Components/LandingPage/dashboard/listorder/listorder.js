@@ -7,7 +7,7 @@ import {AiTwotoneEdit} from "react-icons/ai"
 import { itemActions } from '../../../../app/store/ducks/itemReducer';
 import NavbarCustom from '../navbar/navbar';
 
- const Item = () => {
+ const ListOrder = () => {
       const dispatch = useDispatch()
       const input =useRef(null)
      
@@ -16,7 +16,7 @@ import NavbarCustom from '../navbar/navbar';
       let item=useSelector(state=>state.itemReducer.item)
       const [stateCustomer, setCustomerState] = useState([]);
           
-      console.log(stateCustomer);
+     
      const [pageCount, setpageCount] = useState(100)
      const [page, setPage] = useState(1)
      const [limit, setLimit] = useState(3)
@@ -25,7 +25,7 @@ import NavbarCustom from '../navbar/navbar';
       
      }
      useEffect(() => {
-        dispatch(itemActions.loadingitem(limit,page))
+        // dispatch(itemActions.loadingitem(limit,page))
      }, [page])
     
      const handleChangetoEdit=(item)=>{
@@ -75,7 +75,7 @@ import NavbarCustom from '../navbar/navbar';
                     <th className="item__attribute--sold">{item[index].sold}</th>
                           
                             {/* </Link> */}
-                            <th className="item__attribute--edit"><Link to={`/dashboard/item/${item[index]._id}`} onClick={(e)=>handleChangetoEdit(item[index])}><AiTwotoneEdit/>EDIT </Link></th>
+                            <th className="item__attribute--edit"><Link to={`/dashboard/item/${item[index]._id}`} ><AiTwotoneEdit/>EDIT </Link></th>
                              
                        
                        
@@ -99,23 +99,15 @@ import NavbarCustom from '../navbar/navbar';
                         <thead>
                             <tr className="item__attribute">
                     <th className="item__attribute--checkbox">
-                    <input type="checkbox"  onChange={e => {
-                  let value = e.target.checked;
-                  setCustomerState(
-                    stateCustomer.map(d => {
-                      d.select = value;
-                      return d;
-                    })
-                  );
-                }}/>    
+                    <input type="checkbox" />    
                             </th>
                         {/* <div className="item__attribute--link"> */}
                         
                             <th className='item__attribute--id navigator--id'>id</th>
                         <th className="item__attribute--name navigator--name">Name</th>
-                        <th className="item__attribute--desc navigator--desc">Desc</th>
-                        <th className="item__attribute--quantity navigator--quantity">Quantity</th>
-                        <th className="item__attribute--price navigator--price">Price</th>
+                        <th className="item__attribute--desc navigator--desc">Phone</th>
+                        <th className="item__attribute--quantity navigator--quantity">Total Cost</th>
+                        <th className="item__attribute--price navigator--price">Address</th>
                         <th className="item__attribute--sold navigator--sold">Sold</th>
                         <th className="item__attribute--edit"> EDIT</th>
                              
@@ -153,4 +145,4 @@ import NavbarCustom from '../navbar/navbar';
         </div>
     )
 }
-export default Item;
+export default ListOrder;

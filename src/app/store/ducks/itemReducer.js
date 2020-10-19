@@ -3,7 +3,9 @@ import storage from 'redux-persist/lib/storage';
 import {itemActionTypes } from "../../constant/index"
 const initialAuthState = {
   isPending: false,
-  item: undefined,
+  itemtoEdit:"",
+  item: [],
+  message:null,
   error: null,
   notice:null,
   totalSold:null,
@@ -66,6 +68,18 @@ export const itemReducer = persistReducer(
             return{
                 ...state,errorLoadingTotalInfor:action.payload
             }
+        case itemActionTypes.ItemChoseToEdit:
+            return{
+                ...state,itemtoEdit:action.payload
+            }
+        case itemActionTypes.updateItem:
+            return{
+                ...state,isPending:!state.isPending,
+            }
+        case itemActionTypes.updateItemSuccesful:
+            return{
+                ...state,isPending:!state.isPending,message:action.payload.msg
+            }
         
       default:
         return state;
@@ -74,7 +88,7 @@ export const itemReducer = persistReducer(
 
 
 export const itemActions={
-    loadingitem:(offset,limit)=>({type:itemActionTypes.loadingitem,payload:{offset,limit}}),
+    loadingitem:(limit,page)=>({type:itemActionTypes.loadingitem,payload:{limit,page}}),
     loadingsuccess:(payload)=>({type:itemActionTypes.loadingItemSuccess,payload}),
     loadingfailure:(payload)=>({type:itemActionTypes.error,payload}),
     error:(payload)=>({type:itemActionTypes.Error,payload}),
@@ -83,5 +97,9 @@ export const itemActions={
     uploaditemsuccess:(payload)=>({type:itemActionTypes.uploadItemSuccess,payload}),
     loadingInfor:(payload)=>({type:itemActionTypes.loadTotal,payload}),
     loadingInforSuccessfull:(payload)=>({type:itemActionTypes.loadTotalSuccessfull,payload}),
-    loadingInforFailure:(payload)=>({type:itemActionTypes.loadTotalFailure,payload})
+    loadingInforFailure:(payload)=>({type:itemActionTypes.loadTotalFailure,payload}),
+    itemChooseToEdit:(payload)=>({type:itemActionTypes.ItemChoseToEdit,payload}),
+    updateItem:(id,name,price,quantity,description,history)=>({type:itemActionTypes.updateItem,payload:{id,name,price,quantity,description,history}}),
+    updateItemSuccesfull:(payload)=>({type:itemActionTypes.updateItemSuccesful,payload}),
+    
 }

@@ -1,19 +1,10 @@
-import React, {useState,useRef,useEffect} from 'react';
-import { useDispatch,useSelector} from "react-redux"
-import { FiAlignJustify } from "react-icons/fi";
-import { RiDashboardLine,RiDeleteBin6Line } from "react-icons/ri";
-import { AiOutlineCloudUpload ,AiFillSetting,AiFillCaretDown} from "react-icons/ai";
-import {Image,Tab,Tabs,Sonnet, Nav,Navbar,InputGroup,FormControl, Container} from "react-bootstrap"
-import { FcAbout } from "react-icons/fc";
-import {Bar,Line,Pie,Doughnut} from "react-chartjs-2"
-import { GrStatusCriticalSmall} from "react-icons/gr";
-import  avatar from "../../../app/scss/avatar.jpg"
+import React, {useState,useEffect} from 'react';
+import { useDispatch} from "react-redux"
+import { Nav,Navbar} from "react-bootstrap"
 import {IoIosSearch} from "react-icons/io"
 import Autosugget from "./AutoSuugestion"
 import {itemActions} from '../../../app/store/ducks/itemReducer';
-import Item from './item/item';
 import LineChart from "./chart/Linechart";
-
 import {Row,Col} from "react-bootstrap"
 import DatePicker from "react-datepicker";
 import TotalInfor from './TotalInfor/TotalInfor';
@@ -31,21 +22,21 @@ const Dashboard = () => {
       return ({year,month,day})
       }
       
-     const item =useSelector(state=>state.itemReducer.item)
+   
      const [startDate, setStartDate] = useState(new Date());
      const [chart, setChart] = useState("lineChart")
      const [total,setTotal]=useState("totalUser")
-      const [key, setKey] = useState('home');
+      // const [key, setKey] = useState('home');
      
-      useEffect(() => {
+     
          dispatch(itemActions.loadingitem()) 
-      }, [])
+     
       useEffect(() => {
         dispatch(itemActions.loadingInfor(convertDate(startDate)))
        }, [startDate]) 
       useEffect(()=>{
         dispatch(totalActions.loadingInforChart(total))
-        console.log("chay");
+        console.log(total);
       },[total])
     return (
        

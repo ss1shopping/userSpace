@@ -4,4 +4,7 @@ export function getinforchart(data) {
     console.log(data);
     return initApi(false).get(API_URLS.GET_INFOR_CHART(data))
    }
+export function getAllListOder(){
+    return initApi(false).get(API_URLS.GET_ALL_LIST_ORDER)
+}
  

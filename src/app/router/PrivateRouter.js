@@ -1,9 +1,9 @@
-import React ,{useEffect}from 'react';
+import React from 'react';
 
 import {getStorage} from "../../_metronic/utils/utils"
-import {useSelector,useDispatch,connect} from "react-redux"
+import {connect} from "react-redux"
 import { withRouter, Route,Redirect } from 'react-router-dom';
-import {checkAuth} from "../store/ducks/authReducer";
+// import {checkAuth} from "../store/ducks/authReducer";
 import { authActions } from "../store/ducks/authReducer";
 class PrivateRoute extends React.Component {
   componentDidMount () {

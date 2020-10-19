@@ -1,0 +1,46 @@
+
+
+.itemdetail{
+
+&__box{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px sold black;
+    width: 90%;
+    padding-top: 100px;
+    margin: 0 auto;
+    
+    &--input{
+     size:80;
+     
+    }
+    &--name{
+     margin: 10px 0;
+     input{
+         width: 600px;
+     }
+    }
+    &--price{
+        margin: 10px 0;
+        input{
+            width: 600px;
+        }
+        
+    }
+    &--quantity{
+        margin: 10px 0;
+        input{
+            width: 600px;
+        }
+    }
+    &--description{
+        margin: 10px 0;
+        textarea{
+            width: 600px;
+        }
+    }
+
+}
+}

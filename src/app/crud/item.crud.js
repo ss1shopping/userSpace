@@ -15,7 +15,7 @@ export function deleteImageItem(data){
   return initApi(false).delete(API_URLS.DELETE_IMAGE_ITEM)
 }
 export function updateItem(data){
-  return initApi(false).patch(API_URLS.UPDATE_ITEM)
+  return initApi(false).put(API_URLS.UPDATE_ITEM,data)
 }
 export function deleteItem(data){
   return initApi(false).post(API_URLS.DELETE_ITEM)

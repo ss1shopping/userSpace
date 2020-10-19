@@ -1,5 +1,5 @@
 //   https://servertien.herokuapp.com
-export const API_URL = "https://servertien.herokuapp.com";
+export const API_URL = "http://localhost:4000";
 
 export const API_URLS = {
   REGISTER: '/users',
@@ -10,7 +10,7 @@ export const API_URLS = {
   RESET_PASSWORD: '/api/reset-password',
   GET_ITEM: (data)=> `/item/limit=${data.limit}/page=${data.page}`, 
   ADD_ITEM:'/shopping',
-  UPDATE_ITEM:"/shopping",
+  UPDATE_ITEM:"/item",
   DELETE_ITEM:"/shopping",
   ADD_IMAGE_ITEM:"/shopping/upload",
   DELETE_IMAGE_ITEM:"/shopping/upload",
@@ -27,5 +27,6 @@ export const API_URLS = {
   // tu tao
   CRAWLER_DATA:"/crawler/getdata",
   GET_TOTAL_INFOR:(data)=>`/total/getallinfor/day=${data.day}/month=${data.month}/year=${data.year}`,
-  GET_INFOR_CHART:(data)=>`total/getallinfor/kind=${data}`
+  GET_INFOR_CHART:(data)=>`total/getallinfor/kind=${data.kind}`,
+  GET_ALL_LIST_ORDER:"/history",
 };

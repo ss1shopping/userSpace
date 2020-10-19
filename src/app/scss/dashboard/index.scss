@@ -1,8 +1,8 @@
 @import "./upload.dashboard.scss";
 @import "./items.scss";
 @import "./statistic.scss";
-
-
+@import "../payment/payment.scss";
+@import "./itemDetail.scss";
 .sidebar {
   background: #2f323a;
  
@@ -173,7 +173,7 @@ label #btn{
     padding: 63px 0 0 250px; 
   }
 }
-@media(max-width:376px){
+@media(max-width:320px){
   .content__search-box{
     position: absolute;
     top:-60%;
@@ -181,22 +181,22 @@ label #btn{
   }
   .sidebar {
   
-    width: 380px;
+    width: 340px;
    
   }
   
   #check:checked ~ .sidebar{
-    left: -320px;
+    left: -280px;
   }
   
   #check:checked ~ .sidebar a{
     font-size: 20px;
-    margin-left: 300px;
+    margin-left: 260px;
     width: 80px;
   }
   #check:checked ~ .sidebar label #btn{
     font-size: 20px;
-    margin-left: 300px;
+    margin-left: 260px;
     width: 80px;
   }
   #check:checked ~ .content {
@@ -205,4 +205,38 @@ label #btn{
 }
   .content{margin-left: -200px}
 }
+
+@media(max-width:376px){
+  .content__search-box{
+    position: absolute;
+    top:-60%;
+    right:0%;
+  }
+  .sidebar {
+  
+    width: 396px;
+   
+  }
+  
+  #check:checked ~ .sidebar{
+    left: -336px;
+  }
+  
+  #check:checked ~ .sidebar a{
+    font-size: 20px;
+    margin-left: 316px;
+    width: 80px;
+  }
+  #check:checked ~ .sidebar label #btn{
+    font-size: 20px;
+    margin-left: 316px;
+    width: 80px;
+  }
+  #check:checked ~ .content {
+    padding-left: 60px;
+    margin-left: 0px;
+}
+  .content{margin-left: -200px}
+}
+
 

@@ -8,8 +8,8 @@ import authAction from "../sagas/authAction"
 // import { metronic } from '../../_metronic';
 import {itemReducer} from "./ducks/itemReducer";
 import  itemAction from "../sagas/item.Action";
-import {totalReducer} from "./ducks/totalReducer"
-import totalAction from "../sagas/item.Action"
+import totalReducer from "./ducks/totalReducer"
+import totalAction from "../sagas/total.Action"
 export  const rootReducer = combineReducers({
 authReducer:authReducer,
 loadingReducer:loadingReducer,

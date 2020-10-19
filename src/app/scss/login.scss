@@ -14,73 +14,81 @@ border-top: 1px solid #393a3b;
     width: 30%;
     height: 55%;
 
-    form {
-      .input {
-        margin-bottom: 15px;
-        width: 100%;
+    // form {
+    //   .input {
+    //     margin-bottom: 15px;
+    //     width: 100%;
 
-        input {
-          width: 100%;
-          height: 30px;
+    //     input {
+    //       width: 100%;
+    //       height: 30px;
 
-        }
-        .error{
-          word-break:break-all;
-          color:red
-        }
+    //     }
+    //     .error{
+    //       word-break:break-all;
+    //       color:red
+    //     }
 
-      }
-      .error{
-        margin-bottom: 10px;
-        color:red;
-      }
+    //   }
+    //   .error{
+    //     margin-bottom: 10px;
+    //     color:red;
+    //   }
 
-      .submit {
-        width: 100%;
+    //   .submit {
+    //     width: 100%;
 
-        input {
-          background-color: rgb(40, 167, 69);
+    //     input {
+    //       background-color: rgb(40, 167, 69);
          
-          background-image: linear-gradient(-180deg, #34d058, #28a745 90%);
-          width: 104%;
-          height: 33px;
-          border-radius: 5px;
-          box-sizing: border-box;
-          color: white;
-          font-weight: bold;
-          box-shadow: hsla(145, 80%, 44%, 0.938);
-        }
-      }
+    //       background-image: linear-gradient(-180deg, #34d058, #28a745 90%);
+    //       width: 104%;
+    //       height: 33px;
+    //       border-radius: 5px;
+    //       box-sizing: border-box;
+    //       color: white;
+    //       font-weight: bold;
+    //       box-shadow: hsla(145, 80%, 44%, 0.938);
+    //     }
+    //   }
 
-      .box {
-        border: 1px solid #d8dee2;
-        ;
-        margin-top: 25px;
-        width: 104%;
-        border-radius: 5px;
+    //   .box {
+    //     border: 1px solid #d8dee2;
+    //     ;
+    //     margin-top: 25px;
+    //     width: 104%;
+    //     border-radius: 5px;
 
-        .register {
-          .question {}
+    //     .register {
+    //       .question {}
 
-          .link {
-            margin-left: 10px;
+    //       .link {
+    //         margin-left: 10px;
 
-            a {
-              text-decoration: none;
-            }
-          }
-        }
+    //         a {
+    //           text-decoration: none;
+    //         }
+    //       }
+    //     }
 
-        .forgot {
-          span {
-            a {
-              text-decoration: none;
-            }
-          }
-        }
-      }
-    }
+    //     .forgot {
+    //       span {
+    //         a {
+    //           text-decoration: none;
+    //         }
+    //       }
+    //     }
+    //   }
+    //}
   }
+}
+.error{
+  color:red;
+  word-break: break-all;
+}
+.btn{
+  width: 100%;
+  background: linear-gradient(#e66465, #9198e5);
 }
 
 @media screen and (max-width: 1250px) {

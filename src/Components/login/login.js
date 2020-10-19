@@ -1,28 +1,16 @@
-import React ,{useMemo,useState} from 'react';
+import React ,{useState} from 'react';
 import { Link } from 'react-router-dom';
-
 import { useSelector, useDispatch} from 'react-redux';
 import {Formik,useField, Form} from "formik"
 import * as Yup from "yup"
-
 import { authActions } from '../../app/store/ducks/authReducer';
-
-
-import { createMuiTheme, makeStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
-
-
-
+import {  makeStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CircularProgress from '@material-ui/core/CircularProgress';
-
-import { ThemeProvider } from '@material-ui/styles';
 import LockIcon from '@material-ui/icons/Lock';
-
-
 const useStyles = makeStyles(theme => ({
     main: {
       marginTop:'100px',
@@ -36,7 +24,7 @@ const useStyles = makeStyles(theme => ({
         backgroundSize: 'cover',
     },
     card: {
-        minWidth: 300,
+        width: '500px',
         marginTop: '6em',
     },
     avatar: {
@@ -62,6 +50,7 @@ const useStyles = makeStyles(theme => ({
     },
     actions: {
         padding: '0 1em 1em 1em',
+       
     },
 }));
 const CustomTextForm=({label,...props})=>{
@@ -137,7 +126,6 @@ const Login = (props) => {
                             </Avatar>
                         </div>
                         <div className={classes.hint}>
-                            Hint: demo / demo
                         </div>
                         <div className={classes.form}>
                             <div className={classes.input}>
@@ -150,12 +138,13 @@ const Login = (props) => {
                         </div> 
                         <div className="error" >{error}</div>
                         <CardActions className={classes.actions}>
-                            <Button
-                                variant="contained"
-                                type="submit"
-                                color="primary"
-                                disabled={loading}
-                                fullWidth
+                            <button
+                                className="btn"
+                              //   variant="contained"
+                              //   type="submit"
+                              //  color="primary"
+                              //   disabled={loading}
+                              //   fullWidth
                             >
                                 {loading && (
                                     <CircularProgress
@@ -163,8 +152,8 @@ const Login = (props) => {
                                         thickness={2}
                                     />
                                 )}
-                              Sign in
-                            </Button>
+                              {isSubmitting?"Loading...":"Sign in"}
+                            </button>
                         </CardActions>
                         <div className="register" style={{padding:"0 1em 1em 1em"}}>
            <span className="question">New to Xoay?</span>

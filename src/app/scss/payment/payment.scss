@@ -1,0 +1,122 @@
+
+.box{
+    margin:0  100px 20px 100px;
+}
+.box__item {
+    background-color: #f5f5ef;
+    text-align: center;
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-top: 30px;
+  border: 1px solid black;
+  box-shadow:5px 5px 5px 5px #dee0e4;
+}
+
+
+.image {
+    width: 90%;
+    height: 200px;
+    margin-top: 10px;
+}
+.box__item--button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.box__item--infor{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.box__item--name {
+    font-size: 24px;
+    color: #15171f;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-top: 30px;
+}
+
+.minus {
+    padding: 0;
+    border: none;
+    background: none;
+    margin-right: 0px;
+}
+.plus {
+    padding: 0;
+    border: none;
+    background: none;
+    margin-left: 0px;
+}
+.quantity {
+    background: transparent;
+    text-align: center;
+    border: none;
+    font-size: 24px;
+    display: inline-block;
+    margin: 0 40px;
+}
+
+.delete {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+.delbut {
+    border: none;
+}
+// last
+.final {
+    background-color: whitesmoke;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.button1 {
+    width: 33%;
+    text-align: center;
+    background-color: black;
+    height: 100%;
+}
+.opt1 {
+    font-family: 'Oswald', sans-serif;
+    color: white;
+    text-transform: uppercase;
+    display: block;
+    padding: 20px 0;
+    font-size: 18px;
+}
+.totalamount {
+    width: 33%;
+    text-align: center;
+    font-size: 30px;
+}
+.button2 {
+    width: 33%;
+    text-align: center;
+    background-color: black;
+    height: 100%;
+}
+.opt2 {
+    font-family: 'Oswald', sans-serif;
+    color: white;
+    text-transform: uppercase;
+    display: block;
+    padding: 20px 0;
+    font-size: 18px;
+}
+@media(max-width:376px){
+    .box{
+     width: 100%;
+     margin: 0;
+    }
+    .image{
+        width: 100%;
+    }
+}
