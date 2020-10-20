@@ -48,9 +48,9 @@ export function useWindowDimensions() {
             <div className="message">
                <div className="message__content" style={{left:top}}>
            <p className="message__content--text" >
-               hi, Tiến đây !!
+               Happy Women's Day !!
            </p>
-         <p className="message__content--text">chúc c 20/10 vui vẻ, mọi may mắn sẽ đến nha cô gái mà t theo đuổi !!</p>
+         <p className="message__content--text">Chúc c 20/10 vui vẻ,xinh đẹp và mọi may mắn sẽ đến nha cô gái mà t theo đuổi !!</p>
                </div>
            </div>
         </div>

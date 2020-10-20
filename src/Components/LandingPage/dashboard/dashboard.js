@@ -10,6 +10,7 @@ import DatePicker from "react-datepicker";
 import TotalInfor from './TotalInfor/TotalInfor';
 import NavbarCustom from './navbar/navbar';
 import { totalActions } from '../../../app/store/ducks/totalReducer';
+import FooterDashboard from "../../footer/footerDashboard"
 
 const Dashboard = () => {
       const dispatch = useDispatch()
@@ -86,7 +87,7 @@ const Dashboard = () => {
              </Row>
              <Row  >
               <Col>
-              <div>
+              <div className="select">
 
               <form style={{marginLeft:"100px"}}>
                 <label for="totals">Choose the total</label>
@@ -121,6 +122,7 @@ const Dashboard = () => {
              </Col>
              </Row>
        </div> 
+     <FooterDashboard></FooterDashboard>
     </div>
         </div>
        

@@ -3,6 +3,7 @@
 @import "./statistic.scss";
 @import "../payment/payment.scss";
 @import "./itemDetail.scss";
+@import "../footer/footer.scss";
 .sidebar {
   background: #2f323a;
  
@@ -124,7 +125,12 @@ label #btn{
     width: 0;
   }
 }
-
+.select{
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  width: 100%;
+}
 #check:checked ~ .content{
   padding-left: 60px;
 }
@@ -173,37 +179,45 @@ label #btn{
     padding: 63px 0 0 250px; 
   }
 }
+@media(max-width:500px){
+  .content{
+    padding: 0; 
+  }
+  .sidebar{
+    display: none;
+  }
+}
 @media(max-width:320px){
   .content__search-box{
     position: absolute;
     top:-60%;
     right:0%;
   }
-  .sidebar {
+//   .sidebar {
   
-    width: 340px;
+//     width: 340px;
    
-  }
+//   }
   
-  #check:checked ~ .sidebar{
-    left: -280px;
-  }
+//   #check:checked ~ .sidebar{
+//     left: -280px;
+//   }
   
-  #check:checked ~ .sidebar a{
-    font-size: 20px;
-    margin-left: 260px;
-    width: 80px;
-  }
-  #check:checked ~ .sidebar label #btn{
-    font-size: 20px;
-    margin-left: 260px;
-    width: 80px;
-  }
-  #check:checked ~ .content {
-    padding-left: 60px;
-    margin-left: 0px;
-}
-  .content{margin-left: -200px}
+//   #check:checked ~ .sidebar a{
+//     font-size: 20px;
+//     margin-left: 260px;
+//     width: 80px;
+//   }
+//   #check:checked ~ .sidebar label #btn{
+//     font-size: 20px;
+//     margin-left: 260px;
+//     width: 80px;
+//   }
+//   #check:checked ~ .content {
+//     padding-left: 60px;
+//     margin-left: 0px;
+// }
+//   .content{margin-left: -200px}
 }
 
 @media(max-width:376px){
@@ -212,31 +226,31 @@ label #btn{
     top:-60%;
     right:0%;
   }
-  .sidebar {
+//   .sidebar {
   
-    width: 396px;
+//     width: 396px;
    
-  }
+//   }
   
-  #check:checked ~ .sidebar{
-    left: -336px;
-  }
+//   #check:checked ~ .sidebar{
+//     left: -336px;
+//   }
   
-  #check:checked ~ .sidebar a{
-    font-size: 20px;
-    margin-left: 316px;
-    width: 80px;
-  }
-  #check:checked ~ .sidebar label #btn{
-    font-size: 20px;
-    margin-left: 316px;
-    width: 80px;
-  }
-  #check:checked ~ .content {
-    padding-left: 60px;
-    margin-left: 0px;
-}
-  .content{margin-left: -200px}
+//   #check:checked ~ .sidebar a{
+//     font-size: 20px;
+//     margin-left: 316px;
+//     width: 80px;
+//   }
+//   #check:checked ~ .sidebar label #btn{
+//     font-size: 20px;
+//     margin-left: 316px;
+//     width: 80px;
+//   }
+//   #check:checked ~ .content {
+//     padding-left: 60px;
+//     margin-left: 0px;
+// }
+//   .content{margin-left: -200px}
 }
 
 

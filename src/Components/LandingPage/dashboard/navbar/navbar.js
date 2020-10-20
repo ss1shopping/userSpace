@@ -5,6 +5,7 @@ import { AiOutlineCloudUpload ,AiFillSetting,AiFillCaretDown} from "react-icons/
 import {IoIosSearch} from "react-icons/io"
 import { FcAbout } from "react-icons/fc";
 import { GrStatusCriticalSmall} from "react-icons/gr"
+import {FaList} from "react-icons/fa"
 import{Link} from "react-router-dom"
 const NavbarCustom = () => {
     return (
@@ -20,7 +21,7 @@ const NavbarCustom = () => {
       <Link to="/"><RiDashboardLine/><span>Dashboard</span></Link>
       <Link to="/dashboard/item"><AiOutlineCloudUpload/><span>Item</span></Link>
       <Link to="/dashboard/upload"><GrStatusCriticalSmall/><span>upload</span></Link>
-      <Link to="/dashboard/list-order"><RiDeleteBin6Line/><span>List Order</span></Link>
+      <Link to="/dashboard/list-order"><FaList/><span>List Order</span></Link>
       <Link to="/"><FcAbout/><span>About</span></Link>
       <Link to="/"><AiFillSetting/><span>Settings</span></Link>
     </div>

@@ -10,7 +10,6 @@ import LandingPage from "../../Components/LandingPage/LandingPage";
 import PrivateRouter from "./PrivateRouter";
 import Login from "../../Components/login/login";
 import Register from "../../Components/login/regiter";
-import Profile from "../../Components/LandingPage/profile/profile";
 import ConfirmAccount from "../../Components/login/confirmAccount";
 import ConfirmSuccessful from "../../Components/login/confirmSuccess";
 import Payment from "../../Components/payment/payment"
@@ -31,7 +30,6 @@ const Routerr = () => {
        <Route exact path="/users/login" component={Login}></Route>
         <Route exact path='/users/register' component={Register}/>
         <Route exact path="/users/cart" component={Payment}></Route>
-        <PrivateRouter exact path="/profile" component={Profile}></PrivateRouter>
         <PrivateRouter exact path="/confirm-account" component={ConfirmAccount}></PrivateRouter>
         <Route exact path="/dashboard/list-order" component={ListOrder}></Route>
         <Route exact path="/users/login/:token" component={ConfirmSuccessful}></Route>

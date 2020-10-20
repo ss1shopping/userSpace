@@ -1,0 +1,44 @@
+.navivator{
+   display: none;
+position:fixed;
+bottom: 0;
+left: 0;
+width: 100%;
+background: white;
+}
+.navigator-footer{
+  border-top: 1px solid rgb(49, 47, 47);
+  display: none;
+    display: flex;
+    justify-content: space-around;
+    align-items:center;
+    width: 100%;
+    a{
+        width: 25%;
+        text-decoration: none;
+        color:black ;
+        // border-right: 1px solid;
+        padding:10px 10px;
+        display: flex;
+        flex-direction: column  ;
+        justify-content: center;
+        align-items: center;
+        svg {
+            font-size: large;
+        }
+        div{
+            font-size: 10px;
+        }
+    }
+    .active{
+        color:red;
+  }
+ 
+}
+@media(max-width:500px){
+   .navivator{
+       display: block;
+   }
+    
+    
+  }

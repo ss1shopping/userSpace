@@ -6,7 +6,7 @@ import ReactPaginate from 'react-paginate';
 import {AiTwotoneEdit} from "react-icons/ai"
 import { itemActions } from '../../../../app/store/ducks/itemReducer';
 import NavbarCustom from '../navbar/navbar';
-
+import FooterDashboard from "../../../footer/footerDashboard";
  const ListOrder = () => {
       const dispatch = useDispatch()
       const input =useRef(null)
@@ -142,6 +142,7 @@ import NavbarCustom from '../navbar/navbar';
         />
             </Container>
             </div>
+            <FooterDashboard></FooterDashboard>
         </div>
     )
 }
