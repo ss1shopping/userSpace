@@ -15,7 +15,7 @@ const ConfirmAccount = () => {
               return(
                       <div>
                    <h2>active successful</h2>
-            <Link to="signin">return tologin </Link>
+            <Link to="signin">return to login </Link>
             </div>
               )
         }else{
@@ -26,14 +26,14 @@ const ConfirmAccount = () => {
     }
 
     return (
-        <div id="confirmAccount" style={{textAlign:"center"}}>
+        <div id="confirmAccount" style={{textAlign:"center",marginTop:"100px  "}}>
         <Jumbotron>
-  <h1>Welcome to Xoaycodeeasy</h1>
+  <h1>Welcome to PICASSO</h1>
   <p>
     please check your email to active your account
   </p>
   <p>
-    <Button variant="primary" href="http://www.gmail.com" style={{marginRight:"10px"}}>go to gmail</Button>
+    <Button variant="primary" href="http://www.gmail.com" >go to gmail</Button>
     <Button variant="primary" href="http://www.yahoo.com">go to yahoo</Button>
     
   </p>

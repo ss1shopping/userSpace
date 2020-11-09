@@ -10,7 +10,7 @@ import{Link} from "react-router-dom"
     return (
         <div className="navivator">
              <div className="navigator-footer">
-      <Link to="/" className="active"><RiDashboardLine/><div>Dashboard</div></Link>
+      <Link to="/dashboard" className="active"><RiDashboardLine/><div>Dashboard</div></Link>
       <Link to="/dashboard/item"><AiOutlineCloudUpload/><div>Item</div></Link>
       <Link to="/dashboard/upload"><GrStatusCriticalSmall/><div>upload</div></Link>
       <Link to="/dashboard/list-order"><RiDeleteBin6Line/><div>List Order</div></Link>

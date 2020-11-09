@@ -18,10 +18,10 @@ const NavbarCustom = () => {
         <i  id="btn"><FiAlignJustify/></i>
       </label>
        <div className="sidebar-nav">
-      <Link to="/"><RiDashboardLine/><span>Dashboard</span></Link>
-      <Link to="/dashboard/item"><AiOutlineCloudUpload/><span>Item</span></Link>
-      <Link to="/dashboard/upload"><GrStatusCriticalSmall/><span>upload</span></Link>
-      <Link to="/dashboard/list-order"><FaList/><span>List Order</span></Link>
+      <Link to="/dashboard"><RiDashboardLine/>            <span>  Dashboard</span></Link>
+      <Link to="/dashboard/item"><AiOutlineCloudUpload/>  <span>  Item</span></Link>
+      <Link to="/dashboard/upload"><AiOutlineCloudUpload/><span>  Upload</span></Link>
+      <Link to="/dashboard/list-order"><FaList/>          <span>  List Order</span></Link>
       <Link to="/"><FcAbout/><span>About</span></Link>
       <Link to="/"><AiFillSetting/><span>Settings</span></Link>
     </div>

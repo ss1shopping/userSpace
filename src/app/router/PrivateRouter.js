@@ -6,12 +6,17 @@ import { withRouter, Route,Redirect } from 'react-router-dom';
 // import {checkAuth} from "../store/ducks/authReducer";
 import { authActions } from "../store/ducks/authReducer";
 class PrivateRoute extends React.Component {
+  constructor(props){  
+    super(props);  
+}  
   componentDidMount () {
     const {  history } = this.props;
     const accessToken = getStorage('token');
+    const admin=getStorage("admin")
+    console.log("admin",admin);
     const refreshToken=getStorage('refreshtoken')
     
-    if (!accessToken && !refreshToken) {
+    if (!accessToken && !refreshToken || admin!=="true" ) {
       history.push("/users/login");
     }
     if(!accessToken && refreshToken){
@@ -19,6 +24,10 @@ class PrivateRoute extends React.Component {
       console.log(refreshToken);
       this.props.fetchrefreshtoken(refreshToken)
     }
+    // if(admin!=="true"){
+      
+    //   history.push("/shop")
+    // }
   }
 
   
@@ -39,13 +48,15 @@ class PrivateRoute extends React.Component {
 
 const withRouterRoute = withRouter(PrivateRoute);
 
-const mapStateToProps = ({ authReducer: {isPending,error } }) => ({
+const mapStateToProps = ({ authReducer: {isPending,error ,user} }) => ({
   error,
   isPending,
+  user
 });
 
 const mapDispatchToprops = {
   fetchrefreshtoken: authActions.refreshToken,
+
 };
 
 export default connect(mapStateToProps,mapDispatchToprops)(withRouterRoute);

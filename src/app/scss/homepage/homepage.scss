@@ -1,0 +1,124 @@
+.carousel-indicators li{
+    border-radius: 100%;
+    height: 18px;
+    width: 18px;
+    margin-right: 1.5%;
+}
+.carousel-indicators .active{
+    border-radius: 100%;
+    height: 18px;
+    width: 18px;
+background-color: orangered;
+}
+.carousel-indicators{
+    margin-left: -60%;
+   
+}
+
+.carousel-inner {
+    position: relative;
+    width: 100%;
+    // overflow: hidden;
+}
+.carousel-inner img {
+    width: 100%;
+    height: 100vh;
+    margin-left: 0%;
+}
+.shopNow{
+    position: absolute;
+    top: 80%;
+    left: 35%;
+    width: 30%;
+    padding:10px 0;
+    color: #fff;
+     border: 3px solid #fa5b2f;
+     background-color: #fa5b2f;
+    font-weight: bolder;
+    font-family: 'Oswald', sans-serif;
+   z-index: 1000;
+    display: inline-block;
+    text-align: center;
+}
+.shopNow:hover{
+    text-decoration: none;
+    border: 3px solid #f54615;
+    background-color: #f54615;
+    color:white;
+}
+.homepage{
+    height: 100vh;
+    position: relative;
+}
+@media(max-width:400px){
+    .shopNow{
+        position: absolute;
+        top: 70%;
+        left: 35%;
+        width: 30%;
+       
+        color: #fff;
+         border: 3px solid #fa5b2f;
+         background-color: #fa5b2f;
+        font-weight: bolder;
+        font-family: 'Oswald', sans-serif;
+        font-size: 90%;
+        display: inline-block;
+        text-align: center;
+    }
+    .carousel-indicators li{
+        border-radius: 100%;
+        height: 12px;
+        width: 12px;
+        margin-right: 1%;
+    }
+    .carousel-indicators .active{
+        border-radius: 100%;
+        height: 12px;
+        width: 12px;
+    background-color: orangered;
+    }
+    .carousel-indicators{
+        margin-left: -50%;
+       margin-bottom: 0%;
+    }
+}
+@media(max-width:700px){
+    .shopNow{
+        top: 50%;
+    }
+}
+@media(max-width:500px){
+    .shopNow{
+        position: absolute;
+        top: 50%;
+        left: 35%;
+        width: 30%;
+       
+        color: #fff;
+         border: 3px solid #fa5b2f;
+         background-color: #fa5b2f;
+        font-weight: bolder;
+        font-family: 'Oswald', sans-serif;
+        font-size: 90%;
+        display: inline-block;
+        text-align: center;
+    }
+    .carousel-indicators li{
+        border-radius: 100%;
+        height: 16px;
+        width: 16px;
+        margin-right: 1%;
+    }
+    .carousel-indicators .active{
+        border-radius: 100%;
+        height: 16px;
+        width: 16px;
+    background-color: orangered;
+    }
+    .carousel-indicators{
+        margin-left: -55%;
+        margin-bottom: 0%;
+       
+    }
+}

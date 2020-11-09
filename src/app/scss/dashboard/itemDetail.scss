@@ -1,10 +1,39 @@
 
 
+.ant-descriptions{
+    // margin-left: 2rem;
+}
+.cb-centermode {
+    margin-bottom: 20px;
+    display: block;
+  }
+  .cb-centermode input {
+    margin-right: 7px;
+  }
+  .img-card{
+      img{
+          width: 300px !important;
+          height: 300px !important;
+          z-index: 1000000000;
+      }
+  }
 .itemdetail{
-
+  
+    margin-top:4rem;
+        
+        &_calosel{
+          width: 50%;
+        }
+        &__infor{
+            width: 50%;
+            &--description{
+                margin-left: 2rem;
+            }
+        }
+   
 &__box{
     display: flex;
-    flex-direction: column;
+   flex-direction: column;
     justify-content: center;
     align-items: center;
     border: 1px sold black;

@@ -14,18 +14,24 @@ import FooterDashboard from "../../../footer/footerDashboard";
    
       const [classname,setClassname]=useState("item__attribute")
       let item=useSelector(state=>state.itemReducer.item)
-      const [stateCustomer, setCustomerState] = useState([]);
+      const [stateCustomer, setCustomerState] = useState(item);
           
       console.log(stateCustomer);
      const [pageCount, setpageCount] = useState(100)
      const [page, setPage] = useState(1)
-     const [limit, setLimit] = useState(3)
-     const handleChangepage=()=>{
-      setPage(page+1)
-      
+     const [limit, setLimit] = useState(10)
+     const handleChangepage=(page)=>{
+      setPage(page.selected)
+      console.log(page);
      }
      useEffect(() => {
         dispatch(itemActions.loadingitem(limit,page))
+        setCustomerState(
+
+          stateCustomer.map((d)=>{
+            return{...d,select:false}
+          })
+        )
      }, [page])
     
      const handleChangetoEdit=(item)=>{
@@ -143,7 +149,7 @@ import FooterDashboard from "../../../footer/footerDashboard";
           pageCount={pageCount}
           marginPagesDisplayed={2}
           pageRangeDisplayed={3}
-          onPageChange={handleChangepage}
+          onPageChange={(page)=>handleChangepage(page)}
           containerClassName={'pagination'}
           subContainerClassName={'pages pagination'}
           activeClassName={'active'}

@@ -23,6 +23,19 @@ export const itemActionTypes={
   ItemChoseToEdit:"[item choose to edit]",
   updateItem:"[update Item]",
   updateItemSuccesful:"[update item succcesful]",
+  addtoCart:"[Add To Cart]",
+  addtoCartSuccessFul:"[Add To Cart Success]",
+  removeTocart:"[Remove to cart]",
+  removeTocartSuccessful:"[remove to cart successful]",
+  uploadItem:"[upload item]",
+  uploadItemSuccess:"[upload item successful]",
+  addImage:"[add image ]",
+  addImageSuccessful:"[add image successful]",
+  updateView:"[update view]",
+  checkout:`[check out]`,
+  checkoutSuccessful:"[check out Successful]",
+  
+  
   
   
   
@@ -45,7 +58,9 @@ export const authActionTypes = {
   ActiveAccountFailure:'[Active account Failure]',
   refreshToken:"[Refresh Token]",
   refreshTokenSuccessFul:"[Refresh Token Success]",
-  refreshTokenFailure:"[Refresh Token Faliure]"
+  refreshTokenFailure:"[Refresh Token Faliure]",
+  Loadingcart:"[Loading Cart]",
+  LoadingcartSuccess:"[Loading cart Succesful]"
 };
 export const totalActionTypes={
   loadingInforChart:'[Action Loading Infor Chart]',
@@ -53,5 +68,8 @@ export const totalActionTypes={
   loadingInforChartFailure:`[Action Loading Infor Chart Fail]`,
   loadingAllListOrder:`[Action Loading All list order]`,
   loadingAllLIstOrderSuccessful:"[Action Loading All list order succesfull]",
-  loadingAllListOrderFailure:"[Action Loading All All list order failure]"
+  loadingAllListOrderFailure:"[Action Loading All All list order failure]",
+  loadinglistOfHistoryOfUser:"[Action loading list of history User]",
+  loadinglistOfHistoryOfUserSuccuessFull:"[Action loading list if history user Successful]",
+  loadinglistOfHistoryOfUserfailure:"[Action loading list histoey User Failure]"
 }

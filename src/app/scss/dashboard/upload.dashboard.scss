@@ -1,11 +1,22 @@
+    .drop{
+        width: 400px;
+    }
     .upload{
-    padding-top:200px;
+   // padding-top:100px;
     
-    background: transparent url("https://images.unsplash.com/photo-1595450477311-2fb34b794f78?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80://images.unsplash.com/photo-1598026871673-92bd25bdf3ae?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80://images.unsplash.com/photo-1598026531314-61127de12696?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80");
+    //background: transparent url("https://images.unsplash.com/photo-1595450477311-2fb34b794f78?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80://images.unsplash.com/photo-1598026871673-92bd25bdf3ae?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80://images.unsplash.com/photo-1598026531314-61127de12696?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80");
     background-size: 100%;
+    .content{
+        padding-top: 200px;
+    }
     &__body{
+       
         margin-bottom: 20px ;
         margin-left:35%;
+        span{
+            color:#109141;
+        }
+       
         input{
             outline:none;
             width: 400px;
@@ -14,5 +25,86 @@
             outline: none;;
             width: 400px;
         }
+        .btn{
+            width: 400px;
+        }
+        .file{
+            width: 400px;
+        }
     }
 }
+@media(max-width:1000px){
+    .upload{
+        &__body{
+            margin:0 5% 20px 17%;
+        }
+    }
+    }
+@media(max-width:800px){
+    .upload{
+        &__body{
+            margin:0 5% 20px 10%;
+        }
+    }
+    }
+@media(max-width:600px){
+    .upload{
+        &__body{
+            margin:0 5% 20px 10%;
+        }
+    }
+    }
+@media(max-width:500px){
+    .drop{
+        width: 300px;
+    }
+.upload{
+    &__body{
+        margin-left:10%;
+        input{
+            width: 300px;
+        }
+        textarea{
+            outline: none;;
+            width: 300px;
+        }
+        .btn{
+            width: 300px;
+        }
+    }
+}
+}
+@media(max-width:400px){
+    .drop{
+        width: 250px;
+    }
+    .upload{
+        &__body{
+            margin-left:10%;
+            input{
+                width: 250px;
+            }
+            textarea{
+                outline: none;;
+                width: 250px;
+            }
+            .btn{
+                width: 250px;
+            }
+        }
+    }
+}
+@media(max-width:360px){
+    .upload{
+        &__body{
+            margin-left:10%;
+            input{
+                width: 250px;
+            }
+            textarea{
+                outline: none;
+                width: 250px;
+            }
+        }
+    }
+    }

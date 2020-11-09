@@ -5,7 +5,9 @@ const initialAuthState = {
   isPending: false,
   user: undefined,
   error: null,
-  notice:null
+  notice:null,
+  cart:[],
+  itemInCart:[]
 }
 export const authReducer = persistReducer(
   { storage, key: 'userAuth1', whitelist: [] },
@@ -66,6 +68,12 @@ export const authReducer = persistReducer(
       }
       case authActionTypes.refreshTokenFailure:{
         return {...state,isPending:!state.isPending,msg:action.payload}
+   }
+      case authActionTypes.LoadingcartSuccess:{
+        return {...state,user:action.payload.user,cart:action.payload.cart,itemInCart:action.payload.itemInCart,isPending:true}
+      }
+      case authActionTypes.Loadingcart:{
+        return {...state,isPending:!state.isPending}
       }
 
 
@@ -114,4 +122,6 @@ export const authActions = {
   resetPassword: (email, history) => ({
     type: authActionTypes.ResetPasswword, payload: { email, history }
   }),
+  loadingCart:()=>({type:authActionTypes.Loadingcart}),
+  loadingCartSuccess:(payload)=>({type:authActionTypes.LoadingcartSuccess,payload})
 }

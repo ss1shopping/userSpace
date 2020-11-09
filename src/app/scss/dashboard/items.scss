@@ -134,39 +134,39 @@ table{
             overflow: none;
     }
 }
-// @media(max-width:1384px){
-//     .pagination{
-//         margin-top: 20px;
-//        margin-left: 65%;
+@media(max-width:1384px){
+    .pagination{
+        margin-top: 20px;
+       margin-left: 65%;
     
-//     }
-// }
-// @media(max-width:1220px){
-//     .pagination{
-//         margin-top: 20px;
-//        margin-left: 60%;
-//     } 
+    }
+}
+@media(max-width:1220px){
+    .pagination{
+        margin-top: 20px;
+       margin-left: 60%;
+    } 
     
-// }
-// @media(max-width:1280px){
-//     .pagination{
-//         margin-top: 20px;
-//        margin-left: 55%;
+}
+@media(max-width:1280px){
+    .pagination{
+        margin-top: 20px;
+       margin-left: 50%;
     
-//     } 
-//     .navigator{
-//         margin-left: -20px;
-//     }
+    } 
+    // .navigator{
+    //     margin-left: -20px;
+    // }
   
-// }
-// @media(max-width:1000px){
-//     .pagination{
-//         margin-top: 20px;
-//        margin-left: 50%;
+}
+@media(max-width:1000px){
+    .pagination{
+        margin-top: 20px;
+       margin-left: 50%;
     
-//     } 
+    } 
   
-// }
+}
 @media(max-width:1366px){
     .pagination{
         margin-top: 20px;
@@ -214,7 +214,7 @@ table{
     // }
     .pagination{
         margin-top: 20px;
-       margin-left: 50%;
+       margin-left: 45%;
     
     } 
 }

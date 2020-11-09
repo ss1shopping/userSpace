@@ -27,3 +27,6 @@ export function requestPassword(email) {
 export function refreshToken(refresh_token) {
   return initApi().post(API_URLS.REFRES_TOKEN, { refresh_token });
 }
+export function loadingCart(){
+return initApi(true).get(API_URLS.LOADING_CART)
+}

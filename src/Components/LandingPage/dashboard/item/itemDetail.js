@@ -3,20 +3,31 @@ import { Container,Col,Row, Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { itemActions } from '../../../../app/store/ducks/itemReducer';
 import NavbarCustom from '../navbar/navbar';
-
+import Slider from "react-slick";
+// Import css files
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
  const ItemDetail = (props) => {
      const  dispatch = useDispatch()
      const itemtoedit =useSelector(state=>state.itemReducer.itemtoEdit)
-     const [name,setName] = useState()
-     const [ price,setPrice]=useState()
-     const [quantity,setQuantity]=useState()
-     const [description,setDesc]=useState()
+     const [name,setName] = useState(itemtoedit.name)
+     const [ price,setPrice]=useState(itemtoedit.price)
+     const [quantity,setQuantity]=useState(itemtoedit.quantity)
+     const [description,setDesc]=useState(itemtoedit.description)
      const [id,setId]=useState(itemtoedit._id)
      console.log("id",id);
+    
      const handleSubmit=()=>{
          dispatch(itemActions.updateItem(id,name,price,quantity,description,props.history))
-         
+          console.log();
      }
+     const config = {
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow:2,
+        slidesToScroll: 1
+      };
     return (
         <div className="itemdetail">
             <NavbarCustom></NavbarCustom>
@@ -40,6 +51,18 @@ import NavbarCustom from '../navbar/navbar';
                      <div className="itemdetail__box--description">
                          <textarea className="items__box--input" onChange={(e)=>setDesc(e.target.value)} defaultValue={itemtoedit.description}></textarea>
                      </div>
+                     <Slider {...config}>
+                        {itemtoedit && itemtoedit.image.map((x, i) => {
+                           const editimg=x.replace("public","http://localhost:4000")
+                            return <div key={i} classname="img-card">
+                            <img classname="img" src={editimg}/>
+                            <div class="card-body">
+                                <div classname="card-title">title</div>
+                                <div classname="card-text">text</div>
+                            </div>
+                            </div>
+                        })}
+                        </Slider>
                      <div className="itemdetail__box--btn">
                            <Button onClick={()=>handleSubmit()}> Save</Button>
                      </div>

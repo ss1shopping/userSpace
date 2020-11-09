@@ -9,7 +9,9 @@ import ToggleButton from 'react-toggle-button';
 import { Nav, Navbar } from "react-bootstrap";
 import { useSelector, useDispatch } from 'react-redux';
 import getStorage from 'redux-persist/es/storage/getStorage';
-import {Link} from "react-router-dom";
+import {Link} from "react-router-dom"
+import { authActions } from '../../app/store/ducks/authReducer'
+import { removeStorage } from '../../_metronic/utils/utils';
 function getWindowDimensions() {
   const { innerWidth: width, innerHeight: height } = window;
   return {
@@ -31,20 +33,34 @@ export function useWindowDimensions() {
 
   return windowDimensions;
 }
-const Header = (props) => {
+const HeaderLogin = (props) => {
   const dispatch = useDispatch();
+ 
   const DarkmodeStatus = useSelector(state => state.layoutReducer.DarkmodeStatus);
-  // const user =useSelector(state=>state.authReducer.user)
-  // const [numberOnCart,setNumberOnCart]=useState(0)
-  // useEffect(() => {
-  //   if(!user){
-  //     setNumberOnCart(0)
-  //   }else{
+  const cart =useSelector(state=>state.itemReducer.itemInCart)
+  const [cartState, setcartState] = useState()
+  const [numberOnCart,setNumberOnCart]=useState(0)
+  
 
-  //     setNumberOnCart(user.cart.length+1)
-  //   }
-  // }, [user])
-  const token=getStorage("token")
+  const handleLogout=()=>{
+    removeStorage("token")
+    removeStorage("refreshtoken")
+    removeStorage("admin")
+  }
+  let token=getStorage("token")
+  useEffect(() => {
+    
+     // dispatch(authActions.loadingCart())
+      
+      token=getStorage("token")
+    if(cart.length==0){
+      setNumberOnCart(0)
+    }else{
+
+      setNumberOnCart(cart.length)
+    }
+  }, [cart])
+  
   return (
 
 
@@ -77,9 +93,9 @@ const Header = (props) => {
               <span >Dark Mode</span>
             </div>
             {/* <Nav.Link href="/" active>Shop</Nav.Link> */}
-            <Nav.Link href="/users/history">Sign in</Nav.Link>
-            <Nav.Link href="/users/login">Login</Nav.Link>
-              {/* <Link to="/users/cart"> Cart <RiShoppingCart2Line/><div style={{color:"red" ,margin:"-30px 0 0 20px"}}>0</div></Link> */}
+            <Link to="/users/history">History<FaHistory/></Link>
+            <Nav.Link href="/" onClick={()=>handleLogout()}>Logout <IoIosLogIn/></Nav.Link>
+              <Link to="/users/cart"> Cart <RiShoppingCart2Line/><div style={{color:"red" ,margin:"-30px 0 0 20px"}}>{numberOnCart}</div></Link>
 
           </Nav>
 
@@ -119,4 +135,4 @@ const Header = (props) => {
 
   );
 };
-export default Header;
+export default HeaderLogin;

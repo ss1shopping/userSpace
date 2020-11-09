@@ -11,6 +11,7 @@ import TotalInfor from './TotalInfor/TotalInfor';
 import NavbarCustom from './navbar/navbar';
 import { totalActions } from '../../../app/store/ducks/totalReducer';
 import FooterDashboard from "../../footer/footerDashboard"
+import { authActions } from '../../../app/store/ducks/authReducer';
 
 const Dashboard = () => {
       const dispatch = useDispatch()
@@ -29,10 +30,11 @@ const Dashboard = () => {
      const [total,setTotal]=useState("totalUser")
       // const [key, setKey] = useState('home');
      
-     
+     // dispatch(authActions.loadingCart())
          dispatch(itemActions.loadingitem()) 
      
       useEffect(() => {
+        //dispatch(authActions.loadingCart())
         dispatch(itemActions.loadingInfor(convertDate(startDate)))
        }, [startDate]) 
       useEffect(()=>{
@@ -66,11 +68,11 @@ const Dashboard = () => {
          <h3>Sản phẩm đã upload</h3>
         </Navbar.Brand>
      <Nav className="ml-auto">
-       <div className="content__search-box">
+       {/* <div className="content__search-box">
   
        <Autosugget></Autosugget>
          <a className="content__search-btn" href="#"><IoIosSearch/></a>
-       </div>
+       </div> */}
      </Nav>
      </Navbar>
 
@@ -81,7 +83,7 @@ const Dashboard = () => {
                <Col>
                <div className="dataPicker" >
 
-               <DatePicker selected={startDate} onChange={date => setStartDate(date)} />
+                <DatePicker selected={startDate} onChange={date => setStartDate(date)} />
                </div>
                </Col>
              </Row>
@@ -89,7 +91,7 @@ const Dashboard = () => {
               <Col>
               <div className="select">
 
-              <form style={{marginLeft:"100px"}}>
+              <form >
                 <label for="totals">Choose the total</label>
                 <select name="totals" id="totals" onChange={(e)=>setTotal(e.target.value)}>
                   <option value="totalUser">total user</option>
@@ -100,7 +102,7 @@ const Dashboard = () => {
                
                 
               </form>
-              <form style={{marginLeft:"100px"}}>
+              <form >
                 <label for="charts">Choose the chart</label>
                 <select name="charts" id="charts" onChange={(e)=>setChart(e.target.value)}>
                   <option value="lineChart" >line chart</option>

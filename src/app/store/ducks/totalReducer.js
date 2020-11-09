@@ -14,6 +14,8 @@ const initialAuthState = {
   nameMonth4: "Jul",
   listOrder:null,
   errorGetlistOrder:null,
+  listHistoryOfUser:null,
+  errorLIstHistoryOfUser:null,
 }
  const  totalReducer=(state = initialAuthState, action) => {
       switch (action.type) {
@@ -43,12 +45,25 @@ const initialAuthState = {
             }
         case totalActionTypes.loadingAllLIstOrderSuccessful:
             return{
-                ...state,pending:!state.pending,listOrder:action.payload
+                ...state,pending:!state.pending,listOrder:action.payload.history
             }
         case totalActionTypes.loadingAllListOrderFailure:
             return{
                 ...state,pending:!state.pending,errorGetlistOrder:action.payload
             }
+        case totalActionTypes.loadingListHistoryofUser:
+            return{
+                ...state,pending:!state.pending
+            }
+        case totalActionTypes.loadinglistOfHistoryOfUserSuccuessFull:
+            return{
+                ...state,pending:!state.pending,listHistoryOfUser:action.payload.history
+            }
+        case totalActionTypes.loadinglistOfHistoryOfUserfailure:{
+            return{
+                ...state ,pending:!state.pending,errorLIstHistoryOfUser:action.payload
+            }
+        }
         default:
           return state;
       }
@@ -58,7 +73,10 @@ export const totalActions={
       loadingInforChart:(kind)=>({type:totalActionTypes.loadingInforChart,payload:{kind}}),
       loadingInforChartSuccess:(payload)=>({type:totalActionTypes.loadingInforChartSuccessful,payload}),
       loadingInforChartFailure:(payload)=>({type:totalActionTypes.loadingInforChartFailure,payload}),
-      loadingListOrder:()=>({type:totalActionTypes.loadingAllListOrder}),
+      loadingListOrder:(limit,page)=>({type:totalActionTypes.loadingAllListOrder,payload:{limit,page}}),
       loadingListOrderSuccessful:(payload)=>({type:totalActionTypes.loadingAllLIstOrderSuccessful,payload}),
-      loadingListOrderFailure:(payload)=>({type:totalActionTypes.loadingAllLIstOrderSuccessful,payload})
+      loadingListOrderFailure:(payload)=>({type:totalActionTypes.loadingAllLIstOrderSuccessful,payload}),
+      loadingListHistoryofUser:()=>({type:totalActionTypes.loadinglistOfHistoryOfUser}),
+      loadingListHistoryofUserSuccessful:(payload)=>({type:totalActionTypes.loadinglistOfHistoryOfUserSuccuessFull,payload}),
+      loadingListHistoryofUserfailure:(payload)=>({type:totalActionTypes.loadinglistOfHistoryOfUserfailure,payload})
 }

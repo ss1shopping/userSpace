@@ -1,0 +1,22 @@
+.item__detail{
+    margin-top:100px;
+    // display: flex;
+    //  justify-content: center;
+    //  align-items: center;
+      
+ &__box{
+     display: flex;
+     justify-content: center;
+     align-items: center;
+      
+     &__calosel{
+        width: 50%;
+      }
+      &__infor{
+          width: 50%;
+          &--description{
+              margin-left: 2rem;
+          }
+      }
+ }
+}

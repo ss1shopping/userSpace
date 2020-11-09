@@ -81,7 +81,7 @@ const Login = (props) => {
   return (
     //id="login"
     <div  style={DarkmodeStatus?{backgroundColor:"#18191a"}:{backgroundColor:"#f0f2f5" ,borderTop:"1px solid #e6e8ea"}}>
-      //id="login__box"
+     
       <div style={DarkmodeStatus?{backgroundColor:"#242526"}:{backgroundColor:"white"}}>
        <Formik initialValues={{
      email:"",
@@ -130,7 +130,7 @@ const Login = (props) => {
                         <div className={classes.form}>
                             <div className={classes.input}>
                             
-                                <CustomTextForm autoFocus name="email" label="Email" placeholder="Email"></CustomTextForm>
+                                <CustomTextForm autoFocus name="email" label="Email" placeholder="Email" defaultValue="tien"></CustomTextForm>
                             </div>
                             <div className={classes.input}>
                             <CustomTextForm  type="password" name="password" label="password" placeholder="Password"></CustomTextForm>
@@ -156,7 +156,7 @@ const Login = (props) => {
                             </button>
                         </CardActions>
                         <div className="register" style={{padding:"0 1em 1em 1em"}}>
-           <span className="question">New to Xoay?</span>
+           <span className="question">New to PICASSO?</span>
            <span className="link"><Link to="/users/register" style={DarkmodeStatus?{color:"#249dcb"}:{}}>Create an account</Link></span>
          </div>
          <div className="forgot" style={{padding:"0 1em 1em 1em"}}>

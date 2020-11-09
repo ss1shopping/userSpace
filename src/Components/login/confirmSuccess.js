@@ -12,16 +12,16 @@ const ConfirmSuccessful = (props) => {
  dispatch(authActions.activeAccount(token))
  }, [token])
     return (
-        <div>
+        <div id="confirmSuccess" style={{paddingTop:"100px"}}>
            
         <Jumbotron>
-  <h1>Thank you to confirm email Xoaycodeeasy</h1>
+  <h1>Thank you to confirm email PICASSO</h1>
   <p>
-    now, you can login to have wonder experiance with Xoaycodeeasy
+    now, you can login to have wonder experiance with PICASSO
   </p>
   <p>{notice}</p>
   <p>
-    <Button href="/users/login" > Login</Button>
+    <Button href="/users/login"  className="btn btn-secondary"> Login</Button>
     
     
   </p>

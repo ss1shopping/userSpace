@@ -1,6 +1,6 @@
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import {itemActionTypes } from "../../constant/index"
+import {itemActionTypes ,authActionTypes} from "../../constant/index"
 const initialAuthState = {
   isPending: false,
   itemtoEdit:"",
@@ -18,6 +18,11 @@ const initialAuthState = {
   percentageIncome:null,
   percentageUser:null,
   errorLoadingTotalInfor:null,
+  messageAddtocart:null,
+  cart:[],
+  urlImage:[],
+  itemInCart:[],
+  
  
 }
 export const itemReducer = persistReducer(
@@ -38,7 +43,7 @@ export const itemReducer = persistReducer(
             }
         case itemActionTypes.uploadItemSuccess:
             return{
-                ...state,isPending:!state.isPending,notice:action.payload
+                ...state,isPending:!state.isPending,notice:action.payload,msg:action.payload.msg
             }
          case itemActionTypes.Error:
              return{
@@ -80,6 +85,57 @@ export const itemReducer = persistReducer(
             return{
                 ...state,isPending:!state.isPending,message:action.payload.msg
             }
+        case itemActionTypes.addtoCart:
+            return{
+                ...state,isPending:!state.isPending
+            }
+        case itemActionTypes.addtocartSuccessFul:
+            return{
+                ...state,isPending:!state.isPending,messageAddtocart:action.payload.msg,cart:action.payload.updateCart.cart
+            }
+        case itemActionTypes.removeTocartSuccessful:
+            return{
+                ... state,isPending:!state.isPending,messageRemoveTocart:action.payload.msg,cart:action.payload.updateCart.cart
+            }
+        case itemActionTypes.removeTocart:
+            return{
+                ...state,isPending:!state.isPending
+            }
+        case itemActionTypes.uploadItemSuccess:{
+            return{
+                ...state ,isPending:!state.isPending,message:action.payload.msg
+            }
+        }
+        case itemActionTypes.addImage:{
+            return{
+                ...state,isPending:!state.isPending
+            }
+        }
+        case itemActionTypes.addImageSuccessful:{
+            return{
+                ...state,isPending:!state.isPending,urlImage:[...state.urlImage,action.payload.path]
+            }
+        }
+        case "deleteUrlImage":{
+            return{
+                ...state,urlImage:[]
+            }
+        }
+        case authActionTypes.LoadingcartSuccess:{
+            return {...state,cart:action.payload.cart,itemInCart:action.payload.itemInCart}
+          }
+          case authActionTypes.Loadingcart:{
+            return {...state,isPending:!state.isPending}
+          }
+        case itemActionTypes.checkout:
+            return{
+                ...state,isPending:!state.isPending,
+            }
+        case itemActionTypes.checkoutSuccessful:
+            return{
+                ...state,checkout:action.payload.result
+            }
+    
         
       default:
         return state;
@@ -92,8 +148,8 @@ export const itemActions={
     loadingsuccess:(payload)=>({type:itemActionTypes.loadingItemSuccess,payload}),
     loadingfailure:(payload)=>({type:itemActionTypes.error,payload}),
     error:(payload)=>({type:itemActionTypes.Error,payload}),
-    uploaditem:(city,price,description,quantity,image)=>({type:itemActionTypes.uploadItem,
-    payload:{city,price,description,quantity,image}}),
+    uploaditem:(name,price,quantity,description,image)=>({type:itemActionTypes.uploadItem,
+    payload:{name,price,quantity,description,image}}),
     uploaditemsuccess:(payload)=>({type:itemActionTypes.uploadItemSuccess,payload}),
     loadingInfor:(payload)=>({type:itemActionTypes.loadTotal,payload}),
     loadingInforSuccessfull:(payload)=>({type:itemActionTypes.loadTotalSuccessfull,payload}),
@@ -101,5 +157,16 @@ export const itemActions={
     itemChooseToEdit:(payload)=>({type:itemActionTypes.ItemChoseToEdit,payload}),
     updateItem:(id,name,price,quantity,description,history)=>({type:itemActionTypes.updateItem,payload:{id,name,price,quantity,description,history}}),
     updateItemSuccesfull:(payload)=>({type:itemActionTypes.updateItemSuccesful,payload}),
+    addtocart:(id)=>({type:itemActionTypes.addtoCart,payload:{id}}),
+    addtocartSuccessFul:(payload)=>({type:itemActionTypes.addtoCartSuccessFul,payload}),
+    removetocart:(id)=>({type:itemActionTypes.removeTocart,payload:{id} }),
+    removeTocartSuccessful:(payload)=>({type:itemActionTypes.removeTocartSuccessful,payload}),
+    addImage:(formData)=>({type:itemActionTypes.addImage,payload:{formData}}),
+    addImageSuccessful:(payload)=>({type:itemActionTypes.addImageSuccessful,payload}),
+    deleteUrlImage:()=>({type:"deleteUrlImage"}),
+    updateView:(id)=>({type:itemActionTypes.updateView,payload:{id}}),
+    checkout:(phone,address,id)=>({type:itemActionTypes.checkout,payload:{phone,address,id}}),
+    checkoutSuccessful:(payload)=>({type:itemActionTypes.checkoutSuccessful,payload})
+    
     
 }

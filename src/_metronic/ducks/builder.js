@@ -1,115 +1,115 @@
-import objectPath from "object-path";
-import { persistReducer } from "redux-persist";
-import storage from "redux-persist/lib/storage";
+// import objectPath from "object-path";
+// import { persistReducer } from "redux-persist";
+// import storage from "redux-persist/lib/storage";
 
 
 
 
-export const actionTypes = {
-  SetMenuConfig: "builder/SET_MENU_CONFIG",
-  SetLayoutConfigs: "builder/SET_LAYOUT_CONFIGS",
-  SetLayoutConfigsWithPageRefresh: "builder/SET_LAYOUT_CONFIGS_WITH_PAGE_REFRESH",
-  SetHtmlClassService: "builder/SET_HTML_CLASS_SERVICE"
-};
+// export const actionTypes = {
+//   SetMenuConfig: "builder/SET_MENU_CONFIG",
+//   SetLayoutConfigs: "builder/SET_LAYOUT_CONFIGS",
+//   SetLayoutConfigsWithPageRefresh: "builder/SET_LAYOUT_CONFIGS_WITH_PAGE_REFRESH",
+//   SetHtmlClassService: "builder/SET_HTML_CLASS_SERVICE"
+// };
 
-export const selectors = {
-  getClasses: (store, params) => {
-    const { htmlClassServiceObjects } = store.builder;
+// export const selectors = {
+//   getClasses: (store, params) => {
+//     const { htmlClassServiceObjects } = store.builder;
 
-    return htmlClassServiceObjects
-      ? htmlClassServiceObjects.getClasses(params.path, params.toString)
-      : "";
-  },
-  getAttributes: (store, params) => {
-    if (params.path) {
-      // if path is specified, get the value within object
-      const { htmlClassServiceObjects } = store.builder;
+//     return htmlClassServiceObjects
+//       ? htmlClassServiceObjects.getClasses(params.path, params.toString)
+//       : "";
+//   },
+//   getAttributes: (store, params) => {
+//     if (params.path) {
+//       // if path is specified, get the value within object
+//       const { htmlClassServiceObjects } = store.builder;
 
-      return htmlClassServiceObjects
-          ? htmlClassServiceObjects.getAttributes(params.path)
-          : [];    }
+//       return htmlClassServiceObjects
+//           ? htmlClassServiceObjects.getAttributes(params.path)
+//           : [];    }
 
-    return [];
-  },
-  getConfig: (state, path) => {
-    const { layoutConfig } = state.builder;
+//     return [];
+//   },
+//   getConfig: (state, path) => {
+//     const { layoutConfig } = state.builder;
 
-    if (path) {
-      // if path is specified, get the value within object
-      return objectPath.get(layoutConfig, path);
-    }
+//     if (path) {
+//       // if path is specified, get the value within object
+//       return objectPath.get(layoutConfig, path);
+//     }
 
-    return "";
-  },
+//     return "";
+//   },
 
-  getLogo: ({ builder: { layoutConfig } }) => {
-    const menuAsideLeftSkin = objectPath.get(layoutConfig, "brand.self.skin");
-    // set brand logo
-    const logoObject = objectPath.get(layoutConfig, "self.logo");
-    let logo;
-    if (typeof logoObject === "string") {
-      logo = logoObject;
-    }
+//   getLogo: ({ builder: { layoutConfig } }) => {
+//     const menuAsideLeftSkin = objectPath.get(layoutConfig, "brand.self.skin");
+//     // set brand logo
+//     const logoObject = objectPath.get(layoutConfig, "self.logo");
+//     let logo;
+//     if (typeof logoObject === "string") {
+//       logo = logoObject;
+//     }
 
-    if (typeof logoObject === "object") {
-      logo = objectPath.get(logoObject, menuAsideLeftSkin + "");
-    }
+//     if (typeof logoObject === "object") {
+//       logo = objectPath.get(logoObject, menuAsideLeftSkin + "");
+//     }
 
-    if (typeof logo === "undefined") {
-      try {
-        const logos = objectPath.get(this.layoutConfig, "self.logo");
-        logo = logos[Object.keys(logos)[0]];
-      } catch (e) {}
-    }
-    return logo;
-  },
+//     if (typeof logo === "undefined") {
+//       try {
+//         const logos = objectPath.get(this.layoutConfig, "self.logo");
+//         logo = logos[Object.keys(logos)[0]];
+//       } catch (e) {}
+//     }
+//     return logo;
+//   },
 
-  getStickyLogo: store => {
-    const { layoutConfig } = store.builder;
-    let logo = objectPath.get(layoutConfig, "self.logo.sticky");
-    if (typeof logo === "undefined") {
-      logo = selectors.getLogo(store);
-    }
-    return logo + "";
-  }
-};
+//   getStickyLogo: store => {
+//     const { layoutConfig } = store.builder;
+//     let logo = objectPath.get(layoutConfig, "self.logo.sticky");
+//     if (typeof logo === "undefined") {
+//       logo = selectors.getLogo(store);
+//     }
+//     return logo + "";
+//   }
+// };
 
-const initialState = {
+// const initialState = {
   
-  htmlClassServiceObjects: undefined
-};
+//   htmlClassServiceObjects: undefined
+// };
 
-export const reducer = persistReducer(
-  {
-    storage,
-    key: "build-demo1",
-    blacklist: ["htmlClassServiceObjects"]
-  },
-  (state = initialState, { type, payload }) => {
-    switch (type) {
+// export const reducer = persistReducer(
+//   {
+//     storage,
+//     key: "build-demo1",
+//     blacklist: ["htmlClassServiceObjects"]
+//   },
+//   (state = initialState, { type, payload }) => {
+//     switch (type) {
     
 
-      default:
-        return state;
-    }
-  }
-);
+//       default:
+//         return state;
+//     }
+//   }
+// );
 
-export const actions = {
-  setMenuConfig: payload => ({ payload, type: actionTypes.SetMenuConfig }),
+// export const actions = {
+//   setMenuConfig: payload => ({ payload, type: actionTypes.SetMenuConfig }),
 
-  setLayoutConfigs: payload => ({
-    payload,
-    type: actionTypes.SetLayoutConfigs
-  }),
+//   setLayoutConfigs: payload => ({
+//     payload,
+//     type: actionTypes.SetLayoutConfigs
+//   }),
 
-  setLayoutConfigsWithPageRefresh: payload => ({
-    payload,
-    type: actionTypes.SetLayoutConfigsWithPageRefresh
-  }),
+//   setLayoutConfigsWithPageRefresh: payload => ({
+//     payload,
+//     type: actionTypes.SetLayoutConfigsWithPageRefresh
+//   }),
 
-  setHtmlClassService: payload => ({
-    payload,
-    type: actionTypes.SetHtmlClassService
-  })
-};
+//   setHtmlClassService: payload => ({
+//     payload,
+//     type: actionTypes.SetHtmlClassService
+//   })
+// };

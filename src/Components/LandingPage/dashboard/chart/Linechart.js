@@ -65,7 +65,7 @@ const Chart = (props) => {
             }
           ]
         })
-      }, [totalMonth1])
+      }, [totalMonth1,totalMonth2,totalMonth3,totalMonth4])
       if(props.chart=="lineChart"){
         return( <div className="chart" > 
         {}
@@ -75,7 +75,7 @@ const Chart = (props) => {
              maintainAspectRatio:false,
             title:{
               display:true,
-              text:'Number sold of per month',
+              text:'Number income of per month',
               fontSize:25
             },
             legend:{
@@ -96,7 +96,7 @@ const Chart = (props) => {
            maintainAspectRatio:false,
           title:{
             display:true,
-            text:'Number sold of per month',
+            text:'Number income of per month',
             fontSize:25
           },
           legend:{
@@ -118,7 +118,7 @@ const Chart = (props) => {
                maintainAspectRatio:false,
               title:{
                 display:true,
-                text:'Number sold of per month',
+                text:'Number user of per month',
                 fontSize:25
               },
               legend:{
@@ -140,7 +140,7 @@ const Chart = (props) => {
                maintainAspectRatio:false,
               title:{
                 display:true,
-                text:'Number sold of per month',
+                text:'Number income of per month',
                 fontSize:25
               },
               legend:{
@@ -184,7 +184,7 @@ const Chart = (props) => {
                maintainAspectRatio:false,
               title:{
                 display:true,
-                text:'Number sold of per month',
+                text:'Number income of per month',
                 fontSize:25
               },
               legend:{

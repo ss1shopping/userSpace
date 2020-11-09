@@ -1,5 +1,5 @@
 import { takeEvery, put, call} from 'redux-saga/effects';
-import {login,register,activeAccount,GenNewToken} from "../crud/auth.crud";
+import {login,register,activeAccount,GenNewToken,loadingCart} from "../crud/auth.crud";
 import {setStorage} from "../../_metronic/utils/utils";
 import {authActions} from "../store/ducks/authReducer";
 import {authActionTypes} from "../constant/index";
@@ -16,6 +16,7 @@ function* fetchLogin ({ payload }) {
        yield setStorage('token', result.data.token,result.data.expToken);
        yield setStorage("refreshtoken",result.data.refreshToken,result.data.expRefreshToken)
        if(result.data.user.role===1){
+         yield setStorage("admin",true)
         yield history.push("/dashboard");
        }else{
         yield history.push("/");
@@ -68,16 +69,26 @@ function* fetchRefreshToken({payload}){
     yield setStorage("token",result.data.access_token,result.data.expires_in)
   } catch (error) {
      const err =error.response?error.response.data.msg :error.stack
-   yield put(authActions.error(error));
+   yield put(authActions.error(err));
   }
 }
- 
+ function* loadingcart({payload}){
+   try {
+     const response=yield call(loadingCart)
+     console.log(response.data);
+     yield put (authActions.loadingCartSuccess(response.data))
+   } catch (error) {
+    const err =error.response?error.response.data.msg :error.stack
+    yield put(authActions.error(err));
+   }
+ }
 
 function* authSagas () {
   yield takeEvery(authActionTypes.Login, fetchLogin);
   yield takeEvery(authActionTypes.Register, fetchRegister);
   yield takeEvery(authActionTypes.activeAccount,fetchactiveAccount)
   yield takeEvery(authActionTypes.refreshToken,fetchRefreshToken)
+  yield takeEvery(authActionTypes.Loadingcart,loadingcart)
 }
 
 export default authSagas;

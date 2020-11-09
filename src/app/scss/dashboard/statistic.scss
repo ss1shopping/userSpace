@@ -56,8 +56,9 @@
 .dataPicker{
  margin:20px 0 20px 81%;
 }
-.react-datepicker-wrapper{
-   
+
+.react-datepicker-popper{
+  left: -70px !important;
 }
 .react-datepicker__input-container{
     display: flex;

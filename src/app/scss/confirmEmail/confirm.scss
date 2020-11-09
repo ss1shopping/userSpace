@@ -1,0 +1,24 @@
+#confirmAccount{
+    .btn{
+        width: 300px;
+        background:linear-gradient(to right ,#132412,#121244);
+        margin-right: 20px;
+        
+    }
+}
+#confirmSuccess{
+    .btn{
+        width: 300px;
+        background:linear-gradient(to right ,#132412,#121244);
+    }
+}
+@media(max-width:500px){
+    #confirmAccount{
+        .btn{
+            width: 300px;
+            background:linear-gradient(to right ,#132412,#121244);
+            margin: 10px 0;
+            
+        }
+    }
+}
