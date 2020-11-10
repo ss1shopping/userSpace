@@ -11,6 +11,11 @@
       
      &__calosel{
         width: 50%;
+        .image-gallery-slide .image-gallery-image {
+            width: 100%;
+            object-fit: contain;
+            height: 400px;
+        }
       }
       &__infor{
           width: 50%;

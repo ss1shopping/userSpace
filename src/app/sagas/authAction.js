@@ -15,11 +15,14 @@ function* fetchLogin ({ payload }) {
       yield setSubmitting(false);
        yield setStorage('token', result.data.token,result.data.expToken);
        yield setStorage("refreshtoken",result.data.refreshToken,result.data.expRefreshToken)
+      //  const response=yield call(loadingCart)
+      
+      //  yield put (authActions.loadingCartSuccess(response.data))
        if(result.data.user.role===1){
          yield setStorage("admin",true)
         yield history.push("/dashboard");
        }else{
-        yield history.push("/");
+        yield history.push(`/shop/${result.data.user.firstname}`);
        }
       console.log(result);
   } catch (err) {

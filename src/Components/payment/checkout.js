@@ -27,7 +27,7 @@ const CustomTextForm=({label,...props})=>{
   }
  const Checkout = () => {
 const dispatch=useDispatch()
-const [show, setShow] = useState(false);
+const [show, setShow] = useState(true);
 const user=useSelector(state=>state.authReducer.user)
 const cart=useSelector(state=>state.itemReducer.cart)
 useEffect(() => {
@@ -152,7 +152,7 @@ const DarkmodeStatus=useSelector(state=>state.layoutReducer.DarkmodeStatus)
                </Row>
                <Row>
                    <Col>
-                   <div>
+                   <div className="alert-success">
 
                    <Alert show={show} variant="success">
         <Alert.Heading>Succesfully</Alert.Heading>

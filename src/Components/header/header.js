@@ -77,7 +77,7 @@ const Header = (props) => {
               <span >Dark Mode</span>
             </div>
             {/* <Nav.Link href="/" active>Shop</Nav.Link> */}
-            <Nav.Link href="/users/history">Sign in</Nav.Link>
+            <Nav.Link href="/users/register">Sign in</Nav.Link>
             <Nav.Link href="/users/login">Login</Nav.Link>
               {/* <Link to="/users/cart"> Cart <RiShoppingCart2Line/><div style={{color:"red" ,margin:"-30px 0 0 20px"}}>0</div></Link> */}
 

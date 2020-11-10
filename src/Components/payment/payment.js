@@ -50,25 +50,25 @@ const handleCheckOut=()=>{
       showitem=Object.keys(itemIncart).map((index,key)=>{
          return(
           <Col lg={4} md={6} sm={12} >
-          <div className="box__item" >
+          <div className="payment__item" >
               <div className="delete"><button className="delbut" onClick={(e)=>handleDelte(itemIncart[index])} >&#9747;</button></div>
-              <div className="box__item--image">
+              <div className="payment__item--image">
                   {/* <img className="image" src={anh2} /> */}
                   <ImageProduct images={itemIncart[index].image}></ImageProduct>
               </div>
-              <div className="box__item--infor">
-                  <div className="box__item--name">
+              <div className="payment__item--infor">
+                  <div className="payment__item--name">
                       Product 1
               </div>
-                  <div className="box__item--price">PriceItem1</div>
-                  <div className="box__item--quantity">
-                      <div className="box__item--button">
+                  <div className="payment__item--price">PriceItem1</div>
+                  <div className="payment__item--quantity">
+                      <div className="payment__item--button">
                           <div><button className="minus"><AiOutlineMinus /></button></div>
                           <div className="quantity">2</div>
                           <div><button className="plus"><AiOutlinePlus /></button></div>
                       </div>
                   </div>
-                  <div className="box__item--Sum">SumItem1</div>
+                  <div className="payment__item--Sum">SumItem1</div>
   
               </div>
           </div>
@@ -78,7 +78,7 @@ const handleCheckOut=()=>{
  }
     return (
         <div style={{ marginTop: "117px" }}>
-            <div className="box">
+            <div className="payment">
                 <Container fluid>
                     <Row  >
                        {showitem}
@@ -119,7 +119,10 @@ const handleCheckOut=()=>{
                             </p>
                             <hr />
                             <div className="d-flex justify-content-end">
-                            <Button onClick={() => confirmDelete(productDelele._id) } variant="outline-primay">
+                            <Button onClick={() => confirmDelete(productDelele._id) } variant="outline-primay" style={{marginRight:"5px"}}>
+                                Delete
+                            </Button>
+                            <Button onClick={() => setShow(!show) } variant="outline-primay">
                                 Delete
                             </Button>
                             </div>

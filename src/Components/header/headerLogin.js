@@ -53,12 +53,15 @@ const HeaderLogin = (props) => {
      // dispatch(authActions.loadingCart())
       
       token=getStorage("token")
-    if(cart.length==0){
+      if(cart){
+if(cart.length==0){
       setNumberOnCart(0)
     }else{
 
       setNumberOnCart(cart.length)
     }
+      }
+    
   }, [cart])
   
   return (
@@ -93,9 +96,9 @@ const HeaderLogin = (props) => {
               <span >Dark Mode</span>
             </div>
             {/* <Nav.Link href="/" active>Shop</Nav.Link> */}
-            <Link to="/users/history">History<FaHistory/></Link>
+            <Link to="/users/history" className="nav-link">History<FaHistory/></Link>
             <Nav.Link href="/" onClick={()=>handleLogout()}>Logout <IoIosLogIn/></Nav.Link>
-              <Link to="/users/cart"> Cart <RiShoppingCart2Line/><div style={{color:"red" ,margin:"-30px 0 0 20px"}}>{numberOnCart}</div></Link>
+              <Link to="/users/cart" className="nav-link"> Cart <RiShoppingCart2Line/><div style={{color:"red" ,margin:"-30px 0 0 20px"}}>{numberOnCart}</div></Link>
 
           </Nav>
 
@@ -118,7 +121,7 @@ const HeaderLogin = (props) => {
                 }} />
               <span >Dark Mode</span>
             </div>
-              <Nav.Link href="/" active>Home</Nav.Link>
+              <Nav.Link href="/" active className="nav-link">Home</Nav.Link>
             <Nav.Link href="#about">About</Nav.Link>
             <Nav.Link href="/users/login"><FiLogOut /> Logout</Nav.Link>
 

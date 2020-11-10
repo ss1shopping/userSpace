@@ -3,6 +3,8 @@ import { Col, Container, Row } from 'react-bootstrap'
 import  {useDispatch,useSelector} from "react-redux"  
 import { authActions } from '../../app/store/ducks/authReducer'
 import { totalActions } from '../../app/store/ducks/totalReducer'
+import {BsTrash} from "react-icons/bs"
+import {Link } from "react-router-dom"
 const History = () => {
     const dispatch = useDispatch()
     const user = useSelector(state => state.authReducer.user)
@@ -13,7 +15,7 @@ dispatch(totalActions.loadingListHistoryofUser())
 
 }, [])
     return (
-        <div id="history" className="history" style={{marginTop:"100px"}}>
+        <div id="history" className="history" style={{paddingTop:"120px"}}>
             <Container>
                 <Row>
                     <Col>
@@ -49,7 +51,7 @@ dispatch(totalActions.loadingListHistoryofUser())
                                 <td>{item.phone}</td>
                                 <td>{item.address}</td>
                         <td>{item.itemId.length}</td>
-                                <td>Delete</td>
+                                <td><Link to={`users/history`} ><BsTrash/>DELETE </Link></td>
                             </tr>
                         ))}
                         </tbody>

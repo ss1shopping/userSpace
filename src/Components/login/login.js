@@ -19,7 +19,7 @@ const useStyles = makeStyles(theme => ({
         minHeight: '100vh',
         alignItems: 'center',
         justifyContent: 'flex-start',
-        background: 'url(https://source.unsplash.com/random/1600x900)',
+        //background: 'url(https://source.unsplash.com/random/1600x900)',
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
     },
@@ -102,7 +102,10 @@ const Login = (props) => {
   onSubmit={(values,{setSubmitting,resetForm})=>{
     
     dispatch(authActions.login(values.email,values.password,setSubmitting,props.history))
-  
+    // setTimeout(() => {
+    //   dispatch(authActions.loadingCart())
+    // }, 1000);
+    
   }}
   >
     {({
@@ -139,7 +142,7 @@ const Login = (props) => {
                         <div className="error" >{error}</div>
                         <CardActions className={classes.actions}>
                             <button
-                                className="btn"
+                                className="btn" 
                               //   variant="contained"
                               //   type="submit"
                               //  color="primary"
@@ -160,7 +163,7 @@ const Login = (props) => {
            <span className="link"><Link to="/users/register" style={DarkmodeStatus?{color:"#249dcb"}:{}}>Create an account</Link></span>
          </div>
          <div className="forgot" style={{padding:"0 1em 1em 1em"}}>
-           <span><Link to="/forgotpassword" style={DarkmodeStatus?{color:"#249dcb"}:{}}>Forgot password ?</Link></span>
+           <span><Link to="/users/forgotpassword" style={DarkmodeStatus?{color:"#249dcb"}:{}}>Forgot password ?</Link></span>
          </div>
                     </Card>
                     

@@ -14,6 +14,7 @@ import { authActions } from '../../app/store/ducks/authReducer'
 // import anh8 from "../../app/scss/image/nb.jpg"
 // import anh9 from "../../app/scss/image/nike.jpg"/../app/s
 const Shop_page = () => {
+    
     const  dispatch = useDispatch()
     const [pageCount, setpageCount] = useState(10)
     const [page, setPage] = useState(1)
@@ -24,6 +25,7 @@ const Shop_page = () => {
     }
     const item=useSelector(state=>state.itemReducer.item)
     useEffect(() => {
+        
       dispatch(itemActions.loadingitem(limit,page))
       dispatch(authActions.loadingCart())
     }, [])
@@ -48,7 +50,7 @@ const Shop_page = () => {
                             {item[index].name}
                     </div>
                             <div className="product__price">
-                                `${item[index].price}$`
+                                {item[index].price}$
                     </div>
                         </div>
                     </div>

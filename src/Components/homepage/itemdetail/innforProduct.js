@@ -35,7 +35,7 @@ const dispatch=useDispatch()
             setTimeout(() => {
                 dispatch(authActions.loadingCart())
                 alert("add successful")
-            },0);
+            },1000);
             
                
                
@@ -50,8 +50,8 @@ const dispatch=useDispatch()
                 <Descriptions.Item label="Price"> {itemtoedit.price}</Descriptions.Item>
                  <Descriptions.Item label="Sold">{itemtoedit.sold}</Descriptions.Item>
                  <Descriptions.Item label="View">{itemtoedit.view}</Descriptions.Item>
-                <Descriptions.Item label="city"> {itemtoedit.quantity}</Descriptions.Item>
-                <Descriptions.Item label="Description"> {itemtoedit.discription}</Descriptions.Item>
+                <Descriptions.Item label="Quantity"> {itemtoedit.quantity}</Descriptions.Item>
+                <Descriptions.Item label="Description"> {itemtoedit.description}</Descriptions.Item>
             </Descriptions>
 
             <br />

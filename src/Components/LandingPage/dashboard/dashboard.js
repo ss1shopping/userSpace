@@ -29,8 +29,10 @@ const Dashboard = () => {
      const [chart, setChart] = useState("lineChart")
      const [total,setTotal]=useState("totalUser")
       // const [key, setKey] = useState('home');
-     
-     // dispatch(authActions.loadingCart())
+    //  useEffect(() => {
+    //     dispatch(authActions.loadingCart())
+    //  }, [])
+    
          dispatch(itemActions.loadingitem()) 
      
       useEffect(() => {

@@ -152,13 +152,13 @@ const Register = (props) => {
                           <CustomTextForm   name="lastname" label="LastName" placeholder="LastName"></CustomTextForm>
                           </div>
                           <div className={classes.input}>
-                          <CustomTextForm   name="email" label="Email" type="email" placeholder="Email"></CustomTextForm>
+                          <CustomTextForm   name="email"  type="email" defaultValue="ttest" placeholder="Email"></CustomTextForm>
                           </div>
                           <div className={classes.input}>
-                          <CustomTextForm  name="password" label="password" placeholder="Password"></CustomTextForm>
+                          <CustomTextForm type="password" name="password" label="password" placeholder="Password"></CustomTextForm>
                           </div>
                           <div className={classes.input}>
-                          <CustomTextForm   name="passwordAgain" label="password" placeholder="Type againt password"></CustomTextForm>
+                          <CustomTextForm  type="password" name="passwordAgain" label="password" placeholder="Type againt password"></CustomTextForm>
                           </div>
                       </div> 
                       <div className="error" >{error}</div>
