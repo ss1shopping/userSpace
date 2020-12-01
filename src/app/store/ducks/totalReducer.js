@@ -16,6 +16,8 @@ const initialAuthState = {
   errorGetlistOrder:null,
   listHistoryOfUser:null,
   errorLIstHistoryOfUser:null,
+  msgDeleteOrder:null,
+  msg:null
 }
  const  totalReducer=(state = initialAuthState, action) => {
       switch (action.type) {
@@ -51,7 +53,7 @@ const initialAuthState = {
             return{
                 ...state,pending:!state.pending,errorGetlistOrder:action.payload
             }
-        case totalActionTypes.loadingListHistoryofUser:
+        case totalActionTypes.loadinglistOfHistoryOfUser:
             return{
                 ...state,pending:!state.pending
             }
@@ -64,6 +66,59 @@ const initialAuthState = {
                 ...state ,pending:!state.pending,errorLIstHistoryOfUser:action.payload
             }
         }
+        case totalActionTypes.deleteOrder:{
+            return{
+                ...state,pending:!state.pending,
+            }
+        }
+        case totalActionTypes.deleteOrderSuccessful:{
+            return{
+                ...state,pending:!state.pending,msgDeleteOrder:action.payload.msg
+            }
+        }
+        case totalActionTypes.deleteOrderfail:{
+            return{
+                ...state,pending:!state.pending,msgDeleteOrder:action.payload
+            }
+        }
+        case totalActionTypes.exportBilling:{
+            return {
+                ...state, pending:!state.pending
+            }
+        }
+        case totalActionTypes.exportBillingSuccessful:{
+            return{
+                ...state,pending:!state.pending,msg:action.payload.msg
+            }
+        }
+        case totalActionTypes.exportBillingFailure:
+        return{
+            ...state,pending:!state.pending,msg:action.payload
+        }
+        case totalActionTypes.cancelledBilling:
+            return{
+                ...state,pending:!state.pending
+            }
+        case totalActionTypes.cancelledBillingSuccessFul:
+            return{
+                ...state,pending:!state.pending,msg:action.payload.msg
+            }
+        case totalActionTypes.cancelledBillingFailure:
+            return{
+                ...state,pending:!state.pending,msg:action.payload
+            }
+        case totalActionTypes.finishBilling:
+            return{
+                ...state,pending:!state
+            }
+        case totalActionTypes.finishBillingSuccessful:
+            return{
+                ...state,pending:!state.pending,msg:action.payload.msg
+            }
+        case totalActionTypes.finishBillingFailure:
+            return{
+                ...state,pending:!state.pending,msg:action.payload
+            }
         default:
           return state;
       }
@@ -73,10 +128,22 @@ export const totalActions={
       loadingInforChart:(kind)=>({type:totalActionTypes.loadingInforChart,payload:{kind}}),
       loadingInforChartSuccess:(payload)=>({type:totalActionTypes.loadingInforChartSuccessful,payload}),
       loadingInforChartFailure:(payload)=>({type:totalActionTypes.loadingInforChartFailure,payload}),
-      loadingListOrder:(limit,page)=>({type:totalActionTypes.loadingAllListOrder,payload:{limit,page}}),
+      loadingListOrder:(limit,page,status)=>({type:totalActionTypes.loadingAllListOrder,payload:{limit,page,status}}),
       loadingListOrderSuccessful:(payload)=>({type:totalActionTypes.loadingAllLIstOrderSuccessful,payload}),
       loadingListOrderFailure:(payload)=>({type:totalActionTypes.loadingAllLIstOrderSuccessful,payload}),
-      loadingListHistoryofUser:()=>({type:totalActionTypes.loadinglistOfHistoryOfUser}),
+      loadingListHistoryofUser:(limit,page)=>({type:totalActionTypes.loadinglistOfHistoryOfUser,payload:{limit,page}}),
       loadingListHistoryofUserSuccessful:(payload)=>({type:totalActionTypes.loadinglistOfHistoryOfUserSuccuessFull,payload}),
-      loadingListHistoryofUserfailure:(payload)=>({type:totalActionTypes.loadinglistOfHistoryOfUserfailure,payload})
+      loadingListHistoryofUserfailure:(payload)=>({type:totalActionTypes.loadinglistOfHistoryOfUserfailure,payload}),
+      deleteOrder:(id)=>({type:totalActionTypes.deleteOrder,payload:{id}}),
+      deleteOrderSuccessful:(payload)=>({type:totalActionTypes.deleteOrderSuccessful,payload}),
+      deleleteOrderFailure:(payload)=>({type:totalActionTypes.deleteOrderfail,payload}),
+      exportBilling:(id)=>({type:totalActionTypes.exportBilling,payload:{id}}),
+      exportBillingSuccessful:(payload)=>({type:totalActionTypes.exportBillingSuccessful,payload}),
+      exportBillingFailure:(payload)=>({type:totalActionTypes.exportBillingFailure,payload}),
+      cancellingBilling:(id)=>({type:totalActionTypes.cancelledBilling,payload:{id}}),
+      cancellingBillingSuccessful:(payload)=>({type:totalActionTypes.cancelledBillingSuccessFul,payload}),
+      cancelledBillingFailure:(payload)=>({type:totalActionTypes.cancelledBillingFailure,payload}),
+      finishBilling:(id)=>({type:totalActionTypes.finishBilling,payload:{id}}),
+      finishBillingSuccessful:(payload)=>({type:totalActionTypes.finishBillingSuccessful,payload}),
+      finishBillingFailure:(payload)=>({type:totalActionTypes.finishBillingFailure,payload})
 }

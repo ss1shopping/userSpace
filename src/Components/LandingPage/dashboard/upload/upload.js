@@ -77,8 +77,9 @@ const dispatch=useDispatch()
 
            <Col md={12}>
            
-             <h2>upload sản phẩm</h2>
+            
            <div className="upload__body">
+           <h2>upload sản phẩm</h2>
               <input type="text" name="name" placeholder="name" onChange={(e)=>setName(e.target.value)}/>
            </div>
            </Col>

@@ -34,6 +34,9 @@ export const itemActionTypes={
   updateView:"[update view]",
   checkout:`[check out]`,
   checkoutSuccessful:"[check out Successful]",
+  deleteItem:"[delete item]",
+  deleteItemSuccessful:"[delete item successful]",
+
   
   
   
@@ -60,7 +63,13 @@ export const authActionTypes = {
   refreshTokenSuccessFul:"[Refresh Token Success]",
   refreshTokenFailure:"[Refresh Token Faliure]",
   Loadingcart:"[Loading Cart]",
-  LoadingcartSuccess:"[Loading cart Succesful]"
+  LoadingcartSuccess:"[Loading cart Succesful]",
+  ResetPassword:'[resetPassword]',
+  ResetpasswordCorrectemail:"[resetpassword correct email]",
+  resetpasswordInCorectemail:"[resetpassword incorrect email]",
+  ChangeNewpassword:'[Change new password]',
+  ChangeNewpasswordSuccessful:"[Change new password correct]",
+  ChangeNewpasswordFailure:"[Change new password incorrect]",
 };
 export const totalActionTypes={
   loadingInforChart:'[Action Loading Infor Chart]',
@@ -71,5 +80,18 @@ export const totalActionTypes={
   loadingAllListOrderFailure:"[Action Loading All All list order failure]",
   loadinglistOfHistoryOfUser:"[Action loading list of history User]",
   loadinglistOfHistoryOfUserSuccuessFull:"[Action loading list if history user Successful]",
-  loadinglistOfHistoryOfUserfailure:"[Action loading list histoey User Failure]"
+  loadinglistOfHistoryOfUserfailure:"[Action loading list histoey User Failure]",
+  deleteOrder:"[DeleteOrder]",
+  deleteOrderSuccessful:"[DeleteOrder SuccessFul]",
+  deleteOrderfail:"[DeleteOrder failure]",
+  exportBilling:'Export Billing',
+  exportBillingSuccessful:"[export billing successful]",
+  exportBillingFailure:'[export billing failure]',
+  cancelledBilling:'[Cancelled Billing ]',
+  cancelledBillingSuccessFul:"[Cancelled Billing Succesfful]",
+  cancelledBillingFailure:'[cancelled Biiling Failure]',
+  finishBilling:'[finish billing]',
+  finishBillingSuccessful:"[finish billing SuccessFul]",
+  finishBillingFailure:"[finish billing Failure]"
+  
 }

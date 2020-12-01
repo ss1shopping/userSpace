@@ -1,5 +1,5 @@
 import { takeEvery, put, call} from 'redux-saga/effects';
-import {login,register,activeAccount,GenNewToken,loadingCart} from "../crud/auth.crud";
+import {login,register,activeAccount,GenNewToken,loadingCart,resetPassword,changeNewpassword} from "../crud/auth.crud";
 import {setStorage} from "../../_metronic/utils/utils";
 import {authActions} from "../store/ducks/authReducer";
 import {authActionTypes} from "../constant/index";
@@ -85,13 +85,42 @@ function* fetchRefreshToken({payload}){
     yield put(authActions.error(err));
    }
  }
-
+ function* forgotpassword({payload}){
+   const {email,history}=payload
+   console.log("email",email);
+   try {
+     const response=yield call(resetPassword,{email})
+     console.log(response);
+     yield put (authActions.resetPasswordCorrectemail(response.data))
+     if(response.status===200){
+       yield history.push("/users/login/forgotpassword/confirm")
+     }
+   } catch (error) {
+    const err =error.response?error.response.data.msg :error.stack
+    yield put(authActions.resetPasswordInCorrectemail(err));
+   }
+ }
+function* changeNewPassword({payload}){
+  const {password,passwordConfirm,token,history}=payload
+  try {
+    const response=yield call(changeNewpassword,{password,passwordConfirm,token})
+    yield put (authActions.changeNewpasswordSuccessful(response.data))
+    if(response.status==200){
+     yield history.push("/users/login/change-password")
+    }
+  } catch (error) {
+    const err =error.response?error.response.data.msg :error.stack
+    yield put(authActions.changeNewpasswordFailure(err));
+  }
+}
 function* authSagas () {
   yield takeEvery(authActionTypes.Login, fetchLogin);
   yield takeEvery(authActionTypes.Register, fetchRegister);
   yield takeEvery(authActionTypes.activeAccount,fetchactiveAccount)
   yield takeEvery(authActionTypes.refreshToken,fetchRefreshToken)
   yield takeEvery(authActionTypes.Loadingcart,loadingcart)
+  yield takeEvery(authActionTypes.ResetPassword,forgotpassword)
+  yield takeEvery(authActionTypes.ChangeNewpassword,changeNewPassword)
 }
 
 export default authSagas;

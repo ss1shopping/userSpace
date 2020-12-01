@@ -1,17 +1,26 @@
-import React,{useEffect} from 'react'
+import React,{useEffect,useState} from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
 import  {useDispatch,useSelector} from "react-redux"  
 import { authActions } from '../../app/store/ducks/authReducer'
 import { totalActions } from '../../app/store/ducks/totalReducer'
+import ReactPaginate from 'react-paginate';
 import {BsTrash} from "react-icons/bs"
 import {Link } from "react-router-dom"
 const History = () => {
     const dispatch = useDispatch()
     const user = useSelector(state => state.authReducer.user)
 const history = useSelector(state => state.totalReducer.listHistoryOfUser)
+const [pageCount, setpageCount] = useState(100)
+const [page, setPage] = useState(1)
+const [limit, setLimit] = useState(12)
+const handleChangepage=(e)=>{
+ setPage(e.selected)
+ console.log(page);
+ dispatch(totalActions.loadingListHistoryofUser(limit,page))
+}
 useEffect(() => {
     // dispatch(authActions.loadingCart())
-dispatch(totalActions.loadingListHistoryofUser())
+dispatch(totalActions.loadingListHistoryofUser(limit,page))
 
 }, [])
     return (
@@ -19,6 +28,7 @@ dispatch(totalActions.loadingListHistoryofUser())
             <Container>
                 <Row>
                     <Col>
+                    <h2>History</h2>
                     <table >
                         <thead>
                             <tr className="item__attribute">
@@ -61,6 +71,19 @@ dispatch(totalActions.loadingListHistoryofUser())
                     </table>
                     
                     </Col>
+                    <ReactPaginate
+          previousLabel={'previous'}
+          nextLabel={'next'}
+          breakLabel={'...'}
+          breakClassName={'break-me'}
+          pageCount={pageCount}
+          marginPagesDisplayed={2}
+          pageRangeDisplayed={3}
+          onPageChange={(page)=>handleChangepage(page)}
+          containerClassName={'pagination'}
+          subContainerClassName={'pages pagination'}
+          activeClassName={'active'}
+        />
                 </Row>
             </Container>
         </div>

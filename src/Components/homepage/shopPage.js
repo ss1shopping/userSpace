@@ -7,6 +7,7 @@ import ImgSlider from "./imgSlider"
 import { itemActions } from '../../app/store/ducks/itemReducer'
 import ReactPaginate from 'react-paginate';
 import { authActions } from '../../app/store/ducks/authReducer'
+import InfiniteScroll from 'react-infinite-scroll-component';
 // import anh4 from "../../app/scss/image/air_jordan.jpg"
 // import anh5 from "../../app/scss/image/air_max.jpg"
 // import anh6 from "..css/image/Converse.jpg"
@@ -18,22 +19,73 @@ const Shop_page = () => {
     const  dispatch = useDispatch()
     const [pageCount, setpageCount] = useState(10)
     const [page, setPage] = useState(1)
-    const [limit, setLimit] = useState(10)
-    const handleChangepage=()=>{
-     setPage(page+1)
+    const [limit, setLimit] = useState(2)
+    const [sortby,setSortBy]=useState("_id")
+    const [orderby,setOrderBy]=useState("ASC")
+    const handleChangepage=(page)=>{
+        setPage(page.selected)
      
     }
     const item=useSelector(state=>state.itemReducer.item)
     useEffect(() => {
         
-      dispatch(itemActions.loadingitem(limit,page))
+      dispatch(itemActions.loadingitem(limit,page,sortby,orderby))
       dispatch(authActions.loadingCart())
-    }, [])
-    let showItem
-    if(!item){
+    }, [limit,page,sortby,orderby])
+    const handleFilter=(e)=>{
+     if(e.target.value==="hightprice"){
+     setSortBy("price")
+     setOrderBy("DESC")
+     }
+     if(e.target.value==="lowprice"){
+        setSortBy("price")
+        setOrderBy("ASC")
+        }
+        if(e.target.value==="name"){
+            setSortBy("name")
+            setOrderBy("ASC")
+        }
     }
-    else{
-        showItem= Object.keys(item).map((index,key)=>{
+   const infinitePage=()=>{
+       setPage(page+1)
+   }
+    // let showItem
+    // if(!item){
+    // }
+    // else{
+    //     showItem= 
+    // }
+    return (
+        <section className="box">
+            <Container>
+                <Row>
+                    <Col>
+                    
+                <div className="menu">    
+                            <div className="text">SORT BY</div>     
+                            <select name="sortBy" id="sortBy" onChange={(e)=>handleFilter(e)}>
+                                <option value="name">PRODUCT NAME</option>
+                                <option value="hightprice">HIGHEST PRICE</option>
+                                <option value="lowprice">LOWEST PRICE</option>
+                            </select>
+                            {/* <div className="text">SHOW ME</div>
+                            <select name="showMe" id="showMe">
+                                <option value="ALLPRODUCT">ALL PRODUCT</option>
+                                <option value="TENNIS">TENNIS</option>
+                                <option value="RUNNING">RUNNING</option>
+                                <option value="GYM">GYM</option>
+                            </select> */}
+                        </div>
+                    </Col>
+                </Row>
+                <Row>
+                    <InfiniteScroll 
+                    dataLength={item.length} //This is important field to render the next data
+                    next={()=>infinitePage()}
+                    hasMore={true}
+                    loader={<h4>Loading...</h4>}>
+
+                    {item && Object.keys(item).map((index,key)=>{
             
             return(
                 <Col md={6} lg={4} key={key}>
@@ -58,33 +110,8 @@ const Shop_page = () => {
                 </Link>
             </Col>
             )
-        })
-    }
-    return (
-        <section className="box">
-            <Container>
-                <Row>
-                    <Col>
-                    
-                <div className="menu">    
-                            <div className="text">SORT BY</div>     
-                            <select name="sortBy" id="sortBy">
-                                <option value="PRODUCTNAME">PRODUCT NAME</option>
-                                <option value="HIGHTESTPRICE">HIGHEST PRICE</option>
-                                <option value="LOWESTPRICE">LOWEST PRICE</option>
-                            </select>
-                            <div className="text">SHOW ME</div>
-                            <select name="showMe" id="showMe">
-                                <option value="ALLPRODUCT">ALL PRODUCT</option>
-                                <option value="TENNIS">TENNIS</option>
-                                <option value="RUNNING">RUNNING</option>
-                                <option value="GYM">GYM</option>
-                            </select>
-                        </div>
-                    </Col>
-                </Row>
-                <Row>
-                    {showItem}
+        })}
+                    </InfiniteScroll>
                     <ReactPaginate
           previousLabel={'previous'}
           nextLabel={'next'}
@@ -93,7 +120,7 @@ const Shop_page = () => {
           pageCount={pageCount}
           marginPagesDisplayed={2}
           pageRangeDisplayed={3}
-          onPageChange={handleChangepage}
+          onPageChange={(page)=>handleChangepage(page)}
           containerClassName={'pagination'}
           subContainerClassName={'pages pagination'}
           activeClassName={'active'}

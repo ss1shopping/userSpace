@@ -26,7 +26,7 @@ import FooterDashboard from "../../../footer/footerDashboard";
       console.log(e.selected);
      }
      useEffect(() => {
-        dispatch(totalActions.loadingListOrder(limit,page,"pending"))
+        dispatch(totalActions.loadingListOrder(limit,page,"finish"))
      }, [page])
     
     //  const handleChangetoEdit=(item)=>{
@@ -36,18 +36,12 @@ import FooterDashboard from "../../../footer/footerDashboard";
         
         dispatch(totalActions.deleteOrder(id))
         setTimeout(() => {
-            dispatch(totalActions.loadingListOrder(limit,page,"pending"))
+            dispatch(totalActions.loadingListOrder(limit,page,"finish"))
         }, 2000);
     }
     const handlechoose=(e)=>{
         // console.log(e.target.parentElement.parentElement.setAttribute("class",));
           e.target.checked?setClassname("item__attribute checked"):setClassname("item__attribute")
-     }
-     const handleExport=(id)=>{
-        dispatch(totalActions.exportBilling(id))
-        setTimeout(() => {
-            dispatch(totalActions.loadingListOrder(limit,page,"pending"))
-        }, 500);
      }
      let loadingitem
      if(!ListOrder){
@@ -84,7 +78,7 @@ import FooterDashboard from "../../../footer/footerDashboard";
                     <th className="item__attribute--price">{ListOrder[index].address}</th>
                     <th className="item__attribute--sold">{ListOrder[index].itemId.length}</th>
                     <th className="item__attribute--price">{ListOrder[index].status}</th>
-                    <th className="item__attribute--price"><Link onClick={()=>handleExport(ListOrder[index]._id)}>Export</Link></th>
+                    
                           
                             {/* </Link> */}
                             <th className="item__attribute--edit"><Link onClick={()=>handleDelele(ListOrder[index]._id)}><BsTrash/>DELETE </Link></th>
@@ -121,8 +115,7 @@ import FooterDashboard from "../../../footer/footerDashboard";
                         <th className="item__attribute--quantity navigator--quantity">Total Cost</th>
                         <th className="item__attribute--price navigator--price">Address</th>
                         <th className="item__attribute--sold navigator--sold">Sold</th>
-                        <th className="item__attribute--price navigator--price">status</th>
-                        <th className="item__attribute--edit"> Export</th>
+                        <th className="item__attribute--price navigator--price">Status</th>
                         <th className="item__attribute--edit"> DELETE</th>
                              
                             </tr>

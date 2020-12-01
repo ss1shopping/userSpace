@@ -20,8 +20,12 @@ const Payment = () => {
     const [show, setShow] = useState(false);
     const [productDelele,setproductDelete]=useState()
     const itemIncart = useSelector(state => state.itemReducer.itemInCart)
+    const [item, setItem] = useState([])
+    let totalPrice=0
+  
  useEffect(() => {
     dispatch(authActions.loadingCart())
+
  }, [])
 
 const handleDelte=(infor)=>{
@@ -37,51 +41,57 @@ dispatch(itemActions.removetocart(id))
 const handleCheckOut=()=>{
 
 }
- let showitem
+//  let showitem
  
- if(!itemIncart){
-     return (
-         <div>
-             not found
-         </div>
-     )
- }else{
+//  if(!itemIncart){
+//      return (
+//          <div>
+//              not found
+//          </div>
+//      )
+//  }else{
 
-      showitem=Object.keys(itemIncart).map((index,key)=>{
-         return(
-          <Col lg={4} md={6} sm={12} >
-          <div className="payment__item" >
-              <div className="delete"><button className="delbut" onClick={(e)=>handleDelte(itemIncart[index])} >&#9747;</button></div>
-              <div className="payment__item--image">
-                  {/* <img className="image" src={anh2} /> */}
-                  <ImageProduct images={itemIncart[index].image}></ImageProduct>
-              </div>
-              <div className="payment__item--infor">
-                  <div className="payment__item--name">
-                      Product 1
-              </div>
-                  <div className="payment__item--price">PriceItem1</div>
-                  <div className="payment__item--quantity">
-                      <div className="payment__item--button">
-                          <div><button className="minus"><AiOutlineMinus /></button></div>
-                          <div className="quantity">2</div>
-                          <div><button className="plus"><AiOutlinePlus /></button></div>
-                      </div>
-                  </div>
-                  <div className="payment__item--Sum">SumItem1</div>
-  
-              </div>
-          </div>
-      </Col>
-         )
-     })
- }
+//       showitem= Object.keys(itemIncart).map((index,key)=>{
+//           console.log(itemIncart[index].price);
+//           setTotalPrice(totalPrice+itemIncart[index].price)
+//       })
+//     }
     return (
         <div style={{ marginTop: "117px" }}>
             <div className="payment">
                 <Container fluid>
                     <Row  >
-                       {showitem}
+                      {itemIncart && Object.keys(itemIncart).map((index,key)=>{
+                        
+                      totalPrice=totalPrice + itemIncart[index].price ;
+                    return(
+                     <Col lg={4} md={6} sm={12} key={key}>
+                     <div className="payment__item" >
+                         <div className="delete"><button className="delbut" onClick={(e)=>handleDelte(itemIncart[index])} >&#9747;</button></div>
+                         <div className="payment__item--image">
+                             {/* <img className="image" src={anh2} /> */}
+                             <ImageProduct images={itemIncart[index].image}></ImageProduct>
+                         </div>
+                         <div className="payment__item--infor">
+                             <div className="payment__item--name">
+                                {itemIncart[index].name}
+                         </div>
+                         
+                             <div className="payment__item--price">{itemIncart[index].price}$</div>
+                             {/* <div className="payment__item--quantity">
+                                 <div className="payment__item--button">
+                                     <div><button className="minus"><AiOutlineMinus /></button></div>
+                                     <div className="quantity">1</div>
+                                     <div><button className="plus"><AiOutlinePlus /></button></div>
+                                 </div>
+                             </div> */}
+                             {/* <div className="payment__item--Sum">SumItem1</div> */}
+             
+                         </div>
+                     </div>
+                 </Col>
+                    )
+                })}
 
                     </Row>
 
@@ -96,7 +106,7 @@ const handleCheckOut=()=>{
                         <Col md={8} lg={4} sm={8} xs={8} className="totalamount">
                             <div className="tamount">
                                 <span>Total: </span>
-                                <span className="totalnumber">180$</span>
+                             <span className="totalnumber">{totalPrice}$</span>
                             </div>
                         </Col>
                         <Col md={8} lg={4} sm={8} xs={8} className="button2">
@@ -123,7 +133,7 @@ const handleCheckOut=()=>{
                                 Delete
                             </Button>
                             <Button onClick={() => setShow(!show) } variant="outline-primay">
-                                Delete
+                                Cancel
                             </Button>
                             </div>
                         </Alert>

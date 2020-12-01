@@ -9,7 +9,6 @@ const ImageProduct=(props) =>{
 useEffect(() => {
        if (props.images) {
            let images = [];
-            console.log(props.images);
            props.images.map((item,key) => {
               
                  const editimg=item.replace("public","http://localhost:4000")

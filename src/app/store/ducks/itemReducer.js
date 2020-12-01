@@ -1,6 +1,7 @@
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import {itemActionTypes ,authActionTypes} from "../../constant/index"
+import itemAction from '../../sagas/item.Action';
 const initialAuthState = {
   isPending: false,
   itemtoEdit:"",
@@ -35,7 +36,7 @@ export const itemReducer = persistReducer(
             }
         case itemActionTypes.loadingItemSuccess:
             return {
-                ...state,isPending:!state.isPending,item:action.payload
+                ...state,isPending:!state.isPending,item:state.item.concat(action.payload)
             }
         case itemActionTypes.uploadItem:
             return{
@@ -135,6 +136,14 @@ export const itemReducer = persistReducer(
             return{
                 ...state,checkout:action.payload.result
             }
+        case itemActionTypes.deleteItem:
+            return{
+                ...state,isPending:!state.isPending
+            }
+        case itemActionTypes.deleteItemSuccessful:
+            return{
+                ...state,isPending:!state.isPending,message:action.payload.msg
+            }
     
         
       default:
@@ -144,7 +153,7 @@ export const itemReducer = persistReducer(
 
 
 export const itemActions={
-    loadingitem:(limit,page)=>({type:itemActionTypes.loadingitem,payload:{limit,page}}),
+    loadingitem:(limit,page,sortBy,order)=>({type:itemActionTypes.loadingitem,payload:{limit,page,sortBy,order}}),
     loadingsuccess:(payload)=>({type:itemActionTypes.loadingItemSuccess,payload}),
     loadingfailure:(payload)=>({type:itemActionTypes.error,payload}),
     error:(payload)=>({type:itemActionTypes.Error,payload}),
@@ -166,7 +175,10 @@ export const itemActions={
     deleteUrlImage:()=>({type:"deleteUrlImage"}),
     updateView:(id)=>({type:itemActionTypes.updateView,payload:{id}}),
     checkout:(phone,address,id)=>({type:itemActionTypes.checkout,payload:{phone,address,id}}),
-    checkoutSuccessful:(payload)=>({type:itemActionTypes.checkoutSuccessful,payload})
+    checkoutSuccessful:(payload)=>({type:itemActionTypes.checkoutSuccessful,payload}),
+    deleteItem:(iditem)=>({type:itemActionTypes.deleteItem,payload:{iditem}}),
+    deleteitemSuccesful:(payload)=>({type:itemActionTypes.deleteItemSuccessful,payload}),
+
     
     
 }

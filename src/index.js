@@ -6,12 +6,13 @@ import * as serviceWorker from './serviceWorker';
 import store, { persistor } from "./app/store/store";
 
 ReactDOM.render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <App
     store={store}
     persistor={persistor}
     />
-  </React.StrictMode>,
+  // </React.StrictMode>,
+  ,
   document.getElementById('root')
 );
 

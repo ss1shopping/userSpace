@@ -27,7 +27,7 @@ const CustomTextForm=({label,...props})=>{
   }
  const Checkout = () => {
 const dispatch=useDispatch()
-const [show, setShow] = useState(true);
+const [show, setShow] = useState(false);
 const user=useSelector(state=>state.authReducer.user)
 const cart=useSelector(state=>state.itemReducer.cart)
 useEffect(() => {

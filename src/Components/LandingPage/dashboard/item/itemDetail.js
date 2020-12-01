@@ -51,7 +51,7 @@ import "slick-carousel/slick/slick-theme.css";
                      <div className="itemdetail__box--description">
                          <textarea className="items__box--input" onChange={(e)=>setDesc(e.target.value)} defaultValue={itemtoedit.description}></textarea>
                      </div>
-                     <Slider {...config}>
+                     {/* <Slider {...config}>
                         {itemtoedit && itemtoedit.image.map((x, i) => {
                            const editimg=x.replace("public","http://localhost:4000")
                             return <div key={i} classname="img-card">
@@ -62,7 +62,7 @@ import "slick-carousel/slick/slick-theme.css";
                             </div>
                             </div>
                         })}
-                        </Slider>
+                        </Slider> */}
                      <div className="itemdetail__box--btn">
                            <Button onClick={()=>handleSubmit()}> Save</Button>
                      </div>

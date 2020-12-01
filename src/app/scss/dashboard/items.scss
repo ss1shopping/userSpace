@@ -1,7 +1,25 @@
 
 .item{
     font-size: 14px;
-  
+     .delete{
+         position: absolute;
+         top:0;
+         left: 0;
+         z-index: 10000000000000;
+         
+         width: 100%;
+         padding:5px;
+         div{
+            display: flex;
+            justify-content: flex-end;
+            align-items: flex-end;
+            div{
+                button{
+                    padding:2px 5px!important;
+                }
+            }
+         }
+     }
     &__attribute{
       
         padding: 15px 0px;

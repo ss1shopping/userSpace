@@ -20,10 +20,12 @@ export function GenNewToken(refreshToken){
   return initApi().post(API_URLS.REFRES_TOKEN,refreshToken)
 }
 
-export function requestPassword(email) {
-  return initApi().post(API_URLS.RESET_PASSWORD, { email });
+export function resetPassword(email) {
+  return initApi().post(API_URLS.RESET_PASSWORD, email );
 }
-
+export function changeNewpassword(data){
+  return initApi().post(API_URLS.Change_Password(data),data)
+}
 export function refreshToken(refresh_token) {
   return initApi().post(API_URLS.REFRES_TOKEN, { refresh_token });
 }

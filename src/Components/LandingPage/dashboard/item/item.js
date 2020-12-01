@@ -1,5 +1,5 @@
 import React ,{useState,useEffect,useRef}from 'react'
-import { Container, Row,Col } from 'react-bootstrap'
+import { Container, Row,Col, Button } from 'react-bootstrap'
 import {Link} from "react-router-dom"
 import { useSelector, useDispatch} from 'react-redux'
 import ReactPaginate from 'react-paginate';
@@ -7,16 +7,37 @@ import {AiTwotoneEdit} from "react-icons/ai"
 import { itemActions } from '../../../../app/store/ducks/itemReducer';
 import NavbarCustom from '../navbar/navbar';
 import FooterDashboard from "../../../footer/footerDashboard";
+import {BsTrash} from "react-icons/bs";
  const Item = () => {
       const dispatch = useDispatch()
       const input =useRef(null)
      
    
       const [classname,setClassname]=useState("item__attribute")
+      const [status, setStatus] = useState(false)
+      const [checked,seetChecked]=useState(false)
+      const [currentTarget,setCurrentTarget]=useState()
+      const [itemChooseToDelete,setItemChooseToDelete]=useState()
+      const [sortby,setSortBy]=useState("_id")
+    const [orderby,setOrderBy]=useState("DESC")
       let item=useSelector(state=>state.itemReducer.item)
-      const [stateCustomer, setCustomerState] = useState(item);
-          
-      console.log(stateCustomer);
+      const [stateCustomer, setCustomerState] = useState([]);
+      
+      useEffect(() => {
+        console.log(item,stateCustomer);
+       
+        Object.keys(item).map(function(d,key){
+          item[key]={"select":false,description:item[key].description,image:item[key].image,name:item[key].name,price:item[key].price,quantity:item[key].price,sold:item[key].sold,view:item[key].view,_id:item[key]._id}
+        stateCustomer.push(item[key])
+        })
+        console.log(stateCustomer);
+        
+        return () => {
+         
+       
+        }
+      }, [item])
+      
      const [pageCount, setpageCount] = useState(100)
      const [page, setPage] = useState(1)
      const [limit, setLimit] = useState(10)
@@ -25,21 +46,33 @@ import FooterDashboard from "../../../footer/footerDashboard";
       console.log(page);
      }
      useEffect(() => {
-        dispatch(itemActions.loadingitem(limit,page))
-        setCustomerState(
-
-          stateCustomer.map((d)=>{
-            return{...d,select:false}
-          })
-        )
-     }, [page])
+        dispatch(itemActions.loadingitem(limit,page,sortby,orderby))
+       
+     },[])
     
      const handleChangetoEdit=(item)=>{
     dispatch(itemActions.itemChooseToEdit(item))
      }
-    const handlechoose=(e)=>{
-        // console.log(e.target.parentElement.parentElement.setAttribute("class",));
-          e.target.checked?setClassname("item__attribute checked"):setClassname("item__attribute")
+    const handlechoose=(e,key,item)=>{
+        console.log(e.currentTarget);
+        // console.log(e.current);
+        setStatus(!status)
+        setItemChooseToDelete(item)
+        setCurrentTarget(e.currentTarget)
+        console.log(currentTarget);
+          // e.target.checked?setClassname("item__attribute checked"):setClassname("item__attribute")
+     }
+     const handleDelete=()=>{
+       
+       //dispatch(itemActions.deleteItem(itemChooseToDelete._id))
+       setStatus(!status)
+       currentTarget.checked=false
+       setTimeout(() => {
+        dispatch(itemActions.loadingitem(limit,page,sortby,orderby))
+        
+       }, 2000);
+      
+      //  currentTarget.target.checked=false;
      }
      let loadingitem
      if(!item){
@@ -52,25 +85,14 @@ import FooterDashboard from "../../../footer/footerDashboard";
   
            
         loadingitem= Object.keys(item).map(function(key, index) {
-             console.log(index.select);
+           
                 return(
                    
 
-                        <tr className={classname} >
+                        <tr className={`${classname}`} >
         
                         <th className="item__attribute--checkbox">
-                                <input type="checkbox" checked={index.select} onChange={e => {
-            let value = e.target.checked;
-          
-            setCustomerState(
-              stateCustomer.map(sd => {
-                if (sd.id === item[index].id) {
-                  sd.select = value;
-                }
-                return sd;
-              })
-            );
-          }}/>    
+                                <input type="checkbox" onChange={(e)=>handlechoose(e,key,item[index])}/>    
                                 </th>
                             {/* <Link to="/items" className="item__attribute--link"> */}
                     <th className='item__attribute--id'>{item[index]._id}</th>
@@ -101,6 +123,11 @@ import FooterDashboard from "../../../footer/footerDashboard";
             <Container fluid>
                 <Row>
                     <Col>
+                    <div className="delete" style={status?{display:"block"}:{display:"none"}}
+                    ><div>
+                      <div><Button  onClick={()=>handleDelete()}><BsTrash/> DELETE </Button></div>
+                      </div>
+                      </div>
                     <table >
                         <thead>
                             <tr className="item__attribute">

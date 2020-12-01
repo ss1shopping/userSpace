@@ -62,7 +62,7 @@
 }
 .box__items:hover{
     text-decoration: none;
-    display: inline-block;
+    display: block;
     border: none;
     transform: scale(1.2, 1.2);
     transition: scale 0.5s ;
@@ -78,6 +78,12 @@
     position: relative;
     margin-top: 10%;
     height: 300px;
+    .lazy-load-image-background.blur.lazy-load-image-loaded > img{
+        width: 350px;
+        height: 250px;
+        opacity: 1;
+        transition: opacity 0.3s;
+    }
 }
 .box__item .name_price{
     visibility: hidden;

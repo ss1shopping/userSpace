@@ -15,12 +15,13 @@ const Chart = (props) => {
     const nameMonth4=useSelector(state=>state.totalReducer.nameMonth4)
     
     const [data,setData]=useState([ totalMonth4,totalMonth3,totalMonth2,totalMonth1])
+    const [type, setType]=useState("user")
     const [name, setname] = useState("Line")
     const [ChartData, setChartData] = useState( {
       labels: [nameMonth4,nameMonth3,nameMonth2,nameMonth1],
       datasets:[
         {
-          label:'sold',
+          label:type,
           data:data,
           backgroundColor:[
             'rgba(255, 99, 132, 0.6)',
@@ -41,6 +42,13 @@ const Chart = (props) => {
       ]
     })
       useEffect(() => {
+        if(props.type==="totalUser"){
+           setType("user")
+        }
+        if(props.type==="totalSold"){
+          setType("sold")
+        }
+
         setChartData({
           labels: [nameMonth4,nameMonth3,nameMonth2,nameMonth1],
           datasets:[

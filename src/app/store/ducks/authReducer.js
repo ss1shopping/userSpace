@@ -7,7 +7,8 @@ const initialAuthState = {
   error: null,
   notice:null,
   cart:[],
-  itemInCart:[]
+  itemInCart:[],
+  message:null,
 }
 export const authReducer = persistReducer(
   { storage, key: 'userAuth1', whitelist: [] },
@@ -84,6 +85,36 @@ export const authReducer = persistReducer(
       case authActionTypes.DeleteError: {
         return { ...state, error: null };
       }
+    case authActionTypes.ResetPassword:{
+      return{
+        ...state,isPending:!state.isPending
+      }
+    }
+    case authActionTypes.ResetpasswordCorrectemail:{
+      return{
+        ...state,isPending:!state.isPending,message:action.payload.msg
+      }
+    }
+    case authActionTypes.resetpasswordInCorectemail:{
+      return {
+        ...state,isPending:!state.isPending,error:action.payload.msg
+      }
+    }
+    case authActionTypes.ChangeNewpassword:{
+      return{
+        ...state,isPending:!state.isPending
+      }
+    }
+    case authActionTypes.ChangeNewpasswordSuccessful:{
+      return {
+        ...state,isPending:!state.isPending,message:action.payload.msg
+      }
+    }
+    case authActionTypes.changeNewpasswordFailure:{
+      return{
+        ...state,isPending:!state.isPending,error:action.payload
+      }
+    }
 
       default:
         return state;
@@ -120,8 +151,14 @@ export const authActions = {
   error: (payload) => ({ type: authActionTypes.Error, payload }),
   deleteError: () => ({ type: authActionTypes.DeleteError }),
   resetPassword: (email, history) => ({
-    type: authActionTypes.ResetPasswword, payload: { email, history }
+    type: authActionTypes.ResetPassword, payload: { email, history }
   }),
+  // resetPassword:(email,history)=>({type:authActionTypes.resetPassword,payload:{email,history}}),
+  resetPasswordCorrectemail:(payload)=>({type:authActionTypes.ResetpasswordCorrectemail,payload}),
+  resetPasswordInCorrectemail:(payload)=>({type:authActionTypes.resetpasswordInCorectemail,payload}),
+  changeNewpassword:(password,passwordConfirm,token,history)=>({type:authActionTypes.ChangeNewpassword,payload:{password,passwordConfirm,token,history}}),
+  changeNewpasswordSuccessful:(payload)=>({type:authActionTypes.ChangeNewpasswordSuccessful,payload}),
+  changeNewpasswordFailure:(payload)=>({type:authActionTypes.ChangeNewpasswordFailure,payload}),
   loadingCart:()=>({type:authActionTypes.Loadingcart}),
   loadingCartSuccess:(payload)=>({type:authActionTypes.LoadingcartSuccess,payload})
 }

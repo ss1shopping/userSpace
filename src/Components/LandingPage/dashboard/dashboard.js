@@ -29,9 +29,10 @@ const Dashboard = () => {
      const [chart, setChart] = useState("lineChart")
      const [total,setTotal]=useState("totalUser")
       // const [key, setKey] = useState('home');
-    //  useEffect(() => {
-    //     dispatch(authActions.loadingCart())
-    //  }, [])
+     useEffect(() => {
+       dispatch(itemActions.loadingInfor(convertDate(startDate)))
+      dispatch(totalActions.loadingInforChart(total))
+     }, [])
     
          dispatch(itemActions.loadingitem()) 
      
@@ -42,7 +43,7 @@ const Dashboard = () => {
       useEffect(()=>{
         dispatch(totalActions.loadingInforChart(total))
         console.log(total);
-      },[total])
+      },[total,startDate])
     return (
        
         <div >
@@ -121,7 +122,7 @@ const Dashboard = () => {
               </div>
               </Col>
              <Col lg={12}>
-               <LineChart chart={chart}></LineChart>
+               <LineChart chart={chart} type={total}></LineChart>
               
              </Col>
              </Row>

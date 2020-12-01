@@ -21,8 +21,9 @@ const NavbarCustom = () => {
       <Link to="/dashboard"><RiDashboardLine/>            <span>  Dashboard</span></Link>
       <Link to="/dashboard/item"><AiOutlineCloudUpload/>  <span>  Item</span></Link>
       <Link to="/dashboard/upload"><AiOutlineCloudUpload/><span>  Upload</span></Link>
-      <Link to="/dashboard/list-order"><FaList/>          <span>  List Order</span></Link>
-      <Link to="/"><FcAbout/><span>About</span></Link>
+      <Link to="/dashboard/list-order"><FaList/>          <span>  List Order Pending</span></Link>
+      <Link to="/dashboard/list-order-shipping"><FaList/> <span>List Order Shipping</span></Link>
+      <Link to="/dashboard/list-order-finish"><FaList/> <span>List Order Finish</span></Link>
       <Link to="/"><AiFillSetting/><span>Settings</span></Link>
     </div>
    </div>

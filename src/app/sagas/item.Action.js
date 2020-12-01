@@ -1,12 +1,12 @@
 import { takeEvery, put, call} from 'redux-saga/effects';
 import {itemActions} from "../store/ducks/itemReducer";
-import {getdata,addItem,loadingTotalInformation,updateItem,addtoCart,removeToCart,addImage,updateView,checkout} from "../crud/item.crud";
+import {getdata,addItem,loadingTotalInformation,updateItem,addtoCart,removeToCart,addImage,updateView,checkout,deleteItem} from "../crud/item.crud";
 import {loadingCart} from "../crud/auth.crud";
 import { itemActionTypes } from '../constant/index';
 import {getStorage} from "../../_metronic/utils/utils"
 import { authActions } from '../store/ducks/authReducer';
 function* featchItem({payload}){
-    let {page,limit}=payload
+    let {page,limit,sortBy,order}=payload
     console.log(page,limit);
 try {
    if(!page){
@@ -14,7 +14,13 @@ try {
    }if(!limit){
        limit=1;
    }
-    const result=yield call(getdata,{limit,page})
+   if(!sortBy){
+       sortBy="_id"
+   }
+   if(!order){
+       order="ASC"
+   }
+    const result=yield call(getdata,{limit,page,sortBy,order})
    yield put (itemActions.loadingsuccess(result.data))
 } catch (err) {
     
@@ -132,6 +138,17 @@ function* checkOut(payload){
         yield put(itemActions.error(error))
     }
 }
+function* deleleitem({payload}){
+    const {iditem}=payload
+    try {
+    const response=yield call(deleteItem,{iditem})
+        yield put (itemActions.deleteitemSuccesful(response.data))
+
+    } catch (err) {
+        const error=err.response ? err.response.data.msg:err.stack
+        yield put(itemActions.error(error))
+    }
+}
 
 function* itemAction(){
 yield takeEvery(itemActionTypes.loadingitem,featchItem)
@@ -143,5 +160,6 @@ yield takeEvery(itemActionTypes.addImage,addImages)
 yield takeEvery(itemActionTypes.removeTocart,removetocart) 
 yield takeEvery(itemActionTypes.updateView,updateview)
 yield takeEvery(itemActionTypes.checkout,checkOut)
+yield takeEvery(itemActionTypes.deleteItem,deleleitem)
 }
 export  default itemAction

@@ -18,6 +18,8 @@ import { Upload } from "../../Components/LandingPage/dashboard/upload/upload";
 import Item from "../../Components/LandingPage/dashboard/item/item";
 import ItemDetail from "../../Components/LandingPage/dashboard/item/itemDetail";
 import ListOrder from "../../Components/LandingPage/dashboard/listorder/listorder";
+import ListOrderShipping from "../../Components/LandingPage/dashboard/listorder/listorderShipping";
+import ListOrderFinishing from "../../Components/LandingPage/dashboard/listorder/listorderFinish";
 import History from "../../Components/history/history";
 import Homepage from "../../Components/homepage/homepage";
 import HeaderLogin from "../../Components/header/headerLogin";
@@ -27,6 +29,8 @@ import { getStorage } from "../../_metronic/utils/utils";
 import Checkout from "../../Components/payment/checkout";
 
 import { ForgotPassword } from "../../Components/login/forgotPassword";
+import ChangePassword from "../../Components/login/changepassword";
+import ChangePasswordSuccesful from "../../Components/login/changePasswordSuccesful";
 
 // import BlurGlass from "../../Components/LandingPage/dashboard/BlurGlass"
 const Routerr = () => {
@@ -48,9 +52,10 @@ const Routerr = () => {
     <Route  exact path="/" component={token!==null?HeaderLogin:Header}></Route>
       <Route   path="/users" component={token!==null?HeaderLogin:Header}></Route>
       <Route   path="/shop" component={token!==null?HeaderLogin:Header}></Route>
+      <Route   path="/history" component={token!==null?HeaderLogin:Header}></Route>
       <Route   path="/shop/:user" component={HeaderLogin}></Route>
        <Route  exact path="/dashboard" component={HeaderLogin}></Route>
-       <Route   path="/dashboard" component={token!==null?HeaderLogin:Header}></Route>
+       <Route   path="/dashboard" component={HeaderLogin}></Route>
   {/* <Header></Header> */}
     </Switch>
     
@@ -68,8 +73,14 @@ const Routerr = () => {
         <Route exact path="/users/cart" component={Payment}></Route>
         <Route exact path ="/users/cart/check-out" component={Checkout}></Route>
         <Route exact path="/confirm-account" component={ConfirmAccount}></Route>
-        <Route exact path="users/forgotpassword" component={ForgotPassword}></Route>
+        <Route exact path="/users/forgotpassword" component={ForgotPassword}></Route>
+        <Route exact path="/users/login/forgotpassword/verify/:token" component={ChangePassword}></Route>
+        <Route exact path="/users/login/forgotpassword/confirm" component={ConfirmAccount}></Route>
+        <Route exact path="/users/login/change-password" component={ChangePasswordSuccesful}></Route>
         <PrivateRouter exact path="/dashboard/list-order" component={ListOrder}></PrivateRouter>
+        <PrivateRouter exact path="/dashboard/list-order-shipping" component={ListOrderShipping}></PrivateRouter>
+        <PrivateRouter exact path="/dashboard/list-order-finish" component={ListOrderFinishing}></PrivateRouter>
+
         <Route exact path="/users/login/:token" component={ConfirmSuccessful}></Route>
         <PrivateRouter exact path="/dashboard" component={Dashboard}></PrivateRouter>
         <PrivateRouter exact path="/dashboard/item" component={Item}></PrivateRouter>

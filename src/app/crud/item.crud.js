@@ -15,13 +15,14 @@ export function addImage(data){
   return initApi(true).post(API_URLS.ADD_IMAGE_ITEM,data,config)
 }
 export function deleteImageItem(data){
-  return initApi(true).delete(API_URLS.DELETE_IMAGE_ITEM)
+  return initApi(true).post(API_URLS.DELETE_IMAGE_ITEM)
 }
 export function updateItem(data){
   return initApi(true).put(API_URLS.UPDATE_ITEM,data)
 }
 export function deleteItem(data){
-  return initApi(true).post(API_URLS.DELETE_ITEM)
+  
+  return initApi(true).post(API_URLS.DELETE_ITEM,data)
 }
 export function loadingTotalInformation(data){
   return initApi(true).get(API_URLS.GET_TOTAL_INFOR(data))

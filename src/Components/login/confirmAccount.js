@@ -30,7 +30,7 @@ const ConfirmAccount = () => {
         <Jumbotron>
   <h1>Welcome to PICASSO</h1>
   <p>
-    please check your email to active your account
+    please check your email we have send
   </p>
   <p>
     <Button variant="primary" href="http://www.gmail.com" >go to gmail</Button>

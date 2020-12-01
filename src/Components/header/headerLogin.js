@@ -98,7 +98,7 @@ if(cart.length==0){
             {/* <Nav.Link href="/" active>Shop</Nav.Link> */}
             <Link to="/users/history" className="nav-link">History<FaHistory/></Link>
             <Nav.Link href="/" onClick={()=>handleLogout()}>Logout <IoIosLogIn/></Nav.Link>
-              <Link to="/users/cart" className="nav-link"> Cart <RiShoppingCart2Line/><div style={{color:"red" ,margin:"-30px 0 0 20px"}}>{numberOnCart}</div></Link>
+              <Link to="/users/cart" className="nav-link"> Cart <RiShoppingCart2Line/><div style={{color:"red" ,margin:"-30px 0 0 50px" ,background:"white"}}>{numberOnCart}</div></Link>
 
           </Nav>
 
