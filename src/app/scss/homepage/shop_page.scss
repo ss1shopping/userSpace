@@ -10,7 +10,14 @@
     position: relative;
     padding-top: 115px;
     background-color: white;
+    width: 100%;
+    overflow: hidden;
     ;
+    .infinite-scroll-component {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+    }
 }
 .control-dots{
     display: none;
@@ -84,6 +91,7 @@
         opacity: 1;
         transition: opacity 0.3s;
     }
+   
 }
 .box__item .name_price{
     visibility: hidden;

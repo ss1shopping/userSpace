@@ -36,6 +36,9 @@ export const itemActionTypes={
   checkoutSuccessful:"[check out Successful]",
   deleteItem:"[delete item]",
   deleteItemSuccessful:"[delete item successful]",
+  countpage:"[count page]",
+  resetItem:"[reset item]"
+
 
   
   

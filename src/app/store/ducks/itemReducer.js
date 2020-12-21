@@ -23,6 +23,7 @@ const initialAuthState = {
   cart:[],
   urlImage:[],
   itemInCart:[],
+  page:1,
   
  
 }
@@ -144,6 +145,17 @@ export const itemReducer = persistReducer(
             return{
                 ...state,isPending:!state.isPending,message:action.payload.msg
             }
+        case itemActionTypes.countpage:{
+            return{
+                ...state,page:action.page
+            }
+        }
+        case itemActionTypes.resetItem:{
+            return{
+                ...state,item:[]
+            }
+        
+        }
     
         
       default:
@@ -178,6 +190,8 @@ export const itemActions={
     checkoutSuccessful:(payload)=>({type:itemActionTypes.checkoutSuccessful,payload}),
     deleteItem:(iditem)=>({type:itemActionTypes.deleteItem,payload:{iditem}}),
     deleteitemSuccesful:(payload)=>({type:itemActionTypes.deleteItemSuccessful,payload}),
+    countpage:(page)=>({type:itemActionTypes.countpage,page}),
+    resetItem:()=>({type:itemActionTypes.resetItem}),
 
     
     

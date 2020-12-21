@@ -8,6 +8,7 @@ import { itemActions } from '../../app/store/ducks/itemReducer'
 import ReactPaginate from 'react-paginate';
 import { authActions } from '../../app/store/ducks/authReducer'
 import InfiniteScroll from 'react-infinite-scroll-component';
+
 // import anh4 from "../../app/scss/image/air_jordan.jpg"
 // import anh5 from "../../app/scss/image/air_max.jpg"
 // import anh6 from "..css/image/Converse.jpg"
@@ -15,25 +16,38 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 // import anh8 from "../../app/scss/image/nb.jpg"
 // import anh9 from "../../app/scss/image/nike.jpg"/../app/s
 const Shop_page = () => {
-    
+    const page=useSelector(state=>state.itemReducer.page)
     const  dispatch = useDispatch()
-    const [pageCount, setpageCount] = useState(10)
-    const [page, setPage] = useState(1)
-    const [limit, setLimit] = useState(2)
+    // const [pageCount, setpageCount] = useState(10)
+    //const [page, setPage] = useState())
+    const [limit, setLimit] = useState(6)
     const [sortby,setSortBy]=useState("_id")
     const [orderby,setOrderBy]=useState("ASC")
-    const handleChangepage=(page)=>{
-        setPage(page.selected)
+    // const handleChangepage=(page)=>{
+    //     setPage(page.selected)
      
-    }
+    // }
     const item=useSelector(state=>state.itemReducer.item)
     useEffect(() => {
         
-      dispatch(itemActions.loadingitem(limit,page,sortby,orderby))
-      dispatch(authActions.loadingCart())
-    }, [limit,page,sortby,orderby])
+        if(sortby=="price"){
+              console.log("run");
+     dispatch(itemActions.loadingitem(limit,page,sortby,orderby))
+     
+        }else{
+            dispatch(itemActions.loadingitem(limit,page,sortby,orderby))
+            dispatch(authActions.loadingCart())
+
+        }
+    }, [page,sortby])
+    // useEffect(() => {
+        
+   
+    //     dispatch(authActions.loadingCart())
+    //   }, [limit,sortby,orderby])
     const handleFilter=(e)=>{
-     if(e.target.value==="hightprice"){
+     if(e.target.value==="highprice"){
+        
      setSortBy("price")
      setOrderBy("DESC")
      }
@@ -45,9 +59,10 @@ const Shop_page = () => {
             setSortBy("name")
             setOrderBy("ASC")
         }
+        dispatch(itemActions.countpage(1))
     }
    const infinitePage=()=>{
-       setPage(page+1)
+      dispatch(itemActions.countpage(page+1))
    }
     // let showItem
     // if(!item){
@@ -65,7 +80,7 @@ const Shop_page = () => {
                             <div className="text">SORT BY</div>     
                             <select name="sortBy" id="sortBy" onChange={(e)=>handleFilter(e)}>
                                 <option value="name">PRODUCT NAME</option>
-                                <option value="hightprice">HIGHEST PRICE</option>
+                                <option value="highprice">HIGHEST PRICE</option>
                                 <option value="lowprice">LOWEST PRICE</option>
                             </select>
                             {/* <div className="text">SHOW ME</div>
@@ -78,12 +93,13 @@ const Shop_page = () => {
                         </div>
                     </Col>
                 </Row>
-                <Row>
+                
                     <InfiniteScroll 
                     dataLength={item.length} //This is important field to render the next data
                     next={()=>infinitePage()}
                     hasMore={true}
-                    loader={<h4>Loading...</h4>}>
+                     //loader={<h4>Loading...</h4>}
+                     >
 
                     {item && Object.keys(item).map((index,key)=>{
             
@@ -112,7 +128,7 @@ const Shop_page = () => {
             )
         })}
                     </InfiniteScroll>
-                    <ReactPaginate
+                    {/* <ReactPaginate
           previousLabel={'previous'}
           nextLabel={'next'}
           breakLabel={'...'}
@@ -124,8 +140,8 @@ const Shop_page = () => {
           containerClassName={'pagination'}
           subContainerClassName={'pages pagination'}
           activeClassName={'active'}
-        />
-                </Row>
+        /> */}
+                
             </Container>
         </section>
 

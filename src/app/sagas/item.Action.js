@@ -11,15 +11,21 @@ function* featchItem({payload}){
 try {
    if(!page){
        page=1;
+    yield put (itemActions.resetItem())
    }if(!limit){
        limit=1;
    }
    if(!sortBy){
        sortBy="_id"
+     
    }
    if(!order){
        order="ASC"
    }
+   if(page===1){
+    yield put (itemActions.resetItem())
+   }
+   console.log("action>",sortBy);
     const result=yield call(getdata,{limit,page,sortBy,order})
    yield put (itemActions.loadingsuccess(result.data))
 } catch (err) {
