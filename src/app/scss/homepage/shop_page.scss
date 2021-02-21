@@ -1,4 +1,7 @@
 @import"./itemdetail.scss";
+.infinite-scroll-component{
+    overflow: none !important;
+}
 .box{
     height: 100%;
     font-family: 'Oswald', sans-serif;

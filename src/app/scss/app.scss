@@ -1,17 +1,66 @@
+$colorPrimary:#fa5b2f;
+$colorSecondary:#f5f5f5;
+$colordarkPrimary:#ec4719;
+.btn--option{
+  
+ padding: 5px 10px;
+  border-radius: 2px;
+  border: 0;
+  background-color: #d1d1d1;
+  cursor: pointer;
+}
+.btn--pagination{
+  outline: none;
+  cursor: pointer;
+  border: none;
+  font-size: .875rem;
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: 0;
+  box-shadow: 0 1px 1px 0 rgb(0, 0, 0/5%);
+  width: 2.25rem;
+  height: 2.125rem;
+  border-radius: 2px;
+  background-color: rgb(255, 255, 255) ;
+  border: 0;
+  
+}
+.btn--disable{
+  background-color: rgb(249,249,249) ;
+  color: rgb(223, 219, 219)
+}
+.btn--disable:hover{
+  background-color: rgb(249,249,249) ;
+  color: rgb(223, 219, 219)
+}
+.btn--primary{
+  outline: none;
+  cursor: pointer;
+  border: none;
+  background-color: $colorPrimary;
+  padding:5px 15px;
+  box-shadow: 0 1px 1px 0 rgb(0, 0, 0/5%);
+
+}
+.btn--primary:hover{
+  background-color: $colordarkPrimary;
+}
+
 @import "./header.scss";
 @import "./login.scss";
 @import "./register.scss";
 @import "./yourfeed.scss";
- @import "~antd/dist/antd.css";
+//  @import "~antd/dist/antd.css";
 @import "~react-image-gallery/styles/scss/image-gallery.scss";
-@import '~bootstrap/scss/bootstrap.scss';
+// @import '~bootstrap/scss/bootstrap.scss';
 @import "./landingPage.scss";
 @import "./dashboard//index.scss";
 @import "~react-datepicker/dist/react-datepicker.css";
 @import "./confirmEmail/index.scss";
 @import "./homepage/homepage.scss";
 @import "./homepage/shop_page.scss";
-
+@import "./Category/Category.scss";
+@import "./search-page/searchpage.scss";
 // @mixin layout{
     
   

@@ -1,8 +1,56 @@
+
+.header--searchbar{
+  margin-left: 200px;
+  width: 500px;
+  &--box{
+    display: flex;
+    background: white;
+    box-sizing: border-box;
+    border-radius: 2px;
+    background: #fff;
+    align-items: center;
+    height: 50px;
+    &--icon{
+     border: 1px solid #fa5b2f;
+     border-top-right-radius:5px ;
+     border-bottom-right-radius: 5px;
+      background: #fa5b2f;
+      color: white;
+      padding: 10px 20px;
+     height: 50px;
+    }
+    &--input{
+      box-sizing: border-box;
+      height: 50px;
+      form{
+        height: 50px;
+      font-size: 18px;
+      input{
+        height: 50px;
+        outline: none;
+        border: none;
+        width: 500px;
+        padding: 10px 20px;
+      }
+    }
+    }
+  }
+}
+#logo{
+  font-weight: 900;
+  color:white;
+  font-size: 25px;
+}
 .navbar{
    width: 100%; 
   font-size: 20px;
-  background-color: rgba($color: rgb(255, 255, 255), $alpha: 1)!important;
-  
+  background: linear-gradient(rgb(245,63,45),rgb(250,100,50)) !important;
+  &-nav{
+
+    .nav-link{
+      color: white !important;
+    }
+  }
 }
 .navbar-collapse{
   height: 100px;

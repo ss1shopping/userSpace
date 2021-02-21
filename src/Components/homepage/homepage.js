@@ -1,48 +1,70 @@
 import React from 'react'
 import { Container, Row, Col, Carousel } from "react-bootstrap"
 import { Link } from 'react-router-dom'
+import DefaultLayout from '../../app/layout/Defaultlayout'
+import Category from '../Category/Category'
 
 const Homepage = () => {
-    return (
+  return (
+    <DefaultLayout>
 
-<section className="homepage">
-    
-<Carousel>
-  <Carousel.Item>
-    <img
-      className="slide1"
-      src="https://i.bloganchoi.com/bloganchoi.com/wp-content/uploads/2020/03/reebok-zig-kinetica-concept-type-1-mood-1-696x464.jpg?fit=700%2C20000&quality=95&ssl=1"
-      alt="First slide"
-    />
-    <Carousel.Caption>
-      
-    </Carousel.Caption>
-  </Carousel.Item>
-  <Carousel.Item>
-    <img
-      className="slide2"
-      src="https://images.unsplash.com/photo-1552346154-21d32810aba3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
-      alt="Third slide"
-    />
 
-    <Carousel.Caption>
-     
-    </Carousel.Caption>
-  </Carousel.Item>
-  <Carousel.Item>
-    <img
-      className="nslide3"
-      src="https://saigonsneaker.com/wp-content/uploads/2019/11/nhung-doi-giay-trang-dep-1.jpg"
-      alt="Third slide"
-    />
+      <div className="addbackground">
+        <section className="homepage">
+          <Category></Category>
+          <div className="mycarousel">
+            <Carousel>
+              <Carousel.Item>
+                <img
+                  className="slide1"
+                  src="https://images.wallpaperscraft.com/image/sneaker_foot_smoke_117714_3840x2400.jpg?fbclid=IwAR3LL1B7O8SyypjMAPBPPqdiywpW-W39wiKmdPxK2qiNkC5xKsqqJUNvpL4"
+                  alt="First slide"
+                />
+                <Carousel.Caption>
 
-    <Carousel.Caption>
-    </Carousel.Caption>
-  </Carousel.Item>
-</Carousel>
-<Link to="/shop" className="shopNow">SHOP NOW</Link>
+                </Carousel.Caption>
+              </Carousel.Item>
+              <Carousel.Item>
+                <img
+                  className="slide2"
+                  src="https://images.wallpaperscraft.com/image/sneakers_anonymous_hoodie_166078_3840x2400.jpg?fbclid=IwAR2PY7j3YtBAB3-Mu8KMsFkPKt1pfXCJU7nK4nIqWRAR64e_9EopquajeB4"
+                  alt="Third slide"
+                />
 
-</section>
-   )
-    }
+                <Carousel.Caption>
+
+                </Carousel.Caption>
+              </Carousel.Item>
+              <Carousel.Item>
+                <img
+                  className="nslide3"
+                  src="https://images.wallpaperscraft.com/image/sneakers_legs_tattoo_168288_3840x2400.jpg?fbclid=IwAR1WZ7CrbC4ZOw2UzQu5DyLXBN_g9VvTMwGh-STi8GHIM1C2PMVCIgPp9aI"
+                  alt="Third slide"
+                />
+
+                <Carousel.Caption>
+                </Carousel.Caption>
+              </Carousel.Item>
+            </Carousel>
+          </div>
+          <div className="homepage--banner">
+          </div>
+          <div className="homepage--flashsale">
+
+          </div>
+          <div className="homepage--trendSearch">
+
+          </div>
+          <div className="homepage--trendSearch">
+
+          </div>
+          <div className="homepage--suggest">
+
+          </div>
+
+        </section>
+      </div>
+    </DefaultLayout>
+  )
+}
 export default Homepage;

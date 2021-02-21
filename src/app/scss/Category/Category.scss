@@ -1,0 +1,53 @@
+.category{
+  position: relative;
+  height: 400px;
+ &--parent{
+  
+   &--title{
+     margin-left: -50px;
+     width: 150px;
+     display: flex;
+     justify-content:space-around;
+     align-items: stretch;
+   }
+   &--title:hover{
+     background: #fe6432;
+     color:white;
+    //  border:1px solid;
+    //  border-radius: 10px;
+     &--box{
+      
+     }
+   }
+   ul{
+     list-style: none;
+     li{
+       a{
+         text-decoration: none;
+         color: none;
+         color: black;
+        
+       }
+     }
+     li:hover{
+      color:white
+     }
+   }
+
+ } 
+ &--child{
+   width: 1074px;
+   height: 400px;
+  position: absolute;
+  left: 150px;
+  top:0;
+  background-color: white;
+  a{
+    margin:10px 10px;
+    text-decoration: none;
+    color:black;
+  }
+ }
+ 
+ 
+}

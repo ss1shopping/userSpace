@@ -53,20 +53,16 @@ import {BsTrash} from "react-icons/bs";
      const handleChangetoEdit=(item)=>{
     dispatch(itemActions.itemChooseToEdit(item))
      }
-    const handlechoose=(e,key,item)=>{
-        console.log(e.currentTarget);
-        // console.log(e.current);
+    const handlechoose=(item)=>{
         setStatus(!status)
         setItemChooseToDelete(item)
-        setCurrentTarget(e.currentTarget)
-        console.log(currentTarget);
-          // e.target.checked?setClassname("item__attribute checked"):setClassname("item__attribute")
+    
      }
      const handleDelete=()=>{
        
-       //dispatch(itemActions.deleteItem(itemChooseToDelete._id))
+       dispatch(itemActions.deleteItem(itemChooseToDelete._id))
        setStatus(!status)
-       currentTarget.checked=false
+       
        setTimeout(() => {
         dispatch(itemActions.loadingitem(limit,page,sortby,orderby))
         
@@ -92,7 +88,7 @@ import {BsTrash} from "react-icons/bs";
                         <tr className={`${classname}`} >
         
                         <th className="item__attribute--checkbox">
-                                <input type="checkbox" onChange={(e)=>handlechoose(e,key,item[index])}/>    
+                                <input type="checkbox" onChange={(e)=>handlechoose(item[index])}/>    
                                 </th>
                             {/* <Link to="/items" className="item__attribute--link"> */}
                     <th className='item__attribute--id'>{item[index]._id}</th>

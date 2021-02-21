@@ -89,8 +89,8 @@ import FooterDashboard from "../../../footer/footerDashboard";
                     <th className="item__attribute--desc">{ListOrder[index].phone}</th>
                     <th className="item__attribute--quantity">{ListOrder[index].totalCost}</th>
                     <th className="item__attribute--price">{ListOrder[index].address}</th>
-                    <th className="item__attribute--price">{ListOrder[index].status}</th>
-                    <th className="item__attribute--sold">{ListOrder[index].itemId.length}</th>
+                    <th className="item__attribute--price">{ListOrder[index].itemId.length}</th>
+                    <th className="item__attribute--sold">{ListOrder[index].status}</th>
                     
                     <th className="item__attribute--price"><Link onClick={()=>handleDone(ListOrder[index]._id)}>Done</Link> <Link onClick={()=>handleCancelled(ListOrder[index]._id)} >Cancelled</Link></th>
                             {/* </Link> */}

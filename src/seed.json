@@ -1,0 +1,169 @@
+{
+  "isRoot": true,
+  "children": [
+      "6009377b452308d5eb81b8f3",
+      "6009377b452308d5eb81b8f5",
+      "6009377b452308d5eb81b8f4"
+  ],
+  "_id": "6009377c452308d5eb81b8f6",
+  "name": "root",
+  "path": "/root",
+  "desc": "root",
+  "createdAt": "2021-01-21T08:12:44.168Z",
+  "updatedAt": "2021-01-21T08:12:44.168Z",
+  "__v": 0,
+  "branches": [
+      {
+          "isRoot": false,
+          "children": [],
+          "_id": "6009377b452308d5eb81b8f3",
+          "name": "girl",
+          "path": "/root/girl",
+          "desc": "girl",
+          "createdAt": "2021-01-21T08:12:43.181Z",
+          "updatedAt": "2021-01-21T08:12:43.181Z",
+          "__v": 0,
+          "branches": []
+      },
+      {
+          "isRoot": false,
+          "children": [
+              "6009377a452308d5eb81b8f0",
+              "6009377a452308d5eb81b8f1",
+              "6009377a452308d5eb81b8f2"
+          ],
+          "_id": "6009377b452308d5eb81b8f5",
+          "name": "men",
+          "path": "/root/men",
+          "desc": "men",
+          "createdAt": "2021-01-21T08:12:43.897Z",
+          "updatedAt": "2021-01-21T08:12:43.897Z",
+          "__v": 0,
+          "branches": [
+              {
+                  "isRoot": false,
+                  "children": [
+                      "60093779452308d5eb81b8ef"
+                  ],
+                  "_id": "6009377a452308d5eb81b8f0",
+                  "name": "ao",
+                  "path": "/root/men/ao",
+                  "desc": "clothes",
+                  "createdAt": "2021-01-21T08:12:42.265Z",
+                  "updatedAt": "2021-01-21T08:12:42.265Z",
+                  "__v": 0,
+                  "branches": [
+                      {
+                          "isRoot": false,
+                          "children": [],
+                          "_id": "60093779452308d5eb81b8ef",
+                          "name": "aongan",
+                          "path": "/root/men/ao/aongan",
+                          "desc": "clothes",
+                          "createdAt": "2021-01-21T08:12:41.657Z",
+                          "updatedAt": "2021-01-21T08:12:41.657Z",
+                          "__v": 0,
+                          "branches": []
+                      }
+                  ]
+              },
+              {
+                  "isRoot": false,
+                  "children": [],
+                  "_id": "6009377a452308d5eb81b8f1",
+                  "name": "quan",
+                  "path": "/root/men/quan",
+                  "desc": "clothes",
+                  "createdAt": "2021-01-21T08:12:42.566Z",
+                  "updatedAt": "2021-01-21T08:12:42.566Z",
+                  "__v": 0,
+                  "branches": []
+              },
+              {
+                  "isRoot": false,
+                  "children": [],
+                  "_id": "6009377a452308d5eb81b8f2",
+                  "name": "clothes",
+                  "path": "/root/men/clothes",
+                  "desc": "clothes",
+                  "createdAt": "2021-01-21T08:12:42.875Z",
+                  "updatedAt": "2021-01-21T08:12:42.875Z",
+                  "__v": 0,
+                  "branches": []
+              }
+          ]
+      },
+      {
+          "isRoot": false,
+          "children": [],
+          "_id": "6009377b452308d5eb81b8f4",
+          "name": "may",
+          "path": "/root/may",
+          "desc": "may",
+          "createdAt": "2021-01-21T08:12:43.617Z",
+          "updatedAt": "2021-01-21T08:12:43.617Z",
+          "__v": 0,
+          "branches": []
+      },
+      {
+        "isRoot": false,
+        "children": [],
+        "_id": "6009377b452308d5eb81b8f4",
+        "name": "may",
+        "path": "/root/may",
+        "desc": "may",
+        "createdAt": "2021-01-21T08:12:43.617Z",
+        "updatedAt": "2021-01-21T08:12:43.617Z",
+        "__v": 0,
+        "branches": []
+    },
+    {
+        "isRoot": false,
+        "children": [],
+        "_id": "6009377b452308d5eb81b8f4",
+        "name": "may",
+        "path": "/root/may",
+        "desc": "may",
+        "createdAt": "2021-01-21T08:12:43.617Z",
+        "updatedAt": "2021-01-21T08:12:43.617Z",
+        "__v": 0,
+        "branches": []
+    },
+    {
+        "isRoot": false,
+        "children": [],
+        "_id": "6009377b452308d5eb81b8f4",
+        "name": "may",
+        "path": "/root/may",
+        "desc": "may",
+        "createdAt": "2021-01-21T08:12:43.617Z",
+        "updatedAt": "2021-01-21T08:12:43.617Z",
+        "__v": 0,
+        "branches": []
+    },
+    {
+        "isRoot": false,
+        "children": [],
+        "_id": "6009377b452308d5eb81b8f4",
+        "name": "may",
+        "path": "/root/may",
+        "desc": "may",
+        "createdAt": "2021-01-21T08:12:43.617Z",
+        "updatedAt": "2021-01-21T08:12:43.617Z",
+        "__v": 0,
+        "branches": []
+    },
+    {
+        "isRoot": false,
+        "children": [],
+        "_id": "6009377b452308d5eb81b8f4",
+        "name": "may",
+        "path": "/root/may",
+        "desc": "may",
+        "createdAt": "2021-01-21T08:12:43.617Z",
+        "updatedAt": "2021-01-21T08:12:43.617Z",
+        "__v": 0,
+        "branches": []
+    }
+  ]
+}

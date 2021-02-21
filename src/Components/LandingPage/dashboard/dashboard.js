@@ -68,7 +68,7 @@ const Dashboard = () => {
     <div className="content">
      <Navbar  bg="light" variant="light" >
       <Navbar.Brand >
-         <h3>Sản phẩm đã upload</h3>
+         <h3>Dashboard</h3>
         </Navbar.Brand>
      <Nav className="ml-auto">
        {/* <div className="content__search-box">

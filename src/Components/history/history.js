@@ -23,6 +23,11 @@ useEffect(() => {
 dispatch(totalActions.loadingListHistoryofUser(limit,page))
 
 }, [])
+const handleDelete=(id)=>{
+console.log("id",id);
+dispatch(totalActions.deleteOrder(id))
+dispatch(totalActions.loadingListHistoryofUser(limit,page))
+}
     return (
         <div id="history" className="history" style={{paddingTop:"120px"}}>
             <Container>
@@ -61,7 +66,7 @@ dispatch(totalActions.loadingListHistoryofUser(limit,page))
                                 <td>{item.phone}</td>
                                 <td>{item.address}</td>
                         <td>{item.itemId.length}</td>
-                                <td><Link to={`users/history`} ><BsTrash/>DELETE </Link></td>
+                                <td><Link to={`/users/history`} onClick={()=>handleDelete(item._id)}><BsTrash/>DELETE </Link></td>
                             </tr>
                         ))}
                         </tbody>
