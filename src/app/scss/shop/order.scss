@@ -1,0 +1,50 @@
+.order{
+  margin-left: 20px;
+  &--title1{
+    &--name{
+      color:$colorPrimary;
+      font-size: 20px;
+      font-weight: 400;
+      margin-left: 20px;
+      margin-bottom: 20px;
+    }
+  }
+  &--table{
+    table{
+
+      thead{
+        tr{
+          th{
+            padding-left  : 10px;
+          }
+        }
+      }
+    }
+    tbody{
+      tr{
+        position: relative;
+        th{
+          padding-left  : 10px;
+          font-size: 14px;
+          font-weight: 200;
+          color:black
+        }
+      }
+    
+  }
+  }
+  &--item{
+    .dropdown{
+      position: absolute;
+      display: none;
+      background-color: rgb(236, 239, 241);
+      padding: 5px 10px;
+    }
+  }
+  &--item:hover .dropdown{
+    display: block;
+  }
+  .group--btn{
+    display: flex;
+  }
+}

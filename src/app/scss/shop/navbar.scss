@@ -1,0 +1,124 @@
+@mixin mixititle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  margin-top: 10px;
+}
+@mixin mixinwidth1 {
+ width: 10%;
+}
+@mixin mixinwidth2 {
+  font-weight: 600;
+  width: 80%;
+}
+@mixin mixiwidth3 {
+  width: 10%;
+}
+
+
+.shop--navbar{
+  margin-left: 20px;
+  &--tranport{
+    margin-top: 10px 0;
+    border-bottom: 1px solid #fafafa;
+  }
+}
+.tranport--droplist{
+  margin-bottom: 20px;
+  &--link{
+    margin:5px 0;
+    a{
+      font-size: 14px;
+      margin: 5px 0;
+      cursor: pointer;
+      color:black;
+      text-decoration: none;
+    }
+    a:hover{
+    color:$colorPrimary
+    }
+  }
+  div:hover{
+    color:$colorPrimary
+  }
+}
+.order--droplist{
+  margin-bottom: 20px;
+  &--link{
+    margin:5px 0;
+    a{
+      font-size: 14px;
+      margin: 5px 0;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    a:hover{
+    color:$colorPrimary
+    }
+  }
+  div:hover{
+    color:$colorPrimary
+  }
+}
+.product--droplist{
+  margin-bottom: 20px;
+  &--link{
+    margin:5px 0;
+    a{
+      font-size: 14px;
+      margin: 5px 0;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    a:hover{
+    color:$colorPrimary
+    }
+  }
+  div:hover{
+    color:$colorPrimary
+  }
+}
+.tranport--title{
+  @include mixititle;
+  &--icon1{
+    @include mixinwidth1;
+  }
+  &--string{
+    @include mixinwidth2;
+  }
+  &--icon2{
+    @include mixiwidth3;
+  }
+}
+.order--title{
+  @include mixititle;
+  &--icon1{
+    @include mixinwidth1;
+  }
+  &--string{
+    @include mixinwidth2;
+  }
+  &--icon2{
+    @include mixiwidth3;
+  }
+}
+.product--title{
+  @include mixititle;
+  &--icon1{
+    @include mixinwidth1;
+  }
+  &--string{
+    @include mixinwidth2;
+  }
+  &--icon2{
+    @include mixiwidth3;
+  }
+}
+.active{
+  a{
+    color:$colorPrimary
+
+  }
+  
+}

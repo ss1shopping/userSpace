@@ -1,0 +1,103 @@
+.shopsearch{
+  margin: 20px;
+  &--panel{
+
+     width: 50%;
+     display: flex;
+  }
+  &--box{
+    display: flex;
+    &--input{
+      display: flex;
+      height: 30px;
+      width: 250px;
+      padding: 0 10px;
+      border: 1px solid black;
+      input{
+        outline: none;
+        border:none;
+        height: 100%;
+        width: 250px;
+      }
+    }
+  }
+  &--date{
+   &--pickup{
+     display: flex;
+     &--title{
+       margin-right: 10px;
+     }
+   }
+  }
+}
+
+.shopsearch{
+  &--panel{
+    &--title{
+      margin-right: 10px;
+      position: relative;
+    }
+    &--name{
+      display: flex;
+     height: 30px;
+     padding: 0 5px;
+      border: 1px solid black;
+      width: 150px;
+      &--first{
+        width: 130px;
+      }
+    }
+    &--droplist{
+      width: 150px;
+      position: absolute;
+     background-color: rgb(243, 244, 245);
+     transition: height 200ms;
+     .active{
+      color:$colorPrimary;
+     }
+      div:first-child{
+        padding: 10px 0px 0px 10px;
+        cursor: pointer;
+      }
+      div:last-child{
+        padding: 0 0 10px 10px;
+      }
+      div{
+        padding: 0 10px;
+        cursor: pointer;
+      }
+      div:hover{
+       color:$colorPrimary;
+      
+      }
+    }
+    
+  }
+}
+.shopsearch{
+ &--category{
+   &--box{
+     display: flex;
+     &--input{
+       height: 30px;
+       padding:0px 10px ;
+       border: 1px solid black;
+       margin-left: 20px;
+       input{
+
+         outline:none;
+         border: none;
+       }
+     }
+   }
+ }
+}
+.shopsearch{
+  &--btn{
+    display: flex;
+    margin-top: 20px;
+    .btn{
+      margin-right: 20px;
+    }
+  }
+}

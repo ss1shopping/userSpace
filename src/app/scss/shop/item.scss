@@ -1,0 +1,40 @@
+.itemShopowner{
+  &--table{
+    table{
+
+      thead{
+        tr{
+          th{
+            padding-left  : 10px;
+          }
+        }
+      }
+    }
+    tbody{
+      tr{
+        // position: relative;
+        th{
+          padding-left  : 10px;
+          font-size: 14px;
+          font-weight: 200;
+          color:black
+        }
+      }
+    
+  }
+  }
+  &--pagination{
+    display: flex;
+    margin-right: 300px;
+    justify-content: flex-end;
+    align-items: center;
+    .disable{
+      cursor: not-allowed !important;
+   pointer-events: none !important;
+    }
+    &--page{
+      margin: 0 15px;
+      font-size: 20px;
+    }
+  }
+}

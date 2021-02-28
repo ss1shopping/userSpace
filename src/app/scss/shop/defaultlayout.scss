@@ -1,0 +1,19 @@
+.mainshopowner{
+  display: flex;
+  margin-top: 50px;
+ 
+  &--navbar{
+    width: 15%;
+  }
+  &--body{
+    width: 85%;
+  }
+}
+.mainshopadd{
+  margin-top: 50px;
+ &--wrapper{
+
+   margin:  0 auto;
+  width: 1240px;
+ }
+}

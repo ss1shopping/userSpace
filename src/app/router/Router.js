@@ -32,7 +32,11 @@ import { ForgotPassword } from "../../Components/login/forgotPassword";
 import ChangePassword from "../../Components/login/changepassword";
 import ChangePasswordSuccesful from "../../Components/login/changePasswordSuccesful";
 import SearchPage from "../../Components/SearchPage/SearchPage";
-
+import { Body } from "../../Components/shop/main/body/body"
+import { Order } from "../../Components/shop/main/body/order";
+import { Delivery } from "../../Components/shop/main/body/delivery";
+import { ManageItem } from "../../Components/shop/main/body/item"
+import { ChooseCategory } from "../../Components/shop/main/body/addItem/chooseCategory";
 // import BlurGlass from "../../Components/LandingPage/dashboard/BlurGlass"
 const Routerr = () => {
   let token = getStorage("token");
@@ -69,6 +73,11 @@ const Routerr = () => {
         {/* <Route exact path="/blur" component={BlurGlass}></Route> */}
         {/* <Redirect  from={"/profile"} exact={true} to={"/SignIn"}/> */}
         <Route exact path="/users/history" component={History}></Route>
+        {/* <Route exact path="/banhang" component={Body}></Route> */}
+        <Route exact path="/banhang/order" component={Order}></Route>
+        <Route exact path="/banhang/item" component={ManageItem}></Route>
+        <Route exact path="/banhang/item/choose-category" component={ChooseCategory}></Route>
+        <Route exact path="/banhang/delivery" component={Delivery}></Route>
         <Route exact path="/shop/item/:name" component={ItemdetailShopPage}></Route>
         <Route exact path="/users/login" component={Login}></Route>
         <Route exact path='/users/register' component={Register} />
