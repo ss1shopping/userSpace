@@ -18,17 +18,21 @@ export const API_URLS = {
   DELETE_IMAGE_ITEM: "/shopping/upload",
 
   UPDATE_VIEW: "/item/update-view",
-
-  ADD_TO_CART: "/cart",
-  REMOVE_TO_CART: '/cart/remove',
-
-  CHECK_OUT: "/order/check-out",
+  GET_ITEM: (data) => `/item/get-one/${data.id}`,
+  ADD_TO_CART: "/cart/add",
+  UPDATE_CART: "/cart/update",
+  REMOVE_TO_CART: (data) => `/cart/remove/${data.id}`,
+  EMPTY_CART: `/cart/empty-cart`,
+  GET_CART: `/cart/get`,
   LIST_HISTORY: "/history",
 
   GETALLORDER: (data) => `/order/getAll` + `${data.url}`,
   UPDATE_ORDER: "order/change-status",
   GET_ALL_ORDER_USER: "order/getall/user/order",
   CANCELLED_ORDER: "order/canceled-order",
+  CHECK_OUT: "/order/checkout",
+
+
   LIST_HISTORY_OF_USER: (data) => `/history/user/limit=${data.limit}/page=${data.page}`,
   EXPORT_BIllING: (data) => `/history/export/${data.id}`,
   CANCELLING_BILLING: (data) => `history/cancelled/${data.id}`,

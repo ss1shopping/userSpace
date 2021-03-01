@@ -1,6 +1,6 @@
 import { takeEvery, put, call } from 'redux-saga/effects';
 import { orderActionTypes } from '../constant';
-import { cancelledOrder, getAllOrders, updateOrder } from "../crud/order.crud"
+import { cancelledOrder, getAllOrders, updateOrder, checkout } from "../crud/order.crud"
 import { orderActions } from '../store/ducks/orderReducer';
 function* getAllOrder({ payload }) {
   let { page, keyword, status, isCancelled } = payload
@@ -54,9 +54,22 @@ function* cancelledorder({ payload }) {
     yield put(orderActions.fail(error));
   }
 }
+function* checkoutOrder({ payload }) {
+  let { carts, phone, address } = payload
+  try {
+    let result = yield call(checkout, { carts, phone, address })
+    yield put(orderActions.checkoutSuccessful(result.data))
+
+  } catch (err) {
+    const error = err.response ? err.response.data.msg : err.stack;
+    yield put(orderActions.fail(error));
+  }
+}
+
 function* orderAction() {
   yield takeEvery(orderActionTypes.getAllOrder, getAllOrder)
   yield takeEvery(orderActionTypes.updateOrder, updateorder)
   yield takeEvery(orderActionTypes.canceledOrder, cancelledorder)
+  yield takeEvery(orderActionTypes.checkout, checkoutOrder)
 }
 export default orderAction

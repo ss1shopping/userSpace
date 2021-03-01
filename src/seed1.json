@@ -1,0 +1,48 @@
+{
+ 
+      "id":"jbbdhavdhavsdkbakdba",
+      "name":"Áo khoác đệm bông",
+      "minPrice":140000,
+      "maxPrice":160000,
+      "description":"Áo khoác đệm bông hai mặt cổ đứng nam phong cách hàn quốc áo khoác đệm bánh mì học sinh phong cách Hồng Kông áo choàng ngoài",
+      "category":[
+       "root" ,"men","coat"
+      ],
+      "shopId":{
+        "name":"shop"
+      },
+      "models":[
+        {
+          "id":"dsahdvjhasvdj",
+          "name":"màu xanh",
+          "price":140000
+        },
+        { 
+          "id":"knjkvbkjbew",
+          "name":"màu vàng",
+          "price":150000
+        },
+        {
+          "id":"iqwbjbeiqe",
+          "name":"màu đen",
+          "price":160000
+        },
+        {
+          "id":"jbujeqwbjbekq",
+          "name":"màu đỏ",
+          "price":145000
+        }
+      ],
+      "tier_variations":[
+        {
+          "options":["mau xanh","mau vang","mau den","mau do"],
+          "name":"color",
+          "image":["/images/aohoodienu.jpg","/images/aokhoacnam.jpg","/images/giaycaoconu.jpg","/images/giaythuongnam.jpg","/images/giaythuongnam.jpg"]
+        },{
+          "options":["38","39","40","41"],
+          "name":"size",
+          "image":[]
+        }
+
+      ]
+}

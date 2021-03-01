@@ -1,0 +1,217 @@
+.checkout{
+  margin: 0 auto;
+  width: 85%;
+  &--header{
+     color: rgb(224, 74, 28);
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+     &--main{
+       display: flex;
+     }
+    &--logo{
+      font-size: 3rem;
+      padding-right: 2rem;
+      border-right: 1px solid rgb(224, 74, 28);
+    }
+    &--name{
+      padding-left: 1rem;
+      font-size: 3rem;
+    }
+  }
+
+}
+.checkout{
+  &--body{
+    margin-top: 2rem;
+    &--address{
+      &__selected{
+        background: white;
+
+      }
+      &__header{
+         color: rgb(224, 74, 28);
+         font-size: 2rem;
+      }
+      &__summary{
+        display: flex;
+        align-items: center;
+        font-size: 1.5rem;
+      }
+    }
+  }
+}
+.checkout{
+  &--address--row{
+    display: flex;
+    margin-top: 2rem;
+    &__name{
+      padding:0 1rem;
+      color: black;
+      font-weight: 700;
+    }
+    &__address{
+      padding-right: 1rem;
+    }
+    &__default{
+      padding: right 1rem; 
+      color: #929292;
+      cursor: pointer;
+    }
+  }
+  &--address--selection__change{
+    margin-top: 2rem;
+    padding-left: 1rem;
+    color:#05a;
+    font-weight: 600;
+    cursor: pointer;
+  }
+}
+
+.checkout{
+  &--body{
+
+    &--list{
+      margin-top: 3rem;
+      &--header{
+        &--block{
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          color:#bbb;
+          font-size: 1.5rem;
+          font-weight: 600;
+          .vinall--header--name{
+            width: 40%;
+            font-size: 2rem;
+            font-weight: 800;
+            color: black;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+          .vinall--header--price{
+            width: 15%;
+          }
+          .vinall--header--number{
+            width: 15%;
+          }
+          .vinall--header--number{
+            width: 30%;
+          }
+        }
+      }
+      &--content{
+        margin-top: 2rem;
+        &--block{
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          color:black;
+          font-size: 1.5rem;
+          padding: 1rem 0;
+        font-weight: 400;
+          .vinall--content--name{
+            width: 40%;
+            font-size: 2rem;
+            font-weight: 400;
+            color: black;
+          }
+          .vinall--content--price{
+            width: 15%;
+          }
+          .vinall--content--number{
+            width: 15%;
+          }
+          .vinall--content--number{
+            width: 30%;
+          }
+        }
+      }
+    }
+  }
+}
+
+.checkout{
+  &--recheck{
+    &--block{
+      background: #fffefb;
+      box-shadow: 0 .0625rem .0625rem 0 rgba(0,0,0,.05);
+      border-top: .0625rem solid #f1f0ed;
+      padding-top: .9375rem;
+      display: -ms-grid;
+      display: grid;
+      -ms-grid-columns: 1fr max-content max-content;
+      grid-template-columns: 1fr -webkit-max-content -webkit-max-content;
+      grid-template-columns: 1fr max-content max-content;
+      -ms-grid-rows: auto;
+      grid-template-rows: auto;
+      grid-column-gap: .625rem;
+      font-size: 2rem;
+      .total--before--ship  {
+        grid-column-start: 2;
+       grid-column-end: 3;
+       padding: 1rem 1rem;
+      }
+      .total--number  {
+        grid-column-start: 3;
+         grid-column-end: 4;
+         padding: 1rem 1rem;
+      }
+      .total--ship{
+        grid-column-start: 2;
+       grid-column-end: 3;
+       padding: 1rem 1rem;
+      }
+      .total--ship--number{
+        padding: 1rem 1rem;
+      }
+
+
+      .total--after--ship{
+        grid-column-start: 2;
+        grid-column-end: 3;
+        padding: 1rem 1rem;
+      }
+
+      .total--after--number{
+        padding: 1rem 1rem;
+        color: rgb(224, 74, 28);
+        font-weight: 600;
+        font-size: 2.5rem;
+      }
+      .order{
+        grid-column-start: 3;
+        grid-column-end: 4;
+        .btn{
+          cursor: pointer;
+          min-width: 5rem;
+          min-height: 2.125rem;
+          box-sizing: border-box;
+          padding: 1rem 6rem;
+          margin: 0 -2rem 8px 0rem;
+
+          color: rgba(0,0,0,.8);
+          text-align: left;
+          border-radius: 2px;
+          border: 1px solid rgba(0,0,0,.09);
+          position: relative;
+          background: #fff;
+          outline: 0;
+          word-break: break-word;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          &--primary{
+            background-color: rgb(224, 74, 28);
+            color: white;
+            font-size: large;
+          }
+        }
+        .btn:hover{
+          background-color: rgb(202, 71, 31);
+        }
+      }
+    
+    }
+  }
+}

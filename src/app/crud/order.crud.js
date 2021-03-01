@@ -12,3 +12,6 @@ export function listOrderUser(data) {
 export function cancelledOrder(data) {
   return initApi(true).put(API_URLS.UPDATE_ORDER, data)
 }
+export function checkout(data) {
+  return initApi(true).post(API_URLS.CHECK_OUT, data)
+}

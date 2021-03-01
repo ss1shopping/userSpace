@@ -17,29 +17,23 @@ export const itemActionTypes = {
   DeleteError: '[Delte Error] Action',
   addItem: "[ACTION UPLOAD ITEM]",
   addItemSuccess: "[ACTION UPLOAD ITEAM SUCCESSFUL]",
-  loadTotal: "[Action Loading all infor]",
-  loadTotalSuccessfull: "[Action loading infor successful]",
-  loadTotalFailure: "[Action loading  infor fail]",
+
   ItemChoseToEdit: "[item choose to edit]",
   updateItem: "[update Item]",
   updateItemSuccesful: "[update item succcesful]",
-  addtoCart: "[Add To Cart]",
-  addtoCartSuccessFul: "[Add To Cart Success]",
-  removeTocart: "[Remove to cart]",
-  removeTocartSuccessful: "[remove to cart successful]",
+
   uploadItem: "[upload item]",
   uploadItemSuccess: "[upload item successful]",
   addImage: "[add image ]",
   addImageSuccessful: "[add image successful]",
-  updateView: "[update view]",
-  checkout: `[check out]`,
-  checkoutSuccessful: "[check out Successful]",
+
   deleteItem: "[delete item]",
   deleteItemSuccessful: "[delete item successful]",
   countpage: "[count page]",
-  resetItem: "[reset item]"
+  resetItem: "[reset item]",
 
-
+  getItem: "[get item detail]",
+  getItemSuccessful: "[get item successful]"
 
 
 
@@ -108,11 +102,33 @@ export const orderActionTypes = {
   updateOrder: "[update order]",
   updateOrderSuccessFull: "[update order successfull]",
   canceledOrder: "[cancelled order]",
-  cancelledOrderSuccess: "[cancelled order success]"
+  cancelledOrderSuccess: "[cancelled order success]",
+  checkout: '[checkout]',
+  checkoutSuccessfull: "[checkout successful]"
 }
 export const layoutActionTypes = {
   changeNumber: "[change number layout]",
   changeTranport: "[change tranport]",
   changeOrder: '[change order]',
   changeItem: "[cahnge item]"
+}
+export const cartActionTypes = {
+  loadingCart: "[loading cart]",
+  loadingcartSuccessful: "[loading cart successfull]",
+  fail: "[fail]",
+  addtocart: "[add to cart]",
+  addtocartSuccessful: '[add to cart successful]',
+  updateCart: "[update cart]",
+  updateCartSuccessful: "[update CartSuccessfull]",
+  emtpyCart: "[empty cart ]",
+  emtpyCartSuccessful: "[empty cart successful]",
+  deleteCart: "[delete cart]",
+  deleteCartSuccessful: "[delete cart successful]",
+  setAttributes: "[ set attribute]",
+  setcart: "[set cart]",
+  setSelectItem: "[set select item]",
+  setAgainSelecItem: '[set again item]',
+  setTotalMoney: "[set total money]",
+  setNewCart: "[set new cart]"
+
 }

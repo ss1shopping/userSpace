@@ -26,7 +26,7 @@ import HeaderLogin from "../../Components/header/headerLogin";
 import Shop_page from "../../Components/homepage/shopPage";
 import ItemdetailShopPage from "../../Components/homepage/itemdetail/itemdetail";
 import { getStorage } from "../../_metronic/utils/utils";
-import Checkout from "../../Components/payment/checkout";
+// import Checkout from "../../Components/payment/checkout";
 
 import { ForgotPassword } from "../../Components/login/forgotPassword";
 import ChangePassword from "../../Components/login/changepassword";
@@ -37,6 +37,9 @@ import { Order } from "../../Components/shop/main/body/order";
 import { Delivery } from "../../Components/shop/main/body/delivery";
 import { ManageItem } from "../../Components/shop/main/body/item"
 import { ChooseCategory } from "../../Components/shop/main/body/addItem/chooseCategory";
+import Detaiitem from "../../Components/detaiItem/detaiItem.page"
+import Cart from "../../Components/cart/cart"
+import Checkout from "../../Components/checkout/checkout.page"
 // import BlurGlass from "../../Components/LandingPage/dashboard/BlurGlass"
 const Routerr = () => {
   let token = getStorage("token");
@@ -72,31 +75,39 @@ const Routerr = () => {
         <Route path="/search" component={SearchPage}></Route>
         {/* <Route exact path="/blur" component={BlurGlass}></Route> */}
         {/* <Redirect  from={"/profile"} exact={true} to={"/SignIn"}/> */}
-        <Route exact path="/users/history" component={History}></Route>
+        {/* <Route exact path="/users/history" component={History}></Route> */}
         {/* <Route exact path="/banhang" component={Body}></Route> */}
+
         <Route exact path="/banhang/order" component={Order}></Route>
         <Route exact path="/banhang/item" component={ManageItem}></Route>
         <Route exact path="/banhang/item/choose-category" component={ChooseCategory}></Route>
         <Route exact path="/banhang/delivery" component={Delivery}></Route>
-        <Route exact path="/shop/item/:name" component={ItemdetailShopPage}></Route>
+
+
+        {/* <Route exact path="/shop/item/:name" component={ItemdetailShopPage}></Route> */}
         <Route exact path="/users/login" component={Login}></Route>
         <Route exact path='/users/register' component={Register} />
-        <Route exact path="/users/cart" component={Payment}></Route>
-        <Route exact path="/users/cart/check-out" component={Checkout}></Route>
+
+        <Route exact path='/detail/:item' component={Detaiitem} />
+
+        <Route exact path="/cart" component={Cart}></Route>
+        <Route exact path="/checkout" component={Checkout}></Route>
+
+        {/* <Route exact path="/users/cart/check-out" component={Checkout}></Route> */}
         <Route exact path="/confirm-account" component={ConfirmAccount}></Route>
         <Route exact path="/users/forgotpassword" component={ForgotPassword}></Route>
         <Route exact path="/users/login/forgotpassword/verify/:token" component={ChangePassword}></Route>
         <Route exact path="/users/login/forgotpassword/confirm" component={ConfirmAccount}></Route>
         <Route exact path="/users/login/change-password" component={ChangePasswordSuccesful}></Route>
-        <PrivateRouter exact path="/dashboard/list-order" component={ListOrder}></PrivateRouter>
+        {/* <PrivateRouter exact path="/dashboard/list-order" component={ListOrder}></PrivateRouter>
         <PrivateRouter exact path="/dashboard/list-order-shipping" component={ListOrderShipping}></PrivateRouter>
-        <PrivateRouter exact path="/dashboard/list-order-finish" component={ListOrderFinishing}></PrivateRouter>
+        <PrivateRouter exact path="/dashboard/list-order-finish" component={ListOrderFinishing}></PrivateRouter> */}
 
         <Route exact path="/users/login/:token" component={ConfirmSuccessful}></Route>
-        <PrivateRouter exact path="/dashboard" component={Dashboard}></PrivateRouter>
+        {/* <PrivateRouter exact path="/dashboard" component={Dashboard}></PrivateRouter>
         <PrivateRouter exact path="/dashboard/item" component={Item}></PrivateRouter>
         <PrivateRouter exact path="/dashboard/item/:id" component={ItemDetail}></PrivateRouter>
-        <PrivateRouter exact path="/dashboard/upload" component={Upload}></PrivateRouter>
+        <PrivateRouter exact path="/dashboard/upload" component={Upload}></PrivateRouter> */}
       </Switch>
       <Footer></Footer>
     </Router>
