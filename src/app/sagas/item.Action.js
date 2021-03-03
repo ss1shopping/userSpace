@@ -5,6 +5,7 @@ import { loadingCart } from "../crud/auth.crud";
 import { itemActionTypes } from '../constant/index';
 import { getStorage } from "../../_metronic/utils/utils"
 import { authActions } from '../store/ducks/authReducer';
+import { rateActions } from '../store/ducks/ratingReducer';
 function* featchItem({ payload }) {
     let { page, sortBy, order } = payload
     console.log(page);
@@ -86,11 +87,13 @@ function* updateview(payload) {
 
 function* getitem({ payload }) {
     const { id } = payload
-    console.log("action", payload);
+
     try {
         const response = yield call(getItem, { id })
-        console.log(response);
+        console.log(response.data._id);
         yield put(itemActions.getItemSuccess(response.data))
+        // yield put(rateActions.getRating(1, response.data._id))
+
     } catch (err) {
         const error = err.response ? err.response.data.msg : err.stack
         yield put(itemActions.error(error))

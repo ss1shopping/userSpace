@@ -56,6 +56,14 @@ export const cartReducer = (state = initialAuthState, action) => {
       return {
         ...state, cart: action.payload
       }
+    case cartActionTypes.deleteCart:
+      return {
+        ...state, pending: action.payload
+      }
+    case cartActionTypes.deleteCartSuccessful:
+      return {
+        ...state, statusAddnewItem: !state.statusAddnewItem,
+      }
     default:
       return state;
   }
@@ -73,5 +81,6 @@ export const cartActions = {
   setAgainSelecItem: (payload) => ({ type: cartActionTypes.setAgainSelecItem, payload }),
   setTotalMoney: (payload) => ({ type: cartActionTypes.setTotalMoney, payload }),
   setNewCart: (payload) => ({ type: cartActionTypes.setNewCart, payload }),
-
+  deleteCart: (carts) => ({ type: cartActionTypes.deleteCart, payload: { carts } }),
+  deleteCartSuccessful: (payload) => ({ type: cartActionTypes.deleteCartSuccessful, payload })
 }

@@ -1,29 +1,32 @@
 import React, { useEffect, useState } from 'react'
 
 import Gallery from 'react-image-gallery';
-
+import { useDispatch, useSelector } from "react-redux"
 const ImageSlider = (props) => {
   const [Images, setImages] = useState([])
-  const itemtoedit = props.tier_variations[0]
-  useEffect(() => {
-    if (itemtoedit) {
-      let images = [];
-      itemtoedit && itemtoedit.image.map(item => {
-        // const editimg = item.replace("public", "http://localhost:4000")
-        images.push({
-          showPlayButton: false,
-          original: `${item}`,
-          thumbnail: `${item}`
+  const item = useSelector(state => state.itemReducer.detailItem)
+  const itemtoedit = props.tier_variations && props.tier_variations
+  // useEffect(() => {
 
-        })
+  // }, [])
+
+  let images = [];
+  item && item.tier_variations.map(item => {
+    let editimg = ""
+    console.log(item);
+    item.images.map(i => {
+      editimg = i.replace("public", "http://localhost:4000")
+      Images.push({
+        showPlayButton: false,
+        original: `${editimg}`,
+        thumbnail: `${editimg}`
       })
-      setImages(images)
-    } else {
-      return (
-        <div>  no Image</div>
-      )
-    }
-  }, [])
+
+    })
+
+  })
+  // setImages(images)
+
 
   return (
     <div className="detailItem--image">

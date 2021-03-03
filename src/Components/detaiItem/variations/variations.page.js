@@ -25,6 +25,9 @@ const Variations = (props) => {
       return "product--variation"
     }
   }
+  const handleOver = (model) => {
+
+  }
   useEffect(() => {
     attrs.value[props.attr.name] = null;
     dispatch(cartActions.setAttribute(attrs))
@@ -34,7 +37,7 @@ const Variations = (props) => {
       <div className="infor--models--label"> {props.attr.name}</div>
       <div className="infor--models--name">
         {buttonSelect.object.map((model, index) =>
-          <button key={index} className={activeObject(index)} onClick={() => { toggleButton(index, model) }}>{model}</button>)}
+          <button key={index} className={activeObject(index)} onMouseOver={() => handleOver(model)} onClick={() => { toggleButton(index, model) }}>{model}</button>)}
       </div>
     </>
   )

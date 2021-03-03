@@ -66,13 +66,11 @@ const Homepage = () => {
                     <div class="item-img-wrapper">
                       <div class="item-img"></div>
                     </div>
-                      <div class="item-price-wrapper">
-                        <span class="item-price">$200</span>                       
-                      </div>
+                    <div class="item-price-wrapper">
+                      <span class="item-price">$200</span>
+                    </div>
                   </div>
-
                 </a>
-
                 <a class="flashsale-item" href="">
                   <div class="item">
                     <div class="item-img-wrapper">
@@ -150,7 +148,7 @@ const Homepage = () => {
             <div class="outerbox">
               <div id="trendSearch--header">
                 <div class="icon-container">
-                    <span class="trendSearch-txt">trend search</span>                  
+                  <span class="trendSearch-txt">trend search</span>
                 </div>
                 <button class="btn--seemore">See more</button>
               </div>

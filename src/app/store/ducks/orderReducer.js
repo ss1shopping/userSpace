@@ -6,7 +6,8 @@ const initialAuthState = {
   link: "",
   order: "",
   isCancelled: false,
-  orderUpdate: ""
+  orderUpdate: "",
+  checkout: false,
 }
 export const orderReducer = (state = initialAuthState, action) => {
   switch (action.type) {
@@ -17,6 +18,10 @@ export const orderReducer = (state = initialAuthState, action) => {
     case orderActionTypes.getAllOrderSuccess:
       return {
         ...state, pending: !state.pending, orders: action.payload
+      }
+    case orderActionTypes.getAllOrderUser:
+      return {
+        ...state, pending: !state.pending
       }
     case orderActionTypes.fail:
       return {
@@ -56,7 +61,7 @@ export const orderReducer = (state = initialAuthState, action) => {
       }
     case orderActionTypes.checkoutSuccessfull:
       return {
-        ...state, pending: !state.pending
+        ...state, pending: !state.pending, checkout: !state.checkout
       }
     default:
       return state
@@ -74,5 +79,6 @@ export const orderActions = {
   cancelledOrder: (id) => ({ type: orderActionTypes.canceledOrder, payload: { id } }),
   cancelledOrderSuccessfull: (payload) => ({ type: orderActionTypes.cancelledOrderSuccess, payload }),
   checkout: (carts, phone, address) => ({ type: orderActionTypes.checkout, payload: { carts, phone, address } }),
-  checkoutSuccessful: (payload) => ({ type: orderActionTypes.checkoutSuccessfull, payload })
+  checkoutSuccessful: (payload) => ({ type: orderActionTypes.checkoutSuccessfull, payload }),
+  getAllOrdersUser: (page, userId) => ({ type: orderActionTypes.getAllOrderUser, payload: { page, userId } })
 }

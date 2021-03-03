@@ -75,7 +75,7 @@ const Routerr = () => {
         <Route path="/search" component={SearchPage}></Route>
         {/* <Route exact path="/blur" component={BlurGlass}></Route> */}
         {/* <Redirect  from={"/profile"} exact={true} to={"/SignIn"}/> */}
-        {/* <Route exact path="/users/history" component={History}></Route> */}
+        <Route exact path="/history" component={History}></Route>
         {/* <Route exact path="/banhang" component={Body}></Route> */}
 
         <Route exact path="/banhang/order" component={Order}></Route>

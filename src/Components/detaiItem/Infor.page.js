@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react'
 import { Link, withRouter } from 'react-router-dom'
-import StarIcon from '@material-ui/icons/Star';
+import { BsStar } from "react-icons/bs"
 import Variations from './variations/variations.page'
 // import Alert from '@material-ui/lab/Alert';
 // import Snackbar from '@material-ui/core/Snackbar';
@@ -9,7 +9,7 @@ import { itemActions } from '../../app/store/ducks/itemReducer';
 import { cartActions } from '../../app/store/ducks/cardReducer';
 const Infor = (props) => {
   const dispatch = useDispatch()
-  console.log(props);
+
   const item = useSelector(state => state.itemReducer.detailItem)
   // const { attrs, cart } = useContext(CartContext)
   const attrs = useSelector(state => state.cartReducer.attrs)
@@ -56,6 +56,7 @@ const Infor = (props) => {
 
       dispatch(cartActions.addtocart(item._id, attrs.number, found._id,))
       dispatch(cartActions.setAttribute({ ...attrs, number: 1 }))
+      dispatch(cartActions.loadingCart())
     }
     setOpen(true)
     if (e.target.name === 'buyNow') {
@@ -86,11 +87,11 @@ const Infor = (props) => {
         <div className="infor--inforExtra--rate">
           <div className="inforExtra--scores">4.9</div>
           <div className="inforExtra--flex">
-            <StarIcon></StarIcon>
-            <StarIcon></StarIcon>
-            <StarIcon></StarIcon>
-            <StarIcon></StarIcon>
-            <StarIcon></StarIcon>
+            <BsStar></BsStar>
+            <BsStar></BsStar>
+            <BsStar></BsStar>
+            <BsStar></BsStar>
+            <BsStar></BsStar>
 
           </div>
           <div className="inforExtra--avaluate">

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react"
-import { ThemeProvider, LayoutSplashScreen } from "./_metronic";
+// import { ThemeProvider, LayoutSplashScreen } from "./_metronic";
 import { LastLocationProvider } from "react-router-last-location";
 import { BrowserRouter } from "react-router-dom";
 import './App.css';
@@ -16,9 +16,9 @@ export default function App({ store, persistor }) {
             <React.Suspense fallback={<LayoutSplashScreen />}> */}
       <BrowserRouter>
         {/* <LastLocationProvider> */}
-        <ThemeProvider>
-          <Router></Router>
-        </ThemeProvider>
+        {/* <ThemeProvider> */}
+        <Router></Router>
+        {/* </ThemeProvider> */}
         {/* </LastLocationProvider> */}
       </BrowserRouter>
       {/* </React.Suspense>

@@ -1,0 +1,38 @@
+.rating{
+  &--wrapper{
+
+  }
+  &--box{
+  display: flex;
+    border-bottom: 1px solid #f0f0f0;
+    margin-top: 20px;
+  }
+  &--avatar{
+    margin-right: 10px;
+    width: 30px;
+    height: 30px;
+    img{
+      border-radius: 100%;
+      width: 30px;
+      height: 30px;
+    }
+  }
+  &--main{
+    .name{
+      font-size: 12px;
+    }
+    .time{
+      margin-bottom: 10px;
+    }
+    .star{
+      font-size: 12px;
+      .active{
+        color: rgb(228, 206, 9);
+      }
+    }
+    .time{
+      font-size: 12px;
+    }
+  }
+
+}

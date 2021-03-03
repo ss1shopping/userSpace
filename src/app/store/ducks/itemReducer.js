@@ -10,21 +10,8 @@ const initialAuthState = {
     message: null,
     error: null,
     notice: null,
-    totalSold: null,
-    totalView: null,
-    totalIncome: null,
-    totalUser: null,
-    isPendingTotalInfor: false,
-    percentageSold: null,
-    percentageView: null,
-    percentageIncome: null,
-    percentageUser: null,
-    errorLoadingTotalInfor: null,
-    messageAddtocart: null,
-    cart: [],
     urlImage: [],
     itemInCart: [],
-    page: 1,
 
 
 }

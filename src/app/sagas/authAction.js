@@ -16,6 +16,9 @@ function* fetchLogin({ payload }) {
     yield setStorage('token', result.data.token, result.data.expToken);
     yield setStorage("refreshtoken", result.data.refreshToken, result.data.expRefreshToken)
     yield setStorage("shopId", result.data.user.shopId)
+    yield setStorage("userId", result.data.user._id)
+    yield setStorage("addresses", JSON.stringify(result.data.user.addresses))
+    yield setStorage("phoneNumber", JSON.stringify(result.data.user.phoneNumber))
     //  const response=yield call(loadingCart)
 
     // //  yield put (authActions.loadingCartSuccess(response.data))

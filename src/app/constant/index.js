@@ -33,11 +33,7 @@ export const itemActionTypes = {
   resetItem: "[reset item]",
 
   getItem: "[get item detail]",
-  getItemSuccessful: "[get item successful]"
-
-
-
-
+  getItemSuccessful: "[get item successful]",
 
 }
 export const authActionTypes = {
@@ -104,7 +100,9 @@ export const orderActionTypes = {
   canceledOrder: "[cancelled order]",
   cancelledOrderSuccess: "[cancelled order success]",
   checkout: '[checkout]',
-  checkoutSuccessfull: "[checkout successful]"
+  checkoutSuccessfull: "[checkout successful]",
+  getAllOrderUser: "[get all order user]",
+  getAllOrderUserSuccessful: "[get all order user successful]"
 }
 export const layoutActionTypes = {
   changeNumber: "[change number layout]",
@@ -131,4 +129,14 @@ export const cartActionTypes = {
   setTotalMoney: "[set total money]",
   setNewCart: "[set new cart]"
 
+}
+export const ratingActionTypes = {
+  getRating: '[get Rating]',
+  getRatingSuccessfull: "[get Rating Successful]",
+  createRating: "[create rating]",
+  createRatingSuccess: '[create Rating Successful]',
+  deleteRating: "[delete Rating]",
+  deleteRating: '[delete Rating successful]',
+  fail: '[fail]',
+  changeRate: "[change rating]"
 }
