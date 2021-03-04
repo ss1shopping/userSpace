@@ -5,25 +5,13 @@ import itemAction from '../../sagas/item.Action';
 const initialAuthState = {
     isPending: false,
     itemtoEdit: "",
+    detailItem: null,
     item: [],
     message: null,
     error: null,
     notice: null,
-    totalSold: null,
-    totalView: null,
-    totalIncome: null,
-    totalUser: null,
-    isPendingTotalInfor: false,
-    percentageSold: null,
-    percentageView: null,
-    percentageIncome: null,
-    percentageUser: null,
-    errorLoadingTotalInfor: null,
-    messageAddtocart: null,
-    cart: [],
     urlImage: [],
     itemInCart: [],
-    page: 1,
 
 
 }
@@ -57,29 +45,17 @@ export const itemReducer = persistReducer(
                 return {
                     ...state, error: null
                 }
-            case itemActionTypes.loadTotal:
-                return {
-                    ...state, isPendingTotalInfor: !state.isPendingTotalInfor
-                }
-            case itemActionTypes.loadTotalSuccessfull:
-                return {
-                    ...state, totalSold: action.payload.TotalSold,
-                    totalIncome: action.payload.TotalIncome,
-                    totalView: action.payload.TotalView,
-                    totalUser: action.payload.TotalUser,
-                    percentageIncome: action.payload.percentageIncome,
-                    percentageSold: action.payload.percentageSold,
-                    percentageView: action.payload.percentageView,
-                    percentageUser: action.payload.percentageUser,
-                    isPendingTotalInfor: !state.isPendingTotalInfor
-                }
-            case itemActionTypes.loadTotalFailure:
-                return {
-                    ...state, errorLoadingTotalInfor: action.payload
-                }
             case itemActionTypes.ItemChoseToEdit:
                 return {
                     ...state, itemtoEdit: action.payload
+                }
+            case itemActionTypes.getItem:
+                return {
+                    ...state, isPending: !state.isPending
+                }
+            case itemActionTypes.getItemSuccessful:
+                return {
+                    ...state, detailItem: action.payload, isPending: !state.isPending
                 }
             case itemActionTypes.updateItem:
                 return {
@@ -88,22 +64,6 @@ export const itemReducer = persistReducer(
             case itemActionTypes.updateItemSuccesful:
                 return {
                     ...state, isPending: !state.isPending, message: action.payload.msg
-                }
-            case itemActionTypes.addtoCart:
-                return {
-                    ...state, isPending: !state.isPending
-                }
-            case itemActionTypes.addtocartSuccessFul:
-                return {
-                    ...state, isPending: !state.isPending, messageAddtocart: action.payload.msg, cart: action.payload.updateCart.cart
-                }
-            case itemActionTypes.removeTocartSuccessful:
-                return {
-                    ...state, isPending: !state.isPending, messageRemoveTocart: action.payload.msg, cart: action.payload.updateCart.cart
-                }
-            case itemActionTypes.removeTocart:
-                return {
-                    ...state, isPending: !state.isPending
                 }
             case itemActionTypes.uploadItemSuccess: {
                 return {
@@ -125,20 +85,6 @@ export const itemReducer = persistReducer(
                     ...state, urlImage: []
                 }
             }
-            case authActionTypes.LoadingcartSuccess: {
-                return { ...state, cart: action.payload.cart, itemInCart: action.payload.itemInCart }
-            }
-            case authActionTypes.Loadingcart: {
-                return { ...state, isPending: !state.isPending }
-            }
-            case itemActionTypes.checkout:
-                return {
-                    ...state, isPending: !state.isPending,
-                }
-            case itemActionTypes.checkoutSuccessful:
-                return {
-                    ...state, checkout: action.payload.result
-                }
             case itemActionTypes.deleteItem:
                 return {
                     ...state, isPending: !state.isPending
@@ -147,16 +93,11 @@ export const itemReducer = persistReducer(
                 return {
                     ...state, isPending: !state.isPending, message: action.payload.msg
                 }
-            case itemActionTypes.countpage: {
-                return {
-                    ...state, page: action.page
-                }
-            }
+
             case itemActionTypes.resetItem: {
                 return {
                     ...state, item: []
                 }
-
             }
 
 
@@ -179,23 +120,21 @@ export const itemActions = {
     loadingInfor: (payload) => ({ type: itemActionTypes.loadTotal, payload }),
     loadingInforSuccessfull: (payload) => ({ type: itemActionTypes.loadTotalSuccessfull, payload }),
     loadingInforFailure: (payload) => ({ type: itemActionTypes.loadTotalFailure, payload }),
+
     itemChooseToEdit: (payload) => ({ type: itemActionTypes.ItemChoseToEdit, payload }),
+    getItem: (id) => ({ type: itemActionTypes.getItem, payload: { id } }),
+    getItemSuccess: (payload) => ({ type: itemActionTypes.getItemSuccessful, payload }),
+
     updateItem: (id, name, price, quantity, description, history) => ({ type: itemActionTypes.updateItem, payload: { id, name, price, quantity, description, history } }),
     updateItemSuccesfull: (payload) => ({ type: itemActionTypes.updateItemSuccesful, payload }),
-    addtocart: (id) => ({ type: itemActionTypes.addtoCart, payload: { id } }),
-    addtocartSuccessFul: (payload) => ({ type: itemActionTypes.addtoCartSuccessFul, payload }),
-    removetocart: (id) => ({ type: itemActionTypes.removeTocart, payload: { id } }),
-    removeTocartSuccessful: (payload) => ({ type: itemActionTypes.removeTocartSuccessful, payload }),
+
     addImage: (formData) => ({ type: itemActionTypes.addImage, payload: { formData } }),
     addImageSuccessful: (payload) => ({ type: itemActionTypes.addImageSuccessful, payload }),
     deleteUrlImage: () => ({ type: "deleteUrlImage" }),
-    updateView: (id) => ({ type: itemActionTypes.updateView, payload: { id } }),
-    checkout: (phone, address, id) => ({ type: itemActionTypes.checkout, payload: { phone, address, id } }),
-    checkoutSuccessful: (payload) => ({ type: itemActionTypes.checkoutSuccessful, payload }),
+
     deleteItem: (iditem) => ({ type: itemActionTypes.deleteItem, payload: { iditem } }),
     deleteitemSuccesful: (payload) => ({ type: itemActionTypes.deleteItemSuccessful, payload }),
-    countpage: (page) => ({ type: itemActionTypes.countpage, page }),
-    resetItem: () => ({ type: itemActionTypes.resetItem }),
+
 
 
 

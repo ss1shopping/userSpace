@@ -12,6 +12,10 @@ import totalReducer from "./ducks/totalReducer"
 import totalAction from "../sagas/total.Action"
 import { orderReducer } from './ducks/orderReducer';
 import orderAction from '../sagas/orderAction';
+import { cartReducer } from './ducks/cardReducer';
+import cartAction from '../sagas/cardAction';
+import { rateReducer } from './ducks/ratingReducer';
+import ratingAction from '../sagas/rateAction';
 export const rootReducer = combineReducers({
   authReducer: authReducer,
   loadingReducer: loadingReducer,
@@ -19,6 +23,8 @@ export const rootReducer = combineReducers({
   itemReducer: itemReducer,
   totalReducer: totalReducer,
   orderReducer: orderReducer,
+  cartReducer: cartReducer,
+  rateReducer: rateReducer,
   // i18n: metronic.i18n.reducer,
   // builder: metronic.builder.reducer,
   layoutReducer: layoutReducer
@@ -29,7 +35,9 @@ export function* rootSaga() {
     authAction(),
     totalAction(),
     itemAction(),
-    orderAction()
+    orderAction(),
+    cartAction(),
+    ratingAction()
   ]);
 }
 

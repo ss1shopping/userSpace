@@ -18,22 +18,29 @@ export const API_URLS = {
   DELETE_IMAGE_ITEM: "/shopping/upload",
 
   UPDATE_VIEW: "/item/update-view",
-
-  ADD_TO_CART: "/cart",
-  REMOVE_TO_CART: '/cart/remove',
-
-  CHECK_OUT: "/order/check-out",
-  LIST_HISTORY: "/history",
-
+  GET_ITEM: (data) => `/item/get-one/${data.id}`,
+  ADD_TO_CART: "/cart/add",
+  UPDATE_CART: "/cart/update",
+  REMOVE_TO_CART: (data) => `/cart/remove/${data.url}`,
+  EMPTY_CART: `/cart/empty-cart`,
+  GET_CART: `/cart/get`,
+  // LIST_HISTORY: "/history",
+  GET_ALL_ORDER_USER: (data) => `/order/getall/user/order` + `${data.url}`,
   GETALLORDER: (data) => `/order/getAll` + `${data.url}`,
   UPDATE_ORDER: "order/change-status",
-  GET_ALL_ORDER_USER: "order/getall/user/order",
+  // GET_ALL_ORDER_USER: "order/getall/user/order",
   CANCELLED_ORDER: "order/canceled-order",
-  LIST_HISTORY_OF_USER: (data) => `/history/user/limit=${data.limit}/page=${data.page}`,
-  EXPORT_BIllING: (data) => `/history/export/${data.id}`,
-  CANCELLING_BILLING: (data) => `history/cancelled/${data.id}`,
-  FISHISH_BILLING: (data) => `history/finish/${data.id}`,
-  DELETE_HISTORY: "/history/delete",
+  CHECK_OUT: "/order/checkout",
+
+
+  GET_LIST_RATING: (data) => "/review/get" + `${data.url}`,
+  CREATE_RATING: "/review/create",
+  DELETE_RATING: (data) => `review/delete/${data.id}`,
+  // LIST_HISTORY_OF_USER: (data) => `/history/user/limit=${data.limit}/page=${data.page}`,
+  // EXPORT_BIllING: (data) => `/history/export/${data.id}`,
+  // CANCELLING_BILLING: (data) => `history/cancelled/${data.id}`,
+  // FISHISH_BILLING: (data) => `history/finish/${data.id}`,
+  // DELETE_HISTORY: "/history/delete",
 
 
   GET_ORDER_DETAILED: (orderId) => `/api/orders/${orderId}`,

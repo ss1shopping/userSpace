@@ -1,0 +1,9 @@
+.vinall-rating-stars__star{
+  &-wrapper{
+    .star{
+      .active{
+        color: rgb(228, 206, 9);
+      }
+    }
+  }
+}
