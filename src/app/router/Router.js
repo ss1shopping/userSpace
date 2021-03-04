@@ -76,7 +76,7 @@ const Routerr = () => {
         {/* <Route exact path="/banhang" component={Body}></Route> */}
         <Route exact path="/banhang/order" component={Order}></Route>
         <Route exact path="/banhang/item" component={ManageItem}></Route>
-        <Route exact path="/banhang/item/choose-category" component={ChooseCategory}></Route>
+        <Route exact path="/banhang/choose-category" component={ChooseCategory}></Route>
         <Route exact path="/banhang/delivery" component={Delivery}></Route>
         <Route exact path="/shop/item/:name" component={ItemdetailShopPage}></Route>
         <Route exact path="/users/login" component={Login}></Route>
