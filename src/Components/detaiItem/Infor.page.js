@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react'
 import { Link, withRouter } from 'react-router-dom'
-import { BsStar } from "react-icons/bs"
+import { BsStarFill } from "react-icons/bs"
 import Variations from './variations/variations.page'
 // import Alert from '@material-ui/lab/Alert';
 // import Snackbar from '@material-ui/core/Snackbar';
@@ -14,7 +14,9 @@ const Infor = (props) => {
   // const { attrs, cart } = useContext(CartContext)
   const attrs = useSelector(state => state.cartReducer.attrs)
   const cart = useSelector(state => state.cartReducer.cart)
-  // const [number, setNumber] = useState(1)
+  const rating = useSelector(state => state.rateReducer.rating)
+
+  const [totalRate, settotalRate] = useState(0)
   const [open, setOpen] = useState(false);
   const attribute = item && item.tier_variations.map((attr, index) => {
 
@@ -25,17 +27,7 @@ const Infor = (props) => {
 
   // const [buttonSelect, setButtonSelect] = useState("product--variation")
   const handleAddtoCart = (e) => {
-    // attrs["number"] = number
-    // const newattrs = JSON.parse(JSON.stringify(attrs)) // deep copy
 
-    // cart.push({
-    //   attrs: attrs,
-    //   image: item.tier_variations[0].image[0],
-    //   id: item._id,
-    //   name: props.data.name,
-    //   price: item.models[0].price,
-    //   shopName: item.shopId.name
-    // })
     //find modelId 
     //concat key word Ex: mauxanh,s
     let keyword = null
@@ -70,12 +62,11 @@ const Infor = (props) => {
 
     setOpen(false);
   }
-  // const inputNumber = (value) => {
-  //   console.log(+value);
-  //   if (+value !== NaN) {
-  //     setNumber(+value)
-  //   }
-  // }
+  let totalNumberRate = 0;
+  rating && rating.map((v, i) => {
+
+    totalNumberRate += v.starRate
+  })
   return (
 
     <div className="detailItem--infor">
@@ -85,19 +76,19 @@ const Infor = (props) => {
       </div>
       <div className="infor--inforExtra">
         <div className="infor--inforExtra--rate">
-          <div className="inforExtra--scores">4.9</div>
+          <div className="inforExtra--scores">{item && totalNumberRate / rating.length}</div>
           <div className="inforExtra--flex">
-            <BsStar></BsStar>
-            <BsStar></BsStar>
-            <BsStar></BsStar>
-            <BsStar></BsStar>
-            <BsStar></BsStar>
+            <BsStarFill className={totalNumberRate / rating.length >= 1.5 ? "active" : "star"}></BsStarFill>
+            <BsStarFill className={totalNumberRate / rating.length >= 2.5 ? "active" : "star"}></BsStarFill>
+            <BsStarFill className={totalNumberRate / rating.length >= 3.5 ? "active" : "star"}></BsStarFill>
+            <BsStarFill className={totalNumberRate / rating.length >= 4.5 ? "active" : "star"}></BsStarFill>
+            <BsStarFill className={totalNumberRate / rating.length >= 4.5 ? "active" : "star"}></BsStarFill>
 
           </div>
           <div className="inforExtra--avaluate">
-            409 đánh giá
+            {rating && rating.length} đánh giá
           </div>
-          <div className="inforExtra--sold"> 2,1k đã bán
+          <div className="inforExtra--sold"> {item && item.sold} đã bán
           </div>
         </div>
       </div>

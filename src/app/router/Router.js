@@ -80,7 +80,7 @@ const Routerr = () => {
 
         <Route exact path="/banhang/order" component={Order}></Route>
         <Route exact path="/banhang/item" component={ManageItem}></Route>
-        <Route exact path="/banhang/item/choose-category" component={ChooseCategory}></Route>
+        <Route exact path="/banhang/choose-category" component={ChooseCategory}></Route>
         <Route exact path="/banhang/delivery" component={Delivery}></Route>
 
 

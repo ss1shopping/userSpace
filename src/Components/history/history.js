@@ -53,7 +53,7 @@ const History = () => {
                                         <th className="item__attribute--desc navigator--desc">phone</th>
                                         <th className="item__attribute--quantity navigator--quantity">Address</th>
                                         <th className="item__attribute--price navigator--price">quantity</th>
-                                        {/* <th className="item__attribute--sold navigator--sold">Sold</th> */}
+                                        <th className="item__attribute--rating navigator--rating">Rating</th>
                                         <th className="item__attribute--edit"> DELETE</th>
 
                                     </tr>
@@ -72,7 +72,8 @@ const History = () => {
                                                 <td>{item.phone}</td>
                                                 <td>{item.address}</td>
                                                 <td>{item.detail.length}</td>
-                                                <td><Link to={`/users/history`} onClick={() => handleDelete(item._id)}><BsTrash />DELETE </Link></td>
+                                                <td><Link className="btn btn--outline" to="/item/rating"> Rating</Link></td>
+                                                <td><Link className="btn btn--outline" to={`/users/history`} onClick={() => handleDelete(item._id)}><BsTrash />DELETE </Link></td>
                                             </tr>
                                         ))}
                                 </tbody>

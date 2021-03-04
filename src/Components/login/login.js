@@ -81,106 +81,113 @@ const Login = (props) => {
   // const DarkmodeStatus = useSelector(state => state.layoutReducer.DarkmodeStatus)
 
   return (
-    <DefaultLayout>
+    // <DefaultLayout>
+    <div className="login">
+
+      <div className="login--wrapper" >
+        <div className="login--header">
+          <div className="login--logo"> PICASSO</div>
+          <div className="login--title">Đăng nhập </div>
+        </div>
+        <div className="login--main">
+          <div className="box1">
+            <div className="box1--wrapper">
+              <div className="box1--wrapper--title">Đăng nhập </div>
+              <div>
 
 
-      <div style={{ backgroundColor: "#18191a", paddingTop: "120px" }}>
+                <Formik initialValues={{
+                  email: "",
+                  password: "",
 
-        <div style={{ backgroundColor: "white" }}>
-          <Formik initialValues={{
-            email: "",
-            password: "",
+                }}
+                  validationSchema={Yup.object({
+                    password: Yup.string()
 
-          }}
-            validationSchema={Yup.object({
-              password: Yup.string()
+                      .min(8, 'Password is too short ,should be 8 chars minimum.')
 
-                .min(8, 'Password is too short ,should be 8 chars minimum.')
+                      .required("Required"),
+                    email: Yup.string()
+                      .email("invalid email address")
+                      .required("Required"),
 
-                .required("Required"),
-              email: Yup.string()
-                .email("invalid email address")
-                .required("required"),
+                  })}
+                  onSubmit={(values, { setSubmitting, resetForm }) => {
 
-            })}
-            onSubmit={(values, { setSubmitting, resetForm }) => {
+                    dispatch(authActions.login(values.email, values.password, setSubmitting, props.history))
+                    // setTimeout(() => {
+                    //   dispatch(authActions.loadingCart())
+                    // }, 1000);
 
-              dispatch(authActions.login(values.email, values.password, setSubmitting, props.history))
-              // setTimeout(() => {
-              //   dispatch(authActions.loadingCart())
-              // }, 1000);
-
-            }}
-          >
-            {({
-              values,
-              errors,
-              touched,
-              handleChange,
-              handleBlur,
-              handleSubmit,
-              isSubmitting
-            }) => (
-              <Form noValidate={true}
-                autoComplete="off"
-                className="kt-form"
-                onSubmit={handleSubmit}>
-                <div >
-                  <div >
-                    <div >
-                      {/* <Avatar className={classes.icon}>
-                        <LockIcon />
-                      </Avatar> */}
-                    </div>
-                    <div >
-                    </div>
-                    <div>
+                  }}
+                >
+                  {({
+                    values,
+                    errors,
+                    touched,
+                    handleChange,
+                    handleBlur,
+                    handleSubmit,
+                    isSubmitting
+                  }) => (
+                    <Form noValidate={true}
+                      autoComplete="off"
+                      className="kt-form"
+                      onSubmit={handleSubmit}>
                       <div >
+                        <div >
 
-                        <CustomTextForm autoFocus name="email" label="Email" placeholder="Email" defaultValue="tien"></CustomTextForm>
+                          <div>
+                            <div className="input" >
+
+                              <CustomTextForm autoFocus name="email" label="Email" placeholder="Email" defaultValue="tien"></CustomTextForm>
+                            </div>
+                            <div className="input" >
+                              <CustomTextForm type="password" name="password" label="password" placeholder="Password"></CustomTextForm>
+                            </div>
+                          </div>
+                          <div className="error" >{error}</div>
+                          <div >
+                            <button
+                              className="btn btn--primary"
+                            //   variant="contained"
+                            //   type="submit"
+                            //  color="primary"
+                            //   disabled={loading}
+                            //   fullWidth
+                            >
+                              {loading && (
+                                <div
+                                  size={25}
+                                  thickness={2}
+                                ></div>
+                              )}
+                              {isSubmitting ? "Loading..." : "Sign in"}
+                            </button>
+                          </div>
+                          <div className="register">
+                            <span className="question">New to PICASSO?</span>
+                            <span className="link"><Link to="/users/register" >Create an account</Link></span>
+                          </div>
+                          <div className="forgot" >
+                            <span><Link to="/users/forgotpassword" >Forgot password ?</Link></span>
+                          </div>
+                        </div>
+
                       </div>
-                      <div >
-                        <CustomTextForm type="password" name="password" label="password" placeholder="Password"></CustomTextForm>
-                      </div>
-                    </div>
-                    <div className="error" >{error}</div>
-                    <div >
-                      <button
-                        className="btn"
-                      //   variant="contained"
-                      //   type="submit"
-                      //  color="primary"
-                      //   disabled={loading}
-                      //   fullWidth
-                      >
-                        {loading && (
-                          <div
-                            size={25}
-                            thickness={2}
-                          ></div>
-                        )}
-                        {isSubmitting ? "Loading..." : "Sign in"}
-                      </button>
-                    </div>
-                    <div className="register" style={{ padding: "0 1em 1em 1em" }}>
-                      <span className="question">New to PICASSO?</span>
-                      <span className="link"><Link to="/users/register" >Create an account</Link></span>
-                    </div>
-                    <div className="forgot" style={{ padding: "0 1em 1em 1em" }}>
-                      <span><Link to="/users/forgotpassword" >Forgot password ?</Link></span>
-                    </div>
-                  </div>
-
-                </div>
 
 
-              </Form>
-            )}
-          </Formik>
+                    </Form>
+                  )}
+                </Formik>
 
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </DefaultLayout>
+    </div>
+    // </DefaultLayout>
   );
 };
 

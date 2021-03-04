@@ -32,7 +32,6 @@ const ImageSlider = (props) => {
     <div className="detailItem--image">
       <Gallery showPlayButton={false} showFullscreenButton={false} showBullets={false} slideOnThumbnailOver={true} infinite={false} items={Images} />
 
-
     </div>
   )
 }
