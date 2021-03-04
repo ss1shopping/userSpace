@@ -15,10 +15,15 @@ import { rateActions } from '../../app/store/ducks/ratingReducer'
 const DetailItem = () => {
   const dispatch = useDispatch()
   const [page, setpage] = useState()
+  //const item = useSelector(state => state.itemReducer.detailItem)
   const item = useSelector(state => state.itemReducer.detailItem)
   useEffect(() => {
     //itemActions.getItem(getStorage("idItem"))
-    dispatch(itemActions.getItem("60093dcf165f0dfe00ca07f2"))
+    if (getStorage("chooseItem") === "" || null || undefined) {
+      item && dispatch(itemActions.getItem(item.name))
+    } else {
+      dispatch(itemActions.getItem(getStorage("chooseItem")))
+    }
   }, [])
   // if (item !== null || undefined) {
 

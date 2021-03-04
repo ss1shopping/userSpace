@@ -5,7 +5,7 @@ const config = {
 }
 export function getdata(data) {
 
-  return initApi(false).get(API_URLS.GET_ITEM(data))
+  return initApi(false).get(API_URLS.GET_ITEMS(data))
 }
 export function addItem(data) {
   console.log(data);

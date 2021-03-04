@@ -12,7 +12,8 @@ const initialAuthState = {
     notice: null,
     urlImage: [],
     itemInCart: [],
-
+    page: 1,
+    category: null,
 
 }
 export const itemReducer = persistReducer(
@@ -47,7 +48,7 @@ export const itemReducer = persistReducer(
                 }
             case itemActionTypes.ItemChoseToEdit:
                 return {
-                    ...state, itemtoEdit: action.payload
+                    ...state, detailItem: action.payload
                 }
             case itemActionTypes.getItem:
                 return {
@@ -99,7 +100,14 @@ export const itemReducer = persistReducer(
                     ...state, item: []
                 }
             }
-
+            case itemActionTypes.getCategory:
+                return {
+                    ...state, isPending: !state.isPending
+                }
+            case itemActionTypes.getCategorySuccessFul:
+                return {
+                    ...state, isPending: !state.isPending, category: action.payload
+                }
 
             default:
                 return state;
@@ -108,7 +116,7 @@ export const itemReducer = persistReducer(
 
 
 export const itemActions = {
-    loadingitem: (page, sortBy, order) => ({ type: itemActionTypes.loadingitem, payload: { page, sortBy, order } }),
+    loadingitem: (page, sortBy, shopId) => ({ type: itemActionTypes.loadingitem, payload: { page, sortBy, shopId } }),
     loadingsuccess: (payload) => ({ type: itemActionTypes.loadingItemSuccess, payload }),
     loadingfailure: (payload) => ({ type: itemActionTypes.error, payload }),
     error: (payload) => ({ type: itemActionTypes.Error, payload }),
@@ -134,6 +142,9 @@ export const itemActions = {
 
     deleteItem: (iditem) => ({ type: itemActionTypes.deleteItem, payload: { iditem } }),
     deleteitemSuccesful: (payload) => ({ type: itemActionTypes.deleteItemSuccessful, payload }),
+
+    getCategory: () => ({ type: itemActionTypes.getCategory }),
+    getCategorySuccessful: (payload) => ({ type: itemActionTypes.getCategorySuccessFul, payload })
 
 
 

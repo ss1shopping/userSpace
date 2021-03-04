@@ -6,9 +6,9 @@ const ImageSlider = (props) => {
   const [Images, setImages] = useState([])
   const item = useSelector(state => state.itemReducer.detailItem)
   const itemtoedit = props.tier_variations && props.tier_variations
-  // useEffect(() => {
-
-  // }, [])
+  useEffect(() => {
+    setImages([])
+  }, [item])
 
   let images = [];
   item && item.tier_variations.map(item => {

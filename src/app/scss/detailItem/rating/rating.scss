@@ -27,8 +27,11 @@
     .star{
       font-size: 12px;
       .active{
-        color: rgb(228, 206, 9);
+        color: $colorPrimary;
       }
+      // .null{
+      //   color: black;
+      // }
     }
     .time{
       font-size: 12px;

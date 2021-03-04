@@ -7,26 +7,19 @@ import { getStorage } from "../../_metronic/utils/utils"
 import { authActions } from '../store/ducks/authReducer';
 import { rateActions } from '../store/ducks/ratingReducer';
 function* featchItem({ payload }) {
-    let { page, sortBy, order } = payload
+    let { page, sortBy, shopId } = payload
     console.log(page);
     try {
         let url = ""
-        //    if(!page){
-        //       url="?page=1"
-        //     yield put (itemActions.resetItem())
-        //    }else{
-        //        url=`?page=${page}`
-        //    }
+
         !page ? url = "?page=1" : url = `?page=${page}`
-        sortBy ? url = url + `sort=_id` : url = url + `sort=${sortBy}`
-        order ? url = url + `order=ASC` : url = url + `order=${order}`
-        let shopId = getStorage("shopId")
-        url = url + `shopId=${shopId}`
-        //    if(page===1){
-        //     yield put (itemActions.resetItem())
-        //    }
-        console.log("action>", sortBy);
+        sortBy ? url = url + `&sort=${sortBy}` : url = url + `&sort=_id`
+        // order ? url = url + `&order=${order}` : url = url + `&order=_ASC`
+        // let shopId = getStorage("shopId")
+        shopId ? url = url + `&shopId=${shopId}` : url = url
+
         const result = yield call(getdata, { url })
+        console.log("action>", result);
         yield put(itemActions.loadingsuccess(result.data.data))
     } catch (err) {
         const error = err.response ? err.response.data.msg : err.stack;
@@ -75,15 +68,7 @@ function* addImages(payload) {
     }
 }
 
-function* updateview(payload) {
-    const id = payload.payload
-    try {
-        const response = yield call(updateView, id)
-    } catch (err) {
-        const error = err.response ? err.response.data.msg : err.stack
-        yield put(itemActions.error(error));
-    }
-}
+
 
 function* getitem({ payload }) {
     const { id } = payload
@@ -110,6 +95,15 @@ function* deleleitem({ payload }) {
         yield put(itemActions.error(error))
     }
 }
+// function* getCategory() {
+
+//     try {
+//         const response = yield call(get, id)
+//     } catch (err) {
+//         const error = err.response ? err.response.data.msg : err.stack
+//         yield put(itemActions.error(error));
+//     }
+// }
 
 function* itemAction() {
     yield takeEvery(itemActionTypes.loadingitem, featchItem)

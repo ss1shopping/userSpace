@@ -10,7 +10,7 @@ export const API_URLS = {
   RESET_PASSWORD: '/users/login/forgotpassword',
   Change_Password: (data) => `/users/login/forgotpassword/confirm/${data.token}`,
   LOADING_CART: "/users/loadingcart",
-  GET_ITEM: (data) => `/item/get` + `${data.url}`,
+  GET_ITEMS: (data) => `/item/get` + `${data.url}`,
   ADD_ITEM: '/item',
   UPDATE_ITEM: "/item",
   DELETE_ITEM: "/item/delete",
@@ -32,6 +32,7 @@ export const API_URLS = {
   CANCELLED_ORDER: "order/canceled-order",
   CHECK_OUT: "/order/checkout",
 
+  GET_CATEGORY: "/category/get",
 
   GET_LIST_RATING: (data) => "/review/get" + `${data.url}`,
   CREATE_RATING: "/review/create",

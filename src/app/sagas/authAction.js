@@ -26,7 +26,7 @@ function* fetchLogin({ payload }) {
     //    yield setStorage("admin",true)
     //   yield history.push("/dashboard");
     //  }else{
-    yield history.push(`/shop/${result.data.user.firstname}`);
+    yield history.push(`/`);
     //  }
     // console.log(result);
   } catch (err) {

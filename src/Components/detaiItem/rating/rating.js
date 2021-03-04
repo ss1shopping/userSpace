@@ -44,7 +44,7 @@ export const Rating = () => {
     <div className="rating">
       <div className="rating--wrapper">
         {listRating}
-        <div className="rating--box">
+        {/* <div className="rating--box">
 
           <div className="rating--avatar">
             <img atl="img" src={avatar} />
@@ -62,25 +62,8 @@ export const Rating = () => {
             <div className="time"> 10-21-21</div>
           </div>
           <div></div>
-        </div>
-        <div className="rating--box">
-          <div className="rating--avatar">
-            <img atl="img" src={avatar} />
-          </div>
-          <div className="rating--main">
-            <div className="name"> manhtien</div>
-            <div className="star">
-              <BsStarFill className="active"></BsStarFill>
-              <BsStarFill></BsStarFill>
-              <BsStarFill></BsStarFill>
-              <BsStarFill></BsStarFill>
-              <BsStarFill></BsStarFill>
-            </div>
-            <div className="review"> hang dep chat vl</div>
-            <div className="time"> 10-21-21</div>
-          </div>
-          <div></div>
-        </div>
+        </div> */}
+
       </div>
     </div>
   )

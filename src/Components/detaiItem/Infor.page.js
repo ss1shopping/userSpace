@@ -7,6 +7,7 @@ import Variations from './variations/variations.page'
 import { useSelector, useDispatch } from "react-redux"
 import { itemActions } from '../../app/store/ducks/itemReducer';
 import { cartActions } from '../../app/store/ducks/cardReducer';
+import { rateActions } from '../../app/store/ducks/ratingReducer'
 const Infor = (props) => {
   const dispatch = useDispatch()
 
@@ -67,6 +68,7 @@ const Infor = (props) => {
 
     totalNumberRate += v.starRate
   })
+  dispatch(rateActions.setTotalRating(totalNumberRate))
   return (
 
     <div className="detailItem--infor">
