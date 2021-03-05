@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { FaFacebook, FaHistory } from "react-icons/fa";
-import { FiAlignJustify } from "react-icons/fi";
-import { FaInstagram } from "react-icons/fa";
-import { FiLogOut } from "react-icons/fi"
-import { IoIosLogIn } from "react-icons/io"
-import { RiShoppingCart2Line } from "react-icons/ri"
-import ToggleButton from 'react-toggle-button';
+// import { FaFacebook, FaHistory } from "react-icons/fa";
+// import { FiAlignJustify } from "react-icons/fi";
+// import { FaInstagram } from "react-icons/fa";
+// import { FiLogOut } from "react-icons/fi"
+// import { IoIosLogIn } from "react-icons/io"
+// import { RiShoppingCart2Line } from "react-icons/ri"
+// import ToggleButton from 'react-toggle-button';
 import { Nav, Navbar } from "react-bootstrap";
 import { BsSearch } from "react-icons/bs"
 import { useSelector, useDispatch } from 'react-redux';
 import getStorage from 'redux-persist/es/storage/getStorage';
-import { Link } from "react-router-dom"
-import { authActions } from '../../app/store/ducks/authReducer'
+// import { Link } from "react-router-dom"
+// import { authActions } from '../../app/store/ducks/authReducer'
 import { removeStorage } from '../../_metronic/utils/utils';
 function getWindowDimensions() {
   const { innerWidth: width, innerHeight: height } = window;

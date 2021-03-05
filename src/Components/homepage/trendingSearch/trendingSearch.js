@@ -1,9 +1,10 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 export const TrendingSearch = () => {
   return (
     <div class="trendSearch-item-list" >
-      <a class="trendSearch-item" href="">
+      <Link class="trendSearch-item" to="/">
         <div class="item">
           <div class="item-textbox">
             <div class="item-text">
@@ -16,9 +17,9 @@ export const TrendingSearch = () => {
             <div class="item-img"></div>
           </div>
         </div>
-      </a>
+      </Link>
 
-      <a class="trendSearch-item" href="">
+      {/* <a class="trendSearch-item" href="">
         <div class="item">
           <div class="item-textbox">
             <div class="item-text">
@@ -76,7 +77,7 @@ export const TrendingSearch = () => {
           </div>
         </div>
 
-      </a>
+      </a> */}
 
     </div>
 

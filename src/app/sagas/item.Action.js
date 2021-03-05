@@ -7,17 +7,17 @@ import { getStorage } from "../../_metronic/utils/utils"
 import { authActions } from '../store/ducks/authReducer';
 import { rateActions } from '../store/ducks/ratingReducer';
 function* featchItem({ payload }) {
-    let { page, sortBy, shopId } = payload
+    let { page, sortBy, shopId, name } = payload
     console.log(page);
     try {
-        let url = ""
-
+        let url = "";
+        let null1 = true;
         !page ? url = "?page=1" : url = `?page=${page}`
         sortBy ? url = url + `&sort=${sortBy}` : url = url + `&sort=_id`
         // order ? url = url + `&order=${order}` : url = url + `&order=_ASC`
         // let shopId = getStorage("shopId")
-        shopId ? url = url + `&shopId=${shopId}` : url = url
-
+        shopId ? url = url + `&shopId=${shopId}` : null1 = true
+        name ? url = url + `&name${name}` : null1 = true
         const result = yield call(getdata, { url })
         console.log("action>", result);
         yield put(itemActions.loadingsuccess(result.data.data))
@@ -74,6 +74,7 @@ function* getitem({ payload }) {
     const { id } = payload
 
     try {
+
         const response = yield call(getItem, { id })
         console.log(response.data._id);
         yield put(itemActions.getItemSuccess(response.data))
@@ -95,15 +96,20 @@ function* deleleitem({ payload }) {
         yield put(itemActions.error(error))
     }
 }
-// function* getCategory() {
-
-//     try {
-//         const response = yield call(get, id)
-//     } catch (err) {
-//         const error = err.response ? err.response.data.msg : err.stack
-//         yield put(itemActions.error(error));
-//     }
-// }
+function* searchItem({ payload }) {
+    const { keyword } = payload
+    try {
+        let url = ""
+        let null1 = true
+        keyword ? url = `?name=${keyword}` : null1 = true
+        const response = yield call(getdata, { url })
+        console.log(response);
+        yield put(itemActions.searchItemSuccessful(response.data.data))
+    } catch (err) {
+        const error = err.response ? err.response.data.msg : err.stack
+        yield put(itemActions.error(error));
+    }
+}
 
 function* itemAction() {
     yield takeEvery(itemActionTypes.loadingitem, featchItem)
@@ -112,5 +118,6 @@ function* itemAction() {
     yield takeEvery(itemActionTypes.updateItem, updateitem)
     yield takeEvery(itemActionTypes.addImage, addImages)
     yield takeEvery(itemActionTypes.deleteItem, deleleitem)
+    yield takeEvery(itemActionTypes.searchItem, searchItem)
 }
 export default itemAction

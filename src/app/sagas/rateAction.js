@@ -5,7 +5,6 @@ import { rateActions } from '../store/ducks/ratingReducer';
 
 function* getListRating({ payload }) {
   const { page, itemId, starRate } = payload
-  console.log(payload);
   try {
     let url = "";
     page ? url = `?page=${page}` : url = "?page=1"
@@ -21,12 +20,13 @@ function* getListRating({ payload }) {
   }
 }
 function* createNewRating({ payload }) {
-  const { itemId, userId, review, starRate } = payload
+  const { itemId, starRate, review } = payload
+  console.log(payload);
   try {
     // let url = "";
     // page ? url = `?page=${page}` : url = "?page=1"
-    let result = yield call(createRating, { itemId, userId, review, starRate })
-    yield put(rateActions.createRatingSuccess(result.data.data))
+    let result = yield call(createRating, { itemId, review, starRate })
+    yield put(rateActions.createRatingSuccess(result.data))
 
   } catch (err) {
     const error = err.response ? err.response.data.msg : err.stack;
@@ -35,6 +35,7 @@ function* createNewRating({ payload }) {
 }
 function* ratingAction() {
   yield takeEvery(ratingActionTypes.getRating, getListRating)
+  yield takeEvery(ratingActionTypes.createRating, createNewRating)
 
 }
 export default ratingAction

@@ -1,15 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { FaFacebook, FaHistory } from "react-icons/fa";
-import { FiAlignJustify } from "react-icons/fi";
-import { FaInstagram } from "react-icons/fa";
-import { FiLogOut } from "react-icons/fi"
-import { BsSearch } from "react-icons/bs"
-import { RiShoppingCart2Line } from "react-icons/ri"
-import ToggleButton from 'react-toggle-button';
 import { Nav, Navbar } from "react-bootstrap";
 import { useSelector, useDispatch } from 'react-redux';
-import getStorage from 'redux-persist/es/storage/getStorage';
-import { Link } from "react-router-dom";
+
+import { SearchBar } from './searchBar';
+// import { Link } from "react-router-dom";
 function getWindowDimensions() {
   const { innerWidth: width, innerHeight: height } = window;
   return {
@@ -33,6 +27,7 @@ export function useWindowDimensions() {
 }
 const Header = (props) => {
   const dispatch = useDispatch();
+
   const DarkmodeStatus = useSelector(state => state.layoutReducer.DarkmodeStatus);
   const host = window.location.host
 
@@ -40,7 +35,7 @@ const Header = (props) => {
   const login = `http://${host}/users/login`
   console.log(host);
 
-  const token = getStorage("token")
+
   return (
 
 
@@ -53,16 +48,7 @@ const Header = (props) => {
 
         <>
           <Nav className="mr-auto">
-            <div className="header--searchbar">
-              <div className="header--searchbar--box">
-                <div className="header--searchbar--box--input">
-                  <form>
-                    <input type="text" placeholder="search" />
-                  </form>
-                </div>
-                <button className="header--searchbar--box--icon"> <BsSearch></BsSearch></button>
-              </div>
-            </div>
+            <SearchBar></SearchBar>
 
           </Nav>
           {/* <Button className="nav-bar-toggler" type="button" data-toggle="collapse" data-target="#responsive-navbar-nav"><span className="navbar-toggler-icon"></span></Button> */}

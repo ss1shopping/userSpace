@@ -1,17 +1,14 @@
 import React, { useEffect, useState } from 'react'
-import { Col, Container, Row } from 'react-bootstrap'
 import { useDispatch, useSelector } from "react-redux"
-import { authActions } from '../../app/store/ducks/authReducer'
 import { totalActions } from '../../app/store/ducks/totalReducer'
 import DefaultLayout from '../../app/layout/Defaultlayout'
-import ReactPaginate from 'react-paginate';
 import { BsTrash } from "react-icons/bs"
 import { Link } from "react-router-dom"
 import { orderActions } from '../../app/store/ducks/orderReducer'
 import { getStorage } from '../../_metronic'
 const History = () => {
     const dispatch = useDispatch()
-    const user = useSelector(state => state.authReducer.user)
+    // const user = useSelector(state => state.authReducer.user)
     const orders = useSelector(state => state.orderReducer.orders)
     const checkout = useSelector(state => state.orderReducer.checkout)
     const userId = getStorage("userId");

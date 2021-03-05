@@ -1,21 +1,19 @@
-import React, { useContext, useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 // import DeleteIcon from '@material-ui/icons/Delete';
 // import FavoriteIcon from '@material-ui/icons/Favorite';
 import { RiDeleteBin6Line } from "react-icons/ri"
 import { MdFavoriteBorder } from "react-icons/md"
 import { useDispatch, useSelector } from 'react-redux';
 import { cartActions } from '../../../app/store/ducks/cardReducer';
-import { getStorage } from '../../../_metronic';
+
 
 const ListItem = (props) => {
 
   const dispatch = useDispatch()
   const cart = useSelector(state => state.cartReducer.cart)
-  const attrs = useSelector(state => state.cartReducer.attrs)
   const selectItem = useSelector(state => state.cartReducer.selectItem)
   const totalMoney = useSelector(state => state.cartReducer.totalMoney)
   // let { cart, setCart, attrs, selectItem, setSelectItem } = useContext(CartContext)
-  const [status, setStatus] = useState()
 
   const handleDeleteItem = (item) => {
     dispatch(cartActions.deleteCart(item))
@@ -25,18 +23,13 @@ const ListItem = (props) => {
     if (e === true) {
       dispatch(cartActions.setSelectItem(cart[index]))
       dispatch(cartActions.setTotalMoney(totalMoney + (cart[index].modelId.price * cart[index].number)))
-      // newCart.attrs["checked"] = true
-      // cart[index] = newCart;
-      // selectItem.push(newCart)
-      // console.log("cart", cart);
-      // props.handleSelectItem(selectItem)
+
     }
     if (e === false) {
 
-      // dispatch(cartActions.loadingcartSuccessful(cart))
+
       dispatch(cartActions.setTotalMoney(totalMoney - (cart[index].modelId.price * cart[index].number)))
-      // newCart.attrs["checked"] = false
-      // cart[index] = newCart;
+
       const filteredItems = selectItem.filter(value => {
         return value._id !== item._id
       })

@@ -96,6 +96,8 @@ background-color: orangered;
 &--flashsale{   
     #flashsale--header{
         display: flex;
+        // align-items: flex-start;
+        // justify-content: flex-start;
         border-bottom: 1px solid rgba(0,0,0,.09);
             .flashsale-img{
                 margin: 10px 10px 10px 20px;
@@ -110,8 +112,8 @@ background-color: orangered;
     }
     .flashsale-item-list{
         display: flex;
-        justify-content: center;
-        align-items: center;
+        justify-content: flex-start;
+        align-items: flex-start;
         .flashsale-item{
             color: rgba(0,0,0,.8);
             width: 16.66666667%;
@@ -119,7 +121,9 @@ background-color: orangered;
             border: 0.5px solid rgba(0,0,0,.05);
 
         }
-
+        .flashsale-item:hover{
+            text-decoration: none;
+        }
         .item{
             &:hover{
                 cursor: pointer;
@@ -248,6 +252,9 @@ background-color: orangered;
                     color: #ee4d2d;
                 }
             }
+        }
+        .trendSearch-item:hover{
+            text-decoration: none;
         }
     }
 }

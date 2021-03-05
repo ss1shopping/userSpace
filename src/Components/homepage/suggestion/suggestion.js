@@ -8,7 +8,7 @@ export const Suggestion = () => {
   const dispatch = useDispatch()
   const page = useSelector(state => state.itemReducer.page)
   const item = useSelector(state => state.itemReducer.item)
-  // const state = useSelector(state => state.state)
+  // const state = useSelector(state => state.state) 
   // const [page, setpage] = useState(1)
 
   useEffect(() => {
@@ -28,7 +28,7 @@ export const Suggestion = () => {
             item && item.map((value, index) => {
               return (
                 <>
-                  <Item item={value}></Item>
+                  <Item key={index} item={value}></Item>
                 </>
 
               )

@@ -10,7 +10,7 @@ export const API_URLS = {
   RESET_PASSWORD: '/users/login/forgotpassword',
   Change_Password: (data) => `/users/login/forgotpassword/confirm/${data.token}`,
   LOADING_CART: "/users/loadingcart",
-  GET_ITEMS: (data) => `/item/get` + `${data.url}`,
+  GET_ITEMS: (data) => `/item/get${data.url}`,
   ADD_ITEM: '/item',
   UPDATE_ITEM: "/item",
   DELETE_ITEM: "/item/delete",
@@ -25,8 +25,8 @@ export const API_URLS = {
   EMPTY_CART: `/cart/empty-cart`,
   GET_CART: `/cart/get`,
   // LIST_HISTORY: "/history",
-  GET_ALL_ORDER_USER: (data) => `/order/getall/user/order` + `${data.url}`,
-  GETALLORDER: (data) => `/order/getAll` + `${data.url}`,
+  GET_ALL_ORDER_USER: (data) => `/order/getall/user/order${data.url}`,
+  GETALLORDER: (data) => `/order/getAll${data.url}`,
   UPDATE_ORDER: "order/change-status",
   // GET_ALL_ORDER_USER: "order/getall/user/order",
   CANCELLED_ORDER: "order/canceled-order",
@@ -34,7 +34,7 @@ export const API_URLS = {
 
   GET_CATEGORY: "/category/get",
 
-  GET_LIST_RATING: (data) => "/review/get" + `${data.url}`,
+  GET_LIST_RATING: (data) => `/review/get${data.url}`,
   CREATE_RATING: "/review/create",
   DELETE_RATING: (data) => `review/delete/${data.id}`,
   // LIST_HISTORY_OF_USER: (data) => `/history/user/limit=${data.limit}/page=${data.page}`,

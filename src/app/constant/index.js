@@ -35,6 +35,8 @@ export const itemActionTypes = {
   getItem: "[get item detail]",
   getItemSuccessful: "[get item successful]",
 
+  searchItem: '[search item]',
+  searchItemSuccessful: "[search item successful]"
 
 }
 export const authActionTypes = {
@@ -137,7 +139,7 @@ export const ratingActionTypes = {
   createRating: "[create rating]",
   createRatingSuccess: '[create Rating Successful]',
   deleteRating: "[delete Rating]",
-  deleteRating: '[delete Rating successful]',
+  deleteRatingSuccess: '[delete Rating successful]',
   fail: '[fail]',
   changeRate: "[change rating]",
   setTotalRating: "[ set total rating]"

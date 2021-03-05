@@ -1,0 +1,33 @@
+.inputRating{
+  &--wrapper{
+margin-bottom: 20px;
+  }
+  &--header{
+
+  }
+  &--main{
+    &--input{
+      width: 100%;
+      textarea{
+        width: 100%;
+      }
+    }
+    &--star{
+      display: flex;
+      margin-right: 20px;
+      margin-bottom: 10px;
+      justify-content: flex-end;
+      .active{
+        color:$colorPrimary;
+      }
+      .wrapper{
+        display: flex;
+      }
+    }
+    &--button{
+      margin-right: 20px;
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+}

@@ -13,7 +13,6 @@ const ImageSlider = (props) => {
   let images = [];
   item && item.tier_variations.map(item => {
     let editimg = ""
-    console.log(item);
     item.images.map(i => {
       editimg = i.replace("public", "http://localhost:4000")
       Images.push({

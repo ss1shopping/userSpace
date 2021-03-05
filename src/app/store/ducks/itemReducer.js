@@ -7,6 +7,7 @@ const initialAuthState = {
     itemtoEdit: "",
     detailItem: null,
     item: [],
+    searchItem: [],
     message: null,
     error: null,
     notice: null,
@@ -108,6 +109,14 @@ export const itemReducer = persistReducer(
                 return {
                     ...state, isPending: !state.isPending, category: action.payload
                 }
+            case itemActionTypes.searchItem:
+                return {
+                    ...state, isPending: state.isPending
+                }
+            case itemActionTypes.searchItemSuccessful:
+                return {
+                    ...state, isPending: !state.isPending, searchItem: action.payload
+                }
 
             default:
                 return state;
@@ -116,7 +125,7 @@ export const itemReducer = persistReducer(
 
 
 export const itemActions = {
-    loadingitem: (page, sortBy, shopId) => ({ type: itemActionTypes.loadingitem, payload: { page, sortBy, shopId } }),
+    loadingitem: (page, sortBy, shopId, name) => ({ type: itemActionTypes.loadingitem, payload: { page, sortBy, shopId, name } }),
     loadingsuccess: (payload) => ({ type: itemActionTypes.loadingItemSuccess, payload }),
     loadingfailure: (payload) => ({ type: itemActionTypes.error, payload }),
     error: (payload) => ({ type: itemActionTypes.Error, payload }),
@@ -144,8 +153,10 @@ export const itemActions = {
     deleteitemSuccesful: (payload) => ({ type: itemActionTypes.deleteItemSuccessful, payload }),
 
     getCategory: () => ({ type: itemActionTypes.getCategory }),
-    getCategorySuccessful: (payload) => ({ type: itemActionTypes.getCategorySuccessFul, payload })
+    getCategorySuccessful: (payload) => ({ type: itemActionTypes.getCategorySuccessFul, payload }),
 
+    searchItem: (keyword) => ({ type: itemActionTypes.searchItem, payload: { keyword } }),
+    searchItemSuccessful: (payload) => ({ type: itemActionTypes.searchItemSuccessful, payload }),
 
 
 

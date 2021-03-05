@@ -1,20 +1,20 @@
-import React, { useContext, useState, useEffect } from 'react'
-import { Link, withRouter } from 'react-router-dom'
+import React, { useState, useEffect } from 'react'
+import { withRouter } from 'react-router-dom'
 import { BsStarFill } from "react-icons/bs"
 import Variations from './variations/variations.page'
 // import Alert from '@material-ui/lab/Alert';
 // import Snackbar from '@material-ui/core/Snackbar';
 import { useSelector, useDispatch } from "react-redux"
-import { itemActions } from '../../app/store/ducks/itemReducer';
 import { cartActions } from '../../app/store/ducks/cardReducer';
 import { rateActions } from '../../app/store/ducks/ratingReducer'
+import { getStorage } from '../../_metronic/utils/utils'
 const Infor = (props) => {
   const dispatch = useDispatch()
 
   const item = useSelector(state => state.itemReducer.detailItem)
   // const { attrs, cart } = useContext(CartContext)
   const attrs = useSelector(state => state.cartReducer.attrs)
-  const cart = useSelector(state => state.cartReducer.cart)
+  // const cart = useSelector(state => state.cartReducer.cart)
   const rating = useSelector(state => state.rateReducer.rating)
 
   const [totalRate, settotalRate] = useState(0)
@@ -28,32 +28,35 @@ const Infor = (props) => {
 
   // const [buttonSelect, setButtonSelect] = useState("product--variation")
   const handleAddtoCart = (e) => {
-
-    //find modelId 
-    //concat key word Ex: mauxanh,s
-    let keyword = null
-    Object.keys(attrs.value).map((value) => {
-      console.log(attrs.value[value]);
-      if (keyword == null) {
-        keyword = attrs.value[value]
-      } else {
-        keyword = keyword + `,${attrs.value[value]}`
-
-      }
-    })
-
-    let found = item.models.find(element => element.name === keyword)
-    if (!found) {
-      alert("some wrong f5")
+    if (getStorage("token") === "" || getStorage("token") === undefined || getStorage("token") === null) {
+      props.history.push("/users/login")
     } else {
+      //find modelId 
+      //concat key word Ex: mauxanh,s
+      let keyword = null
+      Object.keys(attrs.value).map((value) => {
+        console.log(attrs.value[value]);
+        if (keyword == null) {
+          keyword = attrs.value[value]
+        } else {
+          keyword = keyword + `,${attrs.value[value]}`
 
-      dispatch(cartActions.addtocart(item._id, attrs.number, found._id,))
-      dispatch(cartActions.setAttribute({ ...attrs, number: 1 }))
-      dispatch(cartActions.loadingCart())
-    }
-    setOpen(true)
-    if (e.target.name === 'buyNow') {
-      props.history.push("/cart")
+        }
+      })
+
+      let found = item.models.find(element => element.name === keyword)
+      if (!found) {
+        alert("some wrong f5")
+      } else {
+
+        dispatch(cartActions.addtocart(item._id, attrs.number, found._id,))
+        dispatch(cartActions.setAttribute({ ...attrs, number: 1 }))
+        dispatch(cartActions.loadingCart())
+      }
+      setOpen(true)
+      if (e.target.name === 'buyNow') {
+        props.history.push("/cart")
+      }
     }
   }
   const handleClose = (event, reason) => {
@@ -64,11 +67,15 @@ const Infor = (props) => {
     setOpen(false);
   }
   let totalNumberRate = 0;
-  rating && rating.map((v, i) => {
+  useEffect(() => {
 
-    totalNumberRate += v.starRate
-  })
-  dispatch(rateActions.setTotalRating(totalNumberRate))
+    rating && rating.map((v, i) => {
+
+      totalNumberRate += v.starRate
+    })
+    dispatch(rateActions.setTotalRating(totalNumberRate))
+
+  }, [])
   return (
 
     <div className="detailItem--infor">

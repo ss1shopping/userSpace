@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react'
 import ImageSlider from './ImageSlider.page'
 import Infor from './Infor.page'
 // import "./detaiItem.styles.scss"
-import data from "../../seed1.json"
-import start from "../../star_rate-24px.svg"
+// import data from "../../seed1.json"
+//import start from "../../star_rate-24px.svg"
 
 import DefaultLayout from '../../app/layout/Defaultlayout'
 import { useDispatch, useSelector } from "react-redux"
@@ -11,7 +11,8 @@ import { itemActions } from '../../app/store/ducks/itemReducer'
 import { getStorage } from '../../_metronic/utils/utils'
 import { Rating } from './rating/rating'
 import { NavRating } from './navRating/navRating'
-import { rateActions } from '../../app/store/ducks/ratingReducer'
+import { InputRating } from './rating/inputRating'
+
 const DetailItem = () => {
   const dispatch = useDispatch()
   const [page, setpage] = useState()
@@ -87,7 +88,7 @@ const DetailItem = () => {
                 <div className="product--rating--header">
                   ĐÁNH GIÁ SẢN PHẨM
               </div>
-
+                <InputRating></InputRating>
                 <NavRating></NavRating>
                 <div className="product--rating--list">
                   <Rating></Rating>

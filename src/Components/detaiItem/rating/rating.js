@@ -9,7 +9,6 @@ export const Rating = () => {
   const dispatch = useDispatch()
   const [page, setpage] = useState()
   const item = useSelector(state => state.itemReducer.detailItem)
-  const starRate = useSelector(state => state.rateReducer.starRate)
   const rating = useSelector(state => state.rateReducer.rating)
   const rate = useSelector(state => state.rateReducer.starRate)
   useEffect(() => {
@@ -20,9 +19,9 @@ export const Rating = () => {
   let listRating = null
   listRating = rating && rating.map((value, i) => {
     return (
-      <div className="rating--box">
+      <div className="rating--box" key={i}>
         <div className="rating--avatar">
-          <img atl="img" src={avatar} />
+          <img alt="img" src={avatar} />
         </div>
         <div className="rating--main">
           <div className="name"> manhtien</div>

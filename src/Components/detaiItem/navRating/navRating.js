@@ -6,7 +6,6 @@ export const NavRating = () => {
   const dispatch = useDispatch()
   const [number, setnumber] = useState(1)
   const totalNumberRate = useSelector(state => state.rateReducer.totalNumberRate)
-  const rate = useSelector(state => state.rateReducer.starRate)
   const handleChangeStarRate = (value, star) => {
     setnumber(value)
     dispatch(rateActions.changerate(star))
