@@ -1,6 +1,7 @@
 @import "~react-image-gallery/styles/scss/image-gallery.scss";
 @import "./rating/rating.scss";
 @import "./navRting/navRating.scss";
+@import "./rating/inputRange.scss";
 // .image-gallery-play-button{
 //   display: none;
 // }
@@ -59,10 +60,10 @@ height: 300px;
           margin-bottom: 10px;
           &--rate{
             display: flex;
-            
+            align-items: center;
             .inforExtra--scores{
               margin-top: 2px;
-             font-size: 1rem;
+             font-size: 1.5rem;
              color: rgb(224, 74, 28);
             }
             .inforExtra--flex{
@@ -70,7 +71,13 @@ height: 300px;
               padding-right: 1rem;
               margin-left: 0.5rem;
               display: flex;
-              color: rgb(224, 74, 28);
+              color: black;
+              .active{
+                color: $colorPrimary
+              }
+              .star{
+                color: black;
+              }
               img{
                 height: 20px;
                 width: 20px;

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import "./cart.styles.scss"
 import { BsSearch } from "react-icons/bs"
 import ListItem from "./listItem/listItem"
@@ -6,15 +6,14 @@ import { Link } from 'react-router-dom';
 import DefaultLayout from '../../app/layout/Defaultlayout'
 import { useDispatch, useSelector } from 'react-redux';
 import { cartActions } from '../../app/store/ducks/cardReducer';
-import { setStorage, getStorage, removeStorage } from '../../_metronic';
+import { setStorage, removeStorage } from '../../_metronic';
 const Cart = (props) => {
   const dispatch = useDispatch()
   const cart = useSelector(state => state.cartReducer.cart)
   const statusAddnewItem = useSelector(state => state.cartReducer.statusAddnewItem)
   const selectItem = useSelector(state => state.cartReducer.selectItem)
   const totalMoney = useSelector(state => state.cartReducer.totalMoney)
-  let getfromLocalstorage = null
-  const [data, setData] = useState([])
+
   let total = 0;
   let showCart = null
 

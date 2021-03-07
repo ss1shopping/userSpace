@@ -1,17 +1,14 @@
 import React, { useEffect, useState } from 'react'
-import { Col, Container, Row } from 'react-bootstrap'
 import { useDispatch, useSelector } from "react-redux"
-import { authActions } from '../../app/store/ducks/authReducer'
 import { totalActions } from '../../app/store/ducks/totalReducer'
 import DefaultLayout from '../../app/layout/Defaultlayout'
-import ReactPaginate from 'react-paginate';
 import { BsTrash } from "react-icons/bs"
 import { Link } from "react-router-dom"
 import { orderActions } from '../../app/store/ducks/orderReducer'
 import { getStorage } from '../../_metronic'
 const History = () => {
     const dispatch = useDispatch()
-    const user = useSelector(state => state.authReducer.user)
+    // const user = useSelector(state => state.authReducer.user)
     const orders = useSelector(state => state.orderReducer.orders)
     const checkout = useSelector(state => state.orderReducer.checkout)
     const userId = getStorage("userId");
@@ -53,7 +50,7 @@ const History = () => {
                                         <th className="item__attribute--desc navigator--desc">phone</th>
                                         <th className="item__attribute--quantity navigator--quantity">Address</th>
                                         <th className="item__attribute--price navigator--price">quantity</th>
-                                        {/* <th className="item__attribute--sold navigator--sold">Sold</th> */}
+                                        <th className="item__attribute--rating navigator--rating">Rating</th>
                                         <th className="item__attribute--edit"> DELETE</th>
 
                                     </tr>
@@ -72,7 +69,8 @@ const History = () => {
                                                 <td>{item.phone}</td>
                                                 <td>{item.address}</td>
                                                 <td>{item.detail.length}</td>
-                                                <td><Link to={`/users/history`} onClick={() => handleDelete(item._id)}><BsTrash />DELETE </Link></td>
+                                                <td><Link className="btn btn--outline" to="/item/rating"> Rating</Link></td>
+                                                <td><Link className="btn btn--outline" to={`/users/history`} onClick={() => handleDelete(item._id)}><BsTrash />DELETE </Link></td>
                                             </tr>
                                         ))}
                                 </tbody>

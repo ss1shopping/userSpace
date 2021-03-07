@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { cartActions } from '../../../app/store/ducks/cardReducer';
 
 const Variations = (props) => {
-  console.log("props variation", props);
   const dispatch = useDispatch()
   const attrs = useSelector(state => state.cartReducer.attrs)
     ;
@@ -13,9 +12,6 @@ const Variations = (props) => {
   const toggleButton = (index, model) => {
     setButtonSelect({ ...buttonSelect, activeObject: buttonSelect.object[index] })
     attrs.value[props.attr.name] = buttonSelect.object[index]
-
-    // attrs["modelId"] = found && found._id
-    // console.log(attrs);
     dispatch(cartActions.setAttribute(attrs))
   }
   const activeObject = (index) => {

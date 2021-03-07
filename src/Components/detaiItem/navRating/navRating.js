@@ -5,7 +5,7 @@ import { rateActions } from '../../../app/store/ducks/ratingReducer'
 export const NavRating = () => {
   const dispatch = useDispatch()
   const [number, setnumber] = useState(1)
-  const rate = useSelector(state => state.rateReducer.starRate)
+  const totalNumberRate = useSelector(state => state.rateReducer.totalNumberRate)
   const handleChangeStarRate = (value, star) => {
     setnumber(value)
     dispatch(rateActions.changerate(star))
@@ -23,32 +23,32 @@ export const NavRating = () => {
             <div className="vinall-rating-stars__star-wrapper">
               <div className="star">
 
-                <BsStarFill></BsStarFill>
+                <BsStarFill className={totalNumberRate > 0.5 ? "active" : ""}></BsStarFill>
               </div>
 
             </div>
             <div className="vinall-rating-stars__star-wrapper">
               <div className="star">
 
-                <BsStarFill></BsStarFill>
+                <BsStarFill className={totalNumberRate > 1.5 ? "active" : ""}></BsStarFill>
               </div>
             </div>
             <div className="vinall-rating-stars__star-wrapper">
               <div className="star">
 
-                <BsStarFill className="active"></BsStarFill>
+                <BsStarFill className={totalNumberRate > 2.5 ? "active" : ""}></BsStarFill>
               </div>
             </div>
             <div className="vinall-rating-stars__star-wrapper">
               <div className="star">
 
-                <BsStarFill></BsStarFill>
+                <BsStarFill className={totalNumberRate > 3.5 ? "active" : ""}></BsStarFill>
               </div>
             </div>
             <div className="vinall-rating-stars__star-wrapper">
               <div className="star">
 
-                <BsStarFill></BsStarFill>
+                <BsStarFill className={totalNumberRate > 4.5 ? "active" : ""}></BsStarFill>
               </div>
             </div>
           </div>

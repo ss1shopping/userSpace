@@ -1,12 +1,12 @@
 
-import { auth } from "../../constant/index"
 import { ratingActionTypes } from "../../constant/index"
 const initialAuthState = {
   pending: false,
   rating: [],
   error: "",
   statusCreateRatingSuccess: false,
-  starRate: null
+  starRate: null,
+  totalNumberRate: 0
 }
 export const rateReducer = (state = initialAuthState, action) => {
   switch (action.type) {
@@ -34,16 +34,21 @@ export const rateReducer = (state = initialAuthState, action) => {
       return {
         ...state, starRate: action.payload
       }
+    case ratingActionTypes.setTotalRating:
+      return {
+        ...state, totalNumberRate: action.payload
+      }
     default:
       return state
   }
 }
 
 export const rateActions = {
-  createRating: (userId, itemId, starRate, review) => ({ type: ratingActionTypes.getRating, payload: { userId, itemId, starRate, review } }),
+  createRating: (itemId, starRate, review) => ({ type: ratingActionTypes.createRating, payload: { itemId, starRate, review } }),
   createRatingSuccess: (payload) => ({ type: ratingActionTypes.createRatingSuccess, payload }),
   getRating: (page, itemId, starRate) => ({ type: ratingActionTypes.getRating, payload: { page, itemId, starRate } }),
   getRatingSuccess: (payload) => ({ type: ratingActionTypes.getRatingSuccessfull, payload }),
   fail: (payload) => ({ type: ratingActionTypes.fail, payload }),
-  changerate: (payload) => ({ type: ratingActionTypes.changeRate, payload })
+  changerate: (payload) => ({ type: ratingActionTypes.changeRate, payload }),
+  setTotalRating: (payload) => ({ type: ratingActionTypes.setTotalRating, payload })
 }

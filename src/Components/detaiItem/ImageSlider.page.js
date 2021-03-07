@@ -6,14 +6,13 @@ const ImageSlider = (props) => {
   const [Images, setImages] = useState([])
   const item = useSelector(state => state.itemReducer.detailItem)
   const itemtoedit = props.tier_variations && props.tier_variations
-  // useEffect(() => {
-
-  // }, [])
+  useEffect(() => {
+    setImages([])
+  }, [item])
 
   let images = [];
   item && item.tier_variations.map(item => {
     let editimg = ""
-    console.log(item);
     item.images.map(i => {
       editimg = i.replace("public", "http://localhost:4000")
       Images.push({
@@ -31,7 +30,6 @@ const ImageSlider = (props) => {
   return (
     <div className="detailItem--image">
       <Gallery showPlayButton={false} showFullscreenButton={false} showBullets={false} slideOnThumbnailOver={true} infinite={false} items={Images} />
-
 
     </div>
   )

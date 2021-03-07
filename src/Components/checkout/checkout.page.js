@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useState } from 'react'
 import "./checkout.styles.scss"
 // import LocationOnIcon from '@material-ui/icons/LocationOn';
 import { GoLocation } from "react-icons/go"
@@ -10,13 +10,9 @@ import { getStorage } from '../../_metronic';
 const Checkout = (props) => {
   // const { cart, setCart, selectItem, setSelectItem, setTotalMoney, listOrder } = useContext(CartContext)
   const dispatch = useDispatch()
-  const cart = useSelector(state => state.cartReducer.cart)
-  const attrs = useSelector(state => state.cartReducer.attrs)
   const selectItem = useSelector(state => state.cartReducer.selectItem)
-  const totalMoney = useSelector(state => state.cartReducer.totalMoney)
   const name = getStorage("name")
   const address = JSON.parse(getStorage("addresses"))
-  const phoneNumber = getStorage("phoneNumber")
   let totalPrice = 0
   const handleOrder = () => {
     // let arr = cart.filter(item => !selectItem.includes(item));

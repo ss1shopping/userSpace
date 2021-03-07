@@ -7,12 +7,14 @@ const initialAuthState = {
     itemtoEdit: "",
     detailItem: null,
     item: [],
+    searchItem: [],
     message: null,
     error: null,
     notice: null,
     urlImage: [],
     itemInCart: [],
-
+    page: 1,
+    category: null,
 
 }
 export const itemReducer = persistReducer(
@@ -47,7 +49,7 @@ export const itemReducer = persistReducer(
                 }
             case itemActionTypes.ItemChoseToEdit:
                 return {
-                    ...state, itemtoEdit: action.payload
+                    ...state, detailItem: action.payload
                 }
             case itemActionTypes.getItem:
                 return {
@@ -99,7 +101,22 @@ export const itemReducer = persistReducer(
                     ...state, item: []
                 }
             }
-
+            case itemActionTypes.getCategory:
+                return {
+                    ...state, isPending: !state.isPending
+                }
+            case itemActionTypes.getCategorySuccessFul:
+                return {
+                    ...state, isPending: !state.isPending, category: action.payload
+                }
+            case itemActionTypes.searchItem:
+                return {
+                    ...state, isPending: state.isPending
+                }
+            case itemActionTypes.searchItemSuccessful:
+                return {
+                    ...state, isPending: !state.isPending, searchItem: action.payload
+                }
 
             default:
                 return state;
@@ -108,7 +125,7 @@ export const itemReducer = persistReducer(
 
 
 export const itemActions = {
-    loadingitem: (page, sortBy, order) => ({ type: itemActionTypes.loadingitem, payload: { page, sortBy, order } }),
+    loadingitem: (page, sortBy, shopId, name) => ({ type: itemActionTypes.loadingitem, payload: { page, sortBy, shopId, name } }),
     loadingsuccess: (payload) => ({ type: itemActionTypes.loadingItemSuccess, payload }),
     loadingfailure: (payload) => ({ type: itemActionTypes.error, payload }),
     error: (payload) => ({ type: itemActionTypes.Error, payload }),
@@ -135,6 +152,11 @@ export const itemActions = {
     deleteItem: (iditem) => ({ type: itemActionTypes.deleteItem, payload: { iditem } }),
     deleteitemSuccesful: (payload) => ({ type: itemActionTypes.deleteItemSuccessful, payload }),
 
+    getCategory: () => ({ type: itemActionTypes.getCategory }),
+    getCategorySuccessful: (payload) => ({ type: itemActionTypes.getCategorySuccessFul, payload }),
+
+    searchItem: (keyword) => ({ type: itemActionTypes.searchItem, payload: { keyword } }),
+    searchItemSuccessful: (payload) => ({ type: itemActionTypes.searchItemSuccessful, payload }),
 
 
 

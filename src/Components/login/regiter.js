@@ -78,150 +78,158 @@ const Register = (props) => {
   const error = useSelector(state => state.authReducer.error)
 
   return (
-    <div id="register" style={{ paddingTop: "120px" }} >
-      <div className="registerBox" >
-        <Formik initialValues={{
-          password: "",
-          email: "",
-          firstname: "",
-          lastname: "",
-          passwordAgain: ""
+    <div className="register">
+      <div className="register--wrapper">
+        <div className="register--header">
+          <div className="register--logo"> PICASSO</div>
+          <div className="register--title">Đăng kí </div>
+        </div>
 
-        }}
-          validationSchema={Yup.object({
-            password: Yup.string()
-              .min(8, 'Password is too short ,should be 8 chars minimum.')
-              .required("Required"),
-            passwordAgain: Yup.string()
-              .oneOf([Yup.ref("password")], "Password does not match")
-              .required("you must be repeat the password"),
-            email: Yup.string()
-              .email("invalid email address")
-              .required("required"),
-            firstname: Yup.string()
-              .required("first name is required"),
-            lastname: Yup.string()
-              .required("last name is required")
+        <div className="register--main">
+          <div className='box1'>
+            <div className="box1--wrapper">
+              <div className="box1--wrapper--title"></div>
+
+              <Formik initialValues={{
+                password: "",
+                email: "",
+                firstname: "",
+                lastname: "",
+                passwordAgain: ""
+
+              }}
+                validationSchema={Yup.object({
+                  password: Yup.string()
+                    .min(8, 'Password is too short ,should be 8 chars minimum.')
+                    .required("Required"),
+                  passwordAgain: Yup.string()
+                    .oneOf([Yup.ref("password")], "Password does not match")
+                    .required("you must be repeat the password"),
+                  email: Yup.string()
+                    .email("invalid email address")
+                    .required("required"),
+                  firstname: Yup.string()
+                    .required("first name is required"),
+                  lastname: Yup.string()
+                    .required("last name is required")
 
 
 
-          })}
-          onSubmit={(values, { setSubmitting, resetForm }) => {
-            const newuser = {
-              firstname: values.firstname,
-              lastname: values.lastname,
-              email: values.email,
-              password: values.password
+                })}
+                onSubmit={(values, { setSubmitting, resetForm }) => {
+                  const newuser = {
+                    firstname: values.firstname,
+                    lastname: values.lastname,
+                    email: values.email,
+                    password: values.password
 
-            }
+                  }
 
-            dispatch(authActions.registerUser(newuser, setSubmitting, props.history))
-          }}
+                  dispatch(authActions.registerUser(newuser, setSubmitting, props.history))
+                }}
 
-        >
+              >
 
-          {({ values,
-            errors,
-            touched,
-            handleChange,
-            handleBlur,
-            handleSubmit,
-            isSubmitting,
-          }) => {
+                {({ values,
+                  errors,
+                  touched,
+                  handleChange,
+                  handleBlur,
+                  handleSubmit,
+                  isSubmitting,
+                }) => {
 
-            return (
-              <Form noValidate={true}
-                autoComplete="off"
-                className="kt-form"
-                onSubmit={handleSubmit}>
-                <div >
-                  <div >
-                    <div >
-                      {/* <Avatar className={classes.icon}>
-                        <LockIcon />
-                      </Avatar> */}
-                    </div>
-                    <div >
-                    </div>
-                    <div >
+                  return (
+                    <Form noValidate={true}
+                      autoComplete="off"
+                      className="kt-form"
+                      onSubmit={handleSubmit}>
                       <div >
+                        <div >
 
-                        <CustomTextForm autoFocus name="firstname" label="FirstName" placeholder="FirstName"></CustomTextForm>
+
+                          <div >
+                            <div className="input" >
+
+                              <CustomTextForm autoFocus name="firstname" label="FirstName" placeholder="FirstName"></CustomTextForm>
+                            </div>
+                            <div className="input"  >
+                              <CustomTextForm name="lastname" label="LastName" placeholder="LastName"></CustomTextForm>
+                            </div>
+                            <div className="input" >
+                              <CustomTextForm name="email" type="email" defaultValue="ttest" placeholder="Email"></CustomTextForm>
+                            </div>
+                            <div className="input" >
+                              <CustomTextForm type="password" name="password" label="password" placeholder="Password"></CustomTextForm>
+                            </div>
+                            <div className="input" >
+                              <CustomTextForm type="password" name="passwordAgain" label="password" placeholder="Type againt password"></CustomTextForm>
+                            </div>
+                          </div>
+                          <div className="error" >{error}</div>
+                          <div >
+                            <button
+                              className="btn btn--primary"
+                              //   variant="contained"
+                              type="submit"
+                              disabled={isSubmitting}
+                            //  color="primary"
+                            //   disabled={loading}
+                            //   fullWidth
+                            >
+                              {loading && (
+                                <div
+                                  size={25}
+                                  thickness={2}
+                                />
+                              )}
+                              {isSubmitting ? "Loading..." : "Register in"}
+                            </button>
+                          </div>
+
+                          <div className="login">
+                            <span className="question" >Have account?</span>
+                            <span className="link" ><Link to="/users/login" style={DarkmodeStatus ? { color: "#249dcb" } : {}}>Login</Link></span>
+                          </div>
+                        </div>
+
                       </div>
-                      <div >
-                        <CustomTextForm name="lastname" label="LastName" placeholder="LastName"></CustomTextForm>
-                      </div>
-                      <div >
-                        <CustomTextForm name="email" type="email" defaultValue="ttest" placeholder="Email"></CustomTextForm>
-                      </div>
-                      <div >
-                        <CustomTextForm type="password" name="password" label="password" placeholder="Password"></CustomTextForm>
-                      </div>
-                      <div >
-                        <CustomTextForm type="password" name="passwordAgain" label="password" placeholder="Type againt password"></CustomTextForm>
-                      </div>
-                    </div>
-                    <div className="error" >{error}</div>
-                    <div >
-                      <button
-                        className="btn"
-                        //   variant="contained"
-                        type="submit"
-                        disabled={isSubmitting}
-                      //  color="primary"
-                      //   disabled={loading}
-                      //   fullWidth
-                      >
-                        {loading && (
-                          <div
-                            size={25}
-                            thickness={2}
-                          />
-                        )}
-                        {isSubmitting ? "Loading..." : "Register in"}
-                      </button>
-                    </div>
-
-                    <div className="login">
-                      <span className="question" >Have account?</span>
-                      <span className="link" ><Link to="/users/login" style={DarkmodeStatus ? { color: "#249dcb" } : {}}>Login</Link></span>
-                    </div>
-                  </div>
-
-                </div>
 
 
-              </Form>
-              //  <Form > 
+                    </Form>
+                    //  <Form > 
 
-              //          <div className="input">
-              //            <CustomTextForm label="FirstName" name="firstname"  placeholder="First Name" style={DarkmodeStatus?{background:"#3a3b3c" ,color:"#acafb4"}:{}}/>
-              //          </div>
-              //             <div className="input">
-              //            <CustomTextForm label="LastName" name="lastname"  placeholder="Last Name" style={DarkmodeStatus?{background:"#3a3b3c" ,color:"#acafb4"}:{}}/>
-              //          </div>
-              //           <div className="input">
-              //            <CustomTextForm label="Email"  name="email" type="email"  placeholder="Email"   style={DarkmodeStatus?{background:"#3a3b3c" ,color:"#acafb4"}:{}}/>
-              //          </div>
-              //           <div className="input">
-              //            <CustomTextForm label="Password"  name="password"type="password" placeholder="Password" style={DarkmodeStatus?{background:"#3a3b3c" ,color:"#acafb4"}:{}}/>
-              //          </div>
-              //           <div className="input">
-              //            <CustomTextForm label="PasswordAgain" name="passwordAgain" type="Password" placeholder="please type again password" style={DarkmodeStatus?{background:"#3a3b3c" ,color:"#acafb4"}:{}}/>
-              //          </div>
-              //           <div className="error"  style={{color:"red "}} >{error}</div>
-              //           <div className="submit">
-              //            <input type="submit" disabled={isSubmitting} value={isSubmitting?"Loading ..":"Register"}/>
-              //          </div>
-              //          <div className="login">
-              //          <span className="question" >Have account?</span>
-              //          <span className="link" ><Link to="/SignIn" style={DarkmodeStatus?{color:"#249dcb"}:{}}>Login</Link></span>
-              //        </div>
+                    //          <div className="input">
+                    //            <CustomTextForm label="FirstName" name="firstname"  placeholder="First Name" style={DarkmodeStatus?{background:"#3a3b3c" ,color:"#acafb4"}:{}}/>
+                    //          </div>
+                    //             <div className="input">
+                    //            <CustomTextForm label="LastName" name="lastname"  placeholder="Last Name" style={DarkmodeStatus?{background:"#3a3b3c" ,color:"#acafb4"}:{}}/>
+                    //          </div>
+                    //           <div className="input">
+                    //            <CustomTextForm label="Email"  name="email" type="email"  placeholder="Email"   style={DarkmodeStatus?{background:"#3a3b3c" ,color:"#acafb4"}:{}}/>
+                    //          </div>
+                    //           <div className="input">
+                    //            <CustomTextForm label="Password"  name="password"type="password" placeholder="Password" style={DarkmodeStatus?{background:"#3a3b3c" ,color:"#acafb4"}:{}}/>
+                    //          </div>
+                    //           <div className="input">
+                    //            <CustomTextForm label="PasswordAgain" name="passwordAgain" type="Password" placeholder="please type again password" style={DarkmodeStatus?{background:"#3a3b3c" ,color:"#acafb4"}:{}}/>
+                    //          </div>
+                    //           <div className="error"  style={{color:"red "}} >{error}</div>
+                    //           <div className="submit">
+                    //            <input type="submit" disabled={isSubmitting} value={isSubmitting?"Loading ..":"Register"}/>
+                    //          </div>
+                    //          <div className="login">
+                    //          <span className="question" >Have account?</span>
+                    //          <span className="link" ><Link to="/SignIn" style={DarkmodeStatus?{color:"#249dcb"}:{}}>Login</Link></span>
+                    //        </div>
 
-              //        </Form>
-            )
-          }}
-        </Formik>
+                    //        </Form>
+                  )
+                }}
+              </Formik>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
