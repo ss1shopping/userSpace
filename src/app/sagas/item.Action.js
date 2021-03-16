@@ -26,11 +26,11 @@ function* featchItem({ payload }) {
         yield put(itemActions.error(error));
     }
 }
-function* additem(payload) {
-    const { name, price, quantity, description, image } = payload.payload
+function* additem({ payload }) {
+    const { priceMin, priceMax, name, desc, caetegory, shopId, attributes, model, tier_variations } = payload
 
     try {
-        const result = yield call(addItem, { name, price, quantity, description, image })
+        const result = yield call(addItem, { priceMin, priceMax, name, desc, caetegory, shopId, attributes, model, tier_variations })
         console.log(result);
         yield put(itemActions.uploaditemsuccess(result.data))
 
@@ -56,8 +56,8 @@ function* updateitem({ payload }) {
 }
 
 
-function* addImages(payload) {
-    const formData = payload.payload
+function* addImages({ payload }) {
+    const formData = payload
     try {
         const response = yield call(addImage, formData)
         console.log(response);
@@ -103,7 +103,6 @@ function* searchItem({ payload }) {
         let null1 = true
         keyword ? url = `?name=${keyword}` : null1 = true
         const response = yield call(getdata, { url })
-        console.log(response);
         yield put(itemActions.searchItemSuccessful(response.data.data))
     } catch (err) {
         const error = err.response ? err.response.data.msg : err.stack

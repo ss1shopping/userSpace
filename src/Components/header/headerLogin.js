@@ -13,6 +13,7 @@ import getStorage from 'redux-persist/es/storage/getStorage';
 // import { Link } from "react-router-dom"
 // import { authActions } from '../../app/store/ducks/authReducer'
 import { removeStorage } from '../../_metronic/utils/utils';
+import { SearchBar } from './searchBar';
 function getWindowDimensions() {
   const { innerWidth: width, innerHeight: height } = window;
   return {
@@ -41,7 +42,7 @@ const HeaderLogin = (props) => {
   const cart = useSelector(state => state.itemReducer.itemInCart)
   const [cartState, setcartState] = useState()
   const [numberOnCart, setNumberOnCart] = useState(0)
-
+  const [status, setstatus] = useState(false)
 
   const handleLogout = () => {
     removeStorage("token")
@@ -78,7 +79,8 @@ const HeaderLogin = (props) => {
 
         <>
           <Nav className="mr-auto">
-            <div className="header--searchbar">
+            <SearchBar></SearchBar>
+            {/* <div className="header--searchbar">
               <div className="header--searchbar--box">
                 <div className="header--searchbar--box--input">
                   <form>
@@ -87,7 +89,7 @@ const HeaderLogin = (props) => {
                 </div>
                 <button className="header--searchbar--box--icon"> <BsSearch></BsSearch></button>
               </div>
-            </div>
+            </div> */}
 
           </Nav>
           {/* <Button className="nav-bar-toggler" type="button" data-toggle="collapse" data-target="#responsive-navbar-nav"><span className="navbar-toggler-icon"></span></Button> */}
@@ -97,8 +99,17 @@ const HeaderLogin = (props) => {
             <Nav className="ml-auto">
 
               {/* <Nav.Link href="/" active>Shop</Nav.Link> */}
-              <Nav.Link href="/cart">Cart</Nav.Link>
-              <Nav.Link href="/" onClick={() => handleLogout()}>Log out</Nav.Link>
+              <div className="header--name" href="/cart">Cart</div>
+              <div >
+                <div className="header" onMouseLeave={() => setstatus(false)}>
+                  <div className="header--name" onMouseOver={() => setstatus(true)}>Manh tien465</div>
+                  <div className="box--hidden" style={status ? { display: "block" } : { display: "none" }}>
+                    <div className="link"> <Nav.Link href="/infor">tai koan qua toi</Nav.Link></div>
+                    <div className="link"><Nav.Link href="/history"> don mua</Nav.Link></div>
+                    <div className="link"><Nav.Link href="/" onClick={() => handleLogout()}> dang xuat</Nav.Link></div>
+                  </div>
+                </div>
+              </div>
               {/* <Link to="/users/cart"> Cart <RiShoppingCart2Line/><div style={{color:"red" ,margin:"-30px 0 0 20px"}}>0</div></Link> */}
 
             </Nav>

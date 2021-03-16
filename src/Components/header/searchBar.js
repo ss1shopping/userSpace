@@ -16,12 +16,17 @@ export const SearchBar = () => {
 
     dispatch(itemActions.searchItem(keyword))
   }, [keyword])
+  const handleWait = () => {
+    setTimeout(() => {
+      setstatus(!status)
+    }, 500);
+  }
   return (
     <div className="header--searchbar">
       <div className="header--searchbar--box">
         <div className="header--searchbar--box--input">
           <form>
-            <input type="text" placeholder="search" onBlur={() => setstatus(false)} onFocus={() => setstatus(true)} onChange={(e) => handleChangeInput(e.target.value)} />
+            <input type="text" placeholder="search" onBlur={() => handleWait()} onFocus={() => setstatus(true)} onChange={(e) => handleChangeInput(e.target.value)} />
           </form>
         </div>
 
@@ -31,9 +36,10 @@ export const SearchBar = () => {
             <div className="suggetion--wrapper">
               {
                 searchItem && searchItem.map((v, index) => {
+                  const url = `/detail/${v.name}`
                   return (
-                    <div className="suggetion--item">
-                      <Link to="/">
+                    <div className="suggetion--item" onClick={() => console.log("dasdsa")}>
+                      <Link to={url} >
                         {v.name}
                       </Link>
                     </div>
@@ -41,12 +47,12 @@ export const SearchBar = () => {
                 })
               }
 
-              <div className="suggetion--item">  <Link to="/">
+              {/* <div className="suggetion--item" onClick={() => console.log("dasdsa")}>  <Link to="/">
                 item3
               </Link> </div>
-              <div className="suggetion--item"> <Link to="/">
+              <div className="suggetion--item" onClick={() => console.log("dasdsa")}> <Link to="/">
                 item2
-              </Link> </div>
+              </Link> </div> */}
             </div>
           </div>
         </div>

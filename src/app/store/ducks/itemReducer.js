@@ -129,9 +129,9 @@ export const itemActions = {
     loadingsuccess: (payload) => ({ type: itemActionTypes.loadingItemSuccess, payload }),
     loadingfailure: (payload) => ({ type: itemActionTypes.error, payload }),
     error: (payload) => ({ type: itemActionTypes.Error, payload }),
-    uploaditem: (name, price, quantity, description, image) => ({
+    uploaditem: (priceMin, priceMax, name, desc, caetegory, shopId, attributes, model, tier_variations) => ({
         type: itemActionTypes.uploadItem,
-        payload: { name, price, quantity, description, image }
+        payload: { priceMin, priceMax, name, desc, caetegory, shopId, attributes, model, tier_variations }
     }),
     uploaditemsuccess: (payload) => ({ type: itemActionTypes.uploadItemSuccess, payload }),
     loadingInfor: (payload) => ({ type: itemActionTypes.loadTotal, payload }),
