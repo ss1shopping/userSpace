@@ -47,7 +47,7 @@ export const SearchBar = () => {
                 })
               }
 
-              {/* <div className="suggetion--item" onClick={() => console.log("dasdsa")}>  <Link to="/">
+              {/* <div className="suggetion--item" onClick={() => console.log("dasdsa")}>  <Link to="/banhang">
                 item3
               </Link> </div>
               <div className="suggetion--item" onClick={() => console.log("dasdsa")}> <Link to="/">

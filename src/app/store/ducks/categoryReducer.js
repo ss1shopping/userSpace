@@ -3,7 +3,8 @@ import { categoryActionTypes } from "../../constant/index"
 const initialAuthState = {
   pending: false,
   category: null,
-  error: null
+  error: null,
+  chooseCategoryToAdd: []
 }
 export const categoryReducer =
 
@@ -21,6 +22,10 @@ export const categoryReducer =
         return {
           ...state, pending: !state.pending, error: action.payload
         }
+      case categoryActionTypes.chooseCategoryToAdd:
+        return {
+          ...state, chooseCategoryToAdd: action.payload
+        }
       default:
         return state;
     }
@@ -28,5 +33,6 @@ export const categoryReducer =
 export const categoryActions = {
   getCategory: () => ({ type: categoryActionTypes.getCategory }),
   getCategorySuccessful: (payload) => ({ type: categoryActionTypes.getCategorySuccessFul, payload }),
-  fail: (payload) => ({ type: categoryActionTypes.fail, payload })
+  fail: (payload) => ({ type: categoryActionTypes.fail, payload }),
+  chooseCategoryToAdd: (payload) => ({ type: categoryActionTypes.chooseCategoryToAdd, payload })
 }
