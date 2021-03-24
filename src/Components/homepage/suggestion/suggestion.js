@@ -17,13 +17,13 @@ export const Suggestion = () => {
 
   return (
     <div className="homepage--suggest">
-      <div class="outerbox">
+      <div className="outerbox">
         <div id="suggestion-header">
-          <div class="suggest-txt-wrapper">
-            <span class="suggest-txt">suggestion</span>
+          <div className="suggest-txt-wrapper">
+            <span className="suggest-txt">suggestion</span>
           </div>
         </div>
-        <div class="suggestion-item-list">
+        <div className="suggestion-item-list">
           {
             item && item.map((value, index) => {
               return (

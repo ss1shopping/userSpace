@@ -3,88 +3,88 @@ import { Link } from 'react-router-dom'
 
 export const Flashsale = () => {
   return (
-    <div class="homepage--flashsale">
-      <div class="outerbox">
+    <div className="homepage--flashsale">
+      <div className="outerbox">
         <div id="flashsale--header">
-          <div class="icon-container">
-            <div class="flashsale-img"></div>
+          <div className="icon-container">
+            <div className="flashsale-img"></div>
           </div>
-          <button class="btn--seemore">See more</button>
+          <button className="btn--seemore">See more</button>
         </div>
 
-        <div class="flashsale-item-list">
-          <Link class="flashsale-item" to="/">
-            <div class="item">
-              <div class="item-img-wrapper">
-                <div class="item-img"></div>
+        <div className="flashsale-item-list">
+          <Link className="flashsale-item" to="/">
+            <div className="item">
+              <div className="item-img-wrapper">
+                <div className="item-img"></div>
               </div>
-              <div class="item-price-wrapper">
-                <span class="item-price">$200</span>
+              <div className="item-price-wrapper">
+                <span className="item-price">$200</span>
               </div>
             </div>
           </Link>
-          {/* <a class="flashsale-item" href="">
-            <div class="item">
-              <div class="item-img-wrapper">
-                <div class="item-img"></div>
+          {/* <a className="flashsale-item" href="">
+            <div className="item">
+              <div className="item-img-wrapper">
+                <div className="item-img"></div>
               </div>
-              <div class="item-price-wrapper">
-                <span class="item-price">$200</span>
-              </div>
-            </div>
-          </a>
-
-          <a class="flashsale-item" href="">
-            <div class="item">
-              <div class="item-img-wrapper">
-                <div class="item-img"></div>
-              </div>
-              <div class="item-price-wrapper">
-                <span class="item-price">$200</span>
+              <div className="item-price-wrapper">
+                <span className="item-price">$200</span>
               </div>
             </div>
           </a>
 
-          <a class="flashsale-item" href="">
-            <div class="item">
-              <div class="item-img-wrapper">
-                <div class="item-img"></div>
+          <a className="flashsale-item" href="">
+            <div className="item">
+              <div className="item-img-wrapper">
+                <div className="item-img"></div>
               </div>
-              <div class="item-price-wrapper">
-                <span class="item-price">$200</span>
-              </div>
-            </div>
-          </a>
-
-          <a class="flashsale-item" href="">
-            <div class="item">
-              <div class="item-img-wrapper">
-                <div class="item-img"></div>
-              </div>
-              <div class="item-price-wrapper">
-                <span class="item-price">$200</span>
+              <div className="item-price-wrapper">
+                <span className="item-price">$200</span>
               </div>
             </div>
           </a>
 
-          <a class="flashsale-item" href="">
-            <div class="item">
-              <div class="item-img-wrapper">
-                <div class="item-img"></div>
+          <a className="flashsale-item" href="">
+            <div className="item">
+              <div className="item-img-wrapper">
+                <div className="item-img"></div>
               </div>
-              <div class="item-price-wrapper">
-                <span class="item-price">$200</span>
+              <div className="item-price-wrapper">
+                <span className="item-price">$200</span>
               </div>
             </div>
           </a>
 
-          <a class="flashsale-item" href="">
-            <div class="item">
-              <div class="item-img-wrapper">
-                <div class="item-img"></div>
+          <a className="flashsale-item" href="">
+            <div className="item">
+              <div className="item-img-wrapper">
+                <div className="item-img"></div>
               </div>
-              <div class="item-price-wrapper">
-                <span class="item-price">$200</span>
+              <div className="item-price-wrapper">
+                <span className="item-price">$200</span>
+              </div>
+            </div>
+          </a>
+
+          <a className="flashsale-item" href="">
+            <div className="item">
+              <div className="item-img-wrapper">
+                <div className="item-img"></div>
+              </div>
+              <div className="item-price-wrapper">
+                <span className="item-price">$200</span>
+              </div>
+            </div>
+          </a>
+
+          <a className="flashsale-item" href="">
+            <div className="item">
+              <div className="item-img-wrapper">
+                <div className="item-img"></div>
+              </div>
+              <div className="item-price-wrapper">
+                <span className="item-price">$200</span>
               </div>
             </div>
           </a> */}
