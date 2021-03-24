@@ -36,8 +36,9 @@ export const itemActionTypes = {
   getItemSuccessful: "[get item successful]",
 
   searchItem: '[search item]',
-  searchItemSuccessful: "[search item successful]"
+  searchItemSuccessful: "[search item successful]",
 
+  itemToUpload: "[item to upload]"
 }
 export const authActionTypes = {
   Login: '[Login] Action',
@@ -148,5 +149,6 @@ export const categoryActionTypes = {
 
   getCategory: "[get category]",
   getCategorySuccessFul: '[get category successful]',
-  fail: "[category fail]"
+  fail: "[category fail]",
+  chooseCategoryToAdd: "[choose category]"
 }

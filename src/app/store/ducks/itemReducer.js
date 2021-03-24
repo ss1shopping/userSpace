@@ -5,6 +5,7 @@ import itemAction from '../../sagas/item.Action';
 const initialAuthState = {
     isPending: false,
     itemtoEdit: "",
+    itemToUpload: {},
     detailItem: null,
     item: [],
     searchItem: [],
@@ -58,6 +59,10 @@ export const itemReducer = persistReducer(
             case itemActionTypes.getItemSuccessful:
                 return {
                     ...state, detailItem: action.payload, isPending: !state.isPending
+                }
+            case itemActionTypes.itemToUpload:
+                return {
+                    ...state, itemToUpload: action.payload
                 }
             case itemActionTypes.updateItem:
                 return {
@@ -129,9 +134,9 @@ export const itemActions = {
     loadingsuccess: (payload) => ({ type: itemActionTypes.loadingItemSuccess, payload }),
     loadingfailure: (payload) => ({ type: itemActionTypes.error, payload }),
     error: (payload) => ({ type: itemActionTypes.Error, payload }),
-    uploaditem: (name, price, quantity, description, image) => ({
+    uploaditem: (priceMin, priceMax, name, desc, caetegory, shopId, attributes, model, tier_variations) => ({
         type: itemActionTypes.uploadItem,
-        payload: { name, price, quantity, description, image }
+        payload: { priceMin, priceMax, name, desc, caetegory, shopId, attributes, model, tier_variations }
     }),
     uploaditemsuccess: (payload) => ({ type: itemActionTypes.uploadItemSuccess, payload }),
     loadingInfor: (payload) => ({ type: itemActionTypes.loadTotal, payload }),
@@ -142,6 +147,7 @@ export const itemActions = {
     getItem: (id) => ({ type: itemActionTypes.getItem, payload: { id } }),
     getItemSuccess: (payload) => ({ type: itemActionTypes.getItemSuccessful, payload }),
 
+    itemToUpload: (payload) => ({ type: itemActionTypes.itemToUpload, payload }),
     updateItem: (id, name, price, quantity, description, history) => ({ type: itemActionTypes.updateItem, payload: { id, name, price, quantity, description, history } }),
     updateItemSuccesfull: (payload) => ({ type: itemActionTypes.updateItemSuccesful, payload }),
 

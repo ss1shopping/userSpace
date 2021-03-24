@@ -1,4 +1,29 @@
-
+.header{
+   color:white;
+  position: relative;
+  &--name{
+    margin-left: 10px;
+  }
+  .box--hidden{
+    width: 130%;
+     background-color: white;
+    position: absolute;
+    
+    left: -20px;
+    // padding: 0 10px;
+    .link{
+      font-size: 14px;
+      // padding: 2px 2px;
+      .nav-link{
+        font-size: 14px !important; 
+        color: #000 !important;
+      }
+    }
+    .link:hover{
+      background-color: #fa5b2f;
+    }
+  }
+}
 .header--searchbar{
   margin-left: 200px;
   width: 500px;
