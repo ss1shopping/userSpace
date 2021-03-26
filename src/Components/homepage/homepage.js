@@ -55,12 +55,12 @@ const Homepage = () => {
           </div>
           <Flashsale></Flashsale>
           <div className="homepage--trendSearch">
-            <div class="outerbox">
+            <div className="outerbox">
               <div id="trendSearch--header">
-                <div class="icon-container">
-                  <span class="trendSearch-txt">trend search</span>
+                <div className="icon-container">
+                  <span className="trendSearch-txt">trend search</span>
                 </div>
-                <button class="btn--seemore">See more</button>
+                <button className="btn--seemore">See more</button>
               </div>
               <TrendingSearch></TrendingSearch>
             </div>
