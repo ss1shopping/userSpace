@@ -1,6 +1,6 @@
 import { takeEvery, put, call } from 'redux-saga/effects';
 import { itemActions } from "../store/ducks/itemReducer";
-import { getdata, addItem, getItem, updateItem, addImage, updateView, deleteItem } from "../crud/item.crud";
+import { getdata, addItem, getItem, updateItem, addImage, searchItem, updateView, deleteItem } from "../crud/item.crud";
 import { loadingCart } from "../crud/auth.crud";
 import { itemActionTypes } from '../constant/index';
 import { getStorage } from "../../_metronic/utils/utils"
@@ -96,14 +96,15 @@ function* deleleitem({ payload }) {
         yield put(itemActions.error(error))
     }
 }
-function* searchItem({ payload }) {
+function* searchitem({ payload }) {
     const { keyword } = payload
     try {
         let url = ""
         let null1 = true
-        keyword ? url = `?name=${keyword}` : null1 = true
-        const response = yield call(getdata, { url })
-        yield put(itemActions.searchItemSuccessful(response.data.data))
+        keyword ? url = `?keyword=${keyword}` : null1 = true
+        const response = yield call(searchItem, { url })
+        console.log(response);
+        yield put(itemActions.searchItemSuccessful(response.data))
     } catch (err) {
         const error = err.response ? err.response.data.msg : err.stack
         yield put(itemActions.error(error));
@@ -117,6 +118,6 @@ function* itemAction() {
     yield takeEvery(itemActionTypes.updateItem, updateitem)
     yield takeEvery(itemActionTypes.addImage, addImages)
     yield takeEvery(itemActionTypes.deleteItem, deleleitem)
-    yield takeEvery(itemActionTypes.searchItem, searchItem)
+    yield takeEvery(itemActionTypes.searchItem, searchitem)
 }
 export default itemAction

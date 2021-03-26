@@ -18,7 +18,7 @@ export const Item = (props) => {
         <div class="item-wrap">
           <div class="item">
             <div class="item-img">
-              <img src={props.item && props.item.tier_variations[0].images[0].replace("public", "http://localhost:4000")} class="img-product" />
+              <img src={props.item.tier_variations[0] && props.item.tier_variations[0].images[0].replace("public", "http://localhost:4000")} class="img-product" />
             </div>
 
             <div class="txt-box">

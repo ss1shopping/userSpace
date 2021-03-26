@@ -11,6 +11,7 @@ export const API_URLS = {
   Change_Password: (data) => `/users/login/forgotpassword/confirm/${data.token}`,
   LOADING_CART: "/users/loadingcart",
   GET_ITEMS: (data) => `/item/get${data.url}`,
+  SEARCH_ITEM: (data) => `/item/search${data.url}`,
   ADD_ITEM: '/item',
   UPDATE_ITEM: "/item",
   DELETE_ITEM: "/item/delete",

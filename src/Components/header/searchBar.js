@@ -36,11 +36,11 @@ export const SearchBar = () => {
             <div className="suggetion--wrapper">
               {
                 searchItem && searchItem.map((v, index) => {
-                  const url = `/detail/${v.name}`
+                  const url = `/detail/${v._source.name}`
                   return (
                     <div className="suggetion--item" onClick={() => console.log("dasdsa")}>
                       <Link to={url} >
-                        {v.name}
+                        {v._source.name}
                       </Link>
                     </div>
                   )

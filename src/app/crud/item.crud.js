@@ -7,6 +7,10 @@ export function getdata(data) {
 
   return initApi(false).get(API_URLS.GET_ITEMS(data))
 }
+export function searchItem(data) {
+
+  return initApi(false).get(API_URLS.SEARCH_ITEM(data))
+}
 export function addItem(data) {
   console.log(data);
   return initApi(true).post(API_URLS.ADD_ITEM, data)
