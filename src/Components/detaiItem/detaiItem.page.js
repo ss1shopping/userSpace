@@ -57,22 +57,15 @@ const DetailItem = () => {
                       <label>Danh mục</label>
                       <div>Vinall {'>'} {item && item.category[0].name} {'>'} {item && item.category[1].name}</div>
                     </div>
-                    <div className="content--attr--element">
-                      <label>Chất liệu</label>
-                      <div> vải </div>
-                    </div>
-                    <div className="content--attr--element">
-                      <label>Chất liệu</label>
-                      <div> vải </div>
-                    </div>
-                    <div className="content--attr--element">
-                      <label>Chất liệu</label>
-                      <div> vải </div>
-                    </div >
-                    <div className="content--attr--element">
-                      <label>Chất liệu</label>
-                      <div> vải </div>
-                    </div>
+                    {item && item.attributes.map((v, i) => {
+                      return (
+                        <div className="content--attr--element">
+                          <label>{v.name}</label>
+                          <div> {v.value} </div>
+                        </div>
+                      )
+                    })}
+
                   </div>
                 </div>
                 <div className="description">

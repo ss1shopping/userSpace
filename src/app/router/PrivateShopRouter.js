@@ -12,22 +12,19 @@ class PrivateRoute extends React.Component {
   componentDidMount() {
     const { history } = this.props;
     const accessToken = getStorage('token');
-    const role = getStorage("role")
+
     const refreshToken = getStorage('refreshtoken')
 
-    if (!accessToken || !refreshToken || role !== "SHOPOWNER") {
+    if (!accessToken && !refreshToken) {
       console.log("run");
-      history.push("/");
+      history.push("/users/login");
     }
     // if (!accessToken && refreshToken) {
     //   console.log(accessToken);
     //   console.log(refreshToken);
     //   this.props.fetchrefreshtoken(refreshToken)
     // }
-    // if(admin!=="true"){
 
-    //   history.push("/shop")
-    // }
   }
 
 

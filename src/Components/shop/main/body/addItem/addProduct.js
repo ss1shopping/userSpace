@@ -1,15 +1,176 @@
-import React, { useState } from 'react'
+import Axios from 'axios'
+import React, { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
+import { itemActions } from '../../../../../app/store/ducks/itemReducer'
+import { getStorage } from '../../../../../_metronic/utils/utils'
 import { DefaultLayout } from '../../defaultLayout'
 import { DefaultLayout2 } from "../DefaultLayout2"
+import { Model } from './model'
+import { MoreOption } from './moreOption'
+
 export const AddProduct = () => {
+
+    const dispatch = useDispatch()
     let [status, setStatus] = useState(false)
     let [addGroup, setAddGroup] = useState(false)
+    const [numberGroup1, setnumberGroup1] = useState(1)
+    const [numberGroup2, setnumberGroup2] = useState(1)
+    const [productName, setproductName] = useState("")
+    const [desc, setdesc] = useState("")
+    let [attributes, setattribute] = useState([])
+    const [quantity, setquantity] = useState(0)
+    const [newModel, setnewModel] = useState([])
+    const [listImage, setlistImage] = useState([])
+    const price = useSelector(state => state.itemReducer.price)
+    const chooseCategoryToAdd = useSelector(state => state.categoryReducer.chooseCategoryToAdd)
+    const tier_variations = useSelector(state => state.itemReducer.tier_variations)
+    const model = useSelector(state => state.itemReducer.model)
+    const model1 = useSelector(state => state.itemReducer.model1)
+    const urlImage = useSelector(state => state.itemReducer.urlImage)
+    let listGroup2 = [];
+    const uploadImage = (formData) => {
+        const config = {
+            header: { "content-type": "multiple/form-data" }
+        }
+
+        Axios.post("http://localhost:4000/item/uploadImage", formData, config)
+            .then(res => {
+
+                dispatch(itemActions.addImageSuccessful(res.data))
+
+            }
+            )
+
+    }
     const handleType = () => {
         setStatus(!status)
+
     }
 
     const handleGroupAdd = () => {
         setAddGroup(!addGroup)
+    }
+    const handleAddAtrributes = (index, name, value) => {
+        let newobject = {
+            name, value
+        }
+        attributes[index] = newobject
+        console.log(attributes);
+    }
+    const handle_SetTier_variation = (index, name) => {
+        let newobj = {
+            name,
+            option: []
+
+        }
+        tier_variations[index] = newobj
+        dispatch(itemActions.setTier_variations(tier_variations))
+
+    }
+    const handleSetOptionTierVationation = (index, indexOption, option) => {
+
+        tier_variations[index].option[indexOption] = option
+    }
+    const handleAddImgage = (index) => {
+
+    }
+    const handleAddMoreOptionGroup1 = () => {
+        setnumberGroup1(numberGroup1 + 1)
+
+    }
+    const handleAddMoreOptionGroup2 = () => {
+        setnumberGroup2(numberGroup2 + 1)
+
+    }
+    const handleUploadImage = (e, index) => {
+
+        let objectUrl = URL.createObjectURL(e.target.files[0])
+        listImage.push(objectUrl)
+
+        setlistImage(listImage);
+        console.log(listImage);
+        var formData = new FormData()
+        formData.append("file", e.target.files[0])
+        uploadImage(formData)
+
+    }
+    const handleUploadImage1 = (e, index) => {
+
+        let objectUrl = URL.createObjectURL(e.target.files[0])
+        let newArr = [...listImage]; // copying the old datas array
+        newArr[index] = objectUrl; // replace e.target.value with whatever you want to change it to
+
+        setlistImage(newArr);
+        console.log(listImage);
+        var formData = new FormData()
+        formData.append("file", e.target.files[0])
+        uploadImage(formData)
+    }
+    const handleUploadImage2 = (e, index) => {
+
+        let objectUrl = URL.createObjectURL(e.target.files[0])
+        let newArr = [...listImage]; // copying the old datas array
+        newArr[index] = objectUrl; // replace e.target.value with whatever you want to change it to
+
+        setlistImage(newArr);
+        console.log(listImage);
+
+    }
+    const handleUploadImage3 = (e, index) => {
+
+        let objectUrl = URL.createObjectURL(e.target.files[0])
+        let newArr = [...listImage]; // copying the old datas array
+        newArr[index] = objectUrl; // replace e.target.value with whatever you want to change it to
+
+        setlistImage(newArr);
+        console.log(listImage);
+
+    }
+    const handleUploadImage4 = (e, index) => {
+
+        let objectUrl = URL.createObjectURL(e.target.files[0])
+        let newArr = [...listImage]; // copying the old datas array
+        newArr[index] = objectUrl; // replace e.target.value with whatever you want to change it to
+
+        setlistImage(newArr);
+        console.log(listImage);
+
+    }
+    const handleUploadImage5 = (e, index) => {
+
+        let objectUrl = URL.createObjectURL(e.target.files[0])
+        let newArr = [...listImage]; // copying the old datas array
+        newArr[index] = objectUrl; // replace e.target.value with whatever you want to change it to
+
+        setlistImage(newArr);
+        console.log(listImage);
+
+    }
+    const handleSubmit = () => {
+        let category = []
+        chooseCategoryToAdd.map((v, i) => {
+            category.push(v._id)
+        })
+        let newmodel = []
+        model.map((v, i) => {
+            model1.map((value, i) => {
+                newmodel.push({ name: `${v.name},${value.name}`, price: price[`${v.name},${value.name}`] })
+            })
+        })
+        let minPrice = price[Object.keys(price)[0]]
+        let maxprice = 0
+        let null1 = true
+        Object.keys(price).map((v, i) => {
+
+            price[v] < minPrice ? minPrice = price[v] : null1 = true
+            price[v] > maxprice ? maxprice = price[v] : null1 = true
+        })
+
+        urlImage && tier_variations.length > 0 ? tier_variations[0].images = urlImage : null1 = true
+
+        console.log(category);
+        dispatch(itemActions.uploaditem(minPrice, maxprice, productName, desc, category, getStorage("shopId"), attributes, newmodel, tier_variations))
     }
 
     return (
@@ -35,10 +196,22 @@ export const AddProduct = () => {
                                                         <div className="product-input-wrapper">
                                                             <div className="product-input">
                                                                 <div className="product-input__inner">
-                                                                    <input type="text" placeholder="Input here" size="large" resize="vertical" rows="2" minrows="2" minlength="10" restrictiontype="input" max="Infinity" min="-Infinity" isround="true" unicodenormalized="true" className="product-input__input" />
+                                                                    <input type="text"
+                                                                        placeholder="Input here"
+                                                                        size="large" resize="vertical"
+                                                                        rows="2"
+                                                                        minrows="2"
+                                                                        minLength="10"
+                                                                        restrictiontype="input"
+                                                                        max="Infinity" min="-Infinity"
+                                                                        isround="true"
+                                                                        unicodenormalized="true"
+                                                                        className="product-input__input"
+                                                                        onChange={(e) => setproductName(e.target.value)}
+                                                                    />
                                                                     <div className="product-input__sulfix">
                                                                         <span className="product-input__sulfix-split"></span>
-                                                                        0/120
+                                                                        {productName.length}/120
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -58,14 +231,29 @@ export const AddProduct = () => {
                                                         <div className="textarea-description" autosize="" maxlength="3000" minlength="100" maxrows="26" minrows="9" unicode-normalized="">
                                                             <div className="textarea-description__edit">
                                                                 <div className="texarea-description__input">
-                                                                    <textarea type="textarea" placeholder="" resize="none" rows="2" minrows="9" maxrows="26" autosize="true" minlength="100" restrictiontype="input" max="Infinity" min="-Infinity" unicodenormalized="true" className="textarea-description__inner" ></textarea>
+                                                                    <textarea
+                                                                        type="textarea"
+                                                                        placeholder=""
+                                                                        resize="none"
+                                                                        rows="2"
+                                                                        minrows="9"
+                                                                        maxrows="26"
+                                                                        autosize="true"
+                                                                        minlength="100"
+                                                                        restrictiontype="input"
+                                                                        max="Infinity"
+                                                                        min="-Infinity"
+                                                                        unicodenormalized="true"
+                                                                        className="textarea-description__inner"
+                                                                        onChange={(e) => setdesc(e.target.value)}
+                                                                    ></textarea>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div className="textarea-label">
                                                         <span className="textarea-label__pre">0</span>
-                                                            /3000
+                                                        {desc.length}/3000
                                                         </div>
                                                 </div>
                                             </div>
@@ -79,23 +267,22 @@ export const AddProduct = () => {
                                                 <div className="edit-input">
                                                     <div className="category-input">
                                                         <div className="category-name">
-                                                            <span className="category-name__wrapper">
-                                                                <span className="category-name__item">Smart devices</span>
-                                                                <span className="spacer-point">{">"}</span>
-                                                            </span>
-                                                            <span className="category-name__wrapper">
-                                                                <span className="category-name__item">Phone</span>
-                                                                <span className="spacer-point">{">"}</span>
-                                                            </span>
-                                                            <span className="category-name__wrapper">
-                                                                <span className="category-name__item">Samsung</span>
-                                                            </span>
+                                                            {chooseCategoryToAdd && chooseCategoryToAdd.map((v, i) => {
+                                                                return (
+                                                                    <span className="category-name__wrapper">
+                                                                        <span className="category-name__item">{v.name}</span>
+                                                                        <span className="spacer-point">{">"}</span>
+                                                                    </span>
+
+                                                                )
+                                                            })}
+
                                                         </div>
-                                                        <button className="edit-category-btn">
+                                                        <Link to="/banhang/choose-category" className="edit-category-btn">
                                                             <i className="btn-icon">
                                                                 <svg data-name="图层 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024"><path d="M988.1 316.06a127.07 127.07 0 0 0-37.5-90.5L798.4 73.36c-49.9-49.9-131.1-49.9-181.1 0l-91.8 91.8-.3.3-.3.3-470.2 470.4a63.47 63.47 0 0 0-18.8 45.2v242.7a64.06 64.06 0 0 0 64 64h242.8a63.47 63.47 0 0 0 45.2-18.8l470.6-470.6 92.1-92.1a127.07 127.07 0 0 0 37.5-90.5zm-842.9 320l402.7-402.7 242.8 242.7-402.8 402.8zm-45.3 288v-242.7l242.7 242.7zm805.5-562.7l-69.5 69.4-242.7-242.7 69.5-69.5a64.22 64.22 0 0 1 90.6 0l152.2 152.2a64.37 64.37 0 0 1-.1 90.6z" data-name="Layer 1"></path></svg>
                                                             </i>
-                                                        </button>
+                                                        </Link>
                                                     </div>
                                                 </div>
                                             </div>
@@ -111,7 +298,22 @@ export const AddProduct = () => {
                                                         <div className="product-input-wrapper">
                                                             <div className="product-input">
                                                                 <div className="product-input__inner">
-                                                                    <input type="text" placeholder="Input here" size="large" resize="vertical" rows="2" minrows="2" minlength="10" restrictiontype="input" max="Infinity" min="-Infinity" isround="true" unicodenormalized="true" className="product-input__input" />
+                                                                    <input
+                                                                        type="text"
+                                                                        placeholder="Input here"
+                                                                        size="large"
+                                                                        resize="vertical"
+                                                                        rows="2"
+                                                                        minrows="2"
+                                                                        minlength="10"
+                                                                        restrictiontype="input"
+                                                                        max="Infinity"
+                                                                        min="-Infinity"
+                                                                        isround="true"
+                                                                        unicodenormalized="true"
+                                                                        className="product-input__input"
+                                                                        onChange={(e) => handleAddAtrributes(0, "Brand", e.target.value)}
+                                                                    />
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -130,7 +332,21 @@ export const AddProduct = () => {
                                                         <div className="product-input-wrapper">
                                                             <div className="product-input">
                                                                 <div className="product-input__inner">
-                                                                    <input type="text" placeholder="Input here" size="large" resize="vertical" rows="2" minrows="2" minlength="10" restrictiontype="input" max="Infinity" min="-Infinity" isround="true" unicodenormalized="true" className="product-input__input" />
+                                                                    <input type="text"
+                                                                        placeholder="Input here"
+                                                                        size="large"
+                                                                        resize="vertical"
+                                                                        rows="2"
+                                                                        minrows="2"
+                                                                        minlength="10"
+                                                                        restrictiontype="input"
+                                                                        max="Infinity"
+                                                                        min="-Infinity"
+                                                                        isround="true"
+                                                                        unicodenormalized="true"
+                                                                        className="product-input__input"
+                                                                        onChange={(e) => handleAddAtrributes(1, "Material", e.target.value)}
+                                                                    />
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -149,7 +365,22 @@ export const AddProduct = () => {
                                                         <div className="product-input-wrapper">
                                                             <div className="product-input">
                                                                 <div className="product-input__inner">
-                                                                    <input type="text" placeholder="Input here" size="large" resize="vertical" rows="2" minrows="2" minlength="10" restrictiontype="input" max="Infinity" min="-Infinity" isround="true" unicodenormalized="true" className="product-input__input" />
+                                                                    <input
+                                                                        type="text"
+                                                                        placeholder="Input here"
+                                                                        size="large"
+                                                                        resize="vertical"
+                                                                        rows="2"
+                                                                        minrows="2"
+                                                                        minlength="10"
+                                                                        restrictiontype="input"
+                                                                        max="Infinity"
+                                                                        min="-Infinity"
+                                                                        isround="true"
+                                                                        unicodenormalized="true"
+                                                                        className="product-input__input"
+                                                                        onChange={(e) => handleAddAtrributes(2, "Origin", e.target.value)}
+                                                                    />
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -178,7 +409,22 @@ export const AddProduct = () => {
                                                                     $
                                                                     <span className="product-input__prefix-split"></span>
                                                                 </div>
-                                                                <input type="text" placeholder="Input here" size="large" resize="vertical" rows="2" minrows="2" minlength="10" restrictiontype="input" max="Infinity" min="-Infinity" isround="true" unicodenormalized="true" className="product-input__input" />
+                                                                <input
+                                                                    type="text"
+                                                                    placeholder="Input here"
+                                                                    size="large"
+                                                                    resize="vertical"
+                                                                    rows="2"
+                                                                    minrows="2"
+                                                                    minlength="10"
+                                                                    restrictiontype="input"
+                                                                    max="Infinity"
+                                                                    min="-Infinity"
+                                                                    isround="true"
+                                                                    unicodenormalized="true"
+                                                                    className="product-input__input"
+                                                                // onChange={(e) => setprice(e.target.value)}
+                                                                />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -197,7 +443,20 @@ export const AddProduct = () => {
                                                     <div className="product-input-wrapper">
                                                         <div className="product-input">
                                                             <div className="product-input__inner">
-                                                                <input type="text" placeholder="Input here" size="large" resize="vertical" rows="2" minrows="2" minlength="10" restrictiontype="input" max="Infinity" min="-Infinity" isround="true" unicodenormalized="true" className="product-input__input" />
+                                                                <input
+                                                                    type="text"
+                                                                    placeholder="Input here"
+                                                                    size="large"
+                                                                    resize="vertical"
+                                                                    rows="2" minrows="2"
+                                                                    minlength="10"
+                                                                    restrictiontype="input"
+                                                                    max="Infinity"
+                                                                    min="-Infinity" isround="true"
+                                                                    unicodenormalized="true"
+                                                                    className="product-input__input"
+                                                                    onChange={(e) => setquantity(e.target.value)}
+                                                                />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -247,10 +506,21 @@ export const AddProduct = () => {
                                                                     <div className="variation-form__content">
                                                                         <div className="product-input">
                                                                             <div className="product-input__inner">
-                                                                                <input type="text" placeholder="Input Group name, such as: Color, Size, etc." resize="vertical" rows="2" minrows="2" minlength="10" restrictiontype="input" max="Infinity" min="-Infinity" isround="true" unicodenormalized="true" class="product-input__input" />
+                                                                                <input type="text"
+                                                                                    placeholder="Input Group name, such as: Color, Size, etc."
+                                                                                    resize="vertical" rows="2"
+                                                                                    minrows="2" minlength="10"
+                                                                                    restrictiontype="input"
+                                                                                    max="Infinity"
+                                                                                    min="-Infinity"
+                                                                                    isround="true"
+                                                                                    unicodenormalized="true"
+                                                                                    class="product-input__input"
+                                                                                    onChange={(e) => handle_SetTier_variation(0, e.target.value, [])}
+                                                                                />
                                                                                 <div className="product-input__sulfix">
                                                                                     <span className="product-input__sulfix-split"></span>
-                                                                                    0/14
+                                                                                    {tier_variations.length > 0 && tier_variations[0].name.length}/14
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -258,34 +528,12 @@ export const AddProduct = () => {
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div className="grid-edit-row" style={{ position: "relative", marginBottom: "8px" }}>
-                                                            <div className="edit-label">
-                                                                <span>Classification</span>
-                                                            </div>
-                                                            <div className="edit-type-input">
-                                                                <div className="edit-text__form">
-                                                                    <div className="product-edit-content">
-                                                                        <div className="product-input">
-                                                                            <div className="product-input__inner">
-                                                                                <input type="text" placeholder="Input classification, such as Red, White,etc." size="large" resize="none" rows="2" minrows="2" maxlength="Infinity" restrictiontype="input" max="Infinity" min="-Infinity" class="product-input__input" />
-                                                                                <div className="product-input__sulfix">
-                                                                                    <div className="product-input__sulfix-split"></div>
-                                                                                    0/20                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <span className="options-remove-btn">
-                                                                    <i className="btn-icon">
-                                                                        <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><g fill-rule="nonzero"><path d="M14.516 3.016h-4v-1a.998.998 0 0 0-.703-.955.99.99 0 0 0-.297-.045h-3a.998.998 0 0 0-.955.703.99.99 0 0 0-.045.297v1h-4a.5.5 0 1 0 0 1h1v10a.998.998 0 0 0 .703.955.99.99 0 0 0 .297.045h9a.998.998 0 0 0 .955-.703.99.99 0 0 0 .045-.297v-10h1a.5.5 0 1 0 0-1zm-8-1h3v1h-3v-1zm6 12h-9v-10h9v10z"></path><path d="M5.516 12.016a.5.5 0 0 0 .5-.5v-4a.5.5 0 1 0-1 0v4a.5.5 0 0 0 .5.5zM8.016 12.016a.5.5 0 0 0 .5-.5v-5a.5.5 0 1 0-1 0v5a.5.5 0 0 0 .5.5zM10.516 12.016a.5.5 0 0 0 .5-.5v-4a.5.5 0 1 0-1 0v4a.5.5 0 0 0 .5.5z"></path></g></svg>
-                                                                    </i>
-                                                                </span>
-                                                            </div>
-                                                        </div>
+                                                        {[...Array(numberGroup1)].map((_, i) => <MoreOption key={i} count={i} index={0} numberOption={numberGroup1} />)}
+
                                                         <div className="btn-type-container">
                                                             <div className="edit-label"></div>
                                                             <div class="edit-type-add">
-                                                                <button type="button" className="type-btn">
+                                                                <button type="button" className="type-btn" onClick={() => handleAddMoreOptionGroup1()}>
                                                                     <span>
                                                                         <i className="type-btn__icon">
                                                                             <svg data-name="图层 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
@@ -295,7 +543,7 @@ export const AddProduct = () => {
                                                                                 </g>
                                                                             </svg>
                                                                         </i>
-                                                                        Added (1/20)
+                                                                        Added ({numberGroup1}/20)
                                                                     </span>
                                                                 </button>
                                                             </div>
@@ -340,7 +588,13 @@ export const AddProduct = () => {
                                                                     <div className="variation-form__content">
                                                                         <div className="product-input">
                                                                             <div className="product-input__inner">
-                                                                                <input type="text" placeholder="Input Group name, such as: Color, Size, etc." resize="vertical" rows="2" minrows="2" minlength="10" restrictiontype="input" max="Infinity" min="-Infinity" isround="true" unicodenormalized="true" class="product-input__input" />
+                                                                                <input type="text"
+                                                                                    placeholder="Input Group name, such as: Color, Size, etc."
+                                                                                    resize="vertical" rows="2" minrows="2" minlength="10"
+                                                                                    restrictiontype="input" max="Infinity" min="-Infinity" isround="true" unicodenormalized="true"
+                                                                                    class="product-input__input"
+                                                                                    onChange={(e) => handle_SetTier_variation(1, e.target.value, [])}
+                                                                                />
                                                                                 <div className="product-input__sulfix">
                                                                                     <span className="product-input__sulfix-split"></span>
                                                                                     0/14
@@ -351,34 +605,11 @@ export const AddProduct = () => {
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div className="grid-edit-row" style={{ position: "relative", marginBottom: "8px" }}>
-                                                            <div className="edit-label">
-                                                                <span>Classification</span>
-                                                            </div>
-                                                            <div className="edit-type-input">
-                                                                <div className="edit-text__form">
-                                                                    <div className="product-edit-content">
-                                                                        <div className="product-input">
-                                                                            <div className="product-input__inner">
-                                                                                <input type="text" placeholder="Input classification, such as Red, White,etc." size="large" resize="none" rows="2" minrows="2" maxlength="Infinity" restrictiontype="input" max="Infinity" min="-Infinity" class="product-input__input" />
-                                                                                <div className="product-input__sulfix">
-                                                                                    <div className="product-input__sulfix-split"></div>
-                                                                                    0/20                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <span className="options-remove-btn">
-                                                                    <i className="btn-icon">
-                                                                        <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><g fill-rule="nonzero"><path d="M14.516 3.016h-4v-1a.998.998 0 0 0-.703-.955.99.99 0 0 0-.297-.045h-3a.998.998 0 0 0-.955.703.99.99 0 0 0-.045.297v1h-4a.5.5 0 1 0 0 1h1v10a.998.998 0 0 0 .703.955.99.99 0 0 0 .297.045h9a.998.998 0 0 0 .955-.703.99.99 0 0 0 .045-.297v-10h1a.5.5 0 1 0 0-1zm-8-1h3v1h-3v-1zm6 12h-9v-10h9v10z"></path><path d="M5.516 12.016a.5.5 0 0 0 .5-.5v-4a.5.5 0 1 0-1 0v4a.5.5 0 0 0 .5.5zM8.016 12.016a.5.5 0 0 0 .5-.5v-5a.5.5 0 1 0-1 0v5a.5.5 0 0 0 .5.5zM10.516 12.016a.5.5 0 0 0 .5-.5v-4a.5.5 0 1 0-1 0v4a.5.5 0 0 0 .5.5z"></path></g></svg>
-                                                                    </i>
-                                                                </span>
-                                                            </div>
-                                                        </div>
+                                                        {[...Array(numberGroup2)].map((_, i) => <MoreOption key={i} count={i} index={1} numberOption={numberGroup2} />)}
                                                         <div className="btn-type-container">
                                                             <div className="edit-label"></div>
                                                             <div class="edit-type-add">
-                                                                <button type="button" className="type-btn">
+                                                                <button type="button" className="type-btn" onClick={() => handleAddMoreOptionGroup2()}>
                                                                     <span>
                                                                         <i className="type-btn__icon">
                                                                             <svg data-name="图层 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
@@ -388,7 +619,7 @@ export const AddProduct = () => {
                                                                                 </g>
                                                                             </svg>
                                                                         </i>
-                                                                        Added (1/20)
+                                                                        Added ({numberGroup2}/20)
                                                                     </span>
                                                                 </button>
                                                             </div>
@@ -455,63 +686,23 @@ export const AddProduct = () => {
                                                         <div className="variation-model-panel">
                                                             <div className="row">
                                                                 <div className="table-cell-header"><span>Name</span></div>
-                                                                <div className="table-cell-header"><span>Price</span></div>
-                                                                <div className="table-cell-header"><spam>Storage</spam></div>
-                                                                <div className="table-cell-header"><span>SKU</span></div>
-                                                            </div>
-                                                            <div className="row">
-                                                                <div style={{ flex: "3" }}>
-                                                                    <div className="data-group">
-                                                                        <div className="table-cell">
-                                                                            <span>Type</span>
-                                                                        </div>
-                                                                        <div className="table-cell">
-                                                                            <div className="table-cell__variation-model">
-                                                                                <div className="table-cell__edit">
-                                                                                    <div className="product-input-wrapper">
-                                                                                        <div className="product-input">
-                                                                                            <div class="product-input__inner">
-                                                                                                <div className="product-input__prefix">
-                                                                                                    $
-                                                                                                    <span className="product-input__prefix-split"></span>
-                                                                                                </div>
-                                                                                                <input type="text" placeholder="Insert" size="large" resize="vertical" rows="2" minrows="2" restrictiontype="value" max="Infinity" min="-Infinity" isround="true" class="product-input__input"></input>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div className="table-cell">
-                                                                            <div className="table-cell__variation-model">
-                                                                                <div className="table-cell__edit">
-                                                                                    <div className="product-input-wrapper">
-                                                                                        <div className="product-input">
-                                                                                            <div class="product-input__inner">
-                                                                                                <input type="text" placeholder="Insert" size="large" resize="vertical" rows="2" minrows="2" restrictiontype="value" max="Infinity" min="-Infinity" isround="true" class="product-input__input"></input>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div className="table-cell">
-                                                                            <div className="table-cell__variation-model">
-                                                                                <div className="table-cell__edit">
-                                                                                    <div className="product-input-wrapper">
-                                                                                        <div className="product-input">
-                                                                                            <div class="product-input__inner">
-                                                                                                <input type="text" placeholder="Insert" size="large" resize="vertical" rows="2" minrows="2" restrictiontype="value" max="Infinity" min="-Infinity" isround="true" class="product-input__input"></input>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
+                                                                {model1.length > 0 ?
 
+                                                                    <div className="table-cell-header"><span>{tier_variations[1].name}</span></div> : ""
+                                                                }
+                                                                <div className="table-cell-header"><span>Price</span></div>
+                                                                <div className="table-cell-header"><spam>Quantity</spam></div>
+                                                                <div className="table-cell-header"><span>Storage</span></div>
                                                             </div>
+                                                            {
+                                                                model && model.map((v, i) => {
+                                                                    return (
+                                                                        <Model value={v} key={i}></Model>
+                                                                    )
+                                                                })
+                                                            }
+
+
                                                         </div>
                                                     </div>
                                                 </div>
@@ -531,11 +722,11 @@ export const AddProduct = () => {
                                                 <div className="image-manager__container">
                                                     <div className="image-manager__item">
                                                         <div className="image-manager__content">
-                                                            <label for="image-upload" className="image-manager__label">
+                                                            <label htmlFor="image-upload" className="image-manager__label">
                                                                 <div className="image-manager__upload">
                                                                     <div className="file-upload">
                                                                         <div className="file-upload__wrapper">
-                                                                            <input type="file" name="file" className="file-upload__input" id="image-upload" />
+                                                                            <input type="file" name="file" number={0} className="file-upload__input" id="image-upload" onChange={(e) => handleUploadImage(e, 0)} />
                                                                             <div className="file-upload__content">
                                                                                 <i className="upload-icon">
                                                                                     <svg viewBox="0 0 31 31" xmlns="http://www.w3.org/2000/svg">
@@ -560,11 +751,11 @@ export const AddProduct = () => {
                                                     </div>
                                                     <div className="image-manager__item">
                                                         <div className="image-manager__content">
-                                                            <label for="image-upload" className="image-manager__label">
+                                                            <label htmlFor="image-upload" className="image-manager__label">
                                                                 <div className="image-manager__upload">
                                                                     <div className="file-upload">
                                                                         <div className="file-upload__wrapper">
-                                                                            <input type="file" name="file" className="file-upload__input" id="image-upload" />
+                                                                            <input type="file" name="file" number={1} className="file-upload__input" id="image-upload" onChange={(e) => handleUploadImage1(e, 1)} />
                                                                             <div className="file-upload__content">
                                                                                 <i className="upload-icon">
                                                                                     <svg viewBox="0 0 31 31" xmlns="http://www.w3.org/2000/svg">
@@ -583,6 +774,7 @@ export const AddProduct = () => {
                                                                 <span>
                                                                     <span className="explain-text__text">Picture</span>
                                                                     1
+
                                                                 </span>
                                                             </div>
                                                         </div>
@@ -593,7 +785,7 @@ export const AddProduct = () => {
                                                                 <div className="image-manager__upload">
                                                                     <div className="file-upload">
                                                                         <div className="file-upload__wrapper">
-                                                                            <input type="file" name="file" className="file-upload__input" id="image-upload" />
+                                                                            <input type="file" name="file" className="file-upload__input" id="image-upload" onChange={(e) => handleUploadImage2(e, 2)} />
                                                                             <div className="file-upload__content">
                                                                                 <i className="upload-icon">
                                                                                     <svg viewBox="0 0 31 31" xmlns="http://www.w3.org/2000/svg">
@@ -622,7 +814,7 @@ export const AddProduct = () => {
                                                                 <div className="image-manager__upload">
                                                                     <div className="file-upload">
                                                                         <div className="file-upload__wrapper">
-                                                                            <input type="file" name="file" className="file-upload__input" id="image-upload" />
+                                                                            <input type="file" name="file" className="file-upload__input" id="image-upload" onChange={(e) => handleUploadImage3(e, 3)} />
                                                                             <div className="file-upload__content">
                                                                                 <i className="upload-icon">
                                                                                     <svg viewBox="0 0 31 31" xmlns="http://www.w3.org/2000/svg">
@@ -651,7 +843,7 @@ export const AddProduct = () => {
                                                                 <div className="image-manager__upload">
                                                                     <div className="file-upload">
                                                                         <div className="file-upload__wrapper">
-                                                                            <input type="file" name="file" className="file-upload__input" id="image-upload" />
+                                                                            <input type="file" name="file" className="file-upload__input" id="image-upload" onChange={(e) => handleUploadImage(e, 4)} />
                                                                             <div className="file-upload__content">
                                                                                 <i className="upload-icon">
                                                                                     <svg viewBox="0 0 31 31" xmlns="http://www.w3.org/2000/svg">
@@ -680,7 +872,7 @@ export const AddProduct = () => {
                                                                 <div className="image-manager__upload">
                                                                     <div className="file-upload">
                                                                         <div className="file-upload__wrapper">
-                                                                            <input type="file" name="file" className="file-upload__input" id="image-upload" />
+                                                                            <input type="file" name="file" className="file-upload__input" id="image-upload" onChange={(e) => handleUploadImage(e, 5)} />
                                                                             <div className="file-upload__content">
                                                                                 <i className="upload-icon">
                                                                                     <svg viewBox="0 0 31 31" xmlns="http://www.w3.org/2000/svg">
@@ -709,7 +901,7 @@ export const AddProduct = () => {
                                                                 <div className="image-manager__upload">
                                                                     <div className="file-upload">
                                                                         <div className="file-upload__wrapper">
-                                                                            <input type="file" name="file" className="file-upload__input" id="image-upload" />
+                                                                            <input type="file" name="file" className="file-upload__input" id="image-upload" onChange={(e) => handleUploadImage(e, 6)} />
                                                                             <div className="file-upload__content">
                                                                                 <i className="upload-icon">
                                                                                     <svg viewBox="0 0 31 31" xmlns="http://www.w3.org/2000/svg">
@@ -738,7 +930,7 @@ export const AddProduct = () => {
                                                                 <div className="image-manager__upload">
                                                                     <div className="file-upload">
                                                                         <div className="file-upload__wrapper">
-                                                                            <input type="file" name="file" className="file-upload__input" id="image-upload" />
+                                                                            <input type="file" name="file" className="file-upload__input" id="image-upload" onChange={(e) => handleUploadImage(e, 7)} />
                                                                             <div className="file-upload__content">
                                                                                 <i className="upload-icon">
                                                                                     <svg viewBox="0 0 31 31" xmlns="http://www.w3.org/2000/svg">
@@ -778,7 +970,7 @@ export const AddProduct = () => {
                                             <button type="button" className="normal-btn">
                                                 <span>Save and Hide</span>
                                             </button>
-                                            <button type="button" className="primary-btn">
+                                            <button type="button" className="primary-btn" onClick={() => handleSubmit()}>
                                                 <span>Save and Display</span>
                                             </button>
                                         </div>

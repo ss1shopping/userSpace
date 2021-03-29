@@ -27,14 +27,15 @@ function* featchItem({ payload }) {
     }
 }
 function* additem({ payload }) {
-    const { priceMin, priceMax, name, desc, caetegory, shopId, attributes, model, tier_variations } = payload
+    const { priceMin, priceMax, name, desc, category, shopId, attributes, model, tier_variations } = payload
 
     try {
-        const result = yield call(addItem, { priceMin, priceMax, name, desc, caetegory, shopId, attributes, model, tier_variations })
+        const result = yield call(addItem, { priceMin, priceMax, name, desc, category, shopId, attributes, model, tier_variations })
         console.log(result);
         yield put(itemActions.uploaditemsuccess(result.data))
 
     } catch (err) {
+        console.log(err.response);
         const error = err.response ? err.response.data.msg : err.stack;
         yield put(itemActions.error(error));
         console.log(error);

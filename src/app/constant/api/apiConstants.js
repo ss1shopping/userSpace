@@ -2,7 +2,7 @@
 export const API_URL = "http://localhost:4000";
 
 export const API_URLS = {
-  REGISTER: '/users',
+  REGISTER: '/users/create',
   LOGIN: '/users/login',
   CHECK_ACCTIVE_ACCOUNT: (token) => `/users/login/${token}`,
   REFRES_TOKEN: '/users/refresh',
@@ -12,7 +12,7 @@ export const API_URLS = {
   LOADING_CART: "/users/loadingcart",
   GET_ITEMS: (data) => `/item/get${data.url}`,
   SEARCH_ITEM: (data) => `/item/search${data.url}`,
-  ADD_ITEM: '/item',
+  ADD_ITEM: '/item/create',
   UPDATE_ITEM: "/item",
   DELETE_ITEM: "/item/delete",
   ADD_IMAGE_ITEM: "/item/uploadImage",
