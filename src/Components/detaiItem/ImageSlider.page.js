@@ -14,7 +14,7 @@ const ImageSlider = (props) => {
   item && item.tier_variations.map(item => {
     let editimg = ""
     item.images.map(i => {
-      editimg = i.replace("public", "http://localhost:4000")
+      editimg = "http://localhost:4000/" + i
       Images.push({
         showPlayButton: false,
         original: `${editimg}`,

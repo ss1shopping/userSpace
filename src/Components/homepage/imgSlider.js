@@ -12,7 +12,7 @@ const ImgSlider = (props) => {
     <Carousel autoComplete infiniteLoop autoPlay showThumbs={false} >
 
       {props.images.map((index, key) => {
-        const img1 = index.replace("public", "http://localhost:4000")
+        const img1 = "http://localhost:4000/" + index
         return (
           <div key={key}>
             <LazyLoadImage src={img1} alt="description" effect="blur"

@@ -38,7 +38,13 @@ export const itemActionTypes = {
   searchItem: '[search item]',
   searchItemSuccessful: "[search item successful]",
 
-  itemToUpload: "[item to upload]"
+  itemToUpload: "[item to upload]",
+  setTierVariation: "[set tier variation]",
+  setModel: '[set model of item]',
+  setModel1: '[set model1 of item]',
+  setTotalModel: '[set total model]',
+  setprice: "[set price]",
+  setQuantity: "[set quantity]"
 }
 export const authActionTypes = {
   Login: '[Login] Action',

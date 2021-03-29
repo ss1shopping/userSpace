@@ -39,9 +39,9 @@ export function removeStorage(key) {
   } catch (e) {
     console.log(
       "removeStorage: Error removing key [" +
-        key +
-        "] from localStorage: " +
-        JSON.stringify(e)
+      key +
+      "] from localStorage: " +
+      JSON.stringify(e)
     );
     return false;
   }
@@ -58,37 +58,38 @@ export function removeStorage(key) {
 export function getStorage(key) {
   const now = Date.now(); //epoch time, lets deal only with integer
   // set expiration for storage
-  
-  const keyexp=`${key}_expiresIn`
- 
+
+  const keyexp = `${key}_expiresIn`
+
   var expiresIn = localStorage.getItem(keyexp);
-  
+
   if (expiresIn === undefined || expiresIn === null) {
     expiresIn = 0;
   }
 
   expiresIn = Math.abs(expiresIn);
- 
+
   if (expiresIn < now) {
     // Expired
+    
     removeStorage(key);
     removeStorage(keyexp);
-   
+
     return null;
   } else {
     try {
       const value = localStorage.getItem(key);
-      
+
       return value;
-      
+
     } catch (e) {
       console.log(
         "getStorage: Error reading key [" +
-          key +
-          "] from localStorage: " +
-          JSON.stringify(e)
+        key +
+        "] from localStorage: " +
+        JSON.stringify(e)
       );
-     
+
     }
   }
 }
@@ -105,19 +106,19 @@ export function setStorage(key, value, expires) {
     expires = 24 * 60 * 60; // default: seconds for 1 day
   }
 
-  const now = Date.now(); 
- //millisecs since epoch time, lets deal only with integer
-  const schedule = now + expires*1000;
-  
+  const now = Date.now();
+  //millisecs since epoch time, lets deal only with integer
+  const schedule = now + expires * 1000;
+
   try {
     localStorage.setItem(key, value);
     localStorage.setItem(key + "_expiresIn", schedule);
   } catch (e) {
     console.log(
       "setStorage: Error setting key [" +
-        key +
-        "] in localStorage: " +
-        JSON.stringify(e)
+      key +
+      "] in localStorage: " +
+      JSON.stringify(e)
     );
     return false;
   }

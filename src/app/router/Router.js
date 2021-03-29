@@ -53,11 +53,11 @@ const Routerr = () => {
         <Route exact path="/history" component={History}></Route>
         {/* <Route exact path="/banhang" component={Body}></Route> */}
 
-        <Route exact path="/banhang/order" component={Order}></Route>
-        <Route exact path="/banhang/item" component={ManageItem}></Route>
-        <Route exact path="/banhang/choose-category" component={ChooseCategory}></Route>
-        <Route exact path="/banhang/add-product" component={AddProduct}></Route>
-        <Route exact path="/banhang/delivery" component={Delivery}></Route>
+        <PrivateRouter exact path="/banhang/order" component={Order}></PrivateRouter>
+        <PrivateRouter exact path="/banhang/item" component={ManageItem}></PrivateRouter>
+        <PrivateRouter exact path="/banhang/choose-category" component={ChooseCategory}></PrivateRouter>
+        <PrivateRouter exact path="/banhang/add-product" component={AddProduct}></PrivateRouter>
+        <PrivateRouter exact path="/banhang/delivery" component={Delivery}></PrivateRouter>
 
 
         {/* <Route exact path="/shop/item/:name" component={ItemdetailShopPage}></Route> */}

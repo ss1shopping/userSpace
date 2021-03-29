@@ -16,7 +16,12 @@ const initialAuthState = {
     itemInCart: [],
     page: 1,
     category: null,
-
+    tier_variations: [],
+    model: [],
+    model1: [],
+    totalModel: [],
+    price: {},
+    quantity: {},
 }
 export const itemReducer = persistReducer(
     { storage, key: 'item', whitelist: [] },
@@ -122,7 +127,30 @@ export const itemReducer = persistReducer(
                 return {
                     ...state, isPending: !state.isPending, searchItem: action.payload
                 }
-
+            case itemActionTypes.setTierVariation:
+                return {
+                    ...state, tier_variations: action.payload
+                }
+            case itemActionTypes.setModel:
+                return {
+                    ...state, model: action.payload
+                }
+            case itemActionTypes.setModel1:
+                return {
+                    ...state, model1: action.payload
+                }
+            case itemActionTypes.setTotalModel:
+                return {
+                    ...state, totalModel: action.payload
+                }
+            case itemActionTypes.setprice:
+                return {
+                    ...state, price: action.payload
+                }
+            case itemActionTypes.setQuantity:
+                return {
+                    ...state, quantity: action.payoad
+                }
             default:
                 return state;
         }
@@ -134,9 +162,9 @@ export const itemActions = {
     loadingsuccess: (payload) => ({ type: itemActionTypes.loadingItemSuccess, payload }),
     loadingfailure: (payload) => ({ type: itemActionTypes.error, payload }),
     error: (payload) => ({ type: itemActionTypes.Error, payload }),
-    uploaditem: (priceMin, priceMax, name, desc, caetegory, shopId, attributes, model, tier_variations) => ({
+    uploaditem: (priceMin, priceMax, name, desc, category, shopId, attributes, model, tier_variations) => ({
         type: itemActionTypes.uploadItem,
-        payload: { priceMin, priceMax, name, desc, caetegory, shopId, attributes, model, tier_variations }
+        payload: { priceMin, priceMax, name, desc, category, shopId, attributes, model, tier_variations }
     }),
     uploaditemsuccess: (payload) => ({ type: itemActionTypes.uploadItemSuccess, payload }),
     loadingInfor: (payload) => ({ type: itemActionTypes.loadTotal, payload }),
@@ -164,6 +192,10 @@ export const itemActions = {
     searchItem: (keyword) => ({ type: itemActionTypes.searchItem, payload: { keyword } }),
     searchItemSuccessful: (payload) => ({ type: itemActionTypes.searchItemSuccessful, payload }),
 
-
-
+    setTier_variations: (payload) => ({ type: itemActionTypes.setTierVariation, payload }),
+    setModel: (payload) => ({ type: itemActionTypes.setModel, payload }),
+    setModel1: (payload) => ({ type: itemActionTypes.setModel1, payload }),
+    setTotalModel: (payload) => ({ type: itemActionTypes.setTotalModel, payload }),
+    setprice: (payload) => ({ type: itemActionTypes.setprice, payload }),
+    setQuantity: (payload) => ({ type: itemActionTypes.setQuantity, payload })
 }
