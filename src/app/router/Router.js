@@ -30,6 +30,7 @@ import { AddProduct } from "../../Components/shop/main/body/addItem/addProduct";
 import Detaiitem from "../../Components/detaiItem/detaiItem.page"
 import Cart from "../../Components/cart/cart"
 import Checkout from "../../Components/checkout/checkout.page"
+import { UserProfile } from "../../Components/user/userProfile";
 // import BlurGlass from "../../Components/LandingPage/dashboard/BlurGlass"
 const Routerr = () => {
   let token = getStorage("token");
@@ -56,13 +57,14 @@ const Routerr = () => {
         <PrivateRouter exact path="/banhang/order" component={Order}></PrivateRouter>
         <PrivateRouter exact path="/banhang/item" component={ManageItem}></PrivateRouter>
         <PrivateRouter exact path="/banhang/choose-category" component={ChooseCategory}></PrivateRouter>
-        <PrivateRouter exact path="/banhang/add-product" component={AddProduct}></PrivateRouter>
+        <Route exact path="/banhang/add-product" component={AddProduct}></Route>
         <PrivateRouter exact path="/banhang/delivery" component={Delivery}></PrivateRouter>
 
 
         {/* <Route exact path="/shop/item/:name" component={ItemdetailShopPage}></Route> */}
         <Route exact path="/users/login" component={Login}></Route>
         <Route exact path='/users/register' component={Register} />
+        <Route exact path='/users/profile' component={UserProfile}/>
 
         <Route exact path='/detail/:item' component={Detaiitem} />
 

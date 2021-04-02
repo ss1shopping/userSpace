@@ -705,7 +705,7 @@ export const AddProduct = () => {
                                                                     <div className="table-cell-header"><span>{tier_variations[1].name}</span></div> : ""
                                                                 }
                                                                 <div className="table-cell-header"><span>Price</span></div>
-                                                                <div className="table-cell-header"><spam>Quantity</spam></div>
+                                                                <div className="table-cell-header"><span>Quantity</span></div>
                                                                 <div className="table-cell-header"><span>Storage</span></div>
                                                             </div>
                                                             {
@@ -741,6 +741,7 @@ export const AddProduct = () => {
                                                                     <div className="file-upload">
                                                                         <div className="file-upload__wrapper">
                                                                             <input type="file" name="file" number={0} className="file-upload__input" id="image-upload" onChange={(e) => handleUploadImage(e, 0)} />
+                                                                            <img src={listImage[0]}/>
                                                                             <div className="file-upload__content">
                                                                                 <i className="upload-icon">
                                                                                     <svg viewBox="0 0 31 31" xmlns="http://www.w3.org/2000/svg">
