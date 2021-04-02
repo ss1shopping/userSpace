@@ -149,7 +149,7 @@ export const itemReducer = persistReducer(
                 }
             case itemActionTypes.setQuantity:
                 return {
-                    ...state, quantity: action.payoad
+                    ...state, quantity: action.payload
                 }
             default:
                 return state;
