@@ -17,6 +17,7 @@ function* addtoCart({ payload }) {
     const result = yield call(AddToCart, { number, modelId, itemId })
     yield put(cartActions.addtocartSuccessful(result.data))
   } catch (err) {
+    console.log(err.response);
     const error = err.response ? err.response.data.msg : err.stack;
     yield put(cartActions.fail(error));
   }

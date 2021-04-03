@@ -30,20 +30,20 @@ export const Model = (props) => {
   return (
     <div className="row">
       <div style={{ flex: "3" }}>
-        <div className="data-group" style={{flexDirection:"row"}}>
+        <div className="data-group" style={{ flexDirection: "row" }}>
           <div className="table-cell">
             <span>{props.value && props.value.name}</span>
           </div>
-          <div className="table-cell-header" style={model1.length === 0?{ display:"none"}:{padding:"0px", border:"none", display:"flex"}}>
+          <div className="table-cell-header" style={model1.length === 0 ? { display: "none" } : { width: "100%", padding: "0px", border: "none", display: "flex", flexDirection: "column" }}>
             {
               model1 && model1.map((v, i) => {
                 return (
-                  <div className="table-cell">
+                  <div className="table-cell" style={{ width: "100%" }}>
                     <div className="table-cell__variation-model">
                       <div className="table-cell__edit">
                         <div className="product-input-wrapper">
                           <div className="product-input">
-                            <div class="product-input__inner" style={{display:"flex", justifyContent:"center", alignItems:"center"}}>
+                            <div class="product-input__inner" style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
                               <div>{v.name}</div>
                               {/* <input type="text" placeholder="Insert" size="large" resize="vertical" rows="2" minrows="2" restrictiontype="value" max="Infinity" min="-Infinity" isround="true" class="product-input__input"></input> */}
                             </div>
@@ -56,7 +56,7 @@ export const Model = (props) => {
               })
             }
           </div>
-          <div className="table-cell-header" style={{padding:"0px", border:"none"}}>
+          <div className="table-cell-header" style={model1.length === 0 ? { display: "none" } : { padding: "0px", border: "none", display: "flex", flexDirection: "column" }}>
             {
               model1.length === 0 ?
                 <div className="table-cell">
@@ -109,7 +109,7 @@ export const Model = (props) => {
               })
             }
           </div>
-          <div className="table-cell-header" style={{padding:"0px",border:"none"}}>
+          <div className="table-cell-header" style={model1.length === 0 ? { display: "none" } : { padding: "0px", border: "none", display: "flex", flexDirection: "column" }}>
             {
               model1.length === 0 ?
                 <div className="table-cell">
@@ -164,7 +164,7 @@ export const Model = (props) => {
               })
             }
           </div>
-          <div className="table-cell-header" style={{padding:"0px",border:"none"}}>
+          <div className="table-cell-header" style={model1.length === 0 ? { display: "none" } : { padding: "0px", border: "none", display: "flex", flexDirection: "column" }}>
             {
               model1.length === 0 ?
                 <div className="table-cell">

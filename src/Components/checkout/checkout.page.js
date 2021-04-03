@@ -51,7 +51,7 @@ const Checkout = (props) => {
             <div className="checkout--body--address__header"><GoLocation />Địa chỉ nhận hàng</div>
             <div className="checkout--body--address__summary">
               <div className="checkout--address--row">
-                <div className="checkout--address--row__name"><strong> {name} {address[0].phoneNumber}</strong></div>
+                <div className="checkout--address--row__name"><strong> {name} {address !== "" && address[0].phoneNumber}</strong></div>
                 <div className="checkout--address--row__address"> {address[0].state}, {address[0].district}, {address[0].city}</div>
                 <div className="checkout--address--row__default"> Mặc định</div>
               </div>

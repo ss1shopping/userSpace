@@ -24,9 +24,9 @@ export const ManageItem = () => {
     }
   }
   useEffect(() => {
-    dispatch(itemActions.loadingitem(page, sort, order))
+    dispatch(itemActions.loadingitem(page, sort))
 
-  }, [page, sort, order])
+  }, [page, sort])
   return (
 
     <DefaultLayout>
@@ -61,7 +61,7 @@ export const ManageItem = () => {
                       <th>{value.category[value.category.length - 1].name}</th>
                       <th>{value.priceMin}-{value.priceMax}</th>
                       <th>{value.sold}</th>
-                      <th> <Link to={`/update/item${value._id}`} className="btn btn--outline">Sửa thông tin</Link>  </th>
+                      <th> <Link to={`/banhang/update/item/${value._id}`} className="btn btn--outline">Sửa thông tin</Link>  </th>
                     </tr>
                   )
                 })

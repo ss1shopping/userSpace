@@ -18,10 +18,7 @@ export const UserProfile = () => {
     const [change, setchange] = useState(true)
     useEffect(() => {
         dispatch(authActions.currentUser())
-        setTimeout(() => {
 
-            user ? setDob(new Date(user.dob)) : setDob(new Date())
-        }, 1000);
     }, [change])
 
     const ConvertDob = (value) => {
