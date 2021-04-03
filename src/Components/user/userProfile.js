@@ -179,9 +179,6 @@ export const UserProfile = () => {
                                                 <div className="input-with-label__content">
                                                     <div className="input-with-validator-wrapper">
                                                         <div className="input-with-validator">
-<<<<<<< HEAD
-                                                            <input type="text" placeholder="" maxlength="255" value="Tus" />
-=======
                                                             <input type="text" placeholder="" maxlength="255" defaultValue={user && user.firstname} onChange={(e) => setfirstName(e.target.value)} />
                                                         </div>
                                                     </div>
@@ -197,7 +194,6 @@ export const UserProfile = () => {
                                                     <div className="input-with-validator-wrapper">
                                                         <div className="input-with-validator">
                                                             <input type="text" placeholder="" maxlength="255" defaultValue={user && user.lastname} onChange={(e) => setlastName(e.target.value)} />
->>>>>>> 12a5ce62fcb276778876cf1b41552611508854c0
                                                         </div>
                                                     </div>
                                                 </div>
@@ -210,13 +206,8 @@ export const UserProfile = () => {
                                                 </div>
                                                 <div className="input-with-label__content">
                                                     <div className="input-with-label__inline-container">
-<<<<<<< HEAD
-                                                        <div className="input-with-label__input-text">trantu1472@gmail.com</div>
-                                                        <button className="btn-change" onClick={() => handleMail()}>Change</button>
-=======
                                                         <div className="input-with-label__input-text">{user && user.email}</div>
-                                                        <button className="btn-change">Change</button>
->>>>>>> 12a5ce62fcb276778876cf1b41552611508854c0
+                                                        <button className="btn-change" onClick={() => handleMail()}>Change</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -228,13 +219,8 @@ export const UserProfile = () => {
                                                 </div>
                                                 <div className="input-with-label__content">
                                                     <div className="input-with-label__inline-container">
-<<<<<<< HEAD
-                                                        <div className="input-with-label__input-text">********45</div>
-                                                        <button className="btn-change" onClick={() => handlePhone()}>Change</button>
-=======
                                                         <div className="input-with-label__input-text">{user && user.phoneNumber}</div>
-                                                        <button className="btn-change">Change</button>
->>>>>>> 12a5ce62fcb276778876cf1b41552611508854c0
+                                                        <button className="btn-change" onClick={() => handlePhone()}>Change</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -247,11 +233,7 @@ export const UserProfile = () => {
                                                 <div className="input-with-label__content">
                                                     <div className="input-with-validator-wrapper">
                                                         <div className="input-with-validator">
-<<<<<<< HEAD
-                                                            <input type="text" placeholder="" maxlength="255" value="" />
-=======
                                                             <input type="text" placeholder="" maxlength="255" defaultValue={user && user.shopId.name} onChange={(e) => setShopName(e.target.value)} />
->>>>>>> 12a5ce62fcb276778876cf1b41552611508854c0
                                                             <button className="btn-change">Create Shop</button>
                                                         </div>
                                                     </div>
