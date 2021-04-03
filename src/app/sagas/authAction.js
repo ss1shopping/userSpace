@@ -1,5 +1,5 @@
 import { takeEvery, put, call } from 'redux-saga/effects';
-import { login, register, activeAccount, GenNewToken, loadingCart, resetPassword, changeNewpassword } from "../crud/auth.crud";
+import { login, register, activeAccount, GenNewToken, loadingCart, resetPassword, changeNewpassword, getCurentUser, UpdateUser } from "../crud/auth.crud";
 import { setStorage } from "../../_metronic/utils/utils";
 import { authActions } from "../store/ducks/authReducer";
 import { authActionTypes } from "../constant/index";
@@ -118,9 +118,42 @@ function* changeNewPassword({ payload }) {
     yield put(authActions.changeNewpasswordFailure(err));
   }
 }
+function* getCurrentUser() {
+  try {
+    const response = yield call(getCurentUser)
+    yield put(authActions.currentUserSuccess(response.data))
+  } catch (error) {
+    const err = error.response ? error.response.data.msg : error.stack
+    yield put(authActions.error(err));
+  }
+}
+function* updateUser({ payload }) {
+  const { id, firstname, lastname, email, phoneNumber, gender, address, dob } = payload
+  const updateuser = {
+    id
+  }
+  let null1 = true
+  firstname ? updateuser.firstname = firstname : null1 = true
+  lastname ? updateuser.lastname = lastname : null1 = true
+  email ? updateuser.email = email : null1 = true
+  phoneNumber ? updateuser.phoneNumber = phoneNumber : null1 = true
+  gender ? updateuser.gender = gender : null1 = true
+  address ? updateuser.address = address : null1 = true
+  dob ? updateuser.dob = dob : null1 = true
+  try {
+    const response = yield call(UpdateUser, updateuser)
+    yield put(authActions.UpdateUserSuccessFull(response.data))
+  } catch (error) {
+    console.log(error.response);
+    const err = error.response ? error.response.data.msg : error.stack
+    yield put(authActions.error(err));
+  }
+}
 function* authSagas() {
   yield takeEvery(authActionTypes.Login, fetchLogin);
   yield takeEvery(authActionTypes.Register, fetchRegister);
+  yield takeEvery(authActionTypes.getCurrentUser, getCurrentUser)
+  yield takeEvery(authActionTypes.Updateuser, updateUser)
   yield takeEvery(authActionTypes.activeAccount, fetchactiveAccount)
   yield takeEvery(authActionTypes.refreshToken, fetchRefreshToken)
   yield takeEvery(authActionTypes.Loadingcart, loadingcart)

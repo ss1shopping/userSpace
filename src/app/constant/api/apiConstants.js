@@ -4,6 +4,8 @@ export const API_URL = "http://localhost:4000";
 export const API_URLS = {
   REGISTER: '/users/create',
   LOGIN: '/users/login',
+  GETCURRENTUSER: `users/currentUser`,
+  UPDATE_USER: "users/update",
   CHECK_ACCTIVE_ACCOUNT: (token) => `/users/login/${token}`,
   REFRES_TOKEN: '/users/refresh',
   CHEK_AUTH_USER: '/api/current',

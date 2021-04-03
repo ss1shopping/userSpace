@@ -73,6 +73,12 @@ export const authActionTypes = {
   ChangeNewpassword: '[Change new password]',
   ChangeNewpasswordSuccessful: "[Change new password correct]",
   ChangeNewpasswordFailure: "[Change new password incorrect]",
+
+  getCurrentUser: "[getCurrentUser]",
+  getCurrentUserSuccessful: "[getCurrentUserSuccessful]",
+
+  Updateuser: "[update user]",
+  UpdateUserSuccessFull: "[update user successful]"
 };
 export const totalActionTypes = {
   loadingInforChart: '[Action Loading Infor Chart]',
