@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { itemActions } from '../../../../../app/store/ducks/itemReducer'
 
@@ -7,7 +7,9 @@ export const Model = (props) => {
   const model1 = useSelector(state => state.itemReducer.model1)
   const price = useSelector(state => state.itemReducer.price)
   const quantity = useSelector(state => state.itemReducer.quantity)
+  const tier_variations = useSelector(state => state.itemReducer.tier_variations)
   let letnewquantity = {}
+  console.log(props);
   const [newmodel, setnewmodel] = useState({})
   const setPrice = (name, value) => {
     price[`${props.value.name},${name}`] = +value
@@ -15,9 +17,11 @@ export const Model = (props) => {
     console.log(price);
   }
 
-  const setQuantity = (name, e) => {
-    console.log(name);
-    quantity[`${props.value.name},${name}`] = e.target.value
+  const setQuantityforSpecific = (name, value) => {
+    console.log(value);
+    quantity[`${props.value.name},${name}`] = +value
+    // console.log(letnewquantity);
+    // let mergeObject = ({ ...quantity, ...letnewquantity });
     dispatch(itemActions.setQuantity(quantity))
     console.log(quantity);
   }
@@ -91,6 +95,7 @@ export const Model = (props) => {
                                 type="text" placeholder="Insert"
                                 size="large" resize="vertical" rows="2" minrows="2"
                                 restrictiontype="value" max="Infinity" min="-Infinity" isround="true"
+
                                 class="product-input__input"
                                 onChange={(e) => setPrice(v.name, e.target.value)}
                               ></input>
@@ -147,7 +152,7 @@ export const Model = (props) => {
                                 size="large" resize="vertical" rows="2" minrows="2"
                                 restrictiontype="value" max="Infinity" min="-Infinity" isround="true"
                                 class="product-input__input"
-                                onChange={(e) => setQuantity(v.name, e)}
+                                onChange={(e) => setQuantityforSpecific(v.name, e.target.value)}
                               />
                             </div>
                           </div>
@@ -188,7 +193,7 @@ export const Model = (props) => {
                               <input type="text" placeholder="Insert" size="large" resize="vertical" rows="2"
                                 minrows="2" restrictiontype="value" max="Infinity" min="-Infinity" isround="true"
                                 class="product-input__input"
-                                onChange={(e) => setQuantity(v.name, e)} />
+                              />
                             </div>
                           </div>
                         </div>

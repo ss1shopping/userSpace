@@ -104,7 +104,7 @@ const HeaderLogin = (props) => {
                 <div className="header" onMouseLeave={() => setstatus(false)}>
                   <div className="header--name" onMouseOver={() => setstatus(true)}>Manh tien465</div>
                   <div className="box--hidden" style={status ? { display: "block" } : { display: "none" }}>
-                    <div className="link"> <Nav.Link href="/infor">tai koan qua toi</Nav.Link></div>
+                    <div className="link"> <Nav.Link href="/users/profile">tai koan qua toi</Nav.Link></div>
                     <div className="link"><Nav.Link href="/history"> don mua</Nav.Link></div>
                     <div className="link"><Nav.Link href="/" onClick={() => handleLogout()}> dang xuat</Nav.Link></div>
                   </div>

@@ -14,21 +14,26 @@ export const AddProduct = () => {
     const dispatch = useDispatch()
     let [status, setStatus] = useState(false)
     let [addGroup, setAddGroup] = useState(false)
-    const [numberGroup1, setnumberGroup1] = useState(1)
-    const [numberGroup2, setnumberGroup2] = useState(1)
+    const [numberGroup1, setnumberGroup1] = useState(0)
+    const [numberGroup2, setnumberGroup2] = useState(0)
     const [productName, setproductName] = useState("")
     const [desc, setdesc] = useState("")
     let [attributes, setattribute] = useState([])
     const [quantity, setquantity] = useState(0)
     const [newModel, setnewModel] = useState([])
     const [listImage, setlistImage] = useState([])
+    const [tier_varaitionLength, settier_varaitionLength] = useState()
+    const [tier_varaitionLength1, settier_varaitionLength1] = useState()
+    const [tier_varaitionStatus, settier_varaitionStatus] = useState(true)
+    const [tier_varaitionStatus1, settier_varaitionStatus1] = useState(true)
     const price = useSelector(state => state.itemReducer.price)
     const chooseCategoryToAdd = useSelector(state => state.categoryReducer.chooseCategoryToAdd)
     const tier_variations = useSelector(state => state.itemReducer.tier_variations)
     const model = useSelector(state => state.itemReducer.model)
     const model1 = useSelector(state => state.itemReducer.model1)
     const urlImage = useSelector(state => state.itemReducer.urlImage)
-    let listGroup2 = [];
+    const quantity1 = useSelector(state => state.itemReducer.quantity)
+
     const uploadImage = (formData) => {
         const config = {
             header: { "content-type": "multiple/form-data" }
@@ -45,18 +50,19 @@ export const AddProduct = () => {
     }
     const handleType = () => {
         setStatus(!status)
-
+        setnumberGroup1(1)
     }
 
     const handleGroupAdd = () => {
         setAddGroup(!addGroup)
+        setnumberGroup2(1)
     }
     const handleAddAtrributes = (index, name, value) => {
         let newobject = {
             name, value
         }
         attributes[index] = newobject
-        console.log(attributes);
+
     }
     const handle_SetTier_variation = (index, name) => {
         let newobj = {
@@ -64,7 +70,13 @@ export const AddProduct = () => {
             option: []
 
         }
+        if (name.length > 0) {
+            index === 1 ? settier_varaitionStatus1(false) : settier_varaitionStatus(false)
+        }
         tier_variations[index] = newobj
+        console.log(index, name);
+
+        index === 1 ? settier_varaitionLength1(name.length) : settier_varaitionLength(name.length)
         dispatch(itemActions.setTier_variations(tier_variations))
 
     }
@@ -155,16 +167,18 @@ export const AddProduct = () => {
         let newmodel = []
         model.map((v, i) => {
             model1.map((value, i) => {
-                newmodel.push({ name: `${v.name},${value.name}`, price: price[`${v.name},${value.name}`] })
+                newmodel.push({ name: `${v.name},${value.name}`, price: price[`${v.name},${value.name}`], quantity: quantity1[`${v.name},${value.name}`] })
             })
         })
         let minPrice = price[Object.keys(price)[0]]
+
         let maxprice = 0
         let null1 = true
         Object.keys(price).map((v, i) => {
 
             price[v] < minPrice ? minPrice = price[v] : null1 = true
             price[v] > maxprice ? maxprice = price[v] : null1 = true
+
         })
 
         urlImage && tier_variations.length > 0 ? tier_variations[0].images = urlImage : null1 = true
@@ -520,7 +534,7 @@ export const AddProduct = () => {
                                                                                 />
                                                                                 <div className="product-input__sulfix">
                                                                                     <span className="product-input__sulfix-split"></span>
-                                                                                    {tier_variations.length > 0 && tier_variations[0].name.length}/14
+                                                                                    {tier_varaitionLength ? tier_varaitionLength : 0}/14
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -528,7 +542,7 @@ export const AddProduct = () => {
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        {[...Array(numberGroup1)].map((_, i) => <MoreOption key={i} count={i} index={0} numberOption={numberGroup1} />)}
+                                                        {[...Array(numberGroup1)].map((_, i) => <MoreOption key={i} count={i} index={0} group={"group1"} tier_varaitionStatus={tier_varaitionStatus} numberOption={numberGroup1} />)}
 
                                                         <div className="btn-type-container">
                                                             <div className="edit-label"></div>
@@ -605,7 +619,7 @@ export const AddProduct = () => {
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        {[...Array(numberGroup2)].map((_, i) => <MoreOption key={i} count={i} index={1} numberOption={numberGroup2} />)}
+                                                        {[...Array(numberGroup2)].map((_, i) => <MoreOption key={i} count={i} index={1} tier_varaitionStatus1={tier_varaitionStatus1} numberOption={numberGroup2} />)}
                                                         <div className="btn-type-container">
                                                             <div className="edit-label"></div>
                                                             <div class="edit-type-add">
@@ -697,7 +711,7 @@ export const AddProduct = () => {
                                                             {
                                                                 model && model.map((v, i) => {
                                                                     return (
-                                                                        <Model value={v} key={i}></Model>
+                                                                        <Model value={v} key={i} index={i} quantity={quantity}></Model>
                                                                     )
                                                                 })
                                                             }

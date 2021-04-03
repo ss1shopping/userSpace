@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { itemActions } from '../../../../../app/store/ducks/itemReducer'
 
 export const MoreOption = (props) => {
 
   const dispatch = useDispatch()
+  const [status, setstatus] = useState(false)
   const tier_variations = useSelector(state => state.itemReducer.tier_variations)
   const [listModel, setlistModel] = useState([])
   const [listModel1, setlistModel1] = useState([])
@@ -22,7 +23,7 @@ export const MoreOption = (props) => {
 
   }
   const handleSetOptionTierVationation = (index, indexOption, option) => {
-
+    console.log(index, indexOption, option);
     let Listnewmodel = [];
     if (index == 0) {
 
@@ -40,6 +41,11 @@ export const MoreOption = (props) => {
     tier_variations[index].option[indexOption] = option
     dispatch(itemActions.setTier_variations(tier_variations))
   }
+  useEffect(() => {
+
+    props.index === 1 ? setstatus(props.tier_varaitionStatus1) : setstatus(props.tier_varaitionStatus2)
+
+  }, [props.tier_varaitionStatus1, props.tier_varaitionStatus])
   return (
     <>
 
@@ -52,7 +58,9 @@ export const MoreOption = (props) => {
             <div className="product-edit-content">
               <div className="product-input">
                 <div className="product-input__inner">
-                  <input type="text" placeholder="Input classification, such as Red, White,etc." size="large" resize="none" rows="2" minrows="2" maxlength="Infinity" restrictiontype="input" max="Infinity" min="-Infinity" class="product-input__input"
+                  <input type="text" placeholder="Input classification, such as Red, White,etc." size="large" resize="none" rows="2"
+                    minrows="2" maxlength="Infinity" restrictiontype="input" max="Infinity" min="-Infinity" class="product-input__input"
+                    disabled={status}
                     onChange={(e) => handleSetOptionTierVationation(props.index, props.count, e.target.value)}
                   />
                   <div className="product-input__sulfix">
