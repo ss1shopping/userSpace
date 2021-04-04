@@ -128,7 +128,7 @@ function* getCurrentUser() {
   }
 }
 function* updateUser({ payload }) {
-  const { id, firstname, lastname, email, phoneNumber, gender, address, dob } = payload
+  const { id, firstname, lastname, email, phoneNumber, gender, address, dob, avatar } = payload
   const updateuser = {
     id
   }
@@ -140,6 +140,7 @@ function* updateUser({ payload }) {
   gender ? updateuser.gender = gender : null1 = true
   address ? updateuser.address = address : null1 = true
   dob ? updateuser.dob = dob : null1 = true
+  avatar ? updateuser.avatar = avatar : null1 = true
   try {
     const response = yield call(UpdateUser, updateuser)
     yield put(authActions.UpdateUserSuccessFull(response.data))

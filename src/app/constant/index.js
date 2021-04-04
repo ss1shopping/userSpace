@@ -44,7 +44,15 @@ export const itemActionTypes = {
   setModel1: '[set model1 of item]',
   setTotalModel: '[set total model]',
   setprice: "[set price]",
-  setQuantity: "[set quantity]"
+  setQuantity: "[set quantity]",
+
+
+  updateModel: '[updatemodel]',
+  updateModelSuccessful: '[updatemodel Successful]',
+  updateTier_variation: "[update variations]",
+  updateTier_variationSuccesful: "[update variations Succesfull]",
+
+  loadImage: "[load image]"
 }
 export const authActionTypes = {
   Login: '[Login] Action',

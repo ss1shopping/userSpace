@@ -8,13 +8,14 @@ export const Model = (props) => {
   const price = useSelector(state => state.itemReducer.price)
   const quantity = useSelector(state => state.itemReducer.quantity)
   const tier_variations = useSelector(state => state.itemReducer.tier_variations)
+  const detailItem = useSelector(state => state.itemReducer.detailItem)
   let letnewquantity = {}
   console.log(props);
   const [newmodel, setnewmodel] = useState({})
   const setPrice = (name, value) => {
     price[`${props.value.name},${name}`] = +value
     dispatch(itemActions.setprice(price))
-    console.log(price);
+
   }
 
   const setQuantityforSpecific = (name, value) => {
@@ -23,9 +24,11 @@ export const Model = (props) => {
     // console.log(letnewquantity);
     // let mergeObject = ({ ...quantity, ...letnewquantity });
     dispatch(itemActions.setQuantity(quantity))
-    console.log(quantity);
-  }
 
+  }
+  useEffect(() => {
+
+  }, [])
 
   return (
     <div className="row">
@@ -38,7 +41,7 @@ export const Model = (props) => {
             {
               model1 && model1.map((v, i) => {
                 return (
-                  <div className="table-cell" style={{ width: "100%" }}>
+                  <div className="table-cell" style={{ width: "100%" }} key={i}>
                     <div className="table-cell__variation-model">
                       <div className="table-cell__edit">
                         <div className="product-input-wrapper">
@@ -81,7 +84,7 @@ export const Model = (props) => {
             {
               model1 && model1.map((v, i) => {
                 return (
-                  <div className="table-cell">
+                  <div className="table-cell" key={i}>
                     <div className="table-cell__variation-model">
                       <div className="table-cell__edit">
                         <div className="product-input-wrapper">
@@ -95,7 +98,7 @@ export const Model = (props) => {
                                 type="text" placeholder="Insert"
                                 size="large" resize="vertical" rows="2" minrows="2"
                                 restrictiontype="value" max="Infinity" min="-Infinity" isround="true"
-
+                                defaultValue={price && price[`${props.value.name},${v.name}`]}
                                 class="product-input__input"
                                 onChange={(e) => setPrice(v.name, e.target.value)}
                               ></input>
@@ -138,7 +141,7 @@ export const Model = (props) => {
             {
               model1 && model1.map((v, i) => {
                 return (
-                  <div className="table-cell">
+                  <div className="table-cell" key={i}>
                     <div className="table-cell__variation-model">
                       <div className="table-cell__edit">
                         <div className="product-input-wrapper">
@@ -152,6 +155,7 @@ export const Model = (props) => {
                                 size="large" resize="vertical" rows="2" minrows="2"
                                 restrictiontype="value" max="Infinity" min="-Infinity" isround="true"
                                 class="product-input__input"
+                                defaultValue={quantity && quantity[`${props.value.name},${v.name}`]}
                                 onChange={(e) => setQuantityforSpecific(v.name, e.target.value)}
                               />
                             </div>

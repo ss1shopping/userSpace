@@ -15,11 +15,15 @@ export const API_URLS = {
   GET_ITEMS: (data) => `/item/get${data.url}`,
   SEARCH_ITEM: (data) => `/item/search${data.url}`,
   ADD_ITEM: '/item/create',
-  UPDATE_ITEM: "/item",
+  UPDATE_ITEM: "/item/update",
   DELETE_ITEM: "/item/delete",
   ADD_IMAGE_ITEM: "/item/uploadImage",
   DELETE_IMAGE_ITEM: "/shopping/upload",
 
+  UPDATE_MODEL: "/model/update",
+
+
+  UPDATE_TIER_VARIATIOM: "/tier-variation/update",
   UPDATE_VIEW: "/item/update-view",
   GET_ITEM: (data) => `/item/get-one/${data.id}`,
   ADD_TO_CART: "/cart/add",

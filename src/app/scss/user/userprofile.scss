@@ -242,7 +242,7 @@ body{
         position: relative;
     }
     &__file-input{
-        display: none;
+        // display: none;
         line-height: normal;
     }
 
@@ -259,6 +259,20 @@ body{
         line-height: 2rem;
         height: 50px;
         width: 50px;
+    }
+    .profile-image{
+        stroke: #c6c6c6;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        fill: currentColor;
+        display: inline-block;
+        transform: translate(-50%,-50%);
+        font-size: 1.5rem;
+        font-weight: 400;
+        line-height: 2rem;
+        height: 100px;
+        width: 100px;
     }
 
     .btn-img{

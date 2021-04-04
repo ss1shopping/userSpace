@@ -92,6 +92,10 @@ export const itemReducer = persistReducer(
                     ...state, isPending: !state.isPending, urlImage: [...state.urlImage, action.payload.path]
                 }
             }
+            case itemActionTypes.loadImage:
+                return {
+                    ...state, urlImage: action.payload
+                }
             case "deleteUrlImage": {
                 return {
                     ...state, urlImage: []
@@ -176,7 +180,7 @@ export const itemActions = {
     getItemSuccess: (payload) => ({ type: itemActionTypes.getItemSuccessful, payload }),
 
     itemToUpload: (payload) => ({ type: itemActionTypes.itemToUpload, payload }),
-    updateItem: (id, name, price, quantity, description, history) => ({ type: itemActionTypes.updateItem, payload: { id, name, price, quantity, description, history } }),
+    updateItem: (id, name, priceMin, priceMax, desc, attributes, category) => ({ type: itemActionTypes.updateItem, payload: { id, name, priceMin, priceMax, desc, attributes, category } }),
     updateItemSuccesfull: (payload) => ({ type: itemActionTypes.updateItemSuccesful, payload }),
 
     addImage: (formData) => ({ type: itemActionTypes.addImage, payload: { formData } }),
@@ -197,5 +201,12 @@ export const itemActions = {
     setModel1: (payload) => ({ type: itemActionTypes.setModel1, payload }),
     setTotalModel: (payload) => ({ type: itemActionTypes.setTotalModel, payload }),
     setprice: (payload) => ({ type: itemActionTypes.setprice, payload }),
-    setQuantity: (payload) => ({ type: itemActionTypes.setQuantity, payload })
+    setQuantity: (payload) => ({ type: itemActionTypes.setQuantity, payload }),
+
+    updateModel: (model) => ({ type: itemActionTypes.updateModel, payload: { model } }),
+    updateModelSuccesful: (payload) => ({ type: itemActionTypes.updateModelSuccessful, payload }),
+    updateTier_variation: (tier_variations) => ({ type: itemActionTypes.updateTier_variation, payload: { tier_variations } }),
+    updateTier_variationSuccesful: (payload) => ({ type: itemActionTypes.updateTier_variationSuccesful, payload }),
+
+    loadImage: (payload) => ({ type: itemActionTypes.loadImage, payload })
 }

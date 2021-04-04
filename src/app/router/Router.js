@@ -40,7 +40,7 @@ const Routerr = () => {
 
   useEffect(() => {
     token = getStorage("token")
-    console.log(token);
+
   }, [isPending])
 
   return (
@@ -58,6 +58,7 @@ const Routerr = () => {
         <PrivateRouter exact path="/banhang/order" component={Order}></PrivateRouter>
         <PrivateRouter exact path="/banhang/item" component={ManageItem}></PrivateRouter>
         <PrivateRouter exact path="/banhang/choose-category" component={ChooseCategory}></PrivateRouter>
+        <PrivateRouter exact path="/banhang/choose-category/:id" component={ChooseCategory}></PrivateRouter>
         <Route exact path="/banhang/add-product" component={AddProduct}></Route>
         <Route exact path="/banhang/update/item/:id" component={UpdateItem}></Route>
         <PrivateRouter exact path="/banhang/delivery" component={Delivery}></PrivateRouter>
