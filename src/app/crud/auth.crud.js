@@ -18,6 +18,10 @@ export function UpdateUser(data) {
 
   return initApi(true).put(API_URLS.UPDATE_USER, data)
 }
+export function CreateShop(data) {
+
+  return initApi(true).post(API_URLS.CREATE_SHOP, data)
+}
 
 export function activeAccount(token) {
   return initApi(false).get(API_URLS.CHECK_ACCTIVE_ACCOUNT(token))

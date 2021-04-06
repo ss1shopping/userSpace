@@ -9,7 +9,7 @@ const initialAuthState = {
   cart: [],
   itemInCart: [],
   message: null,
-
+  shop: {}
 }
 export const authReducer = persistReducer(
   { storage, key: 'userAuth1', whitelist: [] },
@@ -132,6 +132,14 @@ export const authReducer = persistReducer(
         return {
           ...state, isPending: !state.isPending, user: action.payload
         }
+      case authActionTypes.createShop:
+        return {
+          ...state, isPending: !state.isPending
+        }
+      case authActionTypes.createShoppSuccessFull:
+        return {
+          ...state, isPending: !state.isPending, shop: action.payload
+        }
       default:
         return state;
     }
@@ -181,5 +189,12 @@ export const authActions = {
   changeNewpasswordSuccessful: (payload) => ({ type: authActionTypes.ChangeNewpasswordSuccessful, payload }),
   changeNewpasswordFailure: (payload) => ({ type: authActionTypes.ChangeNewpasswordFailure, payload }),
   loadingCart: () => ({ type: authActionTypes.Loadingcart }),
-  loadingCartSuccess: (payload) => ({ type: authActionTypes.LoadingcartSuccess, payload })
+  loadingCartSuccess: (payload) => ({ type: authActionTypes.LoadingcartSuccess, payload }),
+
+
+  createShop: (name, description) => ({ type: authActionTypes.createShop, payload: { name, description } }),
+  createShoppSuccessFull: (payload) => ({ type: authActionTypes.createShopSuccessful, payload })
+
+
+
 }

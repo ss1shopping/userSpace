@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import "./checkout.styles.scss"
 // import LocationOnIcon from '@material-ui/icons/LocationOn';
 import { GoLocation } from "react-icons/go"
@@ -12,7 +12,11 @@ const Checkout = (props) => {
   const dispatch = useDispatch()
   const selectItem = useSelector(state => state.cartReducer.selectItem)
   const name = getStorage("name")
-  const address = JSON.parse(getStorage("addresses"))
+  let address = JSON.parse(getStorage("addresses"))
+  useEffect(() => {
+    address = JSON.parse(getStorage("addresses"))
+    console.log("address", address);
+  }, [])
   let totalPrice = 0
   const handleOrder = () => {
     // let arr = cart.filter(item => !selectItem.includes(item));
@@ -51,11 +55,12 @@ const Checkout = (props) => {
             <div className="checkout--body--address__header"><GoLocation />Địa chỉ nhận hàng</div>
             <div className="checkout--body--address__summary">
               <div className="checkout--address--row">
-                <div className="checkout--address--row__name"><strong> {name} {address !== "" && address[0].phoneNumber}</strong></div>
-                <div className="checkout--address--row__address"> {address[0].state}, {address[0].district}, {address[0].city}</div>
+                <div className="checkout--address--row__name"><strong> {name} {address !== "" && address[0] && address[0].phoneNumber && address[0].phoneNumber}</strong></div>
+                <div className="checkout--address--row__address"> {address[0] && address[0].state && address[0].state + ","} {address && address[0] && address[0].district && address[0].district + ","} {address && address[0] && address[0].city && address[0].city + ","}</div>
                 <div className="checkout--address--row__default"> Mặc định</div>
               </div>
-              <div className="checkout--address--selection__change">Thay đổi</div>
+              {address.length === 0 ? <div className="checkout--address--selection__change">Thêm địa chỉ </div> : <div className="checkout--address--selection__change">Thay đổi</div>}
+
             </div>
           </div>
         </div>
@@ -89,7 +94,7 @@ const Checkout = (props) => {
           <div className="total--after--ship"> Tổng thanh toán: </div>
           <div className="total--after--number"> đ{totalPrice > 0 ? totalPrice + 30000 : totalPrice}  </div>
           <div className="order">
-            <button className="btn btn--primary" onClick={() => handleOrder()}>Đặt hàng</button>
+            <button className="btn btn--primary" disabled={address.length === 0 ? true : false} onClick={() => handleOrder()}>Đặt hàng</button>
           </div>
         </div>
       </div>

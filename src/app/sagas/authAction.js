@@ -1,5 +1,5 @@
 import { takeEvery, put, call } from 'redux-saga/effects';
-import { login, register, activeAccount, GenNewToken, loadingCart, resetPassword, changeNewpassword, getCurentUser, UpdateUser } from "../crud/auth.crud";
+import { login, register, activeAccount, GenNewToken, loadingCart, resetPassword, changeNewpassword, getCurentUser, UpdateUser, CreateShop } from "../crud/auth.crud";
 import { setStorage } from "../../_metronic/utils/utils";
 import { authActions } from "../store/ducks/authReducer";
 import { authActionTypes } from "../constant/index";
@@ -150,6 +150,16 @@ function* updateUser({ payload }) {
     yield put(authActions.error(err));
   }
 }
+function* createShop({ payload }) {
+  const { name, description } = payload
+  try {
+    const response = yield call(CreateShop, { name, description })
+    yield put(authActions.createShoppSuccessFull(response.data))
+  } catch (error) {
+    const err = error.response ? error.response.data.msg : error.stack
+    yield put(authActions.error(err));
+  }
+}
 function* authSagas() {
   yield takeEvery(authActionTypes.Login, fetchLogin);
   yield takeEvery(authActionTypes.Register, fetchRegister);
@@ -157,6 +167,7 @@ function* authSagas() {
   yield takeEvery(authActionTypes.Updateuser, updateUser)
   yield takeEvery(authActionTypes.activeAccount, fetchactiveAccount)
   yield takeEvery(authActionTypes.refreshToken, fetchRefreshToken)
+  yield takeEvery(authActionTypes.createShop, createShop)
   yield takeEvery(authActionTypes.Loadingcart, loadingcart)
   yield takeEvery(authActionTypes.ResetPassword, forgotpassword)
   yield takeEvery(authActionTypes.ChangeNewpassword, changeNewPassword)

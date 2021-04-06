@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { itemActions } from '../../../../app/store/ducks/itemReducer'
 import ReactPaginate from 'react-paginate';
 import { Link } from 'react-router-dom'
+import { getStorage } from '../../../../_metronic'
 export const ManageItem = () => {
   const dispatch = useDispatch()
   const [page, setpage] = useState(1)
@@ -24,7 +25,7 @@ export const ManageItem = () => {
     }
   }
   useEffect(() => {
-    dispatch(itemActions.loadingitem(page, sort))
+    dispatch(itemActions.loadingitem(page, sort, getStorage("shopId")))
 
   }, [page, sort])
   return (

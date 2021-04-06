@@ -81,6 +81,10 @@ export const UserProfile = () => {
         setDobConvert(currentDate)
 
     }
+    const handleCreateShop = () => {
+        dispatch(authActions.createShop(user && user.lastname))
+        setchange(!change)
+    }
     const handleSubmit = () => {
         let null1 = true
 
@@ -268,7 +272,8 @@ export const UserProfile = () => {
                                                     <div className="input-with-validator-wrapper">
                                                         <div className="input-with-validator">
                                                             <input type="text" placeholder="" maxlength="255" defaultValue={user && user.shopId && user.shopId.name} onChange={(e) => setShopName(e.target.value)} />
-                                                            <button className="btn-change">Create Shop</button>
+                                                            {user && user.shopId ? "" : <button className="btn-change" onClick={() => handleCreateShop()}>Create Shop</button>}
+
                                                         </div>
                                                     </div>
                                                 </div>

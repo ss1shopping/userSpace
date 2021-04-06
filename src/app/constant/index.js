@@ -86,7 +86,10 @@ export const authActionTypes = {
   getCurrentUserSuccessful: "[getCurrentUserSuccessful]",
 
   Updateuser: "[update user]",
-  UpdateUserSuccessFull: "[update user successful]"
+  UpdateUserSuccessFull: "[update user successful]",
+
+  createShop: "[create shop]",
+  createShopSuccessful: "[create shop succesful]"
 };
 export const totalActionTypes = {
   loadingInforChart: '[Action Loading Infor Chart]',
@@ -171,4 +174,9 @@ export const categoryActionTypes = {
   getCategorySuccessFul: '[get category successful]',
   fail: "[category fail]",
   chooseCategoryToAdd: "[choose category]"
+}
+export const shopActionTypes = {
+
+  createShop: "[create shop]",
+  createShopSuccessful: "[create shop succesful]"
 }

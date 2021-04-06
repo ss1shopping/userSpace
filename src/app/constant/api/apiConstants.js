@@ -22,6 +22,7 @@ export const API_URLS = {
 
   UPDATE_MODEL: "/model/update",
 
+  CREATE_SHOP: "/shop/create",
 
   UPDATE_TIER_VARIATIOM: "/tier-variation/update",
   UPDATE_VIEW: "/item/update-view",
