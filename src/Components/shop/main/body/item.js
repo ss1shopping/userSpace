@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { itemActions } from '../../../../app/store/ducks/itemReducer'
 import ReactPaginate from 'react-paginate';
 import { Link } from 'react-router-dom'
+import { getStorage } from '../../../../_metronic'
 export const ManageItem = () => {
   const dispatch = useDispatch()
   const [page, setpage] = useState(1)
@@ -24,9 +25,9 @@ export const ManageItem = () => {
     }
   }
   useEffect(() => {
-    dispatch(itemActions.loadingitem(page, sort, order))
+    dispatch(itemActions.loadingitem(page, sort, getStorage("shopId")))
 
-  }, [page, sort, order])
+  }, [page, sort])
   return (
 
     <DefaultLayout>
@@ -61,7 +62,7 @@ export const ManageItem = () => {
                       <th>{value.category[value.category.length - 1].name}</th>
                       <th>{value.priceMin}-{value.priceMax}</th>
                       <th>{value.sold}</th>
-                      <th> <Link to={`/update/item${value._id}`} className="btn btn--outline">Sửa thông tin</Link>  </th>
+                      <th> <Link to={`/banhang/update/item/${value._id}`} className="btn btn--outline">Sửa thông tin</Link>  </th>
                     </tr>
                   )
                 })

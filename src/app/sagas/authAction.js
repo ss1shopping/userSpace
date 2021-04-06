@@ -1,5 +1,5 @@
 import { takeEvery, put, call } from 'redux-saga/effects';
-import { login, register, activeAccount, GenNewToken, loadingCart, resetPassword, changeNewpassword, getCurentUser, UpdateUser } from "../crud/auth.crud";
+import { login, register, activeAccount, GenNewToken, loadingCart, resetPassword, changeNewpassword, getCurentUser, UpdateUser, CreateShop } from "../crud/auth.crud";
 import { setStorage } from "../../_metronic/utils/utils";
 import { authActions } from "../store/ducks/authReducer";
 import { authActionTypes } from "../constant/index";
@@ -128,7 +128,7 @@ function* getCurrentUser() {
   }
 }
 function* updateUser({ payload }) {
-  const { id, firstname, lastname, email, phoneNumber, gender, address, dob } = payload
+  const { id, firstname, lastname, email, phoneNumber, gender, address, dob, avatar } = payload
   const updateuser = {
     id
   }
@@ -140,11 +140,22 @@ function* updateUser({ payload }) {
   gender ? updateuser.gender = gender : null1 = true
   address ? updateuser.address = address : null1 = true
   dob ? updateuser.dob = dob : null1 = true
+  avatar ? updateuser.avatar = avatar : null1 = true
   try {
     const response = yield call(UpdateUser, updateuser)
     yield put(authActions.UpdateUserSuccessFull(response.data))
   } catch (error) {
     console.log(error.response);
+    const err = error.response ? error.response.data.msg : error.stack
+    yield put(authActions.error(err));
+  }
+}
+function* createShop({ payload }) {
+  const { name, description } = payload
+  try {
+    const response = yield call(CreateShop, { name, description })
+    yield put(authActions.createShoppSuccessFull(response.data))
+  } catch (error) {
     const err = error.response ? error.response.data.msg : error.stack
     yield put(authActions.error(err));
   }
@@ -156,6 +167,7 @@ function* authSagas() {
   yield takeEvery(authActionTypes.Updateuser, updateUser)
   yield takeEvery(authActionTypes.activeAccount, fetchactiveAccount)
   yield takeEvery(authActionTypes.refreshToken, fetchRefreshToken)
+  yield takeEvery(authActionTypes.createShop, createShop)
   yield takeEvery(authActionTypes.Loadingcart, loadingcart)
   yield takeEvery(authActionTypes.ResetPassword, forgotpassword)
   yield takeEvery(authActionTypes.ChangeNewpassword, changeNewPassword)

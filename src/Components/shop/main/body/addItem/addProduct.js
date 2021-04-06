@@ -741,7 +741,7 @@ export const AddProduct = () => {
                                                                     <div className="file-upload">
                                                                         <div className="file-upload__wrapper">
                                                                             <input type="file" name="file" number={0} className="file-upload__input" id="image-upload" onChange={(e) => handleUploadImage(e, 0)} />
-                                                                            <img src={listImage[0]}/>
+                                                                            <img src={listImage[0]} />
                                                                             <div className="file-upload__content">
                                                                                 <i className="upload-icon">
                                                                                     <svg viewBox="0 0 31 31" xmlns="http://www.w3.org/2000/svg">
@@ -771,6 +771,7 @@ export const AddProduct = () => {
                                                                     <div className="file-upload">
                                                                         <div className="file-upload__wrapper">
                                                                             <input type="file" name="file" number={1} className="file-upload__input" id="image-upload" onChange={(e) => handleUploadImage1(e, 1)} />
+                                                                            <img src={listImage[1]} />
                                                                             <div className="file-upload__content">
                                                                                 <i className="upload-icon">
                                                                                     <svg viewBox="0 0 31 31" xmlns="http://www.w3.org/2000/svg">
@@ -801,6 +802,7 @@ export const AddProduct = () => {
                                                                     <div className="file-upload">
                                                                         <div className="file-upload__wrapper">
                                                                             <input type="file" name="file" className="file-upload__input" id="image-upload" onChange={(e) => handleUploadImage2(e, 2)} />
+                                                                            <img src={listImage[2]} />
                                                                             <div className="file-upload__content">
                                                                                 <i className="upload-icon">
                                                                                     <svg viewBox="0 0 31 31" xmlns="http://www.w3.org/2000/svg">
@@ -830,6 +832,7 @@ export const AddProduct = () => {
                                                                     <div className="file-upload">
                                                                         <div className="file-upload__wrapper">
                                                                             <input type="file" name="file" className="file-upload__input" id="image-upload" onChange={(e) => handleUploadImage3(e, 3)} />
+                                                                            <img src={listImage[3]} />
                                                                             <div className="file-upload__content">
                                                                                 <i className="upload-icon">
                                                                                     <svg viewBox="0 0 31 31" xmlns="http://www.w3.org/2000/svg">
@@ -859,6 +862,7 @@ export const AddProduct = () => {
                                                                     <div className="file-upload">
                                                                         <div className="file-upload__wrapper">
                                                                             <input type="file" name="file" className="file-upload__input" id="image-upload" onChange={(e) => handleUploadImage(e, 4)} />
+                                                                            <img src={listImage[4]} />
                                                                             <div className="file-upload__content">
                                                                                 <i className="upload-icon">
                                                                                     <svg viewBox="0 0 31 31" xmlns="http://www.w3.org/2000/svg">
@@ -888,6 +892,7 @@ export const AddProduct = () => {
                                                                     <div className="file-upload">
                                                                         <div className="file-upload__wrapper">
                                                                             <input type="file" name="file" className="file-upload__input" id="image-upload" onChange={(e) => handleUploadImage(e, 5)} />
+                                                                            <img src={listImage[5]} />
                                                                             <div className="file-upload__content">
                                                                                 <i className="upload-icon">
                                                                                     <svg viewBox="0 0 31 31" xmlns="http://www.w3.org/2000/svg">
@@ -917,6 +922,7 @@ export const AddProduct = () => {
                                                                     <div className="file-upload">
                                                                         <div className="file-upload__wrapper">
                                                                             <input type="file" name="file" className="file-upload__input" id="image-upload" onChange={(e) => handleUploadImage(e, 6)} />
+                                                                            <img src={listImage[6]} />
                                                                             <div className="file-upload__content">
                                                                                 <i className="upload-icon">
                                                                                     <svg viewBox="0 0 31 31" xmlns="http://www.w3.org/2000/svg">
@@ -946,6 +952,7 @@ export const AddProduct = () => {
                                                                     <div className="file-upload">
                                                                         <div className="file-upload__wrapper">
                                                                             <input type="file" name="file" className="file-upload__input" id="image-upload" onChange={(e) => handleUploadImage(e, 7)} />
+                                                                            <img src={listImage[7]} />
                                                                             <div className="file-upload__content">
                                                                                 <i className="upload-icon">
                                                                                     <svg viewBox="0 0 31 31" xmlns="http://www.w3.org/2000/svg">

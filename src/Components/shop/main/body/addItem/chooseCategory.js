@@ -5,7 +5,8 @@ import { categoryActions } from '../../../../../app/store/ducks/categoryReducer'
 import { DefaultLayout } from '../../defaultLayout'
 import { DefaultLayout2 } from "../DefaultLayout2"
 import { Link } from 'react-router-dom'
-export const ChooseCategory = () => {
+export const ChooseCategory = (props) => {
+  console.log(props);
   const dispatch = useDispatch()
   let chooseCategoryToAdd = useSelector(state => state.categoryReducer.chooseCategoryToAdd)
   const itemToUpload = useSelector(state => state.itemReducer.itemToUpload)
@@ -201,7 +202,7 @@ export const ChooseCategory = () => {
               </span>
             </div>
           </div>
-          <Link to="/banhang/add-product" type="button" disabled={itemToUpload.name ? true : false} class="cate-confirm-btn">
+          <Link to={props.match.params.id ? `/banhang/update/item/${props.match.params.id}` : "/banhang/add-product"} type="button" disabled={itemToUpload.name ? true : false} class="cate-confirm-btn">
             <span>Next</span>
           </Link>
         </div>

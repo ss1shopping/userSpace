@@ -1,6 +1,6 @@
 import { takeEvery, put, call } from 'redux-saga/effects';
 import { itemActions } from "../store/ducks/itemReducer";
-import { getdata, addItem, getItem, updateItem, addImage, searchItem, updateView, deleteItem } from "../crud/item.crud";
+import { getdata, addItem, getItem, updateItem, addImage, searchItem, updateView, updateTier_variation, updateModel, deleteItem } from "../crud/item.crud";
 import { loadingCart } from "../crud/auth.crud";
 import { itemActionTypes } from '../constant/index';
 import { getStorage } from "../../_metronic/utils/utils"
@@ -8,7 +8,7 @@ import { authActions } from '../store/ducks/authReducer';
 import { rateActions } from '../store/ducks/ratingReducer';
 function* featchItem({ payload }) {
     let { page, sortBy, shopId, name } = payload
-    console.log(page);
+
     try {
         let url = "";
         let null1 = true;
@@ -44,12 +44,12 @@ function* additem({ payload }) {
 }
 
 function* updateitem({ payload }) {
-    const { id, name, price, quantity, description, history } = payload;
+    const { id, name, priceMin, priceMax, desc, attributes, category } = payload;
     try {
-        const result = yield call(updateItem, { id, name, price, quantity, description })
+        const result = yield call(updateItem, { id, name, priceMin, priceMax, desc, attributes, category })
         console.log(result);
         yield put(itemActions.updateItemSuccesfull(result.data))
-        history.push("/dashboard/item")
+        // history.push("/dashboard/item")
     } catch (err) {
         const error = err.response ? err.response.data.msg : err.stack
         yield put(itemActions.loadingInforFailure(error))
@@ -77,7 +77,7 @@ function* getitem({ payload }) {
     try {
 
         const response = yield call(getItem, { id })
-        console.log(response.data._id);
+
         yield put(itemActions.getItemSuccess(response.data))
         // yield put(rateActions.getRating(1, response.data._id))
 
@@ -104,7 +104,7 @@ function* searchitem({ payload }) {
         let null1 = true
         keyword ? url = `?keyword=${keyword}` : null1 = true
         const response = yield call(searchItem, { url })
-        console.log(response);
+
         yield put(itemActions.searchItemSuccessful(response.data))
     } catch (err) {
         const error = err.response ? err.response.data.msg : err.stack
@@ -112,6 +112,28 @@ function* searchitem({ payload }) {
     }
 }
 
+function* updatemodel({ payload }) {
+    const { model } = payload
+    try {
+        const response = yield call(updateModel, model)
+        yield put(itemActions.updateModelSuccesful(response.data))
+    } catch (err) {
+        const error = err.response ? err.response.data.msg : err.stack
+        yield put(itemActions.error(error));
+    }
+}
+
+function* updateTier_Variation({ payload }) {
+    const { tier_variations } = payload
+    try {
+        const response = yield call(updateTier_variation, tier_variations)
+        yield put(itemActions.updateTier_variationSuccesful(response.data))
+    } catch (err) {
+        console.log(err.response);
+        const error = err.response ? err.response.data.msg : err.stack
+        yield put(itemActions.error(error));
+    }
+}
 function* itemAction() {
     yield takeEvery(itemActionTypes.loadingitem, featchItem)
     yield takeEvery(itemActionTypes.uploadItem, additem)
@@ -120,5 +142,7 @@ function* itemAction() {
     yield takeEvery(itemActionTypes.addImage, addImages)
     yield takeEvery(itemActionTypes.deleteItem, deleleitem)
     yield takeEvery(itemActionTypes.searchItem, searchitem)
+    yield takeEvery(itemActionTypes.updateModel, updatemodel)
+    yield takeEvery(itemActionTypes.updateTier_variation, updateTier_Variation)
 }
 export default itemAction

@@ -31,6 +31,13 @@ export function deleteItem(data) {
 export function getItem(data) {
   return initApi(true).get(API_URLS.GET_ITEM(data))
 }
+export function updateModel(data) {
+  return initApi(true).put(API_URLS.UPDATE_MODEL, data)
+}
+export function updateTier_variation(data) {
+  return initApi(true).put(API_URLS.UPDATE_TIER_VARIATIOM, data)
+}
+
 
 export function updateView(data) {
   return initApi(false).post(API_URLS.UPDATE_VIEW, data)

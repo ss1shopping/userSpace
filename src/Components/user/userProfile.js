@@ -4,8 +4,11 @@ import { Link } from 'react-router-dom'
 import DefaultLayout from '../../app/layout/Defaultlayout'
 import { authActions } from '../../app/store/ducks/authReducer'
 import DatePicker from "react-datepicker";
+import Axios from 'axios'
 export const UserProfile = () => {
+
     let [profileStatus, setProfile] = useState(false)
+    const [urlAvartar, seturlAvartar] = useState()
     let [phoneStatus, setPhone] = useState(false)
     const handlePhone = () => {
         setPhone(!phoneStatus)
@@ -19,7 +22,6 @@ export const UserProfile = () => {
     }
 
 
-
     const dispatch = useDispatch()
     const user = useSelector(state => state.authReducer.user)
     const [firstName, setfirstName] = useState("")
@@ -29,16 +31,42 @@ export const UserProfile = () => {
     const [shopName, setShopName] = useState("")
     const [gender, setGender] = useState("")
     const [dob, setDob] = useState(null)
+    const [avatar, setavatar] = useState("")
     const [dobConvert, setDobConvert] = useState(null)
     const [change, setchange] = useState(true)
+    const uploadImage = (formData) => {
+        const config = {
+            header: { "content-type": "multiple/form-data" }
+        }
+
+        Axios.post("http://localhost:4000/item/uploadImage", formData, config)
+            .then(res => {
+
+                setavatar(res.data.path)
+
+            }
+            )
+
+    }
+    const chooseAvatar = (e) => {
+        let objectUrl = URL.createObjectURL(e.target.files[0])
+        seturlAvartar(objectUrl)
+        var formData = new FormData()
+        formData.append("file", e.target.files[0])
+        uploadImage(formData)
+    }
+
     useEffect(() => {
         dispatch(authActions.currentUser())
-        setTimeout(() => {
 
-            user ? setDob(new Date(user.dob)) : setDob(new Date())
-        }, 1000);
+
     }, [change])
+    useEffect(() => {
+        user && user.avatar && seturlAvartar(user && user.avatar && "http://localhost:4000/" + user.avatar)
+        user && user.dob && setDob(new Date(user.dob))
+        user && user.gender && setGender(user.gender)
 
+    }, [change, user])
     const ConvertDob = (value) => {
         console.log(value);
         var twoDigitMonth = (value.getMonth() + 1) + "";
@@ -51,6 +79,11 @@ export const UserProfile = () => {
 
         setDob(value)
         setDobConvert(currentDate)
+
+    }
+    const handleCreateShop = () => {
+        dispatch(authActions.createShop(user && user.lastname))
+        setchange(!change)
     }
     const handleSubmit = () => {
         let null1 = true
@@ -62,14 +95,19 @@ export const UserProfile = () => {
         phoneNumber ? null1 = true : setphoneNumber(user.phoneNumber)
         gender ? null1 = true : setGender(user.gender)
         dobConvert ? null1 = true : setDobConvert(user.dob)
+        avatar ? null1 = true : setavatar(user.avatar)
         // console.log(dob);
-        dispatch(authActions.updateUser(user._id, firstName, lastName, email, phoneNumber, gender, "", dobConvert))
+        dispatch(authActions.updateUser(user._id, firstName, lastName, email, phoneNumber, gender, "", dobConvert, avatar))
         setchange(!change)
         setfirstName("")
         setlastName("")
         setEmail("")
         setphoneNumber("")
         setGender("")
+        setPhone(false)
+        setProfile(false)
+        setMail(false)
+
         // setDob(user ? new Date(user.dob) : new Date(user.dob))
     }
     return (
@@ -91,7 +129,7 @@ export const UserProfile = () => {
                                 </div>
                             </a>
                             <div className="user-page-brief__right">
-                                <div className="user-page-brief__username">herosd147</div>
+                                <div className="user-page-brief__username">{user && user.firstname}</div>
                                 <div>
                                     <a className="user-page-brief__edit" href="/users/profile">
                                         <svg width="12" height="12" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg" style={{ marginRight: "4px" }}>
@@ -132,8 +170,8 @@ export const UserProfile = () => {
                                 </div>
                             </div>
                             <a class="userpage-sidebar-menu-entry" href="/users/purchase">
-                                <div class="userpage-sidebar-menu-entry__icon" style={{background:"rgb(68, 181, 255)"}}>
-                                    <svg enable-background="new 0 0 15 15" viewBox="0 0 15 15" x="0" y="0" class="mini-icon " style={{fill:" rgb(255, 255, 255)"}}>
+                                <div class="userpage-sidebar-menu-entry__icon" style={{ background: "rgb(68, 181, 255)" }}>
+                                    <svg enable-background="new 0 0 15 15" viewBox="0 0 15 15" x="0" y="0" class="mini-icon " style={{ fill: " rgb(255, 255, 255)" }}>
                                         <g>
                                             <rect fill="none" height="10" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" width="8" x="4.5" y="1.5"></rect>
                                             <polyline fill="none" points="2.5 1.5 2.5 13.5 12.5 13.5" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"></polyline>
@@ -234,7 +272,12 @@ export const UserProfile = () => {
                                                     <div className="input-with-validator-wrapper">
                                                         <div className="input-with-validator">
                                                             <input type="text" placeholder="" maxlength="255" defaultValue={user && user.shopId && user.shopId.name} onChange={(e) => setShopName(e.target.value)} />
+<<<<<<< HEAD
                                                             <button className="btn-change">Create Shop</button>
+=======
+                                                            {user && user.shopId ? "" : <button className="btn-change" onClick={() => handleCreateShop()}>Create Shop</button>}
+
+>>>>>>> de257568eaeb3b1218344797ef21b90fc395ac4c
                                                         </div>
                                                     </div>
                                                 </div>
@@ -250,7 +293,7 @@ export const UserProfile = () => {
 
                                                         <div className="stardust-radio-group">
                                                             <div className="stardust-radio stardust-radio--checked" >
-                                                                <div className="stardust-radio-button stardust-radio-button--checked">
+                                                                <div className={gender === "male" ? "stardust-radio-button stardust-radio-button--checked" : "tardust-radio-button"} onClick={() => setGender("male")}>
                                                                     <div className="stardust-radio-button__outer-circle">
                                                                         <div className="stardust-radio-button__inner-circle">
                                                                             <input type="checkbox" style={{ display: "none" }} />
@@ -258,30 +301,30 @@ export const UserProfile = () => {
                                                                     </div>
                                                                 </div>
                                                                 <div className="stardust-radio__content">
-                                                                    <div className="stardust-radio__label">Male</div>
+                                                                    <div className="stardust-radio__label" onClick={() => setGender("male")}>Male</div>
                                                                 </div>
                                                             </div>
                                                             <div className="stardust-radio" >
-                                                                <div className="stardust-radio-button">
+                                                                <div className={gender === "female" ? "stardust-radio-button stardust-radio-button--checked" : "tardust-radio-button"} onClick={() => setGender("female")}>
                                                                     <div className="stardust-radio-button__outer-circle">
                                                                         <div className="stardust-radio-button__inner-circle">
                                                                             <input type="checkbox" style={{ display: "none" }} />
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                <div className="stardust-radio__content">
-                                                                    <div className="stardust-radio__label">Female</div>
+                                                                <div className="stardust-radio__content" onClick={() => setGender("female")}>
+                                                                    <div className="stardust-radio__label" >Female</div>
                                                                 </div>
                                                             </div>
                                                             <div className="stardust-radio" >
-                                                                <div className="stardust-radio-button">
+                                                                <div className={gender === "other" ? "stardust-radio-button stardust-radio-button--checked" : "tardust-radio-button"} onClick={() => setGender("other")}>
                                                                     <div className="stardust-radio-button__outer-circle">
                                                                         <div className="stardust-radio-button__inner-circle">
                                                                             <input type="checkbox" style={{ display: "none" }} />
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                <div className="stardust-radio__content">
+                                                                <div className="stardust-radio__content" onClick={() => setGender("other")}>
                                                                     <div className="stardust-radio__label">Other</div>
                                                                 </div>
                                                             </div>
@@ -317,16 +360,22 @@ export const UserProfile = () => {
                                         <div className="avatar-uploader">
                                             <div className="avatar-uploader__avatar">
                                                 <div className="avatar-uploader__placeholder">
-                                                    <svg enable-background="new 0 0 15 15" viewBox="0 0 15 15" x="0" y="0" className="profile-icon">
-                                                        <g>
-                                                            <circle cx="7.5" cy="4.5" fill="none" r="3.8" stroke-miterlimit="10"></circle>
-                                                            <path d="m1.5 14.2c0-3.3 2.7-6 6-6s6 2.7 6 6" fill="none" stroke-linecap="round" stroke-miterlimit="10"></path>
-                                                        </g>
-                                                    </svg>
+
+                                                    {
+
+                                                        urlAvartar && urlAvartar ? <img className="profile-image" src={urlAvartar} /> :
+                                                            <svg enable-background="new 0 0 15 15" viewBox="0 0 15 15" x="0" y="0" className="profile-icon">
+                                                                <g>
+                                                                    <circle cx="7.5" cy="4.5" fill="none" r="3.8" stroke-miterlimit="10"></circle>
+                                                                    <path d="m1.5 14.2c0-3.3 2.7-6 6-6s6 2.7 6 6" fill="none" stroke-linecap="round" stroke-miterlimit="10"></path>
+                                                                </g>
+                                                            </svg>
+                                                    }
                                                 </div>
                                             </div>
-                                            <input className="avatar-uploader__file-input" name="file" type="file"></input>
-                                            <button type="button" className="btn-img" >Choose Photo</button>
+                                            <input className="avatar-uploader__file-input" name="file" type="file" onChange={(e) => chooseAvatar(e)}
+                                            />
+                                            {/* <button type="button" className="btn-img" >Choose Photo</button> */}
                                             <div className="avatar-uploader__text-container">
                                                 <div className="avatar-uploader__text">Maximum file size 1 MB</div>
                                                 <div className="avatar-uploader__text">File format: .JPEG, .PNG</div></div>
@@ -350,7 +399,7 @@ export const UserProfile = () => {
                                             <div className="input-with-label__content">
                                                 <div className="input-with-validator-wrapper" style={{ width: "280px" }}>
                                                     <div className="input-with-validator">
-                                                        <input type="text" placeholder="" maxlength="255" />
+                                                        <input type="text" placeholder="" maxlength="255" onChange={(e) => setphoneNumber(e.target.value)} />
                                                     </div>
                                                 </div>
                                             </div>
@@ -358,8 +407,8 @@ export const UserProfile = () => {
                                     </div>
                                 </div>
                                 <div className="submit-profile" style={{ paddingLeft: "350px" }}>
-                                    <button type="button" className="btn-submit" aria-disabled="false">Save</button>
-                                    <button type="button" className="btn-seller" aria-disabled="false">Back</button>
+                                    <button type="button" className="btn-submit" aria-disabled="false" onClick={() => handleSubmit()}>Save</button>
+                                    <button type="button" className="btn-seller" aria-disabled="false" onClick={() => handleMail()}>Back</button>
                                 </div>
                             </div>
                             <div className="profile-section" style={mailStatus ? { display: "flex" } : { display: "none" }}>
@@ -378,7 +427,7 @@ export const UserProfile = () => {
                                             <div className="input-with-label__content">
                                                 <div className="input-with-validator-wrapper" style={{ width: "280px" }}>
                                                     <div className="input-with-validator">
-                                                        <input type="text" placeholder="" maxlength="255" />
+                                                        <input type="text" placeholder="" maxlength="255" onChange={(e) => setEmail(e.target.value)} />
                                                     </div>
                                                 </div>
                                             </div>
@@ -386,8 +435,8 @@ export const UserProfile = () => {
                                     </div>
                                 </div>
                                 <div className="submit-profile" style={{ paddingLeft: "350px" }}>
-                                    <button type="button" className="btn-submit" aria-disabled="false">Save</button>
-                                    <button type="button" className="btn-seller" aria-disabled="false">Back</button>
+                                    <button type="button" className="btn-submit" aria-disabled="false" onClick={() => handleSubmit()}>Save</button>
+                                    <button type="button" className="btn-seller" aria-disabled="false" onClick={() => handleMail()}>Back</button>
                                 </div>
                             </div>
 

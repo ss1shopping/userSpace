@@ -61,6 +61,7 @@ export const MoreOption = (props) => {
                   <input type="text" placeholder="Input classification, such as Red, White,etc." size="large" resize="none" rows="2"
                     minrows="2" maxlength="Infinity" restrictiontype="input" max="Infinity" min="-Infinity" class="product-input__input"
                     disabled={status}
+                    defaultValue={props && props.tier_variations && props.tier_variations.option[props.count]}
                     onChange={(e) => handleSetOptionTierVationation(props.index, props.count, e.target.value)}
                   />
                   <div className="product-input__sulfix">

@@ -44,7 +44,15 @@ export const itemActionTypes = {
   setModel1: '[set model1 of item]',
   setTotalModel: '[set total model]',
   setprice: "[set price]",
-  setQuantity: "[set quantity]"
+  setQuantity: "[set quantity]",
+
+
+  updateModel: '[updatemodel]',
+  updateModelSuccessful: '[updatemodel Successful]',
+  updateTier_variation: "[update variations]",
+  updateTier_variationSuccesful: "[update variations Succesfull]",
+
+  loadImage: "[load image]"
 }
 export const authActionTypes = {
   Login: '[Login] Action',
@@ -78,7 +86,10 @@ export const authActionTypes = {
   getCurrentUserSuccessful: "[getCurrentUserSuccessful]",
 
   Updateuser: "[update user]",
-  UpdateUserSuccessFull: "[update user successful]"
+  UpdateUserSuccessFull: "[update user successful]",
+
+  createShop: "[create shop]",
+  createShopSuccessful: "[create shop succesful]"
 };
 export const totalActionTypes = {
   loadingInforChart: '[Action Loading Infor Chart]',
@@ -163,4 +174,9 @@ export const categoryActionTypes = {
   getCategorySuccessFul: '[get category successful]',
   fail: "[category fail]",
   chooseCategoryToAdd: "[choose category]"
+}
+export const shopActionTypes = {
+
+  createShop: "[create shop]",
+  createShopSuccessful: "[create shop succesful]"
 }
