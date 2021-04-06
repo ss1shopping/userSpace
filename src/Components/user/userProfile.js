@@ -233,7 +233,7 @@ export const UserProfile = () => {
                                                 <div className="input-with-label__content">
                                                     <div className="input-with-validator-wrapper">
                                                         <div className="input-with-validator">
-                                                            <input type="text" placeholder="" maxlength="255" defaultValue={user && user.shopId.name} onChange={(e) => setShopName(e.target.value)} />
+                                                            <input type="text" placeholder="" maxlength="255" defaultValue={user && user.shopId && user.shopId.name} onChange={(e) => setShopName(e.target.value)} />
                                                             <button className="btn-change">Create Shop</button>
                                                         </div>
                                                     </div>
