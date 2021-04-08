@@ -52,7 +52,9 @@ export const itemActionTypes = {
   updateTier_variation: "[update variations]",
   updateTier_variationSuccesful: "[update variations Succesfull]",
 
-  loadImage: "[load image]"
+  loadImage: "[load image]",
+
+  setKeyword: "[set key word]"
 }
 export const authActionTypes = {
   Login: '[Login] Action',
@@ -135,7 +137,9 @@ export const layoutActionTypes = {
   changeNumber: "[change number layout]",
   changeTranport: "[change tranport]",
   changeOrder: '[change order]',
-  changeItem: "[cahnge item]"
+  changeItem: "[cahnge item]",
+  changeNumberProduct: "[change number product]",
+  changeNumberOrder: "[cahnge number order]"
 }
 export const cartActionTypes = {
   loadingCart: "[loading cart]",

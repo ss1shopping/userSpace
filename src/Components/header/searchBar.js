@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { BsSearch } from "react-icons/bs"
 import { useDispatch, useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 import { itemActions } from '../../app/store/ducks/itemReducer'
-export const SearchBar = () => {
+const SearchBar = (props) => {
   const dispatch = useDispatch()
   const searchItem = useSelector(state => state.itemReducer.searchItem)
   const [status, setstatus] = useState(false)
@@ -11,6 +11,7 @@ export const SearchBar = () => {
   const [keyword, setkeyword] = useState("")
   const handleChangeInput = (e) => {
     setkeyword(e)
+    dispatch(itemActions.setKeyword(e))
   }
   useEffect(() => {
 
@@ -21,12 +22,21 @@ export const SearchBar = () => {
       setstatus(!status)
     }, 500);
   }
+  const handlesearchItem = (e) => {
+    dispatch(itemActions.searchItem(keyword))
+    console.log("asdiashdiashdahsdjahsdjhas");
+    if (e.key === "Enter") {
+      // dispatch(itemActions.setKeyword(keyword))
+      props.history.push(`search?keyword=${keyword}`)
+    }
+
+  }
   return (
     <div className="header--searchbar">
       <div className="header--searchbar--box">
         <div className="header--searchbar--box--input">
           <form>
-            <input type="text" placeholder="search" onBlur={() => handleWait()} onFocus={() => setstatus(true)} onChange={(e) => handleChangeInput(e.target.value)} />
+            <input type="text" placeholder="search" onBlur={() => handleWait()} onFocus={() => setstatus(true)} onChange={(e) => handleChangeInput(e.target.value)} onKeyPress={(e) => handlesearchItem(e)} />
           </form>
         </div>
 
@@ -60,3 +70,4 @@ export const SearchBar = () => {
     </div>
   )
 }
+export default withRouter(SearchBar);

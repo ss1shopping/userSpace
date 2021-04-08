@@ -9,8 +9,11 @@ export const Item = (props) => {
   const [url, seturl] = useState(`/detail/${props.item.name}`)
   const handleChooseItem = () => {
     // seturl(`/detail/${props.item.name}`)
+    console.log(props.item);
+    let null1 = true
+    props.item._id ? props.item._id = props.id : null1 = true
     dispatch(itemActions.itemChooseToEdit(props.item))
-    setStorage("chooseItem", props.item._id)
+    props.item._id ? setStorage("chooseItem", props.id) : setStorage("chooseItem", props.item._id)
   }
   return (
     <div class="suggest-item-outer">
@@ -18,7 +21,7 @@ export const Item = (props) => {
         <div class="item-wrap">
           <div class="item">
             <div class="item-img">
-              <img src={props.item.tier_variations[0] && "http://localhost:4000/" + props.item.tier_variations[0].images[0]} class="img-product" />
+              <img src={props.item && props.item.tier_variations && props.item.tier_variations[0] && "http://localhost:4000/" + props.item.tier_variations[0].images[0]} class="img-product" />
             </div>
 
             <div class="txt-box">

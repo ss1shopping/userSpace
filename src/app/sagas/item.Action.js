@@ -17,7 +17,7 @@ function* featchItem({ payload }) {
         // order ? url = url + `&order=${order}` : url = url + `&order=_ASC`
         // let shopId = getStorage("shopId")
         shopId ? url = url + `&shopId=${shopId}` : null1 = true
-        name ? url = url + `&name${name}` : null1 = true
+        name ? url = url + `&name=${name}` : null1 = true
         const result = yield call(getdata, { url })
         console.log("action>", result);
         yield put(itemActions.loadingsuccess(result.data.data))

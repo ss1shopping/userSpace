@@ -6,6 +6,7 @@ import { IoBagHandleOutline } from "react-icons/io"
 import { Link } from "react-router-dom"
 import { layoutActions } from '../../../app/store/ducks/layoutReducer'
 import { useDispatch, useSelector } from "react-redux"
+import { orderActions } from '../../../app/store/ducks/orderReducer'
 export const Navbar = (props) => {
   const dispatch = useDispatch()
   const number = useSelector(state => state.layoutReducer.number)
@@ -13,8 +14,27 @@ export const Navbar = (props) => {
   const order = useSelector(state => state.layoutReducer.order)
   const product = useSelector(state => state.layoutReducer.product)
   // const [number, setNumber] = useState(4)
-  const handleLink = () => {
-
+  const handleLink = (value) => {
+    dispatch(layoutActions.changeNumber(value))
+    if (value === 4) {
+      dispatch(layoutActions.changeNumberOrder(1))
+      dispatch(orderActions.setIsCancelled(false))
+    }
+    if (value === 5) {
+      dispatch(layoutActions.changeNumberOrder(6))
+      dispatch(orderActions.setIsCancelled(true))
+    }
+    if (value === 6) {
+      dispatch(layoutActions.changeNumberOrder(7))
+      dispatch(orderActions.setIsCancelled(false))
+    }
+    // dispatch(orderActions.setIsCancelled(false))
+  }
+  const handleLinkProduct = (value) => {
+    dispatch(layoutActions.changeNumber(value))
+    let null1 = true
+    value === 7 ? dispatch(layoutActions.changeNumberProduct(1)) : null1 = true
+    value === 9 ? dispatch(layoutActions.changeNumberProduct(4)) : null1 = true
   }
   return (
     <div className="shop--navbar">
@@ -51,17 +71,17 @@ export const Navbar = (props) => {
         </div>
         <div className="order--droplist" style={order ? { display: "block" } : { display: "none" }}>
           <div className={number === 4 ? "tranport--droplist--link active" : "tranport--droplist--link"}>
-            <Link to="/banhang/order" onClick={() => dispatch(layoutActions.changeNumber(4))}>
+            <Link to="/banhang/order" onClick={() => handleLink(4)}>
               Tất cả
             </Link>
           </div>
           <div className={number === 5 ? "tranport--droplist--link active" : "tranport--droplist--link"}>
-            <Link onClick={() => dispatch(layoutActions.changeNumber(5))}>
+            <Link to="/banhang/order" onClick={() => handleLink(5)}>
               Đơn huỷ
             </Link>
           </div>
           <div className={number === 6 ? "tranport--droplist--link active" : "tranport--droplist--link"}>
-            <Link onClick={() => dispatch(layoutActions.changeNumber(6))}>
+            <Link to="/banhang/order" onClick={() => handleLink(6)}>
               Trả hàng/ hoàn tiền
             </Link>
           </div>
@@ -75,17 +95,17 @@ export const Navbar = (props) => {
         </div>
         <div className="product--droplist" style={product ? { display: "block" } : { display: "none" }}>
           <div className={number === 7 ? "tranport--droplist--link active" : "tranport--droplist--link"}>
-            <Link to="/banhang/item" onClick={() => dispatch(layoutActions.changeNumber(7))}>
+            <Link to="/banhang/item" onClick={() => handleLinkProduct(7)}>
               Tất Cả Sản Phẩm
             </Link>
           </div>
           <div className="tranport--droplist--link">
-            <Link>
+            <Link to="/banhang/choose-category">
               Thêm Sản Phẩm
             </Link>
           </div>
           <div className="tranport--droplist--link">
-            <Link>
+            <Link to="/banhang/item" onClick={() => handleLinkProduct(9)}>
               Sản Phẩm Vi Phạm
             </Link>
           </div>
