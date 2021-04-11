@@ -22,6 +22,7 @@ const initialAuthState = {
     totalModel: [],
     price: {},
     quantity: {},
+    keyword: ""
 }
 export const itemReducer = persistReducer(
     { storage, key: 'item', whitelist: [] },
@@ -155,6 +156,10 @@ export const itemReducer = persistReducer(
                 return {
                     ...state, quantity: action.payload
                 }
+            case itemActionTypes.setKeyword:
+                return {
+                    ...state, keyword: action.payload
+                }
             default:
                 return state;
         }
@@ -208,5 +213,6 @@ export const itemActions = {
     updateTier_variation: (tier_variations) => ({ type: itemActionTypes.updateTier_variation, payload: { tier_variations } }),
     updateTier_variationSuccesful: (payload) => ({ type: itemActionTypes.updateTier_variationSuccesful, payload }),
 
-    loadImage: (payload) => ({ type: itemActionTypes.loadImage, payload })
+    loadImage: (payload) => ({ type: itemActionTypes.loadImage, payload }),
+    setKeyword: (payload) => ({ type: itemActionTypes.setKeyword, payload })
 }

@@ -13,7 +13,7 @@ import getStorage from 'redux-persist/es/storage/getStorage';
 // import { Link } from "react-router-dom"
 // import { authActions } from '../../app/store/ducks/authReducer'
 import { removeStorage } from '../../_metronic/utils/utils';
-import { SearchBar } from './searchBar';
+import SearchBar from './searchBar';
 function getWindowDimensions() {
   const { innerWidth: width, innerHeight: height } = window;
   return {
@@ -40,6 +40,8 @@ const HeaderLogin = (props) => {
 
   const DarkmodeStatus = useSelector(state => state.layoutReducer.DarkmodeStatus);
   const cart = useSelector(state => state.itemReducer.itemInCart)
+  const user = useSelector(state => state.authReducer.user)
+  const [name, setname] = useState("")
   const [cartState, setcartState] = useState()
   const [numberOnCart, setNumberOnCart] = useState(0)
   const [status, setstatus] = useState(false)
@@ -65,7 +67,10 @@ const HeaderLogin = (props) => {
     }
 
   }, [cart])
-
+  useEffect(() => {
+    setname(getStorage("user"))
+    console.log(getStorage("user"));
+  }, [])
   return (
 
 
@@ -102,7 +107,7 @@ const HeaderLogin = (props) => {
               <div className="header--name" href="/cart">Cart</div>
               <div >
                 <div className="header" onMouseLeave={() => setstatus(false)}>
-                  <div className="header--name" onMouseOver={() => setstatus(true)}>Manh tien465</div>
+                  <div className="header--name" onMouseOver={() => setstatus(true)}>{user && user.firstname ? `${user.firstname}${user.lastname}` : "user"}</div>
                   <div className="box--hidden" style={status ? { display: "block" } : { display: "none" }}>
                     <div className="link"> <Nav.Link href="/users/profile">tai koan qua toi</Nav.Link></div>
                     <div className="link"><Nav.Link href="/history"> don mua</Nav.Link></div>

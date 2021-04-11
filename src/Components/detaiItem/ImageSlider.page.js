@@ -13,7 +13,7 @@ const ImageSlider = (props) => {
   let images = [];
   item && item.tier_variations.map(item => {
     let editimg = ""
-    item.images.map(i => {
+    item.images && item.images.map(i => {
       editimg = "http://localhost:4000/" + i
       Images.push({
         showPlayButton: false,

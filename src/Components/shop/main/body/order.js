@@ -25,6 +25,7 @@ export const Order = () => {
   useEffect(() => {
     dispatch(orderActions.getAllOrder(page, keyword, status, isCancelled))
   }, [status, keyword, statement, isCancelled])
+
   return (
     <DefaultLayout>
       <Tab></Tab>

@@ -1,11 +1,20 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import DefaultLayout from '../../app/layout/Defaultlayout'
 import { FaFilter } from "react-icons/fa"
 import { FcIdea } from "react-icons/fc"
 import { AiOutlineStar, AiTwotoneStar } from "react-icons/ai"
 import { BsCaretLeftFill, BsCaretRightFill, BsCaretDown, BsCheck } from "react-icons/bs"
+import { useSelector, useDispatch } from 'react-redux'
+import { Item } from '../item/item'
 const SearchPage = () => {
+  const dispatch = useDispatch()
+
   const [OrderPrice, setOrderPrice] = useState()
+  const keyword = useSelector(state => state.itemReducer.keyword)
+  const item = useSelector(state => state.itemReducer.searchItem)
+  useEffect(() => {
+
+  }, [item])
   return (
     <DefaultLayout>
 
@@ -114,7 +123,7 @@ const SearchPage = () => {
         </div>
         <div className="searchPage--main">
           <div className="main--header">
-            <FcIdea /> Kết quả tìm kiếm cho từ khoá '<span>quần ống rộng</span>'
+            <FcIdea /> Kết quả tìm kiếm cho từ khoá '<span>{keyword && keyword}</span>'
           </div>
           <div className="main--filter">
             <div className="main--filter--order">
@@ -146,7 +155,14 @@ const SearchPage = () => {
             </div>
           </div>
           <div className="main--item">
+            <div className="main--item--searchResult">
+              {item && item.map((v, i) => {
+                return (
 
+                  <Item key={i} item={v._source} id={v._id}></Item>
+                )
+              })}
+            </div>
           </div>
         </div>
       </div>

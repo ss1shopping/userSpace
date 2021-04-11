@@ -11,6 +11,8 @@ var oldstate = {
   //  ref:null,
   //  outClickNavbar:false
   number: 4,
+  numberOrder: 1,
+  numberProduct: 2,
   tranport: false,
   order: true,
   product: false
@@ -65,7 +67,14 @@ export default function layoutReducer(state = oldstate, action) {
       return {
         ...state, tranport: action.payload
       }
-
+    case layoutActionTypes.changeNumberOrder:
+      return {
+        ...state, numberOrder: action.payload
+      }
+    case layoutActionTypes.changeNumberProduct:
+      return {
+        ...state, numberProduct: action.payload
+      }
 
     default:
       return state
@@ -77,5 +86,7 @@ export const layoutActions = {
   changeNumber: (payload) => ({ type: layoutActionTypes.changeNumber, payload }),
   changeProduct: (payload) => ({ type: layoutActionTypes.changeItem, payload }),
   changeOrder: (payload) => ({ type: layoutActionTypes.changeOrder, payload }),
-  changeTranport: (payload) => ({ type: layoutActionTypes.changeTranport, payload })
+  changeTranport: (payload) => ({ type: layoutActionTypes.changeTranport, payload }),
+  changeNumberProduct: (payload) => ({ type: layoutActionTypes.changeNumberProduct, payload }),
+  changeNumberOrder: (payload) => ({ type: layoutActionTypes.changeNumberOrder, payload })
 }

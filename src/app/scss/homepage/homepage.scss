@@ -291,53 +291,11 @@ background-color: orangered;
 
     .suggestion-item-list{
         display: flex;
-        .suggest-item-outer{
-            width: 16.66667%;
-            padding: 0 .3125rem;
-            box-sizing: border-box;
-            
-        }
+        flex-wrap: wrap;
+       
 
-        .suggest-item-inner{
-            background-color: transparent;
-        }
 
-        .item-wrap{
-            padding: .625rem;
-            height: 100%;
-            box-sizing: border-box;
-            
-        }
-
-        .item{
-            text-decoration: none;
-            color: rgba(0,0,0,.8);
-            box-shadow: 0 0.0625rem 0.125rem 0 rgb(0,0,0/10%);
-            flex-direction: column;
-            background: #fff;
-            display: flex;
-            position: relative;
-            height: 100%;
-            overflow: visible;
-            border: 1px solid transparent;
-            user-select: none;
-            cursor: pointer;
-            padding: 0;
-            transition: transform .1s cubic-bezier(.4,0,.6,1),box-shadow .1s cubic-bezier(.4,0,.6,1);  
-            &:hover{
-                border: 3px solid #ee4d2d;
-                z-index: 2;
-                color: #ee4d2d;
-                box-shadow: 0 0.0625rem 20px 0 rgb(0, 0, 0 /5%);
-                transform: translateY(-.0625rem);
-                overflow: visible;
-                .item-hover-footer{                
-                    opacity: 1;
-                    transition: opacity .1s;
-                }
-    
-            }
-        }
+        
 
         .item-img{
             width: 100%;
@@ -444,6 +402,55 @@ background-color: orangered;
     }
 }
 
+.suggest-item-outer{
+    width: 16.66667%;
+    padding: 0 .3125rem;
+    box-sizing: border-box;
+    
+    .suggest-item-inner{
+        background-color: transparent;
+    }
+
+    .item-wrap{
+        padding: .625rem;
+        height: 100%;
+        width: 100%;
+        box-sizing: border-box;
+        
+    }
+    .item{
+        text-decoration: none;
+        color: rgba(0,0,0,.8);
+        box-shadow: 0 0.0625rem 0.125rem 0 rgb(0,0,0/10%);
+        flex-direction: column;
+        background: #fff;
+        display: flex;
+        position: relative;
+        height: 100%;
+        overflow: visible;
+        border: 1px solid transparent;
+        user-select: none;
+        cursor: pointer;
+        padding: 0;
+        transition: transform .1s cubic-bezier(.4,0,.6,1),box-shadow .1s cubic-bezier(.4,0,.6,1);  
+        &:hover{
+            border: 3px solid #ee4d2d;
+            z-index: 2;
+            color: #ee4d2d;
+            box-shadow: 0 0.0625rem 20px 0 rgb(0, 0, 0 /5%);
+            transform: translateY(-.0625rem);
+            overflow: visible;
+            .item-hover-footer{                
+                opacity: 1;
+                transition: opacity .1s;
+            }
+
+        }
+    }
+}
+
+
+//split item
 
 }
 .mycarousel{

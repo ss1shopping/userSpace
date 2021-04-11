@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Nav, Navbar } from "react-bootstrap";
 import { useSelector, useDispatch } from 'react-redux';
 
-import { SearchBar } from './searchBar';
+import SearchBar from './searchBar';
 // import { Link } from "react-router-dom";
 function getWindowDimensions() {
   const { innerWidth: width, innerHeight: height } = window;

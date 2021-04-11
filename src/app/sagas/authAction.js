@@ -14,6 +14,7 @@ function* fetchLogin({ payload }) {
     yield put(authActions.loginSuccess(result.data.user));
     yield setSubmitting(false);
     yield setStorage('token', result.data.token, result.data.expToken);
+    yield setStorage("user", JSON.stringify(result.data.user))
     yield setStorage("refreshtoken", result.data.refreshToken, result.data.expRefreshToken)
     yield setStorage("shopId", result.data.user.shopId)
     yield setStorage("role", result.data.user.role)
