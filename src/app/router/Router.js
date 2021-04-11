@@ -31,6 +31,7 @@ import Detaiitem from "../../Components/detaiItem/detaiItem.page"
 import Cart from "../../Components/cart/cart"
 import Checkout from "../../Components/checkout/checkout.page"
 import { UserProfile } from "../../Components/user/userProfile";
+import { Address } from "../../Components/user/address";
 import { UpdateItem } from "../../Components/shop/main/body/updateItem";
 // import BlurGlass from "../../Components/LandingPage/dashboard/BlurGlass"
 const Routerr = () => {
@@ -68,6 +69,7 @@ const Routerr = () => {
         <Route exact path="/users/login" component={Login}></Route>
         <Route exact path='/users/register' component={Register} />
         <Route exact path='/users/profile' component={UserProfile} />
+        <Route exact path='/users/address' component={Address} />
 
         <Route exact path='/detail/:item' component={Detaiitem} />
 
