@@ -9,11 +9,12 @@ export const Item = (props) => {
   const [url, seturl] = useState(`/detail/${props.item.name}`)
   const handleChooseItem = () => {
     // seturl(`/detail/${props.item.name}`)
-    console.log(props.item);
+    console.log("id" + props.id);
     let null1 = true
-    props.item._id ? props.item._id = props.id : null1 = true
+    props.item._id ? null1 = true : props.item._id = props.id
     dispatch(itemActions.itemChooseToEdit(props.item))
-    props.item._id ? setStorage("chooseItem", props.id) : setStorage("chooseItem", props.item._id)
+    setStorage("chooseItem", props.id)
+    //props.item._id ? setStorage("chooseItem", props.id) : setStorage("chooseItem", props.item._id)
   }
   return (
     <div class="suggest-item-outer">

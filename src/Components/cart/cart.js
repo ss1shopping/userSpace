@@ -124,7 +124,7 @@ const Cart = (props) => {
       <div className="cart">
         <div className="cart--header">
           <div className="cart--header--main">
-            <div className="cart--header--logo">Vinall</div>
+            <div className="cart--header--logo">PICASSO</div>
             <div className="cart--header--name">Giỏ hàng</div>
           </div>
           <div className="cart--header--searchbar">

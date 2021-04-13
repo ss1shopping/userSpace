@@ -4,7 +4,8 @@ const initialAuthState = {
   pending: false,
   category: null,
   error: null,
-  chooseCategoryToAdd: []
+  chooseCategoryToAdd: [],
+  ListRecommend: []
 }
 export const categoryReducer =
 
@@ -26,6 +27,14 @@ export const categoryReducer =
         return {
           ...state, chooseCategoryToAdd: action.payload
         }
+      case categoryActionTypes.getListRecommend:
+        return {
+          ...state, pending: !state.pending
+        }
+      case categoryActionTypes.geteListRecommendSuccessful:
+        return {
+          ...state, pending: !state.pending, ListRecommend: action.payload
+        }
       default:
         return state;
     }
@@ -34,5 +43,7 @@ export const categoryActions = {
   getCategory: () => ({ type: categoryActionTypes.getCategory }),
   getCategorySuccessful: (payload) => ({ type: categoryActionTypes.getCategorySuccessFul, payload }),
   fail: (payload) => ({ type: categoryActionTypes.fail, payload }),
-  chooseCategoryToAdd: (payload) => ({ type: categoryActionTypes.chooseCategoryToAdd, payload })
+  chooseCategoryToAdd: (payload) => ({ type: categoryActionTypes.chooseCategoryToAdd, payload }),
+  getListRecommend: (category) => ({ type: categoryActionTypes.getListRecommend, payload: { category } }),
+  geteListRecommendSuccessful: (payload) => ({ type: categoryActionTypes.geteListRecommendSuccessful, payload })
 }

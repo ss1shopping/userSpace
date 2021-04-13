@@ -177,7 +177,9 @@ export const categoryActionTypes = {
   getCategory: "[get category]",
   getCategorySuccessFul: '[get category successful]',
   fail: "[category fail]",
-  chooseCategoryToAdd: "[choose category]"
+  chooseCategoryToAdd: "[choose category]",
+  getListRecommend: "[get list recommend]",
+  geteListRecommendSuccessful: "[get list recommend category successu]"
 }
 export const shopActionTypes = {
 

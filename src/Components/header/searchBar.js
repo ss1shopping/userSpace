@@ -5,12 +5,15 @@ import { Link, withRouter } from 'react-router-dom'
 import { itemActions } from '../../app/store/ducks/itemReducer'
 const SearchBar = (props) => {
   const dispatch = useDispatch()
+  console.log(props);
   const searchItem = useSelector(state => state.itemReducer.searchItem)
+  const keyword = useSelector(state => state.itemReducer.keyword)
   const [status, setstatus] = useState(false)
+
   const [listSuggesstion, setlistSuggesstion] = useState([])
-  const [keyword, setkeyword] = useState("")
+  // const [keyword, setkeyword] = useState("")
   const handleChangeInput = (e) => {
-    setkeyword(e)
+    // setkeyword(e)
     dispatch(itemActions.setKeyword(e))
   }
   useEffect(() => {
@@ -22,21 +25,24 @@ const SearchBar = (props) => {
       setstatus(!status)
     }, 500);
   }
-  const handlesearchItem = (e) => {
-    dispatch(itemActions.searchItem(keyword))
-    console.log("asdiashdiashdahsdjahsdjhas");
-    if (e.key === "Enter") {
-      // dispatch(itemActions.setKeyword(keyword))
-      props.history.push(`search?keyword=${keyword}`)
-    }
+  // const handlesearchItem = (e) => {
+  //   dispatch(itemActions.searchItem(keyword))
+  //   console.log("asdiashdiashdahsdjahsdjhas");
+  //   if (e.key === "Enter") {
+  //     // dispatch(itemActions.setKeyword(keyword))
+  //     // props.history.push(`search?keyword=${keyword}`)
+  //   }
+  // }
+  useEffect(() => {
 
-  }
+    dispatch(itemActions.searchItem(props.location.search.slice(9, props.location.search.length)))
+  }, [])
   return (
     <div className="header--searchbar">
       <div className="header--searchbar--box">
         <div className="header--searchbar--box--input">
-          <form>
-            <input type="text" placeholder="search" onBlur={() => handleWait()} onFocus={() => setstatus(true)} onChange={(e) => handleChangeInput(e.target.value)} onKeyPress={(e) => handlesearchItem(e)} />
+          <form action={`/search?${keyword}`}>
+            <input type="text" name="keyword" placeholder="search" onBlur={() => handleWait()} onFocus={() => setstatus(true)} onChange={(e) => handleChangeInput(e.target.value)} />
           </form>
         </div>
 
@@ -45,10 +51,11 @@ const SearchBar = (props) => {
           <div className="suggetion">
             <div className="suggetion--wrapper">
               {
-                searchItem && searchItem.map((v, index) => {
+
+                searchItem && searchItem.slice(0, 10).map((v, index) => {
                   const url = `/detail/${v._source.name}`
                   return (
-                    <div className="suggetion--item" onClick={() => console.log("dasdsa")}>
+                    <div className="suggetion--item" >
                       <Link to={url} >
                         {v._source.name}
                       </Link>

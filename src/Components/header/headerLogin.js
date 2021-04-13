@@ -104,7 +104,12 @@ const HeaderLogin = (props) => {
             <Nav className="ml-auto">
 
               {/* <Nav.Link href="/" active>Shop</Nav.Link> */}
-              <div className="header--name" href="/cart">Cart</div>
+              <div className="header" >
+                <div className="header--name">
+
+                  <Nav.Link href="/cart">cart</Nav.Link>
+                </div>
+              </div>
               <div >
                 <div className="header" onMouseLeave={() => setstatus(false)}>
                   <div className="header--name" onMouseOver={() => setstatus(true)}>{user && user.firstname ? `${user.firstname}${user.lastname}` : "user"}</div>

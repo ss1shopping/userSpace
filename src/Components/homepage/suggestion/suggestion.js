@@ -28,7 +28,7 @@ export const Suggestion = () => {
             item && item.map((value, index) => {
               return (
                 <>
-                  <Item key={index} item={value}></Item>
+                  <Item key={index} item={value} id={value._id}></Item>
                 </>
 
               )

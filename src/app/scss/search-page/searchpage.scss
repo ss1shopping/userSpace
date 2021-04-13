@@ -147,6 +147,22 @@
                 margin-left: .3125rem;
                 font-size: .75rem;
             }
+            .item-hover-footer{
+              opacity: 0;
+              position: absolute;
+              left: -.0625rem;
+              top: calc(100% - .125rem);
+              width: 100%;
+              height: 1.875rem;
+              background-color: #ee4d2d;
+              color: #fff;
+              text-align: center;
+              line-height: 1.875rem;
+              border: 1px solid #ee4d2d;
+              border-bottom-left-radius: .125rem;
+              border-bottom-right-radius: .125rem;
+              z-index: 1;
+          }
           }
       }
   }

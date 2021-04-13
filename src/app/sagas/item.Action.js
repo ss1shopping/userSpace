@@ -98,11 +98,16 @@ function* deleleitem({ payload }) {
     }
 }
 function* searchitem({ payload }) {
-    const { keyword } = payload
+    const { keyword, category, sortPrice, rangePrice, rating, page, limit } = payload
+    console.log(payload);
     try {
         let url = ""
         let null1 = true
-        keyword ? url = `?keyword=${keyword}` : null1 = true
+        keyword ? url = `?keyword=${keyword}` : url = `?keyword=""`
+        category ? url = url + `&category=${JSON.stringify(category)}` : null1 = true
+        rangePrice ? url = url + `&rangePrice=${JSON.stringify(rangePrice)}` : null1 = true
+        sortPrice ? url = url + `&sortPrice=${sortPrice}` : null1 = true
+        page ? url = url + `&page=${page}` : url = url + `&page=1`
         const response = yield call(searchItem, { url })
 
         yield put(itemActions.searchItemSuccessful(response.data))

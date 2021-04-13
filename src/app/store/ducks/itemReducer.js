@@ -198,7 +198,7 @@ export const itemActions = {
     getCategory: () => ({ type: itemActionTypes.getCategory }),
     getCategorySuccessful: (payload) => ({ type: itemActionTypes.getCategorySuccessFul, payload }),
 
-    searchItem: (keyword) => ({ type: itemActionTypes.searchItem, payload: { keyword } }),
+    searchItem: (keyword, category, sortPrice, rangePrice, rating, page, limit) => ({ type: itemActionTypes.searchItem, payload: { keyword, category, sortPrice, rangePrice, rating, page, limit } }),
     searchItemSuccessful: (payload) => ({ type: itemActionTypes.searchItemSuccessful, payload }),
 
     setTier_variations: (payload) => ({ type: itemActionTypes.setTierVariation, payload }),

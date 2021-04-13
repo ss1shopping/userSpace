@@ -41,6 +41,7 @@ export const API_URLS = {
   CHECK_OUT: "/order/checkout",
 
   GET_CATEGORY: "/category/get",
+  GET_LIST_RECOMMEND: (data) => "/category/get/list/recommend" + data.url,
 
   GET_LIST_RATING: (data) => `/review/get${data.url}`,
   CREATE_RATING: "/review/create",
