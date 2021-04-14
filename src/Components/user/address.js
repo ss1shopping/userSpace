@@ -1,13 +1,44 @@
-import React, {useState} from 'react'
+import React, { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import DefaultLayout from '../../app/layout/Defaultlayout'
+import { authActions, authReducer } from '../../app/store/ducks/authReducer'
 
 
 export const Address = () => {
-    let[addressStatus, setAddress] = useState(false)
-    const handleAddress = () =>{
-        setAddress(!addressStatus)
-    }
+    const dispatch = useDispatch()
 
+    const user = useSelector(state => state.authReducer.user)
+    const [listAddress, setlistAddress] = useState([])
+    const [address, setAddress] = useState()
+    const [phoneNumber, setPhoneNumber] = useState()
+    const [city, setCity] = useState()
+    const [district, setDistrict] = useState()
+    const [state, setState] = useState()
+    const [editAddress, seteditAddress] = useState()
+    let [addressStatus, setAddressStatus] = useState(false)
+    const handleAddress = () => {
+        setAddressStatus(!addressStatus)
+        setlistAddress(user.addresses)
+    }
+    const handleChooseEdit = (value) => {
+        seteditAddress(value)
+
+        setAddressStatus(!addressStatus)
+    }
+    const handleSubmit = () => {
+        let addressconcat = `${address},${district}, ${state},${city}`;
+        dispatch(authActions.updateUser(user._id, null, null, null, null, null, { phoneNumber, city, district, state, address: addressconcat }, null, null))
+        setAddressStatus(!addressStatus)
+        setCity()
+        setDistrict()
+        setAddress()
+        setPhoneNumber()
+    }
+    useEffect(() => {
+        dispatch(authActions.currentUser())
+
+
+    }, [])
     return (
         <DefaultLayout>
             <div className="addbackground">
@@ -27,7 +58,7 @@ export const Address = () => {
                                 </div>
                             </a>
                             <div className="user-page-brief__right">
-                                <div className="user-page-brief__username">trantu147</div>
+                                <div className="user-page-brief__username">{user && user.lastname}</div>
                                 <div>
                                     <a className="user-page-brief__edit" href="/users/profile">
                                         <svg width="12" height="12" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg" style={{ marginRight: "4px" }}>
@@ -106,46 +137,56 @@ export const Address = () => {
                                     </div>
                                 </div>
                                 <div>
-                                    <div className="address-card">
-                                        <div className="address-display__left">
-                                            <div className="address-display__field-container address-display__field-container--name">
-                                                <div className="address-display__field-label">Full Name</div>
-                                                <div className="address-display__field-content">
-                                                    <span className="address-display__name-text">Tus</span>
-                                                    <div className="bacc-default-badge">Default</div>
+                                    {user && user.addresses.map((v, i) => {
+                                        return (
+
+
+                                            <div className="address-card">
+                                                <div className="address-display__left">
+                                                    <div className="address-display__field-container address-display__field-container--name">
+                                                        <div className="address-display__field-label">Full Name</div>
+                                                        <div className="address-display__field-content">
+                                                            <span className="address-display__name-text">{user && user.lastname}</span>
+                                                            {i === 0 ? <div className="bacc-default-badge">Default</div> : ""}
+
+                                                        </div>
+                                                    </div>
+                                                    <div className="address-display__field-container">
+                                                        <div className="address-display__field-label">Phone Number</div>
+                                                        <div className="address-display__field-content">{v && v.phoneNumber}</div>
+                                                    </div>
+                                                    <div className="address-display__field-container address-display__field-container__address">
+                                                        <div className="address-display__field-label">Address</div>
+                                                        <div className="address-display__field-content">
+                                                            <span>{v.state}
+                                                                <br />
+                                                                {v.district}
+                                                                <br />
+                                                                {v.city}
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div className="address-card__buttons">
+                                                    <div className="address-card__button-group">
+                                                        <button className="btn-change" onClick={() => handleChooseEdit(v)}>Edit</button>
+                                                        <button className="btn-change">Delete</button>
+                                                    </div>
+                                                    <div className="address-card__button-group">
+                                                        <button type="button" className="btn-default btn-default--disabled" aria-disabled="true">Set as default</button>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div className="address-display__field-container">
-                                                <div className="address-display__field-label">Phone Number</div>
-                                                <div className="address-display__field-content">09423424231</div>
-                                            </div>
-                                            <div className="address-display__field-container address-display__field-container__address">
-                                                <div className="address-display__field-label">Address</div>
-                                                <div className="address-display__field-content"><span>
-                                                    Five Star Building<br />
-                                                    Kim Giang<br />
-                                                    Thanh Xuan District<br />
-                                                    Hanoi</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="address-card__buttons">
-                                            <div className="address-card__button-group">
-                                                <button className="btn-change" onClick={() => handleAddress()}>Edit</button>
-                                                <button className="btn-change">Delete</button>
-                                            </div>
-                                            <div className="address-card__button-group">
-                                                <button type="button" className="btn-default btn-default--disabled" aria-disabled="true">Set as default</button>
-                                            </div>
-                                        </div>
-                                    </div>
+                                        )
+                                    })}
+
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div style={addressStatus ? {display:"block"}:{display:"none"}}>
+            <div style={addressStatus ? { display: "block" } : { display: "none" }}>
                 <div className="popup-form-outer">
                     <div className="address-form-wrapper">
                         <div>
@@ -156,50 +197,50 @@ export const Address = () => {
                                 <div className="popup-form__main">
                                     <div className="popup-form__main-container">
                                         <div></div>
-                                        <div className="address-modal__form_input">
+                                        {/* <div className="address-modal__form_input">
                                             <div className="address-input">
                                                 <div className="address-input__inner">
                                                     <input className="address-input__content" type="text" placeholder="Full Name" maxlength="64" value="" />
                                                 </div>
                                                 <div></div>
                                             </div>
-                                        </div>
+                                        </div> */}
                                         <div className="address-modal__form_input">
                                             <div className="address-input">
-                                                <div className="address-input__inner"><input className="address-input__content" type="text" placeholder="Phone Number" value="" /></div>
+                                                <div className="address-input__inner"><input className="address-input__content" type="text" placeholder="Phone Number" onChange={(e) => setPhoneNumber(e.target.value)} /></div>
                                                 <div></div>
                                             </div>
                                         </div>
                                         <div className="address-modal__form_input">
                                             <div className="address-input">
                                                 <div className="address-input__inner">
-                                                    <input className="address-input__content" type="text" placeholder="City" maxlength="64" value="" />
+                                                    <input className="address-input__content" type="text" placeholder="City" maxlength="64" onChange={(e) => setCity(e.target.value)} />
                                                 </div>
                                                 <div></div>
                                             </div>
                                         </div>
                                         <div className="address-modal__form_input">
                                             <div className="address-input">
-                                                <div className="address-input__inner"><input className="address-input__content" type="text" placeholder="District" value="" /></div>
+                                                <div className="address-input__inner"><input className="address-input__content" type="text" placeholder="District" onChange={(e) => setDistrict(e.target.value)} /></div>
                                                 <div></div>
                                             </div>
                                         </div>
                                         <div className="address-modal__form_input">
                                             <div className="address-input">
-                                                <div className="address-input__inner"><input className="address-input__content" type="text" placeholder="Ward" value="" /></div>
+                                                <div className="address-input__inner"><input className="address-input__content" type="text" placeholder="State" onChange={(e) => setState(e.target.value)} /></div>
                                                 <div></div>
                                             </div>
                                         </div>
                                         <div className="address-modal__form_input">
                                             <div className="address-input">
-                                                <div className="address-input__inner"><input className="address-input__content" type="text" placeholder="Street, Building..." maxlength="128" value="" /></div>
+                                                <div className="address-input__inner"><input className="address-input__content" type="text" placeholder="Street, Building..." maxlength="128" onChange={(e) => setAddress(e.target.value)} /></div>
                                                 <div></div>
                                             </div>
                                         </div>
                                         <div className="checkbox-default">
                                             <div className="checkbox-default__inner">
-                                                <label className="stardust-checkbox" > 
-                                                {/* onClick add checked */}
+                                                <label className="stardust-checkbox" >
+                                                    {/* onClick add checked */}
                                                     <input className="stardust-checkbox__input" type="checkbox" />
                                                     <div className="stardust-checkbox__box"></div>
                                                     Set as default address
@@ -210,8 +251,8 @@ export const Address = () => {
                                     </div>
                                 </div>
                                 <div className="popup-form__footer">
-                                    <button className="cancel-btn" onClick={() => handleAddress()}>Trở Lại</button>
-                                    <button type="button" className="btn-submit" onClick={() => handleAddress()}>Hoàn thành</button></div>
+                                    <button className="cancel-btn" onClick={() => setAddressStatus(false)}>Trở Lại</button>
+                                    <button type="button" className="btn-submit" onClick={() => handleSubmit()}>Hoàn thành</button></div>
                             </div>
                         </div>
                     </div>

@@ -164,7 +164,7 @@ export const authActions = {
   currentUser: () => ({ type: authActionTypes.getCurrentUser }),
   currentUserSuccess: (payload) => ({ type: authActionTypes.getCurrentUserSuccessful, payload }),
 
-  updateUser: (id, firstname, lastname, email, phoneNumber, gender, address, dob, avatar) => ({ type: authActionTypes.Updateuser, payload: { id, firstname, lastname, email, phoneNumber, gender, address, dob, avatar } }),
+  updateUser: (id, firstname, lastname, email, phoneNumber, gender, addresses, dob, avatar) => ({ type: authActionTypes.Updateuser, payload: { id, firstname, lastname, email, phoneNumber, gender, addresses, dob, avatar } }),
   UpdateUserSuccessFull: (payload) => ({ type: authActionTypes.UpdateUserSuccessFull, payload }),
   activeAccountSuccess: (payload) => ({ type: authActionTypes.activeAccountSuccess, payload }),
   activeAccountFailure: (payload) => ({ type: authActionTypes.activeAccountFailure, payload }),

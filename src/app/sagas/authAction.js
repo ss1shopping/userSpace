@@ -129,7 +129,8 @@ function* getCurrentUser() {
   }
 }
 function* updateUser({ payload }) {
-  const { id, firstname, lastname, email, phoneNumber, gender, address, dob, avatar } = payload
+  const { id, firstname, lastname, email, phoneNumber, gender, addresses, dob, avatar } = payload
+  console.log(payload);
   const updateuser = {
     id
   }
@@ -139,7 +140,7 @@ function* updateUser({ payload }) {
   email ? updateuser.email = email : null1 = true
   phoneNumber ? updateuser.phoneNumber = phoneNumber : null1 = true
   gender ? updateuser.gender = gender : null1 = true
-  address ? updateuser.address = address : null1 = true
+  addresses ? updateuser.addresses = addresses : null1 = true
   dob ? updateuser.dob = dob : null1 = true
   avatar ? updateuser.avatar = avatar : null1 = true
   try {
