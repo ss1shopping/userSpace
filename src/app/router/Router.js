@@ -27,6 +27,7 @@ import { Delivery } from "../../Components/shop/main/body/delivery";
 import { ManageItem } from "../../Components/shop/main/body/item"
 import { ChooseCategory } from "../../Components/shop/main/body/addItem/chooseCategory";
 import { AddProduct } from "../../Components/shop/main/body/addItem/addProduct";
+import { ShopProfile } from "../../Components/shop/main/body/shopProfile"
 import Detaiitem from "../../Components/detaiItem/detaiItem.page"
 import Cart from "../../Components/cart/cart"
 import Checkout from "../../Components/checkout/checkout.page"
@@ -61,6 +62,7 @@ const Routerr = () => {
         <PrivateRouter exact path="/banhang/choose-category" component={ChooseCategory}></PrivateRouter>
         <PrivateRouter exact path="/banhang/choose-category/:id" component={ChooseCategory}></PrivateRouter>
         <Route exact path="/banhang/add-product" component={AddProduct}></Route>
+        <Route exact path="/banhang/shop-profile" component={ShopProfile}></Route>
         <Route exact path="/banhang/update/item/:id" component={UpdateItem}></Route>
         <PrivateRouter exact path="/banhang/delivery" component={Delivery}></PrivateRouter>
 

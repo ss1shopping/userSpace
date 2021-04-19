@@ -20,7 +20,7 @@ export const Header = () => {
           </div>
           <div className="drop--down">
             <div className="drop--down--link">
-              <Link to="/">
+              <Link to="/banhang/shop-profile">
                 <span><AiFillProfile /></span> <span> Hồ sơ shop </span>
               </Link>
             </div>
