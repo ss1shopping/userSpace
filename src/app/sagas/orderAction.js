@@ -85,6 +85,7 @@ function* checkoutOrder({ payload }) {
 
   } catch (err) {
     const error = err.response ? err.response.data.msg : err.stack;
+    console.log(err.response);
     yield put(orderActions.fail(error));
   }
 }

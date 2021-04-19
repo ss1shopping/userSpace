@@ -6,16 +6,18 @@ import { useDispatch, useSelector } from 'react-redux';
 import { cartActions } from '../../app/store/ducks/cardReducer';
 import { orderActions } from '../../app/store/ducks/orderReducer';
 import { getStorage } from '../../_metronic';
+import { authActions } from '../../app/store/ducks/authReducer';
 // import { CartContext } from '../../contexts/cart';
 const Checkout = (props) => {
   // const { cart, setCart, selectItem, setSelectItem, setTotalMoney, listOrder } = useContext(CartContext)
   const dispatch = useDispatch()
   const selectItem = useSelector(state => state.cartReducer.selectItem)
+  const user = useSelector(state => state.authReducer.user)
   const name = getStorage("name")
   let address = JSON.parse(getStorage("addresses"))
   useEffect(() => {
     address = JSON.parse(getStorage("addresses"))
-    console.log("address", address);
+    dispatch(authActions.currentUser())
   }, [])
   let totalPrice = 0
   const handleOrder = () => {
@@ -23,7 +25,7 @@ const Checkout = (props) => {
     // dispatch(cartActions.loadingcartSuccessful(arr))
     dispatch(cartActions.setAgainSelecItem([]))
     dispatch(cartActions.setTotalMoney(0))
-    dispatch(orderActions.checkout(selectItem, `${address[0].phoneNumber}`, `${address[0].state, address[0].district, address[0].city}`))
+    dispatch(orderActions.checkout(selectItem, `${user.addresses[0].phoneNumber}`, `${user.addresses[0].state, user.addresses[0].district, user.addresses[0].city}`))
     props.history.push("/history")
   }
   let listItem = null
@@ -55,8 +57,8 @@ const Checkout = (props) => {
             <div className="checkout--body--address__header"><GoLocation />Địa chỉ nhận hàng</div>
             <div className="checkout--body--address__summary">
               <div className="checkout--address--row">
-                <div className="checkout--address--row__name"><strong> {name} {address !== "" && address[0] && address[0].phoneNumber && address[0].phoneNumber}</strong></div>
-                <div className="checkout--address--row__address"> {address[0] && address[0].state && address[0].state + ","} {address && address[0] && address[0].district && address[0].district + ","} {address && address[0] && address[0].city && address[0].city + ","}</div>
+                <div className="checkout--address--row__name"><strong> {name} {user && user.addresses && user.addresses[0] && user.addresses[0].phoneNumber && user.addresses[0].phoneNumber}</strong></div>
+                <div className="checkout--address--row__address"> {user && user.addresses[0] && user.addresses[0].state && user.addresses[0].state + ","} {user && user.addresses[0] && user.addresses[0].district && user.addresses[0].district + ","} {user && user.addresses && user.addresses[0] && user.addresses[0].city && user.addresses[0].city + ","}</div>
                 <div className="checkout--address--row__default"> Mặc định</div>
               </div>
               {address.length === 0 ? <div className="checkout--address--selection__change">Thêm địa chỉ </div> : <div className="checkout--address--selection__change">Thay đổi</div>}

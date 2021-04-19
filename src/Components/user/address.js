@@ -15,30 +15,67 @@ export const Address = () => {
     const [district, setDistrict] = useState()
     const [state, setState] = useState()
     const [editAddress, seteditAddress] = useState()
+    const [numberInList, setNumberInList] = useState()
     let [addressStatus, setAddressStatus] = useState(false)
-    const handleAddress = () => {
+    const [AddOredit, setAddOredit] = useState(false)
+    const handleAddAddress = () => {
+        setAddOredit(true)
         setAddressStatus(!addressStatus)
         setlistAddress(user.addresses)
     }
-    const handleChooseEdit = (value) => {
+    const handleAddress = () => {
+        if (addressStatus) {
+            setAddressStatus(!addressStatus)
+            setlistAddress(user.addresses)
+        } else {
+
+            setAddressStatus(!addressStatus)
+            setlistAddress(user.addresses)
+        }
+    }
+    const handleChooseEdit = (value, i) => {
         seteditAddress(value)
+        setAddress(value.address)
+        setPhoneNumber(value.phoneNumber)
+        setCity(value.city)
+        setDistrict(value.district)
+        setState(value.state)
+        setNumberInList(i)
 
         setAddressStatus(!addressStatus)
+        setlistAddress(user.addresses)
     }
+
     const handleSubmit = () => {
         let addressconcat = `${address},${district}, ${state},${city}`;
-        dispatch(authActions.updateUser(user._id, null, null, null, null, null, { phoneNumber, city, district, state, address: addressconcat }, null, null))
+        let neweditObject = {
+            address: addressconcat, district, state, city, phoneNumber
+        }
+        if (AddOredit) {
+            listAddress.push(neweditObject)
+        } else {
+
+            listAddress[numberInList] = neweditObject
+        }
+        console.log(listAddress);
+        dispatch(authActions.updateUser(user._id, null, null, null, null, null, listAddress, null, null))
         setAddressStatus(!addressStatus)
-        setCity()
-        setDistrict()
-        setAddress()
-        setPhoneNumber()
+        setCity("")
+        setDistrict("")
+        setAddress("")
+        setPhoneNumber("")
+        seteditAddress("")
+        setAddOredit(false)
+        setNumberInList("")
     }
     useEffect(() => {
         dispatch(authActions.currentUser())
 
 
     }, [])
+    useEffect(() => {
+
+    }, [addressStatus])
     return (
         <DefaultLayout>
             <div className="addbackground">
@@ -124,7 +161,7 @@ export const Address = () => {
                                         <div className="profile-section__header-subtitle">Edit or add new address here.</div>
                                     </div>
                                     <div className="profile-section__header-btn">
-                                        <button className="btn-address" onClick={() => handleAddress()}>
+                                        <button className="btn-address" onClick={() => handleAddAddress()}>
                                             <div className="btn-with-icon">
                                                 <div className="btn-with-icon__icon">
                                                     <svg enable-background="new 0 0 10 10" viewBox="0 0 10 10" x="0" y="0" className="plus-icon">
@@ -169,7 +206,7 @@ export const Address = () => {
                                                 </div>
                                                 <div className="address-card__buttons">
                                                     <div className="address-card__button-group">
-                                                        <button className="btn-change" onClick={() => handleChooseEdit(v)}>Edit</button>
+                                                        <button className="btn-change" onClick={() => handleChooseEdit(v, i)}>Edit</button>
                                                         <button className="btn-change">Delete</button>
                                                     </div>
                                                     <div className="address-card__button-group">
@@ -207,27 +244,27 @@ export const Address = () => {
                                         </div> */}
                                         <div className="address-modal__form_input">
                                             <div className="address-input">
-                                                <div className="address-input__inner"><input className="address-input__content" type="text" placeholder="Phone Number" onChange={(e) => setPhoneNumber(e.target.value)} /></div>
+                                                <div className="address-input__inner"><input className="address-input__content" type="text" placeholder="Phone Number" defaultValue={editAddress && editAddress.phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} /></div>
                                                 <div></div>
                                             </div>
                                         </div>
                                         <div className="address-modal__form_input">
                                             <div className="address-input">
                                                 <div className="address-input__inner">
-                                                    <input className="address-input__content" type="text" placeholder="City" maxlength="64" onChange={(e) => setCity(e.target.value)} />
+                                                    <input className="address-input__content" type="text" placeholder="City" maxlength="64" defaultValue={editAddress && editAddress.city} onChange={(e) => setCity(e.target.value)} />
                                                 </div>
                                                 <div></div>
                                             </div>
                                         </div>
                                         <div className="address-modal__form_input">
                                             <div className="address-input">
-                                                <div className="address-input__inner"><input className="address-input__content" type="text" placeholder="District" onChange={(e) => setDistrict(e.target.value)} /></div>
+                                                <div className="address-input__inner"><input className="address-input__content" type="text" placeholder="District" defaultValue={editAddress && editAddress.district} onChange={(e) => setDistrict(e.target.value)} /></div>
                                                 <div></div>
                                             </div>
                                         </div>
                                         <div className="address-modal__form_input">
                                             <div className="address-input">
-                                                <div className="address-input__inner"><input className="address-input__content" type="text" placeholder="State" onChange={(e) => setState(e.target.value)} /></div>
+                                                <div className="address-input__inner"><input className="address-input__content" type="text" placeholder="State" defaultValue={editAddress && editAddress.address} onChange={(e) => setState(e.target.value)} /></div>
                                                 <div></div>
                                             </div>
                                         </div>
