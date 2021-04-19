@@ -140,6 +140,22 @@ export const authReducer = persistReducer(
         return {
           ...state, isPending: !state.isPending, shop: action.payload
         }
+      case authActionTypes.getInforShop:
+        return {
+          ...state, isPending: !state.isPending
+        }
+      case authActionTypes.getInforShopSuccessful:
+        return {
+          ...state, isPending: !state.isPending, shop: action.payload
+        }
+      case authActionTypes.updateShop:
+        return {
+          ...state, isPending: !state.isPending
+        }
+      case authActionTypes.updateShopSuccessful:
+        return {
+          ...state, isPending: !state.isPending, shop: action.payload
+        }
       default:
         return state;
     }
@@ -193,8 +209,12 @@ export const authActions = {
 
 
   createShop: (name, description) => ({ type: authActionTypes.createShop, payload: { name, description } }),
-  createShoppSuccessFull: (payload) => ({ type: authActionTypes.createShopSuccessful, payload })
+  createShoppSuccessFull: (payload) => ({ type: authActionTypes.createShopSuccessful, payload }),
 
+  getinforShop: () => ({ type: authActionTypes.getInforShop }),
+  getinforShopSuccessful: (payload) => ({ type: authActionTypes.getInforShopSuccessful, payload }),
 
+  updateShop: (shop) => ({ type: authActionTypes.updateShop, shop }),
+  updateShopSuccessful: (payload) => ({ type: authActionTypes.updateShopSuccessful, payload })
 
 }

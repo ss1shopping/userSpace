@@ -91,7 +91,13 @@ export const authActionTypes = {
   UpdateUserSuccessFull: "[update user successful]",
 
   createShop: "[create shop]",
-  createShopSuccessful: "[create shop succesful]"
+  createShopSuccessful: "[create shop succesful]",
+
+  getInforShop: "[getInforShop]",
+  getInforShopSuccessful: "[getInforShopSuccessful]",
+
+  updateShop: "[update shop]",
+  updateShopSuccessful: "[update Shop Successful]"
 };
 export const totalActionTypes = {
   loadingInforChart: '[Action Loading Infor Chart]',
