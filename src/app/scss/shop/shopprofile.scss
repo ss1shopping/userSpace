@@ -132,6 +132,13 @@
     height: 187px;
     overflow: hidden;
     border-radius: 4px 4px 0 0;
+
+    .shop-upload{
+        &__input{
+            display: none;
+        }
+    }
+
     .cover{
         position: relative;
         width: 100%;
@@ -160,6 +167,8 @@
             background: rgba(0,0,0,.5);
             cursor: pointer;
         }
+
+        
     }
 
     .avatar{

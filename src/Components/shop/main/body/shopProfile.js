@@ -71,16 +71,23 @@ export const ShopProfile = () => {
                                             <div className="basic-info-list">
                                                 <div className="header-info">
                                                     <div className="cover">
-                                                        <div className="cover-edit">
-                                                            <input type="file" name="file" id="img-picker" class="shop-upload__input" onChange={(e) => handleUploadCoverImage(e)} />
+                                                        <label for="cover-picker">
+                                                            <div className="cover-edit">
+                                                                <input type="file" name="file" id="cover-picker" class="shop-upload__input" onChange={(e) => handleUploadCoverImage(e)} />
+                                                                Edit cover image
+                                                            </div>
                                                             <img src={coverImage && coverImage}></img>
-                                                        </div>
+                                                        </label>
                                                     </div>
                                                     <div class="avatar">
-                                                        <div class="avatar-edit">
-                                                            <input type="file" name="file" id="img-picker" class="shop-upload__input" onChange={(e) => handleUploadAvatar(e)} />
-                                                            <img src={avatar && avatar}></img>
-                                                        </div>
+                                                        <label for="avatar-picker">
+                                                            <div class="avatar-edit">
+                                                                <input type="file" name="file" id="avatar-picker" class="shop-upload__input" onChange={(e) => handleUploadAvatar(e)} />
+                                                                Edit
+                                                            </div>
+
+                                                        </label>
+                                                        <img src={avatar && avatar}></img>
                                                     </div>
                                                     <div class="user">
                                                         <div class="name">
