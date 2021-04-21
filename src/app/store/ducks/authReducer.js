@@ -214,7 +214,7 @@ export const authActions = {
   getinforShop: () => ({ type: authActionTypes.getInforShop }),
   getinforShopSuccessful: (payload) => ({ type: authActionTypes.getInforShopSuccessful, payload }),
 
-  updateShop: (shop) => ({ type: authActionTypes.updateShop, shop }),
+  updateShop: (shop) => ({ type: authActionTypes.updateShop, payload: { shop } }),
   updateShopSuccessful: (payload) => ({ type: authActionTypes.updateShopSuccessful, payload })
 
 }

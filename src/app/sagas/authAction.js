@@ -178,6 +178,7 @@ function* UpdateShopp({ payload }) {
     const response = yield call(UpdateShop, shop)
     yield put(authActions.updateShopSuccessful(response.data))
   } catch (error) {
+    console.log(error.response)
     const err = error.response ? error.response.data.msg : error.stack
     yield put(authActions.error(err));
   }

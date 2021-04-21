@@ -38,8 +38,23 @@ const SearchPage = (props) => {
     //   dispatch(itemActions.searchItem(keyword, filterCategory, sortPrice, rangePrice, ""))
     // }
   }, [filterCategory, rangePrice, OrderPrice, page, categoryRecommend])
-  const handlefilterCategory = (index, value) => {
-    filterCategory[index] = value
+  const handlefilterCategory = (index, value, checked) => {
+    if (checked) {
+      filterCategory[index] = value
+      var filtered = filterCategory.filter(function (el) {
+        return el != null;
+      });
+      dispatch(itemActions.searchItem(keyword, filtered, sortPrice, rangePrice, ""))
+    } else {
+      let newarray = filterCategory.filter(function (item) {
+        return item !== value
+      })
+      setfilterCategory(newarray)
+      dispatch(itemActions.searchItem(keyword, newarray, sortPrice, rangePrice, ""))
+    }
+
+
+    // console.log(filterCategory);
   }
   const handleCallRangePrice = () => {
     dispatch(itemActions.searchItem(keyword, filterCategory, sortPrice, rangePrice, ""))
@@ -84,7 +99,7 @@ const SearchPage = (props) => {
             {categoryRecommend && categoryRecommend.map((v, i) => {
               return (
                 <div>
-                  <input type="checkbox" autocomplete="off" autoFill="off" value="jean" onClick={(e) => handlefilterCategory(0, e.target.value)} />
+                  <input type="checkbox" autocomplete="off" autoFill="off" value="jean" onClick={(e) => handlefilterCategory(i, v._id, e.target.checked)} />
                   <span> {v.name} </span> <br />
 
                 </div>

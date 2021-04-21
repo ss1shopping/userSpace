@@ -9,47 +9,63 @@ import { DefaultLayout2 } from "./DefaultLayout2"
 export const ShopProfile = () => {
     const dispatch = useDispatch()
     const [coverImage, setCoverImage] = useState()
+    const [shopName, setshopName] = useState()
+    const [shopDescription, setshopDescription] = useState()
     const [avatar, setAvatar] = useState()
+    const [coverImageToupload, setCoverImagetoUpload] = useState()
+    const [avatartoUpload, setAvatartoUpload] = useState()
     const [shop1, setshop] = useState()
     const shop = useSelector(state => state.authReducer.shop)
     useEffect(() => {
         dispatch(authActions.getinforShop())
         shop && setshop(shop)
+
         console.log("shop", shop);
     }, [])
 
-    const uploadImage = (formData) => {
+    const uploadImage = (formData, type) => {
         const config = {
             header: { "content-type": "multiple/form-data" }
         }
 
         Axios.post("http://localhost:4000/item/uploadImage", formData, config)
             .then(res => {
-
-                dispatch(itemActions.addImageSuccessful(res.data))
+                type ? setAvatartoUpload(res.data.path) : setCoverImagetoUpload(res.data.path)
 
             }
             )
 
     }
-    useEffect(() => {
 
-    }, [avatar, coverImage])
+    useEffect(() => {
+        shop && setAvatar(shop.avatar && "http://localhost:4000/" + shop.avatar)
+        shop && setCoverImage(shop.backroundImage && "http://localhost:4000/" + shop.backroundImage)
+    }, [avatar, coverImage, shop])
     const handleUploadCoverImage = (e) => {
 
         let objectUrl = URL.createObjectURL(e.target.files[0])
         setCoverImage(objectUrl);
-        // var formData = new FormData()
-        // formData.append("file", e.target.files[0])
-        // uploadImage(formData)
+        var formData = new FormData()
+        formData.append("file", e.target.files[0])
+        uploadImage(formData, false)
 
     }
     const handleUploadAvatar = (e) => {
         let objectUrl = URL.createObjectURL(e.target.files[0])
         setAvatar(objectUrl);
-        // var formData = new FormData()
-        // formData.append("file", e.target.files[0])
-        // uploadImage(formData)
+        var formData = new FormData()
+        formData.append("file", e.target.files[0])
+        uploadImage(formData, true)
+        console.log(avatartoUpload);
+    }
+    const handleUpdateShopProfile = () => {
+        let newShop = { ...shop }
+        coverImageToupload ? newShop.backroundImage = coverImageToupload : newShop = newShop
+        avatartoUpload ? newShop.avatar = avatartoUpload : newShop = newShop
+        shopName ? newShop.name = shopName : newShop = newShop
+        shopDescription ? newShop.description = shopDescription : newShop = newShop
+        console.log(newShop);
+        dispatch(authActions.updateShop(newShop))
     }
     return (
         <DefaultLayout>
@@ -181,7 +197,10 @@ export const ShopProfile = () => {
                                                                     <div className="form-item__content">
                                                                         <div className="shop-input shop-name-input">
                                                                             <div className="shop-input__inner">
-                                                                                <input type="text" placeholder="Shop Name" name="profile-nickname" resize="vertical" rows="2" minrows="2" maxlength="30" restrictiontype="input" showwordlimit="true" max="Infinity" min="-Infinity" className="shop-input__input" defaultValue={shop && shop.name} />
+                                                                                <input type="text" placeholder="Shop Name" name="profile-nickname" resize="vertical"
+                                                                                    rows="2" minrows="2" maxlength="30" restrictiontype="input"
+                                                                                    showwordlimit="true" max="Infinity" min="-Infinity" className="shop-input__input"
+                                                                                    defaultValue={shop && shop.name} onChange={(e) => setshopName(e.target.value)} />
                                                                                 <div className="shop-input__sulfix"><span class="shop-input__count">9/30</span></div>
                                                                             </div>
                                                                         </div>
@@ -227,7 +246,10 @@ export const ShopProfile = () => {
                                                         <div className="form-title">Shop Description</div>
                                                         <div className="form-content">
                                                             <div className="shop-input__area">
-                                                                <textarea type="textarea" placeholder="Enter your description or information about your shop here " resize="vertical" rows="2" minrows="5" maxlength="500" restrictiontype="input" showwordlimit="true" max="Infinity" min="-Infinity" class="shop-input__inner " style={{ resize: "vertical", minHeight: "103px" }}></textarea>
+                                                                <textarea type="textarea" placeholder="Enter your description or information about your shop here " resize="vertical" rows="2" minrows="5" maxlength="500" restrictiontype="input" showwordlimit="true" max="Infinity" min="-Infinity" class="shop-input__inner "
+                                                                    style={{ resize: "vertical", minHeight: "103px" }}
+                                                                    onChange={(e) => setshopDescription(e.target.value)}
+                                                                ></textarea>
                                                                 <span class="shop-input__count">0/500</span>
                                                             </div>
 
@@ -235,7 +257,7 @@ export const ShopProfile = () => {
                                                     </div>
 
                                                 </div>
-                                                <button className="save-btn">
+                                                <button className="save-btn" onClick={() => handleUpdateShopProfile()}>
                                                     <span>Save</span>
                                                 </button>
 
