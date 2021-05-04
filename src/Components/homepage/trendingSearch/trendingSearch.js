@@ -18,7 +18,7 @@ export const TrendingSearch = () => {
           </div>
 
           <div className="img-holder">
-            <div className="item-img"></div>
+            <img className="item-img" src="https://cf.shopee.vn/file/4fc8585500bb7cf8c11a3e4c15d47cc1"/>
           </div>
         </div>
       </Link>
