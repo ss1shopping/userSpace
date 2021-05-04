@@ -8,24 +8,11 @@ export const TrendingSearch = () => {
 
   return (
     <div className="trendSearch-item-list" >
-      <Link className="trendSearch-item" to="/">
-        <div className="item">
-          <div className="item-textbox">
-            <div className="item-text">
-              <div className="item-name">Women Sandal</div>
-              <div className="item-num">257k+ products</div>
-            </div>
-          </div>
 
-          <div className="img-holder">
-            <img className="item-img" src="https://cf.shopee.vn/file/4fc8585500bb7cf8c11a3e4c15d47cc1"/>
-          </div>
-        </div>
-      </Link>
       {
-        category && category.branches.map((v, i) => {
+        category && category.branches.slice(0, 5).map((v, i) => {
           return (
-            <a className="trendSearch-item" href="">
+            <Link className="trendSearch-item" to="/">
               <div className="item">
                 <div className="item-textbox">
                   <div className="item-text">
@@ -37,7 +24,7 @@ export const TrendingSearch = () => {
                   <img className="item-img" src={`${API_URL}${v.icon}`}></img>
                 </div>
               </div>
-            </a>
+            </Link>
 
           )
         })

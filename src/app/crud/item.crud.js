@@ -26,7 +26,7 @@ export function updateItem(data) {
 }
 export function deleteItem(data) {
 
-  return initApi(true).post(API_URLS.DELETE_ITEM, data)
+  return initApi(true).delete(API_URLS.DELETE_ITEM(data))
 }
 export function getItem(data) {
   return initApi(true).get(API_URLS.GET_ITEM(data))

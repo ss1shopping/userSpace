@@ -44,9 +44,9 @@ function* additem({ payload }) {
 }
 
 function* updateitem({ payload }) {
-    const { id, name, priceMin, priceMax, desc, attributes, category } = payload;
+    const { id, name, priceMin, priceMax, desc, attributes, category, discount } = payload;
     try {
-        const result = yield call(updateItem, { id, name, priceMin, priceMax, desc, attributes, category })
+        const result = yield call(updateItem, { id, name, priceMin, priceMax, desc, attributes, category, discount })
         console.log(result);
         yield put(itemActions.updateItemSuccesfull(result.data))
         // history.push("/dashboard/item")

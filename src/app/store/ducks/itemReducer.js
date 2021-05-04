@@ -185,7 +185,7 @@ export const itemActions = {
     getItemSuccess: (payload) => ({ type: itemActionTypes.getItemSuccessful, payload }),
 
     itemToUpload: (payload) => ({ type: itemActionTypes.itemToUpload, payload }),
-    updateItem: (id, name, priceMin, priceMax, desc, attributes, category) => ({ type: itemActionTypes.updateItem, payload: { id, name, priceMin, priceMax, desc, attributes, category } }),
+    updateItem: (id, name, priceMin, priceMax, desc, attributes, category, discount) => ({ type: itemActionTypes.updateItem, payload: { id, name, priceMin, priceMax, desc, attributes, category, discount } }),
     updateItemSuccesfull: (payload) => ({ type: itemActionTypes.updateItemSuccesful, payload }),
 
     addImage: (formData) => ({ type: itemActionTypes.addImage, payload: { formData } }),

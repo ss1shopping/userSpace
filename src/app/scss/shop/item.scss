@@ -38,3 +38,36 @@
     }
   }
 }
+
+.dialogbox{
+  background: #d3d3d3;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+ width: 350px;
+ height: 200px;
+ &--wrapper{
+   padding: 10px;
+   &--exit{
+     display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+   }
+   &--title{
+     font-size: 20px;
+     font-weight:400px;
+     text-align: center;
+   }
+   &--button{
+     margin-top: 20px;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     button{
+       margin-left: 20px;
+       padding: 5px 20px;
+     }
+   }
+ }
+}

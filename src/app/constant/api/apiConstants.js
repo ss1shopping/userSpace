@@ -16,7 +16,7 @@ export const API_URLS = {
   SEARCH_ITEM: (data) => `/item/search${data.url}`,
   ADD_ITEM: '/item/create',
   UPDATE_ITEM: "/item/update",
-  DELETE_ITEM: "/item/delete",
+  DELETE_ITEM: (data) => `/item/delete/${data.iditem}`,
   ADD_IMAGE_ITEM: "/item/uploadImage",
   DELETE_IMAGE_ITEM: "/shopping/upload",
 

@@ -22,6 +22,7 @@ export const UpdateItem = (props) => {
   const [desc, setdesc] = useState("")
   let [attributes, setattribute] = useState([])
   const [quantity, setquantity] = useState(0)
+  const [discount, setdiscount] = useState(0)
   const [newModel, setnewModel] = useState([])
   const [listImage, setlistImage] = useState([])
   const [tier_varaitionLength, settier_varaitionLength] = useState()
@@ -235,7 +236,7 @@ export const UpdateItem = (props) => {
       dispatch(itemActions.updateTier_variation(v))
     })
 
-    dispatch(itemActions.updateItem(detailItem._id, productName, minPrice, maxprice, desc, attributes, category))
+    dispatch(itemActions.updateItem(detailItem._id, productName, minPrice, maxprice, desc, attributes, category, discount))
     props.history.push("/banhang/item")
   }
 
@@ -527,7 +528,7 @@ export const UpdateItem = (props) => {
                         <div className="mandatory">
                           <span className="mandatory__icon">*</span>
                         </div>
-                        <span>Price</span>
+                        <span>Discount</span>
                       </div>
                       <div className="edit-input">
                         <div className="product-edit-content">
@@ -535,7 +536,7 @@ export const UpdateItem = (props) => {
                             <div className="product-input">
                               <div className="product-input__inner">
                                 <div className="product-input__prefix">
-                                  $
+                                  %
                                                                     <span className="product-input__prefix-split"></span>
                                 </div>
                                 <input
@@ -552,7 +553,8 @@ export const UpdateItem = (props) => {
                                   isround="true"
                                   unicodenormalized="true"
                                   className="product-input__input"
-                                // onChange={(e) => setprice(e.target.value)}
+                                  defaultValue={discount && discount}
+                                  onChange={(e) => setdiscount(e.target.value)}
                                 />
                               </div>
                             </div>

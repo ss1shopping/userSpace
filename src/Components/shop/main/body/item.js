@@ -14,6 +14,8 @@ export const ManageItem = () => {
   const [page, setpage] = useState(1)
   const [sort, setsort] = useState("_id")
   const [order, setorder] = useState("ASC")
+  const [statusDialogBox, setstatusDialogBox] = useState(false)
+  const [productchoosetoDelete, setproductChoosetoDelete] = useState()
   const items = useSelector(state => state.itemReducer.item)
 
   const handleChangepage = (page) => {
@@ -24,6 +26,17 @@ export const ManageItem = () => {
 
     }
   }
+  const handleOpenDialogBox = (value, product) => {
+    setstatusDialogBox(value)
+    setproductChoosetoDelete(product)
+  }
+  const handleDelete = () => {
+    dispatch(itemActions.deleteItem(productchoosetoDelete._id))
+    setstatusDialogBox(false)
+    setproductChoosetoDelete("")
+    dispatch(itemActions.loadingitem(page, sort, getStorage("shopId")))
+  }
+
   useEffect(() => {
     dispatch(itemActions.loadingitem(page, sort, getStorage("shopId")))
 
@@ -47,7 +60,7 @@ export const ManageItem = () => {
                 <th>Giá  </th>
                 <th> Đã bán  </th>
                 <th> Sửa thông tin  </th>
-                {/* <th> Trạng thái </th> */}
+                <th> Delete </th>
               </tr>
             </thead>
             <tbody>
@@ -63,6 +76,7 @@ export const ManageItem = () => {
                       <th>{value.priceMin}-{value.priceMax}</th>
                       <th>{value.sold}</th>
                       <th> <Link to={`/banhang/update/item/${value._id}`} className="btn btn--outline">Sửa thông tin</Link>  </th>
+                      <th> <button onClick={() => handleOpenDialogBox(true, value)} className="btn btn--outline">Xoá</button>  </th>
                     </tr>
                   )
                 })
@@ -77,6 +91,20 @@ export const ManageItem = () => {
           <div className="itemShopowner--pagination--page">{page}</div>
           <div className="btn btn--pagination" onClick={() => handleChangepage(page + 1)}>Next</div>
 
+        </div>
+      </div>
+      <div className="dialogbox" style={statusDialogBox ? { display: "block" } : { display: "none" }}>
+        <div className="dialogbox--wrapper--exit">
+
+          <button onClick={() => handleOpenDialogBox(false)} className="btn">x</button>
+        </div>
+        <div className="dialogbox--wrapper">
+
+          <div className="dialogbox--wrapper--title"> Are you sure want delete product?</div>
+          <div className="dialogbox--wrapper--button">
+            <button className="btn btn--outline" onClick={() => handleDelete()}> Yes</button>
+            <button className="btn btn--outline" onClick={() => handleOpenDialogBox(false)}> No</button>
+          </div>
         </div>
       </div>
     </DefaultLayout>
