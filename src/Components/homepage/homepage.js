@@ -16,7 +16,7 @@ const Homepage = () => {
         <section className="homepage">
           <Category></Category>
           <div className="mycarousel">
-            {/* <Carousel>
+            <Carousel>
               <Carousel.Item>
                 <img
                   className="slide1"
@@ -48,7 +48,7 @@ const Homepage = () => {
                 <Carousel.Caption>
                 </Carousel.Caption>
               </Carousel.Item>
-            </Carousel> */}
+            </Carousel>
           </div>
           <div className="homepage--banner">
 

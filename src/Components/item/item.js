@@ -6,7 +6,7 @@ import { setStorage } from '../../_metronic'
 
 export const Item = (props) => {
   const dispatch = useDispatch()
-  const [url, seturl] = useState(`/detail/${props.item.name}`)
+  const [url, seturl] = useState(`/detail/${props.item.name.replace('/',"")}`)
   const handleChooseItem = () => {
     // seturl(`/detail/${props.item.name}`)
     console.log("id" + props.id);

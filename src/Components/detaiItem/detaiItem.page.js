@@ -55,7 +55,7 @@ const DetailItem = () => {
                   <div className="content--attr">
                     <div className="content--attr--element">
                       <label>Danh mục</label>
-                      <div>Vinall {'>'} {item && item.category[0].name} {'>'} {item && item.category[1].name}</div>
+                      <div>Vinall {'>'} {item &&item.category[0] &&item.category[0].name} {'>'} {item && item.category[1] && item.category[1].name}</div>
                     </div>
                     {item && item.attributes.map((v, i) => {
                       return (

@@ -28,6 +28,9 @@ const Checkout = (props) => {
     dispatch(orderActions.checkout(selectItem, `${user.addresses[0].phoneNumber}`, `${user.addresses[0].state, user.addresses[0].district, user.addresses[0].city}`))
     props.history.push("/history")
   }
+  const handleChangeToAddAddress=()=>{
+	  props.history.push("/users/address")
+  }
   let listItem = null
   listItem = selectItem.map((item, key) => {
 
@@ -61,7 +64,7 @@ const Checkout = (props) => {
                 <div className="checkout--address--row__address"> {user && user.addresses[0] && user.addresses[0].state && user.addresses[0].state + ","} {user && user.addresses[0] && user.addresses[0].district && user.addresses[0].district + ","} {user && user.addresses && user.addresses[0] && user.addresses[0].city && user.addresses[0].city + ","}</div>
                 <div className="checkout--address--row__default"> Mặc định</div>
               </div>
-              {address.length === 0 ? <div className="checkout--address--selection__change">Thêm địa chỉ </div> : <div className="checkout--address--selection__change">Thay đổi</div>}
+              {address.length === 0 ? <div className="checkout--address--selection__change" onClick={()=>handleChangeToAddAddress()}>Thêm địa chỉ </div> : <div className="checkout--address--selection__change">Thay đổi</div>}
 
             </div>
           </div>

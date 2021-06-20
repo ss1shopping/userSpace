@@ -23,17 +23,6 @@ export const Flashsale = () => {
               </div>
             </div>
           </Link>
-          {/* <a className="flashsale-item" href="">
-            <div className="item">
-              <div className="item-img-wrapper">
-                <div className="item-img"></div>
-              </div>
-              <div className="item-price-wrapper">
-                <span className="item-price">$200</span>
-              </div>
-            </div>
-          </a>
-
           <a className="flashsale-item" href="">
             <div className="item">
               <div className="item-img-wrapper">
@@ -87,7 +76,18 @@ export const Flashsale = () => {
                 <span className="item-price">$200</span>
               </div>
             </div>
-          </a> */}
+          </a>
+
+          <a className="flashsale-item" href="">
+            <div className="item">
+              <div className="item-img-wrapper">
+                <div className="item-img"></div>
+              </div>
+              <div className="item-price-wrapper">
+                <span className="item-price">$200</span>
+              </div>
+            </div>
+          </a>
 
         </div>
       </div>

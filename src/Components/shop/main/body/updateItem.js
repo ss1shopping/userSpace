@@ -22,7 +22,7 @@ export const UpdateItem = (props) => {
   const [desc, setdesc] = useState("")
   let [attributes, setattribute] = useState([])
   const [quantity, setquantity] = useState(0)
-  const [discount, setdiscount] = useState(0)
+  const [discount, setdiscount] = useState()
   const [newModel, setnewModel] = useState([])
   const [listImage, setlistImage] = useState([])
   const [tier_varaitionLength, settier_varaitionLength] = useState()
@@ -208,12 +208,17 @@ export const UpdateItem = (props) => {
     })
     let newListmodel = []
     model.map((v, i) => {
-      model1.map((value, index) => {
-        let modelUpdate = {
-          name: `${v.name},${value.name}`, price: price[`${v.name},${value.name}`], quantity: quantity1[`${v.name},${value.name}`]
-        }
-        newListmodel.push(modelUpdate)
-      })
+	if(model1.length>0){
+
+		model1.map((value, i) => {
+			let modelUpdate = {
+				name: `${v.name},${value.name}`, price: price[`${v.name},${value.name}`], quantity: quantity1[`${v.name},${value.name}`]
+			      }
+			      newListmodel.push(modelUpdate)
+		})
+	}else{
+		newListmodel.push({ name: `${v.name}`, price: price[`${v.name}`], quantity: quantity1[`${v.name}`] })
+	}
     })
     newListmodel.map((v, i) => {
       v._id = detailItem.models[i]._id
@@ -237,7 +242,7 @@ export const UpdateItem = (props) => {
     })
 
     dispatch(itemActions.updateItem(detailItem._id, productName, minPrice, maxprice, desc, attributes, category, discount))
-    props.history.push("/banhang/item")
+    // props.history.push("/banhang/item")
   }
 
   useEffect(() => {
@@ -255,6 +260,7 @@ export const UpdateItem = (props) => {
 
 
     detailItem && detailItem.name && setproductName(detailItem.name)
+    detailItem && detailItem.discount && setdiscount(detailItem.discount)
     detailItem && detailItem.desc && setdesc(detailItem.desc)
     detailItem && detailItem.category && dispatch(categoryActions.chooseCategoryToAdd(detailItem.category))
     detailItem && detailItem.tier_variations && detailItem.tier_variations[0].option && setnumberGroup1(detailItem.tier_variations[0].option.length)
@@ -278,7 +284,7 @@ export const UpdateItem = (props) => {
     detailItem && detailItem.tier_variations && detailItem.tier_variations[0] && dispatch(itemActions.setModel(newmodel))
     detailItem && detailItem.tier_variations && detailItem.tier_variations[1] && dispatch(itemActions.setModel1(newmodel1))
     setStatus(true)
-    detailItem && detailItem.tier_variations && detailItem.tier_variations[0].option && setnumberGroup2(detailItem.tier_variations[1].option.length)
+    detailItem && detailItem.tier_variations && detailItem.tier_variations[1] && detailItem.tier_variations[1].option && setnumberGroup2(detailItem.tier_variations[1].option.length)
     setAddGroup(true)
     let newListprice = {}
     let newListquantity = {}
@@ -1112,9 +1118,9 @@ export const UpdateItem = (props) => {
                       <button type="button" className="normal-btn">
                         <span>Save and Hide</span>
                       </button>
-                      <button type="button" className="primary-btn" onClick={() => handleSubmit()}>
+                      <a href="/banhang/item" type="button" className="primary-btn" onClick={() => handleSubmit()}>
                         <span>Save and Display</span>
-                      </button>
+                      </a>
                     </div>
                   </div>
                 </div>

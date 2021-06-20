@@ -33,11 +33,14 @@ const SearchPage = (props) => {
 
   }, [item])
   useEffect(() => {
-    // if (keyword) {
+//     if (keyword) {
 
-    //   dispatch(itemActions.searchItem(keyword, filterCategory, sortPrice, rangePrice, ""))
-    // }
+//       dispatch(itemActions.searchItem(keyword, filterCategory, sortPrice, rangePrice, ""))
+//     }
   }, [filterCategory, rangePrice, OrderPrice, page, categoryRecommend])
+  useEffect(() => {
+	dispatch(itemActions.searchItem(keyword, filterCategory, sortPrice, rangePrice, ""))
+  }, [])
   const handlefilterCategory = (index, value, checked) => {
     if (checked) {
       filterCategory[index] = value

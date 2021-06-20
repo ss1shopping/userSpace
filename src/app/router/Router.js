@@ -58,9 +58,9 @@ const Routerr = () => {
         {/* <Route exact path="/banhang" component={Body}></Route> */}
 
         <PrivateRouter exact path="/banhang/order" component={Order}></PrivateRouter>
-        <PrivateRouter exact path="/banhang/item" component={ManageItem}></PrivateRouter>
-        <PrivateRouter exact path="/banhang/choose-category" component={ChooseCategory}></PrivateRouter>
-        <PrivateRouter exact path="/banhang/choose-category/:id" component={ChooseCategory}></PrivateRouter>
+        <Route exact path="/banhang/item" component={ManageItem}></Route>
+        <Route exact path="/banhang/choose-category" component={ChooseCategory}></Route>
+        <Route exact path="/banhang/choose-category/:id" component={ChooseCategory}></Route>
         <Route exact path="/banhang/add-product" component={AddProduct}></Route>
         <Route exact path="/banhang/shop-profile" component={ShopProfile}></Route>
         <Route exact path="/banhang/update/item/:id" component={UpdateItem}></Route>

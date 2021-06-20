@@ -42,7 +42,7 @@ const SearchBar = (props) => {
       <div className="header--searchbar--box">
         <div className="header--searchbar--box--input">
           <form action={`/search?${keyword}`}>
-            <input type="text" name="keyword" placeholder="search" onBlur={() => handleWait()} onFocus={() => setstatus(true)} onChange={(e) => handleChangeInput(e.target.value)} />
+            <input type="text" name="keyword" autoComplete="new-password" placeholder="search" onBlur={() => handleWait()} onFocus={() => setstatus(true)} onChange={(e) => handleChangeInput(e.target.value)} />
           </form>
         </div>
 

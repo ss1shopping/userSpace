@@ -71,7 +71,7 @@ export const ManageItem = () => {
                   return (
                     <tr>
                       <th><input type="checkbox" /> </th>
-                      <th>{value.name}</th>
+                      <th className="itemShopowner--table--name">{value.name}</th>
                       <th>{value.category[value.category.length - 1].name}</th>
                       <th>{value.priceMin}-{value.priceMax}</th>
                       <th>{value.sold}</th>

@@ -17,7 +17,12 @@ export const Model = (props) => {
     dispatch(itemActions.setprice(price))
 
   }
-
+  const setPriceOne = ( value) => {
+	price[`${props.value.name}`] = +value
+	dispatch(itemActions.setprice(price))
+    
+      }
+    
   const setQuantityforSpecific = (name, value) => {
     console.log(value);
     quantity[`${props.value.name},${name}`] = +value
@@ -26,6 +31,14 @@ export const Model = (props) => {
     dispatch(itemActions.setQuantity(quantity))
 
   }
+  const setQuantityforSpecificOne = ( value) => {
+	console.log(value);
+	quantity[`${props.value.name}`] = +value
+	// console.log(letnewquantity);
+	// let mergeObject = ({ ...quantity, ...letnewquantity });
+	dispatch(itemActions.setQuantity(quantity))
+    
+      }
   useEffect(() => {
 
   }, [])
@@ -39,6 +52,7 @@ export const Model = (props) => {
           </div>
           <div className="table-cell-header" style={model1.length === 0 ? { display: "none" } : { width: "100%", padding: "0px", border: "none", display: "flex", flexDirection: "column" }}>
             {
+		   
               model1 && model1.map((v, i) => {
                 return (
                   <div className="table-cell" style={{ width: "100%" }} key={i}>
@@ -57,9 +71,13 @@ export const Model = (props) => {
                   </div>
                 )
               })
+	      
             }
+	  
           </div>
-          <div className="table-cell-header" style={model1.length === 0 ? { display: "none" } : { padding: "0px", border: "none", display: "flex", flexDirection: "column" }}>
+          <div className="table-cell-header" 
+	  style={model1.length === 0 && !props.value? { display: "none" } : { padding: "0px", border: "none", display: "flex", flexDirection: "column" }}
+	  >
             {
               model1.length === 0 ?
                 <div className="table-cell">
@@ -72,7 +90,12 @@ export const Model = (props) => {
                               $
                                   <span className="product-input__prefix-split"></span>
                             </div>
-                            <input type="text" placeholder="Insert" size="large" resize="vertical" rows="2" minrows="2" restrictiontype="value" max="Infinity" min="-Infinity" isround="true" class="product-input__input" ></input>
+                            <input type="number" placeholder="Insert" size="large" 
+			    resize="vertical" rows="2" minrows="2" restrictiontype="value"
+			     max="Infinity" min="-Infinity" isround="true" class="product-input__input" 
+			     defaultValue={price && price[`${props.value.name}`]}
+			     onChange={(e) => setPriceOne( e.target.value)}
+			     ></input>
                           </div>
                         </div>
                       </div>
@@ -95,7 +118,7 @@ export const Model = (props) => {
                                         <span className="product-input__prefix-split"></span>
                               </div>
                               <input
-                                type="text" placeholder="Insert"
+                                type="number" placeholder="Insert"
                                 size="large" resize="vertical" rows="2" minrows="2"
                                 restrictiontype="value" max="Infinity" min="-Infinity" isround="true"
                                 defaultValue={price && price[`${props.value.name},${v.name}`]}
@@ -112,7 +135,11 @@ export const Model = (props) => {
               })
             }
           </div>
-          <div className="table-cell-header" style={model1.length === 0 ? { display: "none" } : { padding: "0px", border: "none", display: "flex", flexDirection: "column" }}>
+	  
+          <div className="table-cell-header" 
+	 style= { model1.length === 0 && !props.value? { display: "none" } : { padding: "0px", border: "none", display: "flex", flexDirection: "column" }}
+	>
+
             {
               model1.length === 0 ?
                 <div className="table-cell">
@@ -125,11 +152,12 @@ export const Model = (props) => {
                               $
                                   <span className="product-input__prefix-split"></span>
                             </div>
-                            <input type="text" placeholder="Insert" size="large"
+                            <input type="number" placeholder="Insert" size="large"
                               resize="vertical" rows="2" minrows="2"
                               restrictiontype="value" max="Infinity" min="-Infinity"
                               isround="true" class="product-input__input"
-                            // onChange={(e) => setQuantity(e.target.value)}
+			      defaultValue={quantity && quantity[`${props.value.name}`]}
+                             onChange={(e) => setQuantityforSpecificOne(e.target.value)}
                             ></input>
                           </div>
                         </div>
@@ -151,7 +179,7 @@ export const Model = (props) => {
                                 $
                                         <span className="product-input__prefix-split"></span>
                               </div>
-                              <input type="text" placeholder="Insert"
+                              <input type="number" placeholder="Insert"
                                 size="large" resize="vertical" rows="2" minrows="2"
                                 restrictiontype="value" max="Infinity" min="-Infinity" isround="true"
                                 class="product-input__input"
@@ -168,22 +196,25 @@ export const Model = (props) => {
               })
             }
           </div>
-          <div className="table-cell-header" style={model1.length === 0 ? { display: "none" } : { padding: "0px", border: "none", display: "flex", flexDirection: "column" }}>
+          <div className="table-cell-header" style={model1.length === 0 && !props.value ? { display: "none" } : { padding: "0px", width: "100%",border: "none", display: "flex", flexDirection: "column" }}>
             {
               model1.length === 0 ?
                 <div className="table-cell">
-                  <div className="table-cell__variation-model">
-                    <div className="table-cell__edit">
-                      <div className="product-input-wrapper">
-                        <div className="product-input">
-                          <div class="product-input__inner">
-                            <input type="text" placeholder="Insert" size="large" resize="vertical" rows="2" minrows="2" restrictiontype="value" max="Infinity" min="-Infinity" isround="true" class="product-input__input"></input>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div> : ""
+		<div className="table-cell__variation-model">
+		  <div className="table-cell__edit" style={{width:"110%",marginLeft:"-6%"}}>
+		    <div className="product-input-wrapper">
+		      <div className="product-input">
+			<div class="product-input__inner">
+			  <input type="text" placeholder="Insert" size="large" resize="vertical" rows="2"
+			    minrows="2" restrictiontype="value" max="Infinity" min="-Infinity" isround="true"
+			    class="product-input__input"
+			  />
+			</div>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+	      </div>: ""
             }
             {
               model1 && model1.map((v, i) => {

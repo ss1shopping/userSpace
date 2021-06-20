@@ -81,7 +81,7 @@ const ListItem = (props) => {
         </th>
         <th>{props.index + 1}</th>
         <th>{props.item.shopId.name}</th>
-        <th>{props.item.itemId.name} ({props.item.modelId.name})</th>
+        <th>{props.item && props.item.itemId && props.item.itemId.name} ({props.item && props.item.itemId && props.item.modelId.name})</th>
         <th>{props.item.totalPrice / props.item.number}</th>
         <th>{props.item.number}</th>
         <th className="iteractive">

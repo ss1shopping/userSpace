@@ -21,7 +21,7 @@ export const Address = () => {
     const handleAddAddress = () => {
         setAddOredit(true)
         setAddressStatus(!addressStatus)
-        setlistAddress(user.addresses)
+        setlistAddress(user&&user.addresses)
     }
     const handleAddress = () => {
         if (addressStatus) {

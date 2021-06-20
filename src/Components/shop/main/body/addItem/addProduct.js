@@ -26,6 +26,10 @@ export const AddProduct = () => {
     const [tier_varaitionLength1, settier_varaitionLength1] = useState()
     const [tier_varaitionStatus, settier_varaitionStatus] = useState(true)
     const [tier_varaitionStatus1, settier_varaitionStatus1] = useState(true)
+    const [allprice, setAllprice] = useState()
+    const [allQuantity, setAllquantity] = useState()
+    const [statusApplyAllProduct, setstatusApplyAllProduct] = useState(false)
+    //IN HRE lam, lam set all product
     const price = useSelector(state => state.itemReducer.price)
     const chooseCategoryToAdd = useSelector(state => state.categoryReducer.chooseCategoryToAdd)
     const tier_variations = useSelector(state => state.itemReducer.tier_variations)
@@ -166,9 +170,14 @@ export const AddProduct = () => {
         })
         let newmodel = []
         model.map((v, i) => {
-            model1.map((value, i) => {
-                newmodel.push({ name: `${v.name},${value.name}`, price: price[`${v.name},${value.name}`], quantity: quantity1[`${v.name},${value.name}`] })
-            })
+		if(model1.length>0){
+
+			model1.map((value, i) => {
+			    newmodel.push({ name: `${v.name},${value.name}`, price: price[`${v.name},${value.name}`], quantity: quantity1[`${v.name},${value.name}`] })
+			})
+		}else{
+			newmodel.push({ name: `${v.name}`, price: price[`${v.name}`], quantity: quantity1[`${v.name}`] })
+		}
         })
         let minPrice = price[Object.keys(price)[0]]
 
@@ -186,7 +195,9 @@ export const AddProduct = () => {
         console.log(category);
         dispatch(itemActions.uploaditem(minPrice, maxprice, productName, desc, category, getStorage("shopId"), attributes, newmodel, tier_variations))
     }
-
+ const handleApplyForAll=()=>{
+	 setstatusApplyAllProduct(true)
+ }
     return (
         <DefaultLayout2>
             <div className="element">
@@ -424,7 +435,7 @@ export const AddProduct = () => {
                                                                     <span className="product-input__prefix-split"></span>
                                                                 </div>
                                                                 <input
-                                                                    type="text"
+                                                                    type="number"
                                                                     placeholder="Input here"
                                                                     size="large"
                                                                     resize="vertical"
@@ -433,7 +444,7 @@ export const AddProduct = () => {
                                                                     minlength="10"
                                                                     restrictiontype="input"
                                                                     max="Infinity"
-                                                                    min="-Infinity"
+                                                                    min="0"
                                                                     isround="true"
                                                                     unicodenormalized="true"
                                                                     className="product-input__input"
@@ -458,7 +469,7 @@ export const AddProduct = () => {
                                                         <div className="product-input">
                                                             <div className="product-input__inner">
                                                                 <input
-                                                                    type="text"
+                                                                    type="number"
                                                                     placeholder="Input here"
                                                                     size="large"
                                                                     resize="vertical"
@@ -466,7 +477,7 @@ export const AddProduct = () => {
                                                                     minlength="10"
                                                                     restrictiontype="input"
                                                                     max="Infinity"
-                                                                    min="-Infinity" isround="true"
+                                                                    min="0" isround="true"
                                                                     unicodenormalized="true"
                                                                     className="product-input__input"
                                                                     onChange={(e) => setquantity(e.target.value)}
@@ -657,7 +668,12 @@ export const AddProduct = () => {
                                                                                     $
                                                                                     <span className="product-input__prefix-split"></span>
                                                                                 </div>
-                                                                                <input type="text" placeholder="Price" size="large" resize="vertical" rows="2" minrows="2" restrictiontype="value" max="Infinity" min="-Infinity" class="product-input__input" />
+                                                                                <input type="number" placeholder="Price"
+										 size="large" resize="vertical" rows="2" minrows="2" 
+										 restrictiontype="value" max="Infinity" min="-Infinity" 
+										 class="product-input__input"
+										 onChange={(e)=>setAllprice(+e.target.value)}
+										  />
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -669,7 +685,11 @@ export const AddProduct = () => {
                                                                     <div className="edit-mait-batch__content">
                                                                         <div className="product-input">
                                                                             <div className="product-input__inner">
-                                                                                <input type="text" placeholder="Storage" size="large" resize="vertical" rows="2" minrows="2" restrictiontype="value" max="Infinity" min="-Infinity" class="product-input__input" />
+                                                                                <input type="number" placeholder="Quantity" 
+										size="large" resize="vertical" rows="2" minrows="2" 
+										restrictiontype="value" max="Infinity" min="-Infinity" class="product-input__input" 
+										onChange={(e)=>setAllquantity(+e.target.value)}
+										/>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -687,7 +707,7 @@ export const AddProduct = () => {
                                                                 </div>
                                                             </div>
                                                         </form>
-                                                        <button className="apply-all-btn" type="button">
+                                                        <button className="apply-all-btn" type="button" onClick={()=>handleApplyForAll()}>
                                                             <span>Apply for all type</span>
                                                         </button>
                                                     </div>

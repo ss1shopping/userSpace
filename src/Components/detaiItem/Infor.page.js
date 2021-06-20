@@ -16,7 +16,7 @@ const Infor = (props) => {
   const attrs = useSelector(state => state.cartReducer.attrs)
   // const cart = useSelector(state => state.cartReducer.cart)
   const rating = useSelector(state => state.rateReducer.rating)
-
+	
   const [totalRate, settotalRate] = useState(0)
   const [open, setOpen] = useState(false);
   const attribute = item && item.tier_variations.map((attr, index) => {
@@ -73,6 +73,8 @@ const Infor = (props) => {
 
       totalNumberRate += v.starRate
     })
+    settotalRate(totalNumberRate/rating.length||0)
+  
     dispatch(rateActions.setTotalRating(totalNumberRate))
 
   }, [])
@@ -85,13 +87,13 @@ const Infor = (props) => {
       </div>
       <div className="infor--inforExtra">
         <div className="infor--inforExtra--rate">
-          <div className="inforExtra--scores">{item && totalNumberRate / rating.length}</div>
+          <div className="inforExtra--scores">{item && totalRate||0 }</div>
           <div className="inforExtra--flex">
-            <BsStarFill className={totalNumberRate / rating.length >= 1.5 ? "active" : "star"}></BsStarFill>
-            <BsStarFill className={totalNumberRate / rating.length >= 2.5 ? "active" : "star"}></BsStarFill>
-            <BsStarFill className={totalNumberRate / rating.length >= 3.5 ? "active" : "star"}></BsStarFill>
-            <BsStarFill className={totalNumberRate / rating.length >= 4.5 ? "active" : "star"}></BsStarFill>
-            <BsStarFill className={totalNumberRate / rating.length >= 4.5 ? "active" : "star"}></BsStarFill>
+            <BsStarFill className={totalRate> 0 ? "active" : "star"}></BsStarFill>
+            <BsStarFill className={totalRate >= 1.5 ? "active" : "star"}></BsStarFill>
+            <BsStarFill className={totalRate >= 2.5 ? "active" : "star"}></BsStarFill>
+            <BsStarFill className={totalRate >= 3.5 ? "active" : "star"}></BsStarFill>
+            <BsStarFill className={totalRate >= 4.5 ? "active" : "star"}></BsStarFill>
 
           </div>
           <div className="inforExtra--avaluate">

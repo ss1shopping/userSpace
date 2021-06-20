@@ -104,22 +104,22 @@ const HeaderLogin = (props) => {
             <Nav className="ml-auto">
 
               {/* <Nav.Link href="/" active>Shop</Nav.Link> */}
-              <div className="header" >
-                <div className="header--name">
+              <div className="header1" >
+                <div className="header1--name">
 
-                  <Nav.Link href="/cart">cart</Nav.Link>
+                  <Nav.Link href="/cart">Cart</Nav.Link>
                 </div>
               </div>
-              <div >
-                <div className="header" onMouseLeave={() => setstatus(false)}>
-                  <div className="header--name" onMouseOver={() => setstatus(true)}>{user && user.firstname ? `${user.firstname}${user.lastname}` : "user"}</div>
-                  <div className="box--hidden" style={status ? { display: "block" } : { display: "none" }}>
-                    <div className="link"> <Nav.Link href="/users/profile">tai koan qua toi</Nav.Link></div>
-                    <div className="link"><Nav.Link href="/history"> don mua</Nav.Link></div>
-                    <div className="link"><Nav.Link href="/" onClick={() => handleLogout()}> dang xuat</Nav.Link></div>
-                  </div>
+
+              <div className="header1" onMouseLeave={() => setstatus(false)}>
+                <div className="header1--name" onMouseOver={() => setstatus(true)}>{user && user.firstname ? `${user.firstname}${user.lastname}` : "user"}</div>
+                <div className="box--hidden" style={status ? { display: "block",width:"150px" } : { display: "none" }}>
+                  <div className="link"> <Nav.Link href="/users/profile">tai koan qua toi</Nav.Link></div>
+                  <div className="link"><Nav.Link href="/history"> don mua</Nav.Link></div>
+                  <div className="link"><Nav.Link href="/" onClick={() => handleLogout()}> dang xuat</Nav.Link></div>
                 </div>
               </div>
+
               {/* <Link to="/users/cart"> Cart <RiShoppingCart2Line/><div style={{color:"red" ,margin:"-30px 0 0 20px"}}>0</div></Link> */}
 
             </Nav>

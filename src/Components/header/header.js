@@ -59,7 +59,7 @@ const Header = (props) => {
 
               {/* <Nav.Link href="/" active>Shop</Nav.Link> */}
               <Nav.Link href={register}>Sign in</Nav.Link>
-              <Nav.Link href={login}>Login</Nav.Link>
+              <Nav.Link href={login}>Sign up</Nav.Link>
               {/* <Link to="/users/cart"> Cart <RiShoppingCart2Line/><div style={{color:"red" ,margin:"-30px 0 0 20px"}}>0</div></Link> */}
 
             </Nav>
