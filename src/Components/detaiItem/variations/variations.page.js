@@ -12,6 +12,7 @@ const Variations = (props) => {
   const toggleButton = (index, model) => {
     setButtonSelect({ ...buttonSelect, activeObject: buttonSelect.object[index] })
     attrs.value[props.attr.name] = buttonSelect.object[index]
+    console.log(attrs);
     dispatch(cartActions.setAttribute(attrs))
   }
   const activeObject = (index) => {
@@ -25,6 +26,7 @@ const Variations = (props) => {
 
   }
   useEffect(() => {
+	// dispatch(cartActions.setAttribute({}))
     attrs.value[props.attr.name] = null;
     dispatch(cartActions.setAttribute(attrs))
   }, [])

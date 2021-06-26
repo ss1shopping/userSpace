@@ -25,6 +25,7 @@ function* getAllOrder({ payload }) {
       url = url + `&status=${status}`
     }
     result = yield call(getAllOrders, { url })
+    console.log("order",result);
     yield put(orderActions.getAllOrderSuccess(result.data.data))
   } catch (err) {
     const error = err.response ? err.response.data.msg : err.stack;
@@ -78,9 +79,9 @@ function* cancelledorder({ payload }) {
   }
 }
 function* checkoutOrder({ payload }) {
-  let { carts, phone, address } = payload
+  let { carts, phone, address ,shopId} = payload
   try {
-    let result = yield call(checkout, { carts, phone, address })
+    let result = yield call(checkout, { carts, phone, address,shopId })
     yield put(orderActions.checkoutSuccessful(result.data))
 
   } catch (err) {

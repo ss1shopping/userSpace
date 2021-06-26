@@ -78,7 +78,7 @@ export const orderActions = {
   updateOrderSuccess: (payload) => ({ type: orderActionTypes.updateOrderSuccessFull, payload }),
   cancelledOrder: (id) => ({ type: orderActionTypes.canceledOrder, payload: { id } }),
   cancelledOrderSuccessfull: (payload) => ({ type: orderActionTypes.cancelledOrderSuccess, payload }),
-  checkout: (carts, phone, address) => ({ type: orderActionTypes.checkout, payload: { carts, phone, address } }),
+  checkout: (carts, phone, address,shopId) => ({ type: orderActionTypes.checkout, payload: { carts, phone, address,shopId } }),
   checkoutSuccessful: (payload) => ({ type: orderActionTypes.checkoutSuccessfull, payload }),
   getAllOrdersUser: (page, userId) => ({ type: orderActionTypes.getAllOrderUser, payload: { page, userId } })
 }

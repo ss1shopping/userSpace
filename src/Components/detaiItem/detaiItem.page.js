@@ -12,6 +12,7 @@ import { getStorage } from '../../_metronic/utils/utils'
 import { Rating } from './rating/rating'
 import { NavRating } from './navRating/navRating'
 import { InputRating } from './rating/inputRating'
+import { cartActions } from '../../app/store/ducks/cardReducer'
 
 const DetailItem = () => {
   const dispatch = useDispatch()
@@ -25,6 +26,7 @@ const DetailItem = () => {
     } else {
       dispatch(itemActions.getItem(getStorage("chooseItem")))
     }
+    //dispatch(cartActions.setAttribute({number:1,checked:false,shopName:""}))
   }, [])
   // if (item !== null || undefined) {
 

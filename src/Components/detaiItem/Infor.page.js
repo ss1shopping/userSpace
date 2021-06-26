@@ -34,24 +34,37 @@ const Infor = (props) => {
       //find modelId 
       //concat key word Ex: mauxanh,s
       let keyword = null
-      Object.keys(attrs.value).map((value) => {
-        console.log(attrs.value[value]);
-        if (keyword == null) {
-          keyword = attrs.value[value]
-        } else {
-          keyword = keyword + `,${attrs.value[value]}`
-
-        }
+      item && item.tier_variations.map((attr, index) => {
+	      console.log(index);
+	      if(index === 0){
+		
+		keyword=   attrs.value[attr.name]
+	      }else{
+		keyword = keyword + `,${attrs.value[attr.name]}` 
+	      }
       })
+//       Object.keys(attrs.value).map((value) => {
+//         console.log(attrs.value[value]);
+//         if (keyword == null) {
+//           keyword = attrs.value[value]
+//         } else {
+//           keyword = keyword + `,${attrs.value[value]}`
 
+//         }
+//       })
+      console.log("keyword",keyword);
       let found = item.models.find(element => element.name === keyword)
       if (!found) {
         alert("some wrong f5")
       } else {
+		if(attrs.number>found.quantity){
+			alert("quantity remain "+found.quantity)
+		}else{
 
-        dispatch(cartActions.addtocart(item._id, attrs.number, found._id,))
-        dispatch(cartActions.setAttribute({ ...attrs, number: 1 }))
-        dispatch(cartActions.loadingCart())
+			dispatch(cartActions.addtocart(item._id, attrs.number, found._id,))
+			dispatch(cartActions.setAttribute({ ...attrs, number: 1 }))
+			dispatch(cartActions.loadingCart())
+		}
       }
       setOpen(true)
       if (e.target.name === 'buyNow') {

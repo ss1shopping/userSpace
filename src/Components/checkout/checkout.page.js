@@ -25,7 +25,7 @@ const Checkout = (props) => {
     // dispatch(cartActions.loadingcartSuccessful(arr))
     dispatch(cartActions.setAgainSelecItem([]))
     dispatch(cartActions.setTotalMoney(0))
-    dispatch(orderActions.checkout(selectItem, `${user.addresses[0].phoneNumber}`, `${user.addresses[0].state, user.addresses[0].district, user.addresses[0].city}`))
+    dispatch(orderActions.checkout(selectItem, `${user.addresses[0].phoneNumber}`, `${user.addresses[0].state, user.addresses[0].district, user.addresses[0].city}`,selectItem[0].shopId._id))
     props.history.push("/history")
   }
   const handleChangeToAddAddress=()=>{
