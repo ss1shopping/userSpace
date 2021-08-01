@@ -52,7 +52,7 @@ const SearchBar = (props) => {
             <div className="suggetion--wrapper">
               {
 
-                searchItem && searchItem.slice(0, 10).map((v, index) => {
+                searchItem.length>0 && searchItem.slice(0, 10).map((v, index) => {
                   const url = `/detail/${v._source.name}`
                   return (
                     <div className="suggetion--item" >

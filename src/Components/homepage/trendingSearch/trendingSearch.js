@@ -10,7 +10,7 @@ export const TrendingSearch = () => {
     <div className="trendSearch-item-list" >
 
       {
-        category && category.branches.slice(0, 5).map((v, i) => {
+       category && category.length>0 && category.branches.slice(0, 5).map((v, i) => {
           return (
             <Link className="trendSearch-item" to="/">
               <div className="item">

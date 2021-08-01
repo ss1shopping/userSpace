@@ -14,7 +14,7 @@ const Category = () => {
   return (
     <div className="category" onMouseLeave={() => setCategorryChoose(null)}>
       {
-        category && category.branches.map((value, index) => {
+        category && category.length>0 && category.branches.map((value, index) => {
           return (
             <>
               <div className="category--parent" >

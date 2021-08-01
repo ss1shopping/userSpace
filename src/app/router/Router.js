@@ -34,7 +34,7 @@ import Checkout from "../../Components/checkout/checkout.page"
 import { UserProfile } from "../../Components/user/userProfile";
 import { Address } from "../../Components/user/address";
 import { UpdateItem } from "../../Components/shop/main/body/updateItem";
-// import BlurGlass from "../../Components/LandingPage/dashboard/BlurGlass"
+import { isMobile } from 'react-device-detect';
 const Routerr = () => {
   let token = getStorage("token");
   const isPending = useSelector(state => state.authReducer.isPending)
@@ -47,26 +47,20 @@ const Routerr = () => {
 
   return (
     <Router>
-
-      <Switch>
-        {/* <Route exact path="/" component={LandingPage}></Route> */}
-        <Route exact path="/" component={Homepage}></Route>
+		{
+			isMobile?
+			<Switch>
+  <Route exact path="/" component={Homepage}></Route>
         <Route path="/search" component={SearchPage}></Route>
-        {/* <Route exact path="/blur" component={BlurGlass}></Route> */}
-        {/* <Redirect  from={"/profile"} exact={true} to={"/SignIn"}/> */}
         <Route exact path="/history" component={History}></Route>
-        {/* <Route exact path="/banhang" component={Body}></Route> */}
-
-        <PrivateRouter exact path="/banhang/order" component={Order}></PrivateRouter>
+        <Route exact path="/banhang/order" component={Order}></Route>
         <Route exact path="/banhang/item" component={ManageItem}></Route>
         <Route exact path="/banhang/choose-category" component={ChooseCategory}></Route>
         <Route exact path="/banhang/choose-category/:id" component={ChooseCategory}></Route>
         <Route exact path="/banhang/add-product" component={AddProduct}></Route>
         <Route exact path="/banhang/shop-profile" component={ShopProfile}></Route>
         <Route exact path="/banhang/update/item/:id" component={UpdateItem}></Route>
-        <PrivateRouter exact path="/banhang/delivery" component={Delivery}></PrivateRouter>
-
-
+        <Route exact path="/banhang/delivery" component={Delivery}></Route>
         {/* <Route exact path="/shop/item/:name" component={ItemdetailShopPage}></Route> */}
         <Route exact path="/users/login" component={Login}></Route>
         <Route exact path='/users/register' component={Register} />
@@ -89,11 +83,46 @@ const Routerr = () => {
         <PrivateRouter exact path="/dashboard/list-order-finish" component={ListOrderFinishing}></PrivateRouter> */}
 
         <Route exact path="/users/login/:token" component={ConfirmSuccessful}></Route>
-        {/* <PrivateRouter exact path="/dashboard" component={Dashboard}></PrivateRouter>
-        <PrivateRouter exact path="/dashboard/item" component={Item}></PrivateRouter>
-        <PrivateRouter exact path="/dashboard/item/:id" component={ItemDetail}></PrivateRouter>
-        <PrivateRouter exact path="/dashboard/upload" component={Upload}></PrivateRouter> */}
-      </Switch>
+			</Switch>
+			:
+			<Switch>
+			<Route exact path="/" component={Homepage}></Route>
+			<Route path="/search" component={SearchPage}></Route>
+			<Route exact path="/history" component={History}></Route>
+			<Route exact path="/banhang/order" component={Order}></Route>
+			<Route exact path="/banhang/item" component={ManageItem}></Route>
+			<Route exact path="/banhang/choose-category" component={ChooseCategory}></Route>
+			<Route exact path="/banhang/choose-category/:id" component={ChooseCategory}></Route>
+			<Route exact path="/banhang/add-product" component={AddProduct}></Route>
+			<Route exact path="/banhang/shop-profile" component={ShopProfile}></Route>
+			<Route exact path="/banhang/update/item/:id" component={UpdateItem}></Route>
+			<Route exact path="/banhang/delivery" component={Delivery}></Route>
+			{/* <Route exact path="/shop/item/:name" component={ItemdetailShopPage}></Route> */}
+			<Route exact path="/users/login" component={Login}></Route>
+			<Route exact path='/users/register' component={Register} />
+			<Route exact path='/users/profile' component={UserProfile} />
+			<Route exact path='/users/address' component={Address} />
+	
+			<Route exact path='/detail/:item' component={Detaiitem} />
+	
+			<Route exact path="/cart" component={Cart}></Route>
+			<Route exact path="/checkout" component={Checkout}></Route>
+	
+			{/* <Route exact path="/users/cart/check-out" component={Checkout}></Route> */}
+			<Route exact path="/confirm-account" component={ConfirmAccount}></Route>
+			<Route exact path="/users/forgotpassword" component={ForgotPassword}></Route>
+			<Route exact path="/users/login/forgotpassword/verify/:token" component={ChangePassword}></Route>
+			<Route exact path="/users/login/forgotpassword/confirm" component={ConfirmAccount}></Route>
+			<Route exact path="/users/login/change-password" component={ChangePasswordSuccesful}></Route>
+			{/* <PrivateRouter exact path="/dashboard/list-order" component={ListOrder}></PrivateRouter>
+			<PrivateRouter exact path="/dashboard/list-order-shipping" component={ListOrderShipping}></PrivateRouter>
+			<PrivateRouter exact path="/dashboard/list-order-finish" component={ListOrderFinishing}></PrivateRouter> */}
+	
+			<Route exact path="/users/login/:token" component={ConfirmSuccessful}></Route>
+		   
+		  </Switch>
+		}
+     
       <Footer></Footer>
     </Router>
   );
