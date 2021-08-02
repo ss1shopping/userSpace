@@ -1,9 +1,9 @@
 //https://servertien.herokuapp.com
-export const API_URL = "http://localhost:3002";
+export const API_URL = "http://localhost:3002/v1";
 
 export const API_URLS = {
   REGISTER: '/users/create',
-  LOGIN: '/users/login',
+  LOGIN: '/user/auth/login',
   GETCURRENTUSER: `users/currentUser`,
   UPDATE_USER: "users/update",
   CHECK_ACCTIVE_ACCOUNT: (token) => `/users/login/${token}`,
@@ -12,10 +12,10 @@ export const API_URLS = {
   RESET_PASSWORD: '/users/login/forgotpassword',
   Change_Password: (data) => `/users/login/forgotpassword/confirm/${data.token}`,
   LOADING_CART: "/users/loadingcart",
-  GET_ITEMS: (data) => `/item/get${data.url}`,
+  GET_ITEMS:  `/items`,
   SEARCH_ITEM: (data) => `/item/search${data.url}`,
-  ADD_ITEM: '/item/create',
-  UPDATE_ITEM: "/item/update",
+  ADD_ITEM: '/items',
+  UPDATE_ITEM: "/items",
   DELETE_ITEM: (data) => `/item/delete/${data.iditem}`,
   ADD_IMAGE_ITEM: "/item/uploadImage",
   DELETE_IMAGE_ITEM: "/shopping/upload",

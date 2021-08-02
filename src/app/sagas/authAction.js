@@ -13,24 +13,17 @@ function* fetchLogin({ payload }) {
     const result = yield call(login, { email, password });
     yield put(authActions.loginSuccess(result.data.user));
     yield setSubmitting(false);
-    yield setStorage('token', result.data.token, result.data.expToken);
+    yield setStorage('token', result.data.token.token, result.data.token.expToken);
     yield setStorage("user", JSON.stringify(result.data.user))
-    yield setStorage("refreshtoken", result.data.refreshToken, result.data.expRefreshToken)
+    yield setStorage("refreshtoken", result.data.token.refreshToken, result.data.token.expRefreshToken)
     yield setStorage("shopId", result.data.user.shopId)
-    yield setStorage("role", result.data.user.role)
+    yield setStorage("role", result.data.user.permissions)
     yield setStorage("userId", result.data.user._id)
     yield setStorage("addresses", JSON.stringify(result.data.user.addresses))
     yield setStorage("phoneNumber", JSON.stringify(result.data.user.phoneNumber))
-    //  const response=yield call(loadingCart)
-
-    // //  yield put (authActions.loadingCartSuccess(response.data))
-    //  if(result.data.user.role===1){
-    //    yield setStorage("admin",true)
-    //   yield history.push("/dashboard");
-    //  }else{
+   
     yield history.push(`/`);
-    //  }
-    // console.log(result);
+   
   } catch (err) {
     console.log(err);
 

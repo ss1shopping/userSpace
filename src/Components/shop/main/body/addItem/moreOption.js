@@ -6,40 +6,106 @@ export const MoreOption = (props) => {
 
   const dispatch = useDispatch()
   const [status, setstatus] = useState(false)
+  const [error, setError] = useState(false)
   const tier_variations = useSelector(state => state.itemReducer.tier_variations)
+ let timeout=null
   const [listModel, setlistModel] = useState([])
   const [listModel1, setlistModel1] = useState([])
-  const model = useSelector(state => state.itemReducer.model)
-  const model1 = useSelector(state => state.itemReducer.model1)
-  const totalModel = useSelector(state => state.itemReducer.totalModel)
-  const handle_SetTier_variation = (index, name) => {
-    let newobj = {
-      name,
-      option: []
+  function check(variations) {
+    let newoption = [[]];
 
+    let kq = [];
+    for (let i = 0; i < variations.length; i++) {
+
+        newoption[i] = variations[i].options;
+       
     }
-    tier_variations[index] = newobj
-    dispatch(itemActions.setTier_variations(tier_variations))
+    for (let i = 0; i < newoption.length; i++) {
+        let t1 = newoption[i].length;
+        let temp = newoption[i][Math.floor(Math.random() * t1)];
+        // console.log(temp);
+    }
+    let tong = 1;
+    newoption.map((value) => {
+        tong = value.length * tong;
+    });
+    let dem = 1;
+    for (let i = 0; i < newoption.length; i++) {
+        for (let j = 0; j < newoption[i].length - 1; j++) {
+            for (let k = j + 1; k < newoption[i].length; k++) {
+                if (newoption[i][j] === newoption[i][k]) {
+                    return false;
+                }
+            }
+        }
+    }
+    return true;
+}
+function convertVariation(variations) {
+	const newoption = [[]];
 
-  }
+	const kq = [];
+
+	for (let i = 0; i < variations.length; i++) {
+		newoption[i] = variations[i].options;
+	}
+
+	for (let i = 0; i < newoption.length; i++) {
+		const t1 = newoption[i].length;
+		// eslint-disable-next-line no-unused-vars
+		const temp = newoption[i][Math.floor(Math.random() * t1)];
+	// console.log(temp);
+	}
+	let tong = 1;
+	newoption.map((value) => {
+		tong = value.length * tong;
+		return null;
+	});
+	let dem = 1;
+
+	while (dem <= tong) {
+		let temp1 = 0;
+		let str = '';
+		while (temp1 < newoption.length) {
+			if (temp1 === newoption.length - 1) {
+				str += newoption[temp1][Math.floor(Math.random() * newoption[temp1].length)];
+			} else {
+				str += `${newoption[temp1][Math.floor(Math.random() * newoption[temp1].length)]}-`;
+			}
+
+			temp1++;
+		}
+		if (!kq.includes(str)) {
+			kq[dem - 1] = {name:`${props.nameProduct}-${str}`};
+			dem++;
+		}
+	}
+	return kq;
+}
   const handleSetOptionTierVationation = (index, indexOption, option) => {
-    console.log(index, indexOption, option);
-    let Listnewmodel = [];
-    if (index == 0) {
-
-      model[indexOption] = { name: option }
-      setlistModel(model)
-
-      dispatch(itemActions.setModel(model))
-
-    } else {
-
-      model1[indexOption] = { name: option }
-      dispatch(itemActions.setModel1(model1))
-    }
-    // dispatch(itemActions.setModel(model.concat(Listnewmodel)))
-    tier_variations[index].option[indexOption] = option
+    tier_variations[index].options[indexOption] = option
     dispatch(itemActions.setTier_variations(tier_variations))
+	
+	
+	if(timeout) clearTimeout(timeout);
+	timeout = setTimeout(() => {
+		let check1 = check(tier_variations)
+		if(check1===true){
+				setError(false)
+				let listProduct=convertVariation(tier_variations)
+				dispatch(itemActions.setVariation(listProduct))
+				dispatch(itemActions.setProduct(listProduct))
+			}else{
+				setError(true)
+			}
+			
+			
+		  }, 300);
+		
+	
+        
+	// let variation=convertVariation(tier_variations)
+	
   }
   useEffect(() => {
 
@@ -61,7 +127,7 @@ export const MoreOption = (props) => {
                   <input type="text" placeholder="Input classification, such as Red, White,etc." size="large" resize="none" rows="2"
                     minrows="2" maxlength="Infinity" restrictiontype="input" max="Infinity" min="-Infinity" class="product-input__input"
                     disabled={status}
-                    defaultValue={props && props.tier_variations && props.tier_variations.option[props.count]}
+                    defaultValue={props && props.tier_variations && props.tier_variations.options[props.count]}
                     onChange={(e) => handleSetOptionTierVationation(props.index, props.count, e.target.value)}
                   />
                   <div className="product-input__sulfix">
@@ -78,6 +144,7 @@ export const MoreOption = (props) => {
           </span>
         </div>
       </div>
+		<div style={error?{color:"red",textAlign:"center"}:{display:"none"}}> Classification must be diffirent</div>
     </>
   )
 }

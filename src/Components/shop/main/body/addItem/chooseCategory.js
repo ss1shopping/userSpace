@@ -100,7 +100,7 @@ export const ChooseCategory = (props) => {
                 <div class="category-list">
                   <ul class="scroll-item">
                     {
-                      category && category.branches.map((v, i) => {
+                      category && category.length>0 && category.branches.map((v, i) => {
                         return (
 
                           <li key={i} className={type1 === i ? `category-item-active` : `category-item`} onClick={() => handleChooseCategory1toAdd(i, v)}>
@@ -118,7 +118,7 @@ export const ChooseCategory = (props) => {
                   </ul>
                   <ul class="scroll-item">
                     {
-                      category1 && category1.branches.map((v, i) => {
+                      category1 && category1.length>0 && category1.branches.map((v, i) => {
                         return (
                           <li key={i} className={type2 === i ? `category-item-active` : `category-item`} onClick={() => handleChooseCategory2toAdd(i, v)}>
                             <p class="category-item__text">{v.name}</p>

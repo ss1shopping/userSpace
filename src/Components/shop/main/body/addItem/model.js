@@ -8,40 +8,37 @@ export const Model = (props) => {
   const price = useSelector(state => state.itemReducer.price)
   const quantity = useSelector(state => state.itemReducer.quantity)
   const tier_variations = useSelector(state => state.itemReducer.tier_variations)
-  const detailItem = useSelector(state => state.itemReducer.detailItem)
+  const products = useSelector(state => state.itemReducer.products)
   let letnewquantity = {}
-  console.log(props);
+  
   const [newmodel, setnewmodel] = useState({})
-  const setPrice = (name, value) => {
-    price[`${props.value.name},${name}`] = +value
-    dispatch(itemActions.setprice(price))
+  const setPrice = (index, value) => {
+	 
+    products[index].price = +value
+    dispatch(itemActions.setProduct(products))
 
   }
-  const setPriceOne = ( value) => {
-	price[`${props.value.name}`] = +value
-	dispatch(itemActions.setprice(price))
-    
-      }
-    
-  const setQuantityforSpecific = (name, value) => {
-    console.log(value);
-    quantity[`${props.value.name},${name}`] = +value
-    // console.log(letnewquantity);
-    // let mergeObject = ({ ...quantity, ...letnewquantity });
-    dispatch(itemActions.setQuantity(quantity))
+
+  const setQuantityforSpecific = (index, value) => {
+	products[index].quantity = +value
+    dispatch(itemActions.setProduct(products))
+
 
   }
-  const setQuantityforSpecificOne = ( value) => {
-	console.log(value);
-	quantity[`${props.value.name}`] = +value
-	// console.log(letnewquantity);
-	// let mergeObject = ({ ...quantity, ...letnewquantity });
-	dispatch(itemActions.setQuantity(quantity))
-    
+  const setCostforSpecificOne = (index, value) => {
+	products[index].cost = +value
+    dispatch(itemActions.setProduct(products))
       }
+	const setSkuforSpecificOne = (index,value) => {
+	products[index].sku = +value
+	dispatch(itemActions.setProduct(products))
+		}
+	
   useEffect(() => {
-
-  }, [])
+	  console.log("runnnnn");
+ 
+ 
+  }, [tier_variations])
 
   return (
     <div className="row">
@@ -50,64 +47,11 @@ export const Model = (props) => {
           <div className="table-cell">
             <span>{props.value && props.value.name}</span>
           </div>
-          <div className="table-cell-header" style={model1.length === 0 ? { display: "none" } : { width: "100%", padding: "0px", border: "none", display: "flex", flexDirection: "column" }}>
-            {
-		   
-              model1 && model1.map((v, i) => {
-                return (
-                  <div className="table-cell" style={{ width: "100%" }} key={i}>
-                    <div className="table-cell__variation-model">
-                      <div className="table-cell__edit">
-                        <div className="product-input-wrapper">
-                          <div className="product-input">
-                            <div class="product-input__inner" style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-                              <div>{v.name}</div>
-                              {/* <input type="text" placeholder="Insert" size="large" resize="vertical" rows="2" minrows="2" restrictiontype="value" max="Infinity" min="-Infinity" isround="true" class="product-input__input"></input> */}
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                )
-              })
-	      
-            }
-	  
-          </div>
+        
           <div className="table-cell-header" 
-	  style={model1.length === 0 && !props.value? { display: "none" } : { padding: "0px", border: "none", display: "flex", flexDirection: "column" }}
+	  style={{ padding: "0px", border: "none", display: "flex", flexDirection: "column" }}
 	  >
-            {
-              model1.length === 0 ?
-                <div className="table-cell">
-                  <div className="table-cell__variation-model">
-                    <div className="table-cell__edit">
-                      <div className="product-input-wrapper">
-                        <div className="product-input">
-                          <div class="product-input__inner">
-                            <div className="product-input__prefix">
-                              $
-                                  <span className="product-input__prefix-split"></span>
-                            </div>
-                            <input type="number" placeholder="Insert" size="large" 
-			    resize="vertical" rows="2" minrows="2" restrictiontype="value"
-			     max="Infinity" min="-Infinity" isround="true" class="product-input__input" 
-			     defaultValue={price && price[`${props.value.name}`]}
-			     onChange={(e) => setPriceOne( e.target.value)}
-			     ></input>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div> : ""
-            }
-
-            {
-              model1 && model1.map((v, i) => {
-                return (
-                  <div className="table-cell" key={i}>
+                  <div className="table-cell" >
                     <div className="table-cell__variation-model">
                       <div className="table-cell__edit">
                         <div className="product-input-wrapper">
@@ -121,9 +65,9 @@ export const Model = (props) => {
                                 type="number" placeholder="Insert"
                                 size="large" resize="vertical" rows="2" minrows="2"
                                 restrictiontype="value" max="Infinity" min="-Infinity" isround="true"
-                                defaultValue={price && price[`${props.value.name},${v.name}`]}
+                                defaultValue={props && props.value && props.value.price}
                                 class="product-input__input"
-                                onChange={(e) => setPrice(v.name, e.target.value)}
+                                onChange={(e) => setPrice(props.index,e.target.value)}
                               ></input>
                             </div>
                           </div>
@@ -131,45 +75,14 @@ export const Model = (props) => {
                       </div>
                     </div>
                   </div>
-                )
-              })
-            }
+             
           </div>
 	  
           <div className="table-cell-header" 
-	 style= { model1.length === 0 && !props.value? { display: "none" } : { padding: "0px", border: "none", display: "flex", flexDirection: "column" }}
-	>
-
-            {
-              model1.length === 0 ?
-                <div className="table-cell">
-                  <div className="table-cell__variation-model">
-                    <div className="table-cell__edit">
-                      <div className="product-input-wrapper">
-                        <div className="product-input">
-                          <div class="product-input__inner">
-                            <div className="product-input__prefix">
-                              $
-                                  <span className="product-input__prefix-split"></span>
-                            </div>
-                            <input type="number" placeholder="Insert" size="large"
-                              resize="vertical" rows="2" minrows="2"
-                              restrictiontype="value" max="Infinity" min="-Infinity"
-                              isround="true" class="product-input__input"
-			      defaultValue={quantity && quantity[`${props.value.name}`]}
-                             onChange={(e) => setQuantityforSpecificOne(e.target.value)}
-                            ></input>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div> : ""
-            }
-            {
-              model1 && model1.map((v, i) => {
-                return (
-                  <div className="table-cell" key={i}>
+	 style= {{ padding: "0px", border: "none", display: "flex", flexDirection: "column" }}
+			>
+            
+                  <div className="table-cell" >
                     <div className="table-cell__variation-model">
                       <div className="table-cell__edit">
                         <div className="product-input-wrapper">
@@ -183,8 +96,8 @@ export const Model = (props) => {
                                 size="large" resize="vertical" rows="2" minrows="2"
                                 restrictiontype="value" max="Infinity" min="-Infinity" isround="true"
                                 class="product-input__input"
-                                defaultValue={quantity && quantity[`${props.value.name},${v.name}`]}
-                                onChange={(e) => setQuantityforSpecific(v.name, e.target.value)}
+								defaultValue={props && props.value && props.value.quantity}
+                                onChange={(e) => setQuantityforSpecific()}
                               />
                             </div>
                           </div>
@@ -192,33 +105,41 @@ export const Model = (props) => {
                       </div>
                     </div>
                   </div>
-                )
-              })
-            }
+             
           </div>
-          <div className="table-cell-header" style={model1.length === 0 && !props.value ? { display: "none" } : { padding: "0px", width: "100%",border: "none", display: "flex", flexDirection: "column" }}>
-            {
-              model1.length === 0 ?
-                <div className="table-cell">
-		<div className="table-cell__variation-model">
-		  <div className="table-cell__edit" style={{width:"110%",marginLeft:"-6%"}}>
-		    <div className="product-input-wrapper">
-		      <div className="product-input">
-			<div class="product-input__inner">
-			  <input type="text" placeholder="Insert" size="large" resize="vertical" rows="2"
-			    minrows="2" restrictiontype="value" max="Infinity" min="-Infinity" isround="true"
-			    class="product-input__input"
-			  />
-			</div>
-		      </div>
-		    </div>
-		  </div>
-		</div>
-	      </div>: ""
-            }
-            {
-              model1 && model1.map((v, i) => {
-                return (
+		  <div className="table-cell-header" 
+	 style= {{ padding: "0px", border: "none", display: "flex", flexDirection: "column" }}
+			>
+           
+                  <div className="table-cell" >
+                    <div className="table-cell__variation-model">
+                      <div className="table-cell__edit">
+                        <div className="product-input-wrapper">
+                          <div className="product-input">
+                            <div class="product-input__inner">
+                              <div className="product-input__prefix">
+                                $
+                                        <span className="product-input__prefix-split"></span>
+                              </div>
+                              <input type="number" placeholder="Insert"
+                                size="large" resize="vertical" rows="2" minrows="2"
+                                restrictiontype="value" max="Infinity" min="-Infinity" isround="true"
+                                class="product-input__input"
+								defaultValue={props && props.value && props.value.cost}
+                                onChange={(e) => setQuantityforSpecific()}
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+               
+          </div>
+          <div className="table-cell-header" 
+		  style={{ padding: "0px", width: "100%",border: "none", display: "flex", flexDirection: "column" }}
+		  >
+           
                   <div className="table-cell">
                     <div className="table-cell__variation-model">
                       <div className="table-cell__edit">
@@ -235,11 +156,8 @@ export const Model = (props) => {
                       </div>
                     </div>
                   </div>
-                )
-              })
-            }
+              
           </div>
-
 
         </div>
       </div>

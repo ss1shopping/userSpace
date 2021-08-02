@@ -49,8 +49,8 @@ const Routerr = () => {
     <Router>
 		{
 			isMobile?
-			<Switch>
-  <Route exact path="/" component={Homepage}></Route>
+	<Switch>
+  		<Route exact path="/" component={Homepage}></Route>
         <Route path="/search" component={SearchPage}></Route>
         <Route exact path="/history" component={History}></Route>
         <Route exact path="/banhang/order" component={Order}></Route>
@@ -83,9 +83,11 @@ const Routerr = () => {
         <PrivateRouter exact path="/dashboard/list-order-finish" component={ListOrderFinishing}></PrivateRouter> */}
 
         <Route exact path="/users/login/:token" component={ConfirmSuccessful}></Route>
-			</Switch>
+	</Switch>
 			:
-			<Switch>
+
+
+		<Switch>
 			<Route exact path="/" component={Homepage}></Route>
 			<Route path="/search" component={SearchPage}></Route>
 			<Route exact path="/history" component={History}></Route>
@@ -120,7 +122,7 @@ const Routerr = () => {
 	
 			<Route exact path="/users/login/:token" component={ConfirmSuccessful}></Route>
 		   
-		  </Switch>
+		</Switch>
 		}
      
       <Footer></Footer>

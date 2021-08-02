@@ -1,18 +1,18 @@
 import { API_URLS } from "../constant/api/apiConstants";
 import initApi from "./apiConfig/apiConfig";
+import { stringify } from 'querystring'
 const config = {
   header: { "content-type": "multiple/form-data" }
 }
 export function getdata(data) {
-
-  return initApi(false).get(API_URLS.GET_ITEMS(data))
+	const operations = stringify(data);
+  return initApi(false).get(`${API_URLS.GET_ITEMS}?${operations}`)
 }
 export function searchItem(data) {
 
   return initApi(false).get(API_URLS.SEARCH_ITEM(data))
 }
 export function addItem(data) {
-  console.log(data);
   return initApi(true).post(API_URLS.ADD_ITEM, data)
 }
 export function addImage(data) {

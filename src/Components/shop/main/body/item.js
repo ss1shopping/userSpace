@@ -9,6 +9,47 @@ import { itemActions } from '../../../../app/store/ducks/itemReducer'
 import ReactPaginate from 'react-paginate';
 import { Link } from 'react-router-dom'
 import { getStorage } from '../../../../_metronic'
+import { getdata } from '../../../../app/crud/item.crud'
+import DataTable from 'react-data-table-component';
+const columns = [
+	{
+	  name: 'Sku',
+	  selector: 'sku',
+	  sortable: true,
+	},
+	{
+		name: 'Image',
+		selector: 'images[0]',
+		sortable: true,
+		right: true,
+		cell: row => <img data-tag="allowRowEvents" style={{width:40,height:20,textAlign:"center"}} src={"https://images.unsplash.com/photo-1627844642677-8b30cb8fc636?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2850&q=80"}/>,
+  
+	  },
+	{
+		name: 'Name',
+		selector: 'name',
+		sortable: true,
+	  },
+	 
+	{
+	  name: 'Price',
+	  selector: 'price',
+	  sortable: true,
+	  right: true,
+	},
+	{
+		name: 'Cost',
+		selector: 'cost',
+		sortable: true,
+		right: true,
+	  },
+	  {
+		name: 'Sold',
+		selector: 'sold',
+		sortable: true,
+		right: true,
+	  },
+  ];
 export const ManageItem = () => {
   const dispatch = useDispatch()
   const [page, setpage] = useState(1)
@@ -16,15 +57,22 @@ export const ManageItem = () => {
   const [order, setorder] = useState("ASC")
   const [statusDialogBox, setstatusDialogBox] = useState(false)
   const [productchoosetoDelete, setproductChoosetoDelete] = useState()
-  const items = useSelector(state => state.itemReducer.item)
+  const [items, setItem] = useState([])
+ const [number, setnumber] = useState()
+ const [toggledClearRows, settoggledClearRows] = useState(false)
+//   const handleChangepage = page => {
+//     // featchData(page)
+//   }
 
-  const handleChangepage = (page) => {
-    if (page < 1) {
-      setpage(1)
-    } else {
-      setpage(page)
-
-    }
+//   const handlePerRowsChange = async (newPerPage, page) => {
+//    featchData(30,1)
+//   };
+  const handleChange = (state) => {
+	// You can use setState or dispatch with something like Redux so we can use the retrieved data
+	console.log('Selected Rows: ', state.selectedRows);
+  };
+  const handleClearRows = () => {
+	settoggledClearRows(!toggledClearRows)
   }
   const handleOpenDialogBox = (value, product) => {
     setstatusDialogBox(value)
@@ -36,9 +84,17 @@ export const ManageItem = () => {
     setproductChoosetoDelete("")
     dispatch(itemActions.loadingitem(page, sort, getStorage("shopId")))
   }
-
+   async function featchData(){
+	   await getdata({
+		   limit:30,
+		   skip:30
+	   }).then(result=>{
+		   setItem(result.data.data)
+		   setnumber(result.data.count)
+	   })
+   }
   useEffect(() => {
-    dispatch(itemActions.loadingitem(page, sort, getStorage("shopId")))
+	featchData()
 
   }, [page, sort])
   return (
@@ -51,7 +107,17 @@ export const ManageItem = () => {
           <div className="itemShopowner--title1--name"> Sản phẩm   </div>
         </div>
         <div className="itemShopowner--table">
-          <table>
+			<DataTable
+			  title="Arnold Movies"
+			  columns={columns}
+			  data={items}
+			  selectableRows
+			  onSelectedRowsChange={handleChange}
+			  clearSelectedRows={()=>handleClearRows()}
+			  //onChangePage={handleChangepage} //handle change page
+			//   /onChangeRowsPerPage={handlePerRowsChange}
+			></DataTable>
+          {/* <table>
             <thead>
               <tr>
                 <th><input type="checkbox" /> </th>
@@ -66,14 +132,14 @@ export const ManageItem = () => {
             <tbody>
               {
                 items && items.map((value, index) => {
-                  console.log(value.category[value.category.length - 1].name);
-                  console.log();
+                //   console.log(value.category[value.category.length - 1].name);
+                //   console.log();
                   return (
                     <tr>
                       <th><input type="checkbox" /> </th>
                       <th className="itemShopowner--table--name">{value.name}</th>
-                      <th>{value.category[value.category.length - 1].name}</th>
-                      <th>{value.priceMin}-{value.priceMax}</th>
+                      <th>{value.cost}</th>
+                      <th>{value.price}</th>
                       <th>{value.sold}</th>
                       <th> <Link to={`/banhang/update/item/${value._id}`} className="btn btn--outline">Sửa thông tin</Link>  </th>
                       <th> <button onClick={() => handleOpenDialogBox(true, value)} className="btn btn--outline">Xoá</button>  </th>
@@ -83,15 +149,15 @@ export const ManageItem = () => {
               }
 
             </tbody>
-          </table>
+          </table> */}
         </div>
-
+{/* 
         <div className="itemShopowner--pagination">
           <div className={page === 1 ? "btn btn--pagination disable" : "btn btn--pagination"} onClick={() => handleChangepage(page - 1)}>Previous</div>
           <div className="itemShopowner--pagination--page">{page}</div>
           <div className="btn btn--pagination" onClick={() => handleChangepage(page + 1)}>Next</div>
 
-        </div>
+        </div> */}
       </div>
       <div className="dialogbox" style={statusDialogBox ? { display: "block" } : { display: "none" }}>
         <div className="dialogbox--wrapper--exit">

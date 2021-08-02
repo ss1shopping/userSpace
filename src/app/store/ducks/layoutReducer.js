@@ -15,7 +15,11 @@ var oldstate = {
   numberProduct: 2,
   tranport: false,
   order: true,
-  product: false
+  product: false,
+  numberVariation1:0,
+  numberVariation2:0,
+  statusVariation1:false,
+  statusVariation2:false
 }
 
 
@@ -75,7 +79,23 @@ export default function layoutReducer(state = oldstate, action) {
       return {
         ...state, numberProduct: action.payload
       }
-
+	case layoutActionTypes.changeNumberVariation1:
+	return{
+		...state,numberVariation1:action.payload
+	}
+	case layoutActionTypes.changeNumberVariation2:
+	return{
+		...state,numberVariation2:action.payload
+	}
+	case layoutActionTypes.changeStatusVariation1:
+	return{
+		...state,statusVariation1:action.payload
+	}
+	case layoutActionTypes.changeStatusVariation2:
+	return{
+		...state,statusVariation2:action.payload
+	}
+	
     default:
       return state
   }
@@ -88,5 +108,9 @@ export const layoutActions = {
   changeOrder: (payload) => ({ type: layoutActionTypes.changeOrder, payload }),
   changeTranport: (payload) => ({ type: layoutActionTypes.changeTranport, payload }),
   changeNumberProduct: (payload) => ({ type: layoutActionTypes.changeNumberProduct, payload }),
-  changeNumberOrder: (payload) => ({ type: layoutActionTypes.changeNumberOrder, payload })
+  changeNumberOrder: (payload) => ({ type: layoutActionTypes.changeNumberOrder, payload }),
+  changeNumberVariation1:(payload)=>({type:layoutActionTypes.changeNumberVariation1,payload}),
+  changeNumberVariation2:(payload)=>({type:layoutActionTypes.changeNumberVariation2,payload}),
+  changeStatusVariation1:(payload)=>({type:layoutActionTypes.changeStatusVariation1,payload}),
+  changeStatusVariation2:(payload)=>({type:layoutActionTypes.changeStatusVariation2,payload})
 }

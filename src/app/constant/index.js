@@ -54,7 +54,9 @@ export const itemActionTypes = {
 
   loadImage: "[load image]",
 
-  setKeyword: "[set key word]"
+  setKeyword: "[set key word]",
+  setVariation:"[set variation]",
+  setProduct:'[set product]',
 }
 export const authActionTypes = {
   Login: '[Login] Action',
@@ -145,7 +147,11 @@ export const layoutActionTypes = {
   changeOrder: '[change order]',
   changeItem: "[cahnge item]",
   changeNumberProduct: "[change number product]",
-  changeNumberOrder: "[cahnge number order]"
+  changeNumberOrder: "[cahnge number order]",
+  changeNumberVariation1:"changenumbervariation1",
+  changeNumberVariation2:"change number variation 2",
+  changeStatusVariation1:"change status variation1",
+  changeStatusVariation2:" cahnge tatus varition 2"
 }
 export const cartActionTypes = {
   loadingCart: "[loading cart]",

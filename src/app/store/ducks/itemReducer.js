@@ -16,6 +16,8 @@ const initialAuthState = {
     itemInCart: [],
     page: 1,
     category: null,
+	products:[],
+	variation:[],
     tier_variations: [],
     model: [],
     model1: [],
@@ -160,6 +162,14 @@ export const itemReducer = persistReducer(
                 return {
                     ...state, keyword: action.payload
                 }
+			case itemActionTypes.setVariation:
+				return {
+					...state, variation: action.payload
+				}
+			case itemActionTypes.setProduct:
+				return {
+					...state, products: action.payload
+				}
             default:
                 return state;
         }
@@ -214,5 +224,7 @@ export const itemActions = {
     updateTier_variationSuccesful: (payload) => ({ type: itemActionTypes.updateTier_variationSuccesful, payload }),
 
     loadImage: (payload) => ({ type: itemActionTypes.loadImage, payload }),
-    setKeyword: (payload) => ({ type: itemActionTypes.setKeyword, payload })
+    setKeyword: (payload) => ({ type: itemActionTypes.setKeyword, payload }),
+	setVariation:(payload)=>({type:itemActionTypes.setVariation,payload}),
+	setProduct:(payload)=>({type:itemActionTypes.setProduct,payload})
 }
