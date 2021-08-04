@@ -142,6 +142,9 @@ export const orderActionTypes = {
   getAllOrderUserSuccessful: "[get all order user successful]"
 }
 export const layoutActionTypes = {
+  changeCategory:'[change category]',
+  changeBanner:'[change banner]',
+  changelayout:"[change layout]",
   changeNumber: "[change number layout]",
   changeTranport: "[change tranport]",
   changeOrder: '[change order]',

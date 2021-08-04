@@ -1,0 +1,82 @@
+@import "./createBanner.scss";
+
+.banner{
+    margin:0 20px 0 20px;
+    &--header{
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        height: 100px;
+        
+        &--name{
+            width: 70%;
+            height: 100%;
+            margin-left: 20px;
+            font-size: 25px;
+            font-weight: bold;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+        &--add{
+            height: 100%;
+            margin-left: 20px;
+            font-size: 20px;
+            font-weight: bold;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+    }
+     &__title{
+         font-size: 23px;
+         font-weight: 500;
+     }
+    .banner__slider{
+        img{
+           width: 120px;
+           height: 60px; 
+        }
+        input{
+            margin-left: 10px;
+        }
+    }
+    .banner__item--title{
+        outline: none;
+        border-left:none;
+        border-top:none;
+        border-right:none;
+        border-bottom: 1px solid black;
+    }
+    .th{
+       padding: 15px;
+    }
+    .banner__button{
+        display: flex;
+        &--save{
+            font-size: 20px;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            color:white;
+            cursor: pointer;
+            border-radius: 5px;
+            justify-content: center;
+            align-items:center;
+            margin:5px
+        }
+        &--link{
+            font-size: 20px;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            cursor: pointer;
+            color:white;
+            background:#3c6fdb;
+            border-radius: 5px;
+            justify-content: center;
+            align-items:center;
+            margin:5px
+        }
+    }
+}

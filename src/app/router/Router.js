@@ -34,7 +34,10 @@ import Checkout from "../../Components/checkout/checkout.page"
 import { UserProfile } from "../../Components/user/userProfile";
 import { Address } from "../../Components/user/address";
 import { UpdateItem } from "../../Components/shop/main/body/updateItem";
+import {Banner} from "../../Components/shop/banner/index"
+import  CreateCategory  from "../../Components/shop/category/create";
 import { isMobile } from 'react-device-detect';
+import Category from "../../Components/shop/category/index";
 const Routerr = () => {
   let token = getStorage("token");
   const isPending = useSelector(state => state.authReducer.isPending)
@@ -61,6 +64,7 @@ const Routerr = () => {
         <Route exact path="/banhang/shop-profile" component={ShopProfile}></Route>
         <Route exact path="/banhang/update/item/:id" component={UpdateItem}></Route>
         <Route exact path="/banhang/delivery" component={Delivery}></Route>
+        <Route exact path='/banhang/banner' component={Banner}></Route>
         {/* <Route exact path="/shop/item/:name" component={ItemdetailShopPage}></Route> */}
         <Route exact path="/users/login" component={Login}></Route>
         <Route exact path='/users/register' component={Register} />
@@ -99,6 +103,9 @@ const Routerr = () => {
 			<Route exact path="/banhang/shop-profile" component={ShopProfile}></Route>
 			<Route exact path="/banhang/update/item/:id" component={UpdateItem}></Route>
 			<Route exact path="/banhang/delivery" component={Delivery}></Route>
+      <Route exact path='/banhang/banner' component={Banner}></Route>
+      <Route exact path='/banhang/category/create' component={CreateCategory}></Route>
+      <Route exact path='/banhang/category' component={Category}></Route>
 			{/* <Route exact path="/shop/item/:name" component={ItemdetailShopPage}></Route> */}
 			<Route exact path="/users/login" component={Login}></Route>
 			<Route exact path='/users/register' component={Register} />

@@ -41,7 +41,7 @@ export const AddProduct = () => {
         const config = {
             header: { "content-type": "multiple/form-data" }
         }
-        Axios.post(`${API_URL}/item/uploadImage`, formData, config)
+        Axios.post(`${API_URL}/items/upload/image`, formData, config)
             .then(res => {
 
                 dispatch(itemActions.addImageSuccessful(res.data))
@@ -80,6 +80,7 @@ export const AddProduct = () => {
 		newProduct.products=products
 		newProduct.variation=tier_variations
 		newProduct.information=attributes
+        newProduct.images=urlImage
 		addItem(newProduct)
 		.then((result)=>{
 			

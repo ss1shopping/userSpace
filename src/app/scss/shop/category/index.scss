@@ -1,0 +1,31 @@
+@import "./createCategory.scss";
+
+.category{
+    margin:0 20px 0 20px;
+    &--header{
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        height: 100px;
+        
+        &--name{
+            width: 70%;
+            height: 100%;
+            margin-left: 20px;
+            font-size: 25px;
+            font-weight: bold;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+        &--add{
+            height: 100%;
+            margin-left: 20px;
+            font-size: 20px;
+            font-weight: bold;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+    }
+}

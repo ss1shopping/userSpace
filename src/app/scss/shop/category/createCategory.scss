@@ -1,0 +1,14 @@
+.create__category{
+    display: flex;
+    margin:40px 20px 0 20px;
+    &--left{
+        width: 60%;
+    }
+    &--right{
+        margin-left: 20px;
+        width: 40%;
+    }
+    &--title{
+        
+    }
+}

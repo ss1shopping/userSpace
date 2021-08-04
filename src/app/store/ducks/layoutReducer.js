@@ -1,3 +1,4 @@
+import { FastField } from "formik"
 import { layoutActionTypes } from "../../constant/index"
 var oldstate = {
   //  DarkmodeStatus:false,
@@ -13,9 +14,12 @@ var oldstate = {
   number: 4,
   numberOrder: 1,
   numberProduct: 2,
+  layout:{category:{status:false,number:1},tranport:{status:false,number:1},order:{status:true,number:1},product:{status:false,number:1}},
   tranport: false,
   order: true,
   product: false,
+  category:false,
+  banner:false,
   numberVariation1:0,
   numberVariation2:0,
   statusVariation1:false,
@@ -55,6 +59,18 @@ export default function layoutReducer(state = oldstate, action) {
     //       return{
     //         ...state,ref:action.setref
     //       }
+    case layoutActionTypes.changeBanner:
+      return {
+        ...state, banner: action.payload
+      }
+    case layoutActionTypes.changeCategory:
+      return {
+        ...state, category: action.payload
+      }
+    case layoutActionTypes.changelayout:
+      return {
+        ...state, layout: action.payload
+      }
     case layoutActionTypes.changeNumber:
       return {
         ...state, number: action.payload
@@ -103,6 +119,9 @@ export default function layoutReducer(state = oldstate, action) {
 
 }
 export const layoutActions = {
+  changeLayout: (payload) => ({ type: layoutActionTypes.changelayout, payload }),
+  changeBanner: (payload) => ({ type: layoutActionTypes.changeBanner, payload }),
+  changeCategory: (payload) => ({ type: layoutActionTypes.changeCategory, payload }),
   changeNumber: (payload) => ({ type: layoutActionTypes.changeNumber, payload }),
   changeProduct: (payload) => ({ type: layoutActionTypes.changeItem, payload }),
   changeOrder: (payload) => ({ type: layoutActionTypes.changeOrder, payload }),
